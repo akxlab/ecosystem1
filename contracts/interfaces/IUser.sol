@@ -1,0 +1,10 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.16;
+
+import "./IEIP-1155U.sol";
+
+interface IUser is IEIP1155U {
+
+function sha() external;
+
+}

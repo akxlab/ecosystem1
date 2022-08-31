@@ -1,0 +1,10 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "ModuleLoader",
+  "sourceName": "contracts/modules/ModuleLoader.sol",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220897e0403d03f8af8ff52c95f378a182be225b5f7a202d0251f7bd9d340cacaa664736f6c63430008100033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220897e0403d03f8af8ff52c95f378a182be225b5f7a202d0251f7bd9d340cacaa664736f6c63430008100033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

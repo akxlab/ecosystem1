@@ -6,6 +6,8 @@ import type {
   BigNumber,
   BytesLike,
   CallOverrides,
+  ContractTransaction,
+  Overrides,
   PopulatedTransaction,
   Signer,
   utils,
@@ -25,10 +27,11 @@ export interface UDSInterface extends utils.Interface {
     "_owner()": FunctionFragment;
     "chainId()": FunctionFragment;
     "owner(bytes32)": FunctionFragment;
+    "setResolver(bytes32,address)": FunctionFragment;
   };
 
   getFunction(
-    nameOrSignatureOrTopic: "_owner" | "chainId" | "owner"
+    nameOrSignatureOrTopic: "_owner" | "chainId" | "owner" | "setResolver"
   ): FunctionFragment;
 
   encodeFunctionData(functionFragment: "_owner", values?: undefined): string;
@@ -37,10 +40,18 @@ export interface UDSInterface extends utils.Interface {
     functionFragment: "owner",
     values: [PromiseOrValue<BytesLike>]
   ): string;
+  encodeFunctionData(
+    functionFragment: "setResolver",
+    values: [PromiseOrValue<BytesLike>, PromiseOrValue<string>]
+  ): string;
 
   decodeFunctionResult(functionFragment: "_owner", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "chainId", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "setResolver",
+    data: BytesLike
+  ): Result;
 
   events: {};
 }
@@ -80,6 +91,12 @@ export interface UDS extends BaseContract {
       arg0: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<[string]>;
+
+    setResolver(
+      rootNode: PromiseOrValue<BytesLike>,
+      resolver: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
   };
 
   _owner(overrides?: CallOverrides): Promise<string>;
@@ -91,6 +108,12 @@ export interface UDS extends BaseContract {
     overrides?: CallOverrides
   ): Promise<string>;
 
+  setResolver(
+    rootNode: PromiseOrValue<BytesLike>,
+    resolver: PromiseOrValue<string>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
   callStatic: {
     _owner(overrides?: CallOverrides): Promise<string>;
 
@@ -100,6 +123,12 @@ export interface UDS extends BaseContract {
       arg0: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<string>;
+
+    setResolver(
+      rootNode: PromiseOrValue<BytesLike>,
+      resolver: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<void>;
   };
 
   filters: {};
@@ -113,6 +142,12 @@ export interface UDS extends BaseContract {
       arg0: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
+
+    setResolver(
+      rootNode: PromiseOrValue<BytesLike>,
+      resolver: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
   };
 
   populateTransaction: {
@@ -123,6 +158,12 @@ export interface UDS extends BaseContract {
     owner(
       arg0: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    setResolver(
+      rootNode: PromiseOrValue<BytesLike>,
+      resolver: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
   };
 }

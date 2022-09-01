@@ -9,6 +9,7 @@ contract UDS  {
   
     address public _owner; // uds owner
     uint256 public chainId;
+    mapping(bytes32 => address) private _resolvers;
 
     mapping(bytes32 => address) public owner; // profile data owner
     constructor() {
@@ -25,6 +26,10 @@ contract UDS  {
 
     function isMainnet() internal view returns(bool) {
         return chainId == 1 || chainId == 5;
+    }
+
+    function setResolver(bytes32 rootNode, address resolver) external {
+        _resolvers[rootNode] = resolver;
     }
 
 

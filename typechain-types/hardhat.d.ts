@@ -37,9 +37,21 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Initializable__factory>;
     getContractFactory(
+      name: "ERC721",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC721__factory>;
+    getContractFactory(
+      name: "IERC721Metadata",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC721Metadata__factory>;
+    getContractFactory(
       name: "IERC721",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC721__factory>;
+    getContractFactory(
+      name: "IERC721Receiver",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC721Receiver__factory>;
     getContractFactory(
       name: "ERC165",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -56,6 +68,10 @@ declare module "hardhat/types/runtime" {
       name: "BaseController",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.BaseController__factory>;
+    getContractFactory(
+      name: "UserController",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.UserController__factory>;
     getContractFactory(
       name: "IAKX",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -149,6 +165,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.UserRegistry__factory>;
     getContractFactory(
+      name: "BaseUserRegistry",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.BaseUserRegistry__factory>;
+    getContractFactory(
       name: "AllResolvers",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.AllResolvers__factory>;
@@ -224,10 +244,25 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.Initializable>;
     getContractAt(
+      name: "ERC721",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC721>;
+    getContractAt(
+      name: "IERC721Metadata",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC721Metadata>;
+    getContractAt(
       name: "IERC721",
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.IERC721>;
+    getContractAt(
+      name: "IERC721Receiver",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC721Receiver>;
     getContractAt(
       name: "ERC165",
       address: string,
@@ -248,6 +283,11 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.BaseController>;
+    getContractAt(
+      name: "UserController",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.UserController>;
     getContractAt(
       name: "IAKX",
       address: string,
@@ -363,6 +403,11 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.UserRegistry>;
+    getContractAt(
+      name: "BaseUserRegistry",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.BaseUserRegistry>;
     getContractAt(
       name: "AllResolvers",
       address: string,

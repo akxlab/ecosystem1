@@ -16,7 +16,6 @@ interface IEIP721U is IERC721 {
     );
     event UserUpdated(uint256 indexed id, uint256 ts);
 
-    function setResolver(address resolver) external;
     function userCreatedDate(uint256 id) external returns(uint256);
     function available(uint256 id) external returns(bool);
     function reclaim(uint256 id, address owner) external;

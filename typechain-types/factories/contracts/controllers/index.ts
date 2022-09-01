@@ -2,3 +2,4 @@
 /* tslint:disable */
 /* eslint-disable */
 export { BaseController__factory } from "./BaseController__factory";
+export { UserController__factory } from "./UserController__factory";

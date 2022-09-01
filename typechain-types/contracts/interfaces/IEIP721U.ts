@@ -41,7 +41,6 @@ export interface IEIP721UInterface extends utils.Interface {
     "safeTransferFrom(address,address,uint256)": FunctionFragment;
     "safeTransferFrom(address,address,uint256,bytes)": FunctionFragment;
     "setApprovalForAll(address,bool)": FunctionFragment;
-    "setResolver(address)": FunctionFragment;
     "supportsInterface(bytes4)": FunctionFragment;
     "transferFrom(address,address,uint256)": FunctionFragment;
     "userCreatedDate(uint256)": FunctionFragment;
@@ -61,7 +60,6 @@ export interface IEIP721UInterface extends utils.Interface {
       | "safeTransferFrom(address,address,uint256)"
       | "safeTransferFrom(address,address,uint256,bytes)"
       | "setApprovalForAll"
-      | "setResolver"
       | "supportsInterface"
       | "transferFrom"
       | "userCreatedDate"
@@ -125,10 +123,6 @@ export interface IEIP721UInterface extends utils.Interface {
     values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
   ): string;
   encodeFunctionData(
-    functionFragment: "setResolver",
-    values: [PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
     functionFragment: "supportsInterface",
     values: [PromiseOrValue<BytesLike>]
   ): string;
@@ -173,10 +167,6 @@ export interface IEIP721UInterface extends utils.Interface {
   ): Result;
   decodeFunctionResult(
     functionFragment: "setApprovalForAll",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "setResolver",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -376,11 +366,6 @@ export interface IEIP721U extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    setResolver(
-      resolver: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
     supportsInterface(
       interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
@@ -468,11 +453,6 @@ export interface IEIP721U extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  setResolver(
-    resolver: PromiseOrValue<string>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
   supportsInterface(
     interfaceId: PromiseOrValue<BytesLike>,
     overrides?: CallOverrides
@@ -557,11 +537,6 @@ export interface IEIP721U extends BaseContract {
     setApprovalForAll(
       operator: PromiseOrValue<string>,
       _approved: PromiseOrValue<boolean>,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    setResolver(
-      resolver: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -719,11 +694,6 @@ export interface IEIP721U extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
-    setResolver(
-      resolver: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
     supportsInterface(
       interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
@@ -809,11 +779,6 @@ export interface IEIP721U extends BaseContract {
     setApprovalForAll(
       operator: PromiseOrValue<string>,
       _approved: PromiseOrValue<boolean>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    setResolver(
-      resolver: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 

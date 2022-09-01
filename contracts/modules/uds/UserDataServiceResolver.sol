@@ -16,8 +16,8 @@ contract UserDataServiceResolver is AllResolvers {
     mapping(bytes32=>mapping(address=>mapping(address=>bool))) public authorisations;
     event AuthorisationChanged(bytes32 indexed profileId, address indexed owner, address indexed target, bool isAuthorised);
 
-    constructor(UDS _uds) {
-        uds = _uds;
+    constructor(address _uds) {
+        uds = UDS(_uds);
     }
 
      function setAuthorisation(bytes32 profileId, address target, bool isAuthorised) external {

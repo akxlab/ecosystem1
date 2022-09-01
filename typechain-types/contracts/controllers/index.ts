@@ -2,3 +2,4 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { BaseController } from "./BaseController";
+export type { UserController } from "./UserController";

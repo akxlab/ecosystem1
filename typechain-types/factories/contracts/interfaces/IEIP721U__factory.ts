@@ -400,19 +400,6 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "resolver",
-        type: "address",
-      },
-    ],
-    name: "setResolver",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
         internalType: "bytes4",
         name: "interfaceId",
         type: "bytes4",

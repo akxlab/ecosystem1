@@ -27,6 +27,30 @@ import type {
   PromiseOrValue,
 } from "../../../common";
 
+export declare namespace UserDataServiceResolver {
+  export type AccountInfoStruct = {
+    tokenId: PromiseOrValue<BigNumberish>;
+    identity: PromiseOrValue<BytesLike>;
+    owner: PromiseOrValue<string>;
+    metasId: PromiseOrValue<BytesLike>;
+    timestamp: PromiseOrValue<BigNumberish>;
+  };
+
+  export type AccountInfoStructOutput = [
+    BigNumber,
+    string,
+    string,
+    string,
+    BigNumber
+  ] & {
+    tokenId: BigNumber;
+    identity: string;
+    owner: string;
+    metasId: string;
+    timestamp: BigNumber;
+  };
+}
+
 export declare namespace MetaDataResolver {
   export type KeyValMetaStruct = {
     key: PromiseOrValue<BytesLike>;
@@ -53,32 +77,137 @@ export declare namespace MetaDataResolver {
 
 export interface UserDataServiceResolverInterface extends utils.Interface {
   functions: {
+    "ERC721_ID()": FunctionFragment;
+    "IDENT_INTERFACE_ID()": FunctionFragment;
+    "METADATA_INTERFACE_ID()": FunctionFragment;
+    "METAVALUE_INTERFACE_ID()": FunctionFragment;
+    "NAME_INTERFACE_ID()": FunctionFragment;
+    "PROFILE_INTERFACE_ID()": FunctionFragment;
+    "RECLAIM_ID()": FunctionFragment;
+    "REPUTATION_ID()": FunctionFragment;
+    "SETMETA_INTERFACE_ID()": FunctionFragment;
+    "approve(address,uint256)": FunctionFragment;
     "authorisations(bytes32,address,address)": FunctionFragment;
+    "authorizeController(address)": FunctionFragment;
+    "balanceOf(address)": FunctionFragment;
+    "controllers(address)": FunctionFragment;
+    "createNewAccount(address)": FunctionFragment;
+    "createNewAccount(address,string)": FunctionFragment;
+    "deAuthorizeController(address)": FunctionFragment;
+    "getAccountInfo(address)": FunctionFragment;
+    "getApproved(uint256)": FunctionFragment;
+    "getName()": FunctionFragment;
+    "getName(address)": FunctionFragment;
+    "getName(uint256)": FunctionFragment;
     "ident(uint256)": FunctionFragment;
+    "isApprovedForAll(address,address)": FunctionFragment;
     "metaValue(uint256,string)": FunctionFragment;
     "metadata(uint256)": FunctionFragment;
-    "multicall(bytes[])": FunctionFragment;
-    "name(uint256)": FunctionFragment;
+    "name()": FunctionFragment;
+    "nameOwner(string)": FunctionFragment;
+    "owner()": FunctionFragment;
+    "ownerOf(uint256)": FunctionFragment;
     "profile(uint256)": FunctionFragment;
-    "setAuthorisation(bytes32,address,bool)": FunctionFragment;
+    "renounceOwnership()": FunctionFragment;
+    "rootNodeAddress()": FunctionFragment;
+    "safeTransferFrom(address,address,uint256)": FunctionFragment;
+    "safeTransferFrom(address,address,uint256,bytes)": FunctionFragment;
+    "setApprovalForAll(address,bool)": FunctionFragment;
+    "setIdent(uint256,bytes32)": FunctionFragment;
     "setMetaData(uint256,string,uint256,bytes,bool,bool)": FunctionFragment;
+    "setResolver(address)": FunctionFragment;
     "supportsInterface(bytes4)": FunctionFragment;
+    "symbol()": FunctionFragment;
+    "tokenURI(uint256)": FunctionFragment;
+    "transferFrom(address,address,uint256)": FunctionFragment;
+    "transferOwnership(address)": FunctionFragment;
   };
 
   getFunction(
     nameOrSignatureOrTopic:
+      | "ERC721_ID"
+      | "IDENT_INTERFACE_ID"
+      | "METADATA_INTERFACE_ID"
+      | "METAVALUE_INTERFACE_ID"
+      | "NAME_INTERFACE_ID"
+      | "PROFILE_INTERFACE_ID"
+      | "RECLAIM_ID"
+      | "REPUTATION_ID"
+      | "SETMETA_INTERFACE_ID"
+      | "approve"
       | "authorisations"
+      | "authorizeController"
+      | "balanceOf"
+      | "controllers"
+      | "createNewAccount(address)"
+      | "createNewAccount(address,string)"
+      | "deAuthorizeController"
+      | "getAccountInfo"
+      | "getApproved"
+      | "getName()"
+      | "getName(address)"
+      | "getName(uint256)"
       | "ident"
+      | "isApprovedForAll"
       | "metaValue"
       | "metadata"
-      | "multicall"
       | "name"
+      | "nameOwner"
+      | "owner"
+      | "ownerOf"
       | "profile"
-      | "setAuthorisation"
+      | "renounceOwnership"
+      | "rootNodeAddress"
+      | "safeTransferFrom(address,address,uint256)"
+      | "safeTransferFrom(address,address,uint256,bytes)"
+      | "setApprovalForAll"
+      | "setIdent"
       | "setMetaData"
+      | "setResolver"
       | "supportsInterface"
+      | "symbol"
+      | "tokenURI"
+      | "transferFrom"
+      | "transferOwnership"
   ): FunctionFragment;
 
+  encodeFunctionData(functionFragment: "ERC721_ID", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "IDENT_INTERFACE_ID",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "METADATA_INTERFACE_ID",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "METAVALUE_INTERFACE_ID",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "NAME_INTERFACE_ID",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "PROFILE_INTERFACE_ID",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "RECLAIM_ID",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "REPUTATION_ID",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "SETMETA_INTERFACE_ID",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "approve",
+    values: [PromiseOrValue<string>, PromiseOrValue<BigNumberish>]
+  ): string;
   encodeFunctionData(
     functionFragment: "authorisations",
     values: [
@@ -88,8 +217,53 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
     ]
   ): string;
   encodeFunctionData(
+    functionFragment: "authorizeController",
+    values: [PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "balanceOf",
+    values: [PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "controllers",
+    values: [PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "createNewAccount(address)",
+    values: [PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "createNewAccount(address,string)",
+    values: [PromiseOrValue<string>, PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "deAuthorizeController",
+    values: [PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getAccountInfo",
+    values: [PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getApproved",
+    values: [PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(functionFragment: "getName()", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "getName(address)",
+    values: [PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getName(uint256)",
+    values: [PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(
     functionFragment: "ident",
     values: [PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "isApprovedForAll",
+    values: [PromiseOrValue<string>, PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
     functionFragment: "metaValue",
@@ -99,12 +273,14 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
     functionFragment: "metadata",
     values: [PromiseOrValue<BigNumberish>]
   ): string;
+  encodeFunctionData(functionFragment: "name", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "multicall",
-    values: [PromiseOrValue<BytesLike>[]]
+    functionFragment: "nameOwner",
+    values: [PromiseOrValue<string>]
   ): string;
+  encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "name",
+    functionFragment: "ownerOf",
     values: [PromiseOrValue<BigNumberish>]
   ): string;
   encodeFunctionData(
@@ -112,12 +288,37 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
     values: [PromiseOrValue<BigNumberish>]
   ): string;
   encodeFunctionData(
-    functionFragment: "setAuthorisation",
+    functionFragment: "renounceOwnership",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "rootNodeAddress",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "safeTransferFrom(address,address,uint256)",
     values: [
-      PromiseOrValue<BytesLike>,
       PromiseOrValue<string>,
-      PromiseOrValue<boolean>
+      PromiseOrValue<string>,
+      PromiseOrValue<BigNumberish>
     ]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "safeTransferFrom(address,address,uint256,bytes)",
+    values: [
+      PromiseOrValue<string>,
+      PromiseOrValue<string>,
+      PromiseOrValue<BigNumberish>,
+      PromiseOrValue<BytesLike>
+    ]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setApprovalForAll",
+    values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setIdent",
+    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<BytesLike>]
   ): string;
   encodeFunctionData(
     functionFragment: "setMetaData",
@@ -131,45 +332,208 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
     ]
   ): string;
   encodeFunctionData(
+    functionFragment: "setResolver",
+    values: [PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
     functionFragment: "supportsInterface",
     values: [PromiseOrValue<BytesLike>]
   ): string;
+  encodeFunctionData(functionFragment: "symbol", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "tokenURI",
+    values: [PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "transferFrom",
+    values: [
+      PromiseOrValue<string>,
+      PromiseOrValue<string>,
+      PromiseOrValue<BigNumberish>
+    ]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "transferOwnership",
+    values: [PromiseOrValue<string>]
+  ): string;
 
+  decodeFunctionResult(functionFragment: "ERC721_ID", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "IDENT_INTERFACE_ID",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "METADATA_INTERFACE_ID",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "METAVALUE_INTERFACE_ID",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "NAME_INTERFACE_ID",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "PROFILE_INTERFACE_ID",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "RECLAIM_ID", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "REPUTATION_ID",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "SETMETA_INTERFACE_ID",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "approve", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "authorisations",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "ident", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "metaValue", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "metadata", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "multicall", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "profile", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "setAuthorisation",
+    functionFragment: "authorizeController",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "controllers",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "createNewAccount(address)",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "createNewAccount(address,string)",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "deAuthorizeController",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getAccountInfo",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getApproved",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "getName()", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "getName(address)",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getName(uint256)",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "ident", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "isApprovedForAll",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "metaValue", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "metadata", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "nameOwner", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "ownerOf", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "profile", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "renounceOwnership",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "rootNodeAddress",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "safeTransferFrom(address,address,uint256)",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "safeTransferFrom(address,address,uint256,bytes)",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setApprovalForAll",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "setIdent", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "setMetaData",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
+    functionFragment: "setResolver",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "supportsInterface",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "symbol", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "tokenURI", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "transferFrom",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "transferOwnership",
     data: BytesLike
   ): Result;
 
   events: {
+    "Approval(address,address,uint256)": EventFragment;
+    "ApprovalForAll(address,address,bool)": EventFragment;
     "AuthorisationChanged(bytes32,address,address,bool)": EventFragment;
+    "Log(string)": EventFragment;
     "MetaDataAdded(uint256,bytes32,bytes32)": EventFragment;
+    "NewAccountCreated(bytes32,address,uint256)": EventFragment;
+    "OwnershipTransferred(address,address)": EventFragment;
+    "Transfer(address,address,uint256)": EventFragment;
   };
 
+  getEvent(nameOrSignatureOrTopic: "Approval"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "ApprovalForAll"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "AuthorisationChanged"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Log"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "MetaDataAdded"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "NewAccountCreated"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Transfer"): EventFragment;
 }
+
+export interface ApprovalEventObject {
+  owner: string;
+  approved: string;
+  tokenId: BigNumber;
+}
+export type ApprovalEvent = TypedEvent<
+  [string, string, BigNumber],
+  ApprovalEventObject
+>;
+
+export type ApprovalEventFilter = TypedEventFilter<ApprovalEvent>;
+
+export interface ApprovalForAllEventObject {
+  owner: string;
+  operator: string;
+  approved: boolean;
+}
+export type ApprovalForAllEvent = TypedEvent<
+  [string, string, boolean],
+  ApprovalForAllEventObject
+>;
+
+export type ApprovalForAllEventFilter = TypedEventFilter<ApprovalForAllEvent>;
 
 export interface AuthorisationChangedEventObject {
   profileId: string;
-  owner: string;
+  _owner: string;
   target: string;
   isAuthorised: boolean;
 }
@@ -180,6 +544,13 @@ export type AuthorisationChangedEvent = TypedEvent<
 
 export type AuthorisationChangedEventFilter =
   TypedEventFilter<AuthorisationChangedEvent>;
+
+export interface LogEventObject {
+  message: string;
+}
+export type LogEvent = TypedEvent<[string], LogEventObject>;
+
+export type LogEventFilter = TypedEventFilter<LogEvent>;
 
 export interface MetaDataAddedEventObject {
   tokenid: BigNumber;
@@ -192,6 +563,43 @@ export type MetaDataAddedEvent = TypedEvent<
 >;
 
 export type MetaDataAddedEventFilter = TypedEventFilter<MetaDataAddedEvent>;
+
+export interface NewAccountCreatedEventObject {
+  identity: string;
+  _owner: string;
+  tokenId: BigNumber;
+}
+export type NewAccountCreatedEvent = TypedEvent<
+  [string, string, BigNumber],
+  NewAccountCreatedEventObject
+>;
+
+export type NewAccountCreatedEventFilter =
+  TypedEventFilter<NewAccountCreatedEvent>;
+
+export interface OwnershipTransferredEventObject {
+  previousOwner: string;
+  newOwner: string;
+}
+export type OwnershipTransferredEvent = TypedEvent<
+  [string, string],
+  OwnershipTransferredEventObject
+>;
+
+export type OwnershipTransferredEventFilter =
+  TypedEventFilter<OwnershipTransferredEvent>;
+
+export interface TransferEventObject {
+  from: string;
+  to: string;
+  tokenId: BigNumber;
+}
+export type TransferEvent = TypedEvent<
+  [string, string, BigNumber],
+  TransferEventObject
+>;
+
+export type TransferEventFilter = TypedEventFilter<TransferEvent>;
 
 export interface UserDataServiceResolver extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
@@ -220,6 +628,30 @@ export interface UserDataServiceResolver extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
+    ERC721_ID(overrides?: CallOverrides): Promise<[string]>;
+
+    IDENT_INTERFACE_ID(overrides?: CallOverrides): Promise<[string]>;
+
+    METADATA_INTERFACE_ID(overrides?: CallOverrides): Promise<[string]>;
+
+    METAVALUE_INTERFACE_ID(overrides?: CallOverrides): Promise<[string]>;
+
+    NAME_INTERFACE_ID(overrides?: CallOverrides): Promise<[string]>;
+
+    PROFILE_INTERFACE_ID(overrides?: CallOverrides): Promise<[string]>;
+
+    RECLAIM_ID(overrides?: CallOverrides): Promise<[string]>;
+
+    REPUTATION_ID(overrides?: CallOverrides): Promise<[string]>;
+
+    SETMETA_INTERFACE_ID(overrides?: CallOverrides): Promise<[string]>;
+
+    approve(
+      to: PromiseOrValue<string>,
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
     authorisations(
       arg0: PromiseOrValue<BytesLike>,
       arg1: PromiseOrValue<string>,
@@ -227,10 +659,73 @@ export interface UserDataServiceResolver extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[boolean]>;
 
+    authorizeController(
+      controller: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    balanceOf(
+      owner: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
+    controllers(
+      arg0: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
+
+    "createNewAccount(address)"(
+      _accountWalletAddress: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    "createNewAccount(address,string)"(
+      _accountWalletAddress: PromiseOrValue<string>,
+      accountName: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    deAuthorizeController(
+      controller: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    getAccountInfo(
+      infoOwner: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<
+      [UserDataServiceResolver.AccountInfoStructOutput] & {
+        Info: UserDataServiceResolver.AccountInfoStructOutput;
+      }
+    >;
+
+    getApproved(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<[string]>;
+
+    "getName()"(overrides?: CallOverrides): Promise<[string]>;
+
+    "getName(address)"(
+      _owner: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[string]>;
+
+    "getName(uint256)"(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<[string]>;
+
     ident(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<[string]>;
+
+    isApprovedForAll(
+      owner: PromiseOrValue<string>,
+      operator: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
 
     metaValue(
       tokenId: PromiseOrValue<BigNumberish>,
@@ -247,12 +742,16 @@ export interface UserDataServiceResolver extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[string]>;
 
-    multicall(
-      data: PromiseOrValue<BytesLike>[],
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
+    name(overrides?: CallOverrides): Promise<[string]>;
 
-    name(
+    nameOwner(
+      _name: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[string]>;
+
+    owner(overrides?: CallOverrides): Promise<[string]>;
+
+    ownerOf(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<[string]>;
@@ -262,10 +761,36 @@ export interface UserDataServiceResolver extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[string]>;
 
-    setAuthorisation(
-      profileId: PromiseOrValue<BytesLike>,
-      target: PromiseOrValue<string>,
-      isAuthorised: PromiseOrValue<boolean>,
+    renounceOwnership(
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    rootNodeAddress(overrides?: CallOverrides): Promise<[string]>;
+
+    "safeTransferFrom(address,address,uint256)"(
+      from: PromiseOrValue<string>,
+      to: PromiseOrValue<string>,
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    "safeTransferFrom(address,address,uint256,bytes)"(
+      from: PromiseOrValue<string>,
+      to: PromiseOrValue<string>,
+      tokenId: PromiseOrValue<BigNumberish>,
+      data: PromiseOrValue<BytesLike>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setApprovalForAll(
+      operator: PromiseOrValue<string>,
+      approved: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setIdent(
+      tokenId: PromiseOrValue<BigNumberish>,
+      identifier: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -279,11 +804,59 @@ export interface UserDataServiceResolver extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
+    setResolver(
+      resolver: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
     supportsInterface(
       interfaceID: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<[boolean]>;
+
+    symbol(overrides?: CallOverrides): Promise<[string]>;
+
+    tokenURI(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<[string]>;
+
+    transferFrom(
+      from: PromiseOrValue<string>,
+      to: PromiseOrValue<string>,
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    transferOwnership(
+      newOwner: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
   };
+
+  ERC721_ID(overrides?: CallOverrides): Promise<string>;
+
+  IDENT_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+  METADATA_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+  METAVALUE_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+  NAME_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+  PROFILE_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+  RECLAIM_ID(overrides?: CallOverrides): Promise<string>;
+
+  REPUTATION_ID(overrides?: CallOverrides): Promise<string>;
+
+  SETMETA_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+  approve(
+    to: PromiseOrValue<string>,
+    tokenId: PromiseOrValue<BigNumberish>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
 
   authorisations(
     arg0: PromiseOrValue<BytesLike>,
@@ -292,10 +865,69 @@ export interface UserDataServiceResolver extends BaseContract {
     overrides?: CallOverrides
   ): Promise<boolean>;
 
+  authorizeController(
+    controller: PromiseOrValue<string>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  balanceOf(
+    owner: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  controllers(
+    arg0: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<boolean>;
+
+  "createNewAccount(address)"(
+    _accountWalletAddress: PromiseOrValue<string>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  "createNewAccount(address,string)"(
+    _accountWalletAddress: PromiseOrValue<string>,
+    accountName: PromiseOrValue<string>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  deAuthorizeController(
+    controller: PromiseOrValue<string>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  getAccountInfo(
+    infoOwner: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<UserDataServiceResolver.AccountInfoStructOutput>;
+
+  getApproved(
+    tokenId: PromiseOrValue<BigNumberish>,
+    overrides?: CallOverrides
+  ): Promise<string>;
+
+  "getName()"(overrides?: CallOverrides): Promise<string>;
+
+  "getName(address)"(
+    _owner: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<string>;
+
+  "getName(uint256)"(
+    tokenId: PromiseOrValue<BigNumberish>,
+    overrides?: CallOverrides
+  ): Promise<string>;
+
   ident(
     tokenId: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
   ): Promise<string>;
+
+  isApprovedForAll(
+    owner: PromiseOrValue<string>,
+    operator: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<boolean>;
 
   metaValue(
     tokenId: PromiseOrValue<BigNumberish>,
@@ -308,12 +940,16 @@ export interface UserDataServiceResolver extends BaseContract {
     overrides?: CallOverrides
   ): Promise<string>;
 
-  multicall(
-    data: PromiseOrValue<BytesLike>[],
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
+  name(overrides?: CallOverrides): Promise<string>;
 
-  name(
+  nameOwner(
+    _name: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<string>;
+
+  owner(overrides?: CallOverrides): Promise<string>;
+
+  ownerOf(
     tokenId: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
   ): Promise<string>;
@@ -323,10 +959,36 @@ export interface UserDataServiceResolver extends BaseContract {
     overrides?: CallOverrides
   ): Promise<string>;
 
-  setAuthorisation(
-    profileId: PromiseOrValue<BytesLike>,
-    target: PromiseOrValue<string>,
-    isAuthorised: PromiseOrValue<boolean>,
+  renounceOwnership(
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  rootNodeAddress(overrides?: CallOverrides): Promise<string>;
+
+  "safeTransferFrom(address,address,uint256)"(
+    from: PromiseOrValue<string>,
+    to: PromiseOrValue<string>,
+    tokenId: PromiseOrValue<BigNumberish>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  "safeTransferFrom(address,address,uint256,bytes)"(
+    from: PromiseOrValue<string>,
+    to: PromiseOrValue<string>,
+    tokenId: PromiseOrValue<BigNumberish>,
+    data: PromiseOrValue<BytesLike>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setApprovalForAll(
+    operator: PromiseOrValue<string>,
+    approved: PromiseOrValue<boolean>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setIdent(
+    tokenId: PromiseOrValue<BigNumberish>,
+    identifier: PromiseOrValue<BytesLike>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -340,12 +1002,60 @@ export interface UserDataServiceResolver extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
+  setResolver(
+    resolver: PromiseOrValue<string>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
   supportsInterface(
     interfaceID: PromiseOrValue<BytesLike>,
     overrides?: CallOverrides
   ): Promise<boolean>;
 
+  symbol(overrides?: CallOverrides): Promise<string>;
+
+  tokenURI(
+    tokenId: PromiseOrValue<BigNumberish>,
+    overrides?: CallOverrides
+  ): Promise<string>;
+
+  transferFrom(
+    from: PromiseOrValue<string>,
+    to: PromiseOrValue<string>,
+    tokenId: PromiseOrValue<BigNumberish>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  transferOwnership(
+    newOwner: PromiseOrValue<string>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
   callStatic: {
+    ERC721_ID(overrides?: CallOverrides): Promise<string>;
+
+    IDENT_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+    METADATA_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+    METAVALUE_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+    NAME_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+    PROFILE_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+    RECLAIM_ID(overrides?: CallOverrides): Promise<string>;
+
+    REPUTATION_ID(overrides?: CallOverrides): Promise<string>;
+
+    SETMETA_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+    approve(
+      to: PromiseOrValue<string>,
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
     authorisations(
       arg0: PromiseOrValue<BytesLike>,
       arg1: PromiseOrValue<string>,
@@ -353,10 +1063,69 @@ export interface UserDataServiceResolver extends BaseContract {
       overrides?: CallOverrides
     ): Promise<boolean>;
 
+    authorizeController(
+      controller: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    balanceOf(
+      owner: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    controllers(
+      arg0: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<boolean>;
+
+    "createNewAccount(address)"(
+      _accountWalletAddress: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "createNewAccount(address,string)"(
+      _accountWalletAddress: PromiseOrValue<string>,
+      accountName: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    deAuthorizeController(
+      controller: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    getAccountInfo(
+      infoOwner: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<UserDataServiceResolver.AccountInfoStructOutput>;
+
+    getApproved(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<string>;
+
+    "getName()"(overrides?: CallOverrides): Promise<string>;
+
+    "getName(address)"(
+      _owner: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<string>;
+
+    "getName(uint256)"(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<string>;
+
     ident(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<string>;
+
+    isApprovedForAll(
+      owner: PromiseOrValue<string>,
+      operator: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<boolean>;
 
     metaValue(
       tokenId: PromiseOrValue<BigNumberish>,
@@ -369,12 +1138,16 @@ export interface UserDataServiceResolver extends BaseContract {
       overrides?: CallOverrides
     ): Promise<string>;
 
-    multicall(
-      data: PromiseOrValue<BytesLike>[],
-      overrides?: CallOverrides
-    ): Promise<string[]>;
+    name(overrides?: CallOverrides): Promise<string>;
 
-    name(
+    nameOwner(
+      _name: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<string>;
+
+    owner(overrides?: CallOverrides): Promise<string>;
+
+    ownerOf(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<string>;
@@ -384,10 +1157,34 @@ export interface UserDataServiceResolver extends BaseContract {
       overrides?: CallOverrides
     ): Promise<string>;
 
-    setAuthorisation(
-      profileId: PromiseOrValue<BytesLike>,
-      target: PromiseOrValue<string>,
-      isAuthorised: PromiseOrValue<boolean>,
+    renounceOwnership(overrides?: CallOverrides): Promise<void>;
+
+    rootNodeAddress(overrides?: CallOverrides): Promise<string>;
+
+    "safeTransferFrom(address,address,uint256)"(
+      from: PromiseOrValue<string>,
+      to: PromiseOrValue<string>,
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "safeTransferFrom(address,address,uint256,bytes)"(
+      from: PromiseOrValue<string>,
+      to: PromiseOrValue<string>,
+      tokenId: PromiseOrValue<BigNumberish>,
+      data: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setApprovalForAll(
+      operator: PromiseOrValue<string>,
+      approved: PromiseOrValue<boolean>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setIdent(
+      tokenId: PromiseOrValue<BigNumberish>,
+      identifier: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -401,25 +1198,74 @@ export interface UserDataServiceResolver extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
+    setResolver(
+      resolver: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
     supportsInterface(
       interfaceID: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<boolean>;
+
+    symbol(overrides?: CallOverrides): Promise<string>;
+
+    tokenURI(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<string>;
+
+    transferFrom(
+      from: PromiseOrValue<string>,
+      to: PromiseOrValue<string>,
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    transferOwnership(
+      newOwner: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<void>;
   };
 
   filters: {
+    "Approval(address,address,uint256)"(
+      owner?: PromiseOrValue<string> | null,
+      approved?: PromiseOrValue<string> | null,
+      tokenId?: PromiseOrValue<BigNumberish> | null
+    ): ApprovalEventFilter;
+    Approval(
+      owner?: PromiseOrValue<string> | null,
+      approved?: PromiseOrValue<string> | null,
+      tokenId?: PromiseOrValue<BigNumberish> | null
+    ): ApprovalEventFilter;
+
+    "ApprovalForAll(address,address,bool)"(
+      owner?: PromiseOrValue<string> | null,
+      operator?: PromiseOrValue<string> | null,
+      approved?: null
+    ): ApprovalForAllEventFilter;
+    ApprovalForAll(
+      owner?: PromiseOrValue<string> | null,
+      operator?: PromiseOrValue<string> | null,
+      approved?: null
+    ): ApprovalForAllEventFilter;
+
     "AuthorisationChanged(bytes32,address,address,bool)"(
       profileId?: PromiseOrValue<BytesLike> | null,
-      owner?: PromiseOrValue<string> | null,
+      _owner?: PromiseOrValue<string> | null,
       target?: PromiseOrValue<string> | null,
       isAuthorised?: null
     ): AuthorisationChangedEventFilter;
     AuthorisationChanged(
       profileId?: PromiseOrValue<BytesLike> | null,
-      owner?: PromiseOrValue<string> | null,
+      _owner?: PromiseOrValue<string> | null,
       target?: PromiseOrValue<string> | null,
       isAuthorised?: null
     ): AuthorisationChangedEventFilter;
+
+    "Log(string)"(message?: null): LogEventFilter;
+    Log(message?: null): LogEventFilter;
 
     "MetaDataAdded(uint256,bytes32,bytes32)"(
       tokenid?: null,
@@ -431,9 +1277,64 @@ export interface UserDataServiceResolver extends BaseContract {
       metaid?: null,
       keyid?: null
     ): MetaDataAddedEventFilter;
+
+    "NewAccountCreated(bytes32,address,uint256)"(
+      identity?: null,
+      _owner?: PromiseOrValue<string> | null,
+      tokenId?: null
+    ): NewAccountCreatedEventFilter;
+    NewAccountCreated(
+      identity?: null,
+      _owner?: PromiseOrValue<string> | null,
+      tokenId?: null
+    ): NewAccountCreatedEventFilter;
+
+    "OwnershipTransferred(address,address)"(
+      previousOwner?: PromiseOrValue<string> | null,
+      newOwner?: PromiseOrValue<string> | null
+    ): OwnershipTransferredEventFilter;
+    OwnershipTransferred(
+      previousOwner?: PromiseOrValue<string> | null,
+      newOwner?: PromiseOrValue<string> | null
+    ): OwnershipTransferredEventFilter;
+
+    "Transfer(address,address,uint256)"(
+      from?: PromiseOrValue<string> | null,
+      to?: PromiseOrValue<string> | null,
+      tokenId?: PromiseOrValue<BigNumberish> | null
+    ): TransferEventFilter;
+    Transfer(
+      from?: PromiseOrValue<string> | null,
+      to?: PromiseOrValue<string> | null,
+      tokenId?: PromiseOrValue<BigNumberish> | null
+    ): TransferEventFilter;
   };
 
   estimateGas: {
+    ERC721_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
+    IDENT_INTERFACE_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
+    METADATA_INTERFACE_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
+    METAVALUE_INTERFACE_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
+    NAME_INTERFACE_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
+    PROFILE_INTERFACE_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
+    RECLAIM_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
+    REPUTATION_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
+    SETMETA_INTERFACE_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
+    approve(
+      to: PromiseOrValue<string>,
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
     authorisations(
       arg0: PromiseOrValue<BytesLike>,
       arg1: PromiseOrValue<string>,
@@ -441,8 +1342,67 @@ export interface UserDataServiceResolver extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    authorizeController(
+      controller: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    balanceOf(
+      owner: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    controllers(
+      arg0: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "createNewAccount(address)"(
+      _accountWalletAddress: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    "createNewAccount(address,string)"(
+      _accountWalletAddress: PromiseOrValue<string>,
+      accountName: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    deAuthorizeController(
+      controller: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    getAccountInfo(
+      infoOwner: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    getApproved(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "getName()"(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "getName(address)"(
+      _owner: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "getName(uint256)"(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     ident(
       tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    isApprovedForAll(
+      owner: PromiseOrValue<string>,
+      operator: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -457,12 +1417,16 @@ export interface UserDataServiceResolver extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    multicall(
-      data: PromiseOrValue<BytesLike>[],
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    name(overrides?: CallOverrides): Promise<BigNumber>;
+
+    nameOwner(
+      _name: PromiseOrValue<string>,
+      overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    name(
+    owner(overrides?: CallOverrides): Promise<BigNumber>;
+
+    ownerOf(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -472,10 +1436,36 @@ export interface UserDataServiceResolver extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    setAuthorisation(
-      profileId: PromiseOrValue<BytesLike>,
-      target: PromiseOrValue<string>,
-      isAuthorised: PromiseOrValue<boolean>,
+    renounceOwnership(
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    rootNodeAddress(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "safeTransferFrom(address,address,uint256)"(
+      from: PromiseOrValue<string>,
+      to: PromiseOrValue<string>,
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    "safeTransferFrom(address,address,uint256,bytes)"(
+      from: PromiseOrValue<string>,
+      to: PromiseOrValue<string>,
+      tokenId: PromiseOrValue<BigNumberish>,
+      data: PromiseOrValue<BytesLike>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setApprovalForAll(
+      operator: PromiseOrValue<string>,
+      approved: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setIdent(
+      tokenId: PromiseOrValue<BigNumberish>,
+      identifier: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -489,13 +1479,71 @@ export interface UserDataServiceResolver extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
+    setResolver(
+      resolver: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
     supportsInterface(
       interfaceID: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    symbol(overrides?: CallOverrides): Promise<BigNumber>;
+
+    tokenURI(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    transferFrom(
+      from: PromiseOrValue<string>,
+      to: PromiseOrValue<string>,
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    transferOwnership(
+      newOwner: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
   };
 
   populateTransaction: {
+    ERC721_ID(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    IDENT_INTERFACE_ID(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    METADATA_INTERFACE_ID(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    METAVALUE_INTERFACE_ID(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    NAME_INTERFACE_ID(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    PROFILE_INTERFACE_ID(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    RECLAIM_ID(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    REPUTATION_ID(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    SETMETA_INTERFACE_ID(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    approve(
+      to: PromiseOrValue<string>,
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
     authorisations(
       arg0: PromiseOrValue<BytesLike>,
       arg1: PromiseOrValue<string>,
@@ -503,8 +1551,67 @@ export interface UserDataServiceResolver extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    authorizeController(
+      controller: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    balanceOf(
+      owner: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    controllers(
+      arg0: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "createNewAccount(address)"(
+      _accountWalletAddress: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    "createNewAccount(address,string)"(
+      _accountWalletAddress: PromiseOrValue<string>,
+      accountName: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    deAuthorizeController(
+      controller: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    getAccountInfo(
+      infoOwner: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    getApproved(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "getName()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    "getName(address)"(
+      _owner: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "getName(uint256)"(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     ident(
       tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    isApprovedForAll(
+      owner: PromiseOrValue<string>,
+      operator: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -519,12 +1626,16 @@ export interface UserDataServiceResolver extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    multicall(
-      data: PromiseOrValue<BytesLike>[],
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    name(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    nameOwner(
+      _name: PromiseOrValue<string>,
+      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    name(
+    owner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    ownerOf(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
@@ -534,10 +1645,36 @@ export interface UserDataServiceResolver extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    setAuthorisation(
-      profileId: PromiseOrValue<BytesLike>,
-      target: PromiseOrValue<string>,
-      isAuthorised: PromiseOrValue<boolean>,
+    renounceOwnership(
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    rootNodeAddress(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    "safeTransferFrom(address,address,uint256)"(
+      from: PromiseOrValue<string>,
+      to: PromiseOrValue<string>,
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    "safeTransferFrom(address,address,uint256,bytes)"(
+      from: PromiseOrValue<string>,
+      to: PromiseOrValue<string>,
+      tokenId: PromiseOrValue<BigNumberish>,
+      data: PromiseOrValue<BytesLike>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setApprovalForAll(
+      operator: PromiseOrValue<string>,
+      approved: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setIdent(
+      tokenId: PromiseOrValue<BigNumberish>,
+      identifier: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
@@ -551,9 +1688,33 @@ export interface UserDataServiceResolver extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
+    setResolver(
+      resolver: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
     supportsInterface(
       interfaceID: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    symbol(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    tokenURI(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    transferFrom(
+      from: PromiseOrValue<string>,
+      to: PromiseOrValue<string>,
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    transferOwnership(
+      newOwner: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
   };
 }

@@ -23,24 +23,60 @@ import type {
 
 export interface NameResolverInterface extends utils.Interface {
   functions: {
-    "name(uint256)": FunctionFragment;
+    "NAME_INTERFACE_ID()": FunctionFragment;
+    "getName()": FunctionFragment;
+    "getName(address)": FunctionFragment;
+    "getName(uint256)": FunctionFragment;
+    "nameOwner(string)": FunctionFragment;
     "supportsInterface(bytes4)": FunctionFragment;
   };
 
   getFunction(
-    nameOrSignatureOrTopic: "name" | "supportsInterface"
+    nameOrSignatureOrTopic:
+      | "NAME_INTERFACE_ID"
+      | "getName()"
+      | "getName(address)"
+      | "getName(uint256)"
+      | "nameOwner"
+      | "supportsInterface"
   ): FunctionFragment;
 
   encodeFunctionData(
-    functionFragment: "name",
+    functionFragment: "NAME_INTERFACE_ID",
+    values?: undefined
+  ): string;
+  encodeFunctionData(functionFragment: "getName()", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "getName(address)",
+    values: [PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getName(uint256)",
     values: [PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "nameOwner",
+    values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
     functionFragment: "supportsInterface",
     values: [PromiseOrValue<BytesLike>]
   ): string;
 
-  decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "NAME_INTERFACE_ID",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "getName()", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "getName(address)",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getName(uint256)",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "nameOwner", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "supportsInterface",
     data: BytesLike
@@ -76,35 +112,77 @@ export interface NameResolver extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
-    name(
+    NAME_INTERFACE_ID(overrides?: CallOverrides): Promise<[string]>;
+
+    "getName()"(overrides?: CallOverrides): Promise<[string]>;
+
+    "getName(address)"(
+      _owner: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[string]>;
+
+    "getName(uint256)"(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<[string]>;
 
+    nameOwner(
+      _name: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[string]>;
+
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<[boolean]>;
   };
 
-  name(
+  NAME_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+  "getName()"(overrides?: CallOverrides): Promise<string>;
+
+  "getName(address)"(
+    _owner: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<string>;
+
+  "getName(uint256)"(
     tokenId: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
   ): Promise<string>;
 
+  nameOwner(
+    _name: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<string>;
+
   supportsInterface(
-    interfaceID: PromiseOrValue<BytesLike>,
+    interfaceId: PromiseOrValue<BytesLike>,
     overrides?: CallOverrides
   ): Promise<boolean>;
 
   callStatic: {
-    name(
+    NAME_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+    "getName()"(overrides?: CallOverrides): Promise<string>;
+
+    "getName(address)"(
+      _owner: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<string>;
+
+    "getName(uint256)"(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<string>;
 
+    nameOwner(
+      _name: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<string>;
+
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<boolean>;
   };
@@ -112,25 +190,53 @@ export interface NameResolver extends BaseContract {
   filters: {};
 
   estimateGas: {
-    name(
+    NAME_INTERFACE_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "getName()"(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "getName(address)"(
+      _owner: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "getName(uint256)"(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    nameOwner(
+      _name: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
   };
 
   populateTransaction: {
-    name(
+    NAME_INTERFACE_ID(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    "getName()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    "getName(address)"(
+      _owner: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "getName(uint256)"(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    nameOwner(
+      _name: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
   };

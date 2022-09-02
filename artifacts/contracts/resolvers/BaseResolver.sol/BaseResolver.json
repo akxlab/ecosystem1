@@ -7,7 +7,7 @@
       "inputs": [
         {
           "internalType": "bytes4",
-          "name": "interfaceID",
+          "name": "interfaceId",
           "type": "bytes4"
         }
       ],
@@ -19,7 +19,7 @@
           "type": "bool"
         }
       ],
-      "stateMutability": "pure",
+      "stateMutability": "view",
       "type": "function"
     }
   ],

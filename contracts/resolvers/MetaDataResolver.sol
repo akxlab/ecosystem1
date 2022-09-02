@@ -5,9 +5,9 @@ import "./BaseResolver.sol";
 
 abstract contract MetaDataResolver is BaseResolver {
 
-   bytes4 constant private METADATA_INTERFACE_ID = 0xe3684e39;
-   bytes4 constant private METAVALUE_INTERFACE_ID = 0x4dc34682;
-   bytes4 constant private SETMETA_INTERFACE_ID = 0x08730f07;
+   bytes4 constant public METADATA_INTERFACE_ID = 0xe3684e39;
+   bytes4 constant public METAVALUE_INTERFACE_ID = 0x4dc34682;
+   bytes4 constant public SETMETA_INTERFACE_ID = 0x08730f07;
 
 
    mapping(uint256 => bytes32) private _metadataIds;
@@ -66,11 +66,7 @@ function isKeyAvailable(bytes32 metaId, string memory keyStr) internal view retu
 
 function setMetaData(uint256 tokenId, string memory keyStr, uint _dtype, bytes memory value, bool editable, bool encrypted) external {
     require(msg.sender == _metaOwners[tokenId], "only owner can set metas");
-    bytes32 id = keccak256(abi.encode(tokenId));
-    if(_idExists[id] != true) {
-        _idExists[id] = true;
-        _metadataIds[tokenId] = id;
-    }
+    bytes32 id = _metadataIds[tokenId];
     if(_keyExists[keyStr] != true) {
         _keyExists[keyStr] = true;
         _keyNames[keyStr] = keccak256(abi.encodePacked(keyStr));
@@ -81,10 +77,16 @@ function setMetaData(uint256 tokenId, string memory keyStr, uint _dtype, bytes m
     emit MetaDataAdded(tokenId, id, keyId);
 }
 
- function supportsInterface(bytes4 interfaceID) virtual override public pure returns(bool) {
-        return interfaceID == METADATA_INTERFACE_ID || interfaceID == METAVALUE_INTERFACE_ID 
-        || interfaceID == SETMETA_INTERFACE_ID 
-        || super.supportsInterface(interfaceID);
+    function setNewMetaDatas(uint256 tokenId, address tOwner) internal returns(bytes32) {
+        _metaOwners[tokenId] = tOwner;
+        bytes32 id = keccak256(abi.encode(tokenId));
+        if(_idExists[id] != true) {
+            _idExists[id] = true;
+            _metadataIds[tokenId] = id;
+        }
+        return id;
     }
+
+
 
 }

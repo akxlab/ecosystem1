@@ -36,6 +36,45 @@ const _abi = [
     type: "event",
   },
   {
+    inputs: [],
+    name: "METADATA_INTERFACE_ID",
+    outputs: [
+      {
+        internalType: "bytes4",
+        name: "",
+        type: "bytes4",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "METAVALUE_INTERFACE_ID",
+    outputs: [
+      {
+        internalType: "bytes4",
+        name: "",
+        type: "bytes4",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "SETMETA_INTERFACE_ID",
+    outputs: [
+      {
+        internalType: "bytes4",
+        name: "",
+        type: "bytes4",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [
       {
         internalType: "uint256",
@@ -147,7 +186,7 @@ const _abi = [
     inputs: [
       {
         internalType: "bytes4",
-        name: "interfaceID",
+        name: "interfaceId",
         type: "bytes4",
       },
     ],
@@ -159,7 +198,7 @@ const _abi = [
         type: "bool",
       },
     ],
-    stateMutability: "pure",
+    stateMutability: "view",
     type: "function",
   },
 ];

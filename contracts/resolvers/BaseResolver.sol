@@ -9,8 +9,6 @@ abstract contract BaseResolver is ERC165, BytesUtils {
 
 bytes4 private constant INTERFACE_META_ID = 0x01ffc9a7;
 
-    function supportsInterface(bytes4 interfaceID) virtual public override pure returns(bool) {
-        return interfaceID == INTERFACE_META_ID;
-    }
+
 
 }

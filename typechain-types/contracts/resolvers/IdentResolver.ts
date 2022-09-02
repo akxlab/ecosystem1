@@ -7,6 +7,8 @@ import type {
   BigNumberish,
   BytesLike,
   CallOverrides,
+  ContractTransaction,
+  Overrides,
   PopulatedTransaction,
   Signer,
   utils,
@@ -23,24 +25,43 @@ import type {
 
 export interface IdentResolverInterface extends utils.Interface {
   functions: {
+    "IDENT_INTERFACE_ID()": FunctionFragment;
     "ident(uint256)": FunctionFragment;
+    "setIdent(uint256,bytes32)": FunctionFragment;
     "supportsInterface(bytes4)": FunctionFragment;
   };
 
   getFunction(
-    nameOrSignatureOrTopic: "ident" | "supportsInterface"
+    nameOrSignatureOrTopic:
+      | "IDENT_INTERFACE_ID"
+      | "ident"
+      | "setIdent"
+      | "supportsInterface"
   ): FunctionFragment;
 
   encodeFunctionData(
+    functionFragment: "IDENT_INTERFACE_ID",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
     functionFragment: "ident",
     values: [PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setIdent",
+    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<BytesLike>]
   ): string;
   encodeFunctionData(
     functionFragment: "supportsInterface",
     values: [PromiseOrValue<BytesLike>]
   ): string;
 
+  decodeFunctionResult(
+    functionFragment: "IDENT_INTERFACE_ID",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "ident", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "setIdent", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "supportsInterface",
     data: BytesLike
@@ -76,35 +97,59 @@ export interface IdentResolver extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
+    IDENT_INTERFACE_ID(overrides?: CallOverrides): Promise<[string]>;
+
     ident(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<[string]>;
 
+    setIdent(
+      tokenId: PromiseOrValue<BigNumberish>,
+      identifier: PromiseOrValue<BytesLike>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<[boolean]>;
   };
+
+  IDENT_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
 
   ident(
     tokenId: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
   ): Promise<string>;
 
+  setIdent(
+    tokenId: PromiseOrValue<BigNumberish>,
+    identifier: PromiseOrValue<BytesLike>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
   supportsInterface(
-    interfaceID: PromiseOrValue<BytesLike>,
+    interfaceId: PromiseOrValue<BytesLike>,
     overrides?: CallOverrides
   ): Promise<boolean>;
 
   callStatic: {
+    IDENT_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
     ident(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<string>;
 
+    setIdent(
+      tokenId: PromiseOrValue<BigNumberish>,
+      identifier: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<boolean>;
   };
@@ -112,25 +157,43 @@ export interface IdentResolver extends BaseContract {
   filters: {};
 
   estimateGas: {
+    IDENT_INTERFACE_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
     ident(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    setIdent(
+      tokenId: PromiseOrValue<BigNumberish>,
+      identifier: PromiseOrValue<BytesLike>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
   };
 
   populateTransaction: {
+    IDENT_INTERFACE_ID(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     ident(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    setIdent(
+      tokenId: PromiseOrValue<BigNumberish>,
+      identifier: PromiseOrValue<BytesLike>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
   };

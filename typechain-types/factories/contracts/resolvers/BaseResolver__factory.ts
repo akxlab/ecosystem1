@@ -14,7 +14,7 @@ const _abi = [
     inputs: [
       {
         internalType: "bytes4",
-        name: "interfaceID",
+        name: "interfaceId",
         type: "bytes4",
       },
     ],
@@ -26,7 +26,7 @@ const _abi = [
         type: "bool",
       },
     ],
-    stateMutability: "pure",
+    stateMutability: "view",
     type: "function",
   },
 ];

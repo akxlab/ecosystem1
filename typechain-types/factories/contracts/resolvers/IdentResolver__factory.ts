@@ -11,6 +11,19 @@ import type {
 
 const _abi = [
   {
+    inputs: [],
+    name: "IDENT_INTERFACE_ID",
+    outputs: [
+      {
+        internalType: "bytes4",
+        name: "",
+        type: "bytes4",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [
       {
         internalType: "uint256",
@@ -21,9 +34,9 @@ const _abi = [
     name: "ident",
     outputs: [
       {
-        internalType: "string",
+        internalType: "bytes32",
         name: "",
-        type: "string",
+        type: "bytes32",
       },
     ],
     stateMutability: "view",
@@ -32,8 +45,26 @@ const _abi = [
   {
     inputs: [
       {
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256",
+      },
+      {
+        internalType: "bytes32",
+        name: "identifier",
+        type: "bytes32",
+      },
+    ],
+    name: "setIdent",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
         internalType: "bytes4",
-        name: "interfaceID",
+        name: "interfaceId",
         type: "bytes4",
       },
     ],
@@ -45,7 +76,7 @@ const _abi = [
         type: "bool",
       },
     ],
-    stateMutability: "pure",
+    stateMutability: "view",
     type: "function",
   },
 ];

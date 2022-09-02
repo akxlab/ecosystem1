@@ -53,26 +53,79 @@ export declare namespace MetaDataResolver {
 
 export interface AllResolversInterface extends utils.Interface {
   functions: {
+    "IDENT_INTERFACE_ID()": FunctionFragment;
+    "METADATA_INTERFACE_ID()": FunctionFragment;
+    "METAVALUE_INTERFACE_ID()": FunctionFragment;
+    "NAME_INTERFACE_ID()": FunctionFragment;
+    "PROFILE_INTERFACE_ID()": FunctionFragment;
+    "SETMETA_INTERFACE_ID()": FunctionFragment;
+    "getName()": FunctionFragment;
+    "getName(address)": FunctionFragment;
+    "getName(uint256)": FunctionFragment;
     "ident(uint256)": FunctionFragment;
     "metaValue(uint256,string)": FunctionFragment;
     "metadata(uint256)": FunctionFragment;
-    "name(uint256)": FunctionFragment;
+    "nameOwner(string)": FunctionFragment;
     "profile(uint256)": FunctionFragment;
+    "setIdent(uint256,bytes32)": FunctionFragment;
     "setMetaData(uint256,string,uint256,bytes,bool,bool)": FunctionFragment;
     "supportsInterface(bytes4)": FunctionFragment;
   };
 
   getFunction(
     nameOrSignatureOrTopic:
+      | "IDENT_INTERFACE_ID"
+      | "METADATA_INTERFACE_ID"
+      | "METAVALUE_INTERFACE_ID"
+      | "NAME_INTERFACE_ID"
+      | "PROFILE_INTERFACE_ID"
+      | "SETMETA_INTERFACE_ID"
+      | "getName()"
+      | "getName(address)"
+      | "getName(uint256)"
       | "ident"
       | "metaValue"
       | "metadata"
-      | "name"
+      | "nameOwner"
       | "profile"
+      | "setIdent"
       | "setMetaData"
       | "supportsInterface"
   ): FunctionFragment;
 
+  encodeFunctionData(
+    functionFragment: "IDENT_INTERFACE_ID",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "METADATA_INTERFACE_ID",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "METAVALUE_INTERFACE_ID",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "NAME_INTERFACE_ID",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "PROFILE_INTERFACE_ID",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "SETMETA_INTERFACE_ID",
+    values?: undefined
+  ): string;
+  encodeFunctionData(functionFragment: "getName()", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "getName(address)",
+    values: [PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getName(uint256)",
+    values: [PromiseOrValue<BigNumberish>]
+  ): string;
   encodeFunctionData(
     functionFragment: "ident",
     values: [PromiseOrValue<BigNumberish>]
@@ -86,12 +139,16 @@ export interface AllResolversInterface extends utils.Interface {
     values: [PromiseOrValue<BigNumberish>]
   ): string;
   encodeFunctionData(
-    functionFragment: "name",
-    values: [PromiseOrValue<BigNumberish>]
+    functionFragment: "nameOwner",
+    values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
     functionFragment: "profile",
     values: [PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setIdent",
+    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<BytesLike>]
   ): string;
   encodeFunctionData(
     functionFragment: "setMetaData",
@@ -109,11 +166,45 @@ export interface AllResolversInterface extends utils.Interface {
     values: [PromiseOrValue<BytesLike>]
   ): string;
 
+  decodeFunctionResult(
+    functionFragment: "IDENT_INTERFACE_ID",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "METADATA_INTERFACE_ID",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "METAVALUE_INTERFACE_ID",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "NAME_INTERFACE_ID",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "PROFILE_INTERFACE_ID",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "SETMETA_INTERFACE_ID",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "getName()", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "getName(address)",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getName(uint256)",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "ident", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "metaValue", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "metadata", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "nameOwner", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "profile", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "setIdent", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "setMetaData",
     data: BytesLike
@@ -169,6 +260,30 @@ export interface AllResolvers extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
+    IDENT_INTERFACE_ID(overrides?: CallOverrides): Promise<[string]>;
+
+    METADATA_INTERFACE_ID(overrides?: CallOverrides): Promise<[string]>;
+
+    METAVALUE_INTERFACE_ID(overrides?: CallOverrides): Promise<[string]>;
+
+    NAME_INTERFACE_ID(overrides?: CallOverrides): Promise<[string]>;
+
+    PROFILE_INTERFACE_ID(overrides?: CallOverrides): Promise<[string]>;
+
+    SETMETA_INTERFACE_ID(overrides?: CallOverrides): Promise<[string]>;
+
+    "getName()"(overrides?: CallOverrides): Promise<[string]>;
+
+    "getName(address)"(
+      _owner: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[string]>;
+
+    "getName(uint256)"(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<[string]>;
+
     ident(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -189,8 +304,8 @@ export interface AllResolvers extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[string]>;
 
-    name(
-      tokenId: PromiseOrValue<BigNumberish>,
+    nameOwner(
+      _name: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<[string]>;
 
@@ -198,6 +313,12 @@ export interface AllResolvers extends BaseContract {
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<[string]>;
+
+    setIdent(
+      tokenId: PromiseOrValue<BigNumberish>,
+      identifier: PromiseOrValue<BytesLike>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
 
     setMetaData(
       tokenId: PromiseOrValue<BigNumberish>,
@@ -215,6 +336,30 @@ export interface AllResolvers extends BaseContract {
     ): Promise<[boolean]>;
   };
 
+  IDENT_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+  METADATA_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+  METAVALUE_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+  NAME_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+  PROFILE_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+  SETMETA_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+  "getName()"(overrides?: CallOverrides): Promise<string>;
+
+  "getName(address)"(
+    _owner: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<string>;
+
+  "getName(uint256)"(
+    tokenId: PromiseOrValue<BigNumberish>,
+    overrides?: CallOverrides
+  ): Promise<string>;
+
   ident(
     tokenId: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
@@ -231,8 +376,8 @@ export interface AllResolvers extends BaseContract {
     overrides?: CallOverrides
   ): Promise<string>;
 
-  name(
-    tokenId: PromiseOrValue<BigNumberish>,
+  nameOwner(
+    _name: PromiseOrValue<string>,
     overrides?: CallOverrides
   ): Promise<string>;
 
@@ -240,6 +385,12 @@ export interface AllResolvers extends BaseContract {
     tokenId: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
   ): Promise<string>;
+
+  setIdent(
+    tokenId: PromiseOrValue<BigNumberish>,
+    identifier: PromiseOrValue<BytesLike>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
 
   setMetaData(
     tokenId: PromiseOrValue<BigNumberish>,
@@ -257,6 +408,30 @@ export interface AllResolvers extends BaseContract {
   ): Promise<boolean>;
 
   callStatic: {
+    IDENT_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+    METADATA_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+    METAVALUE_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+    NAME_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+    PROFILE_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+    SETMETA_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+    "getName()"(overrides?: CallOverrides): Promise<string>;
+
+    "getName(address)"(
+      _owner: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<string>;
+
+    "getName(uint256)"(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<string>;
+
     ident(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -273,8 +448,8 @@ export interface AllResolvers extends BaseContract {
       overrides?: CallOverrides
     ): Promise<string>;
 
-    name(
-      tokenId: PromiseOrValue<BigNumberish>,
+    nameOwner(
+      _name: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<string>;
 
@@ -282,6 +457,12 @@ export interface AllResolvers extends BaseContract {
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<string>;
+
+    setIdent(
+      tokenId: PromiseOrValue<BigNumberish>,
+      identifier: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<void>;
 
     setMetaData(
       tokenId: PromiseOrValue<BigNumberish>,
@@ -313,6 +494,30 @@ export interface AllResolvers extends BaseContract {
   };
 
   estimateGas: {
+    IDENT_INTERFACE_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
+    METADATA_INTERFACE_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
+    METAVALUE_INTERFACE_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
+    NAME_INTERFACE_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
+    PROFILE_INTERFACE_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
+    SETMETA_INTERFACE_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "getName()"(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "getName(address)"(
+      _owner: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "getName(uint256)"(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     ident(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -329,14 +534,20 @@ export interface AllResolvers extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    name(
-      tokenId: PromiseOrValue<BigNumberish>,
+    nameOwner(
+      _name: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     profile(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    setIdent(
+      tokenId: PromiseOrValue<BigNumberish>,
+      identifier: PromiseOrValue<BytesLike>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
     setMetaData(
@@ -356,6 +567,40 @@ export interface AllResolvers extends BaseContract {
   };
 
   populateTransaction: {
+    IDENT_INTERFACE_ID(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    METADATA_INTERFACE_ID(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    METAVALUE_INTERFACE_ID(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    NAME_INTERFACE_ID(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    PROFILE_INTERFACE_ID(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    SETMETA_INTERFACE_ID(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "getName()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    "getName(address)"(
+      _owner: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "getName(uint256)"(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     ident(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -372,14 +617,20 @@ export interface AllResolvers extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    name(
-      tokenId: PromiseOrValue<BigNumberish>,
+    nameOwner(
+      _name: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     profile(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    setIdent(
+      tokenId: PromiseOrValue<BigNumberish>,
+      identifier: PromiseOrValue<BytesLike>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
     setMetaData(

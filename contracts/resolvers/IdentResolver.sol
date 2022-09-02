@@ -5,15 +5,19 @@ import "./BaseResolver.sol";
 
 abstract contract IdentResolver is BaseResolver {
    
-   bytes4 constant private IDENT_INTERFACE_ID = 0x0e2f9f10;
+   bytes4 constant public IDENT_INTERFACE_ID = 0x0e2f9f10;
 
-   mapping(uint256 => string) private _idents; // external user identifier for ie database
+   mapping(uint256 => bytes32) private _idents; // external user identifier for ie database
+    mapping(uint256 => bool) private _idExists;
    
-    function ident(uint256 tokenId) external view returns (string memory) {
+    function ident(uint256 tokenId) external view returns (bytes32) {
         return _idents[tokenId];
     }
 
-    function supportsInterface(bytes4 interfaceID) virtual override public pure returns(bool) {
-        return interfaceID == IDENT_INTERFACE_ID || super.supportsInterface(interfaceID);
+    function setIdent(uint256 tokenId, bytes32 identifier) public {
+        require(_idExists[tokenId] != true, "ident already set");
+        _idents[tokenId] = identifier;
     }
+
+
 }

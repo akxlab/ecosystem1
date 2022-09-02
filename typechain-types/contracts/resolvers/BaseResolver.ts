@@ -68,19 +68,19 @@ export interface BaseResolver extends BaseContract {
 
   functions: {
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<[boolean]>;
   };
 
   supportsInterface(
-    interfaceID: PromiseOrValue<BytesLike>,
+    interfaceId: PromiseOrValue<BytesLike>,
     overrides?: CallOverrides
   ): Promise<boolean>;
 
   callStatic: {
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<boolean>;
   };
@@ -89,14 +89,14 @@ export interface BaseResolver extends BaseContract {
 
   estimateGas: {
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
   };
 
   populateTransaction: {
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
   };

@@ -11,14 +11,21 @@ import type {
 
 const _abi = [
   {
-    inputs: [
+    inputs: [],
+    name: "NAME_INTERFACE_ID",
+    outputs: [
       {
-        internalType: "uint256",
-        name: "tokenId",
-        type: "uint256",
+        internalType: "bytes4",
+        name: "",
+        type: "bytes4",
       },
     ],
-    name: "name",
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getName",
     outputs: [
       {
         internalType: "string",
@@ -32,8 +39,65 @@ const _abi = [
   {
     inputs: [
       {
+        internalType: "address",
+        name: "_owner",
+        type: "address",
+      },
+    ],
+    name: "getName",
+    outputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256",
+      },
+    ],
+    name: "getName",
+    outputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "_name",
+        type: "string",
+      },
+    ],
+    name: "nameOwner",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
         internalType: "bytes4",
-        name: "interfaceID",
+        name: "interfaceId",
         type: "bytes4",
       },
     ],
@@ -45,7 +109,7 @@ const _abi = [
         type: "bool",
       },
     ],
-    stateMutability: "pure",
+    stateMutability: "view",
     type: "function",
   },
 ];

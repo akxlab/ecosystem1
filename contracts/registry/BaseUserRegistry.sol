@@ -6,18 +6,18 @@ import "../modules/uds/UDS.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract BaseUserRegistry is ERC721, Ownable {
+abstract contract BaseUserRegistry is ERC721, Ownable {
 
     mapping(address => bool) public controllers;
-    bytes4 private constant INTERFACE_META_ID = bytes4(keccak256("supportsInterface(bytes4)"));
+
     mapping(uint256 => mapping(uint256 => bool))  private registrationQueue;
 
 
-    UDS public uds;
+    UDS internal uds;
     uint256 internal index;
     bytes32 public rootNodeAddress; // will be used in layer 2
 
-    bytes4 private constant ERC721_ID =
+    bytes4 public constant ERC721_ID =
     bytes4(
         keccak256("balanceOf(address)") ^
         keccak256("ownerOf(uint256)") ^
@@ -27,10 +27,11 @@ contract BaseUserRegistry is ERC721, Ownable {
         keccak256("isApprovedForAll(address,address)") ^
         keccak256("transferFrom(address,address,uint256)") ^
         keccak256("safeTransferFrom(address,address,uint256)") ^
-        keccak256("safeTransferFrom(address,address,uint256,bytes)")
+        keccak256("safeTransferFrom(address,address,uint256,bytes)") ^
+        keccak256("register(address)")
     );
-    bytes4 private constant RECLAIM_ID = bytes4(keccak256("reclaim(uint256,address)"));
-    bytes4 private constant REPUTATION_ID = bytes4(keccak256("reputation(uint256)"));
+    bytes4 public constant RECLAIM_ID = bytes4(keccak256("reclaim(uint256,address)"));
+    bytes4 public constant REPUTATION_ID = bytes4(keccak256("reputation(uint256)"));
 
     function _isApprovedOrOwner(address spender, uint256 tokenId)
     internal
@@ -38,14 +39,14 @@ contract BaseUserRegistry is ERC721, Ownable {
     override
     returns (bool)
     {
-        address owner = ownerOf(tokenId);
-        return (spender == owner ||
+        address _owner = ownerOf(tokenId);
+        return (spender == _owner ||
         getApproved(tokenId) == spender ||
-        isApprovedForAll(owner, spender));
+        isApprovedForAll(_owner, spender));
     }
 
 
-    constructor(bytes32 rootNode, address _uds) ERC721("","") {
+    constructor(bytes32 rootNode, address _uds) ERC721("USER TOKEN AKX3","AKXU"){
         uds = UDS(_uds);
         rootNodeAddress = rootNode;
         index = 0;
@@ -73,43 +74,24 @@ contract BaseUserRegistry is ERC721, Ownable {
         uds.setResolver(rootNodeAddress, resolver);
     }
 
-    function register(uint256 tokenId, address owner) external returns (uint256) {
-        return _register(tokenId, owner, true);
-    }
-
-    function register(address owner) external returns (uint256) {
-        uint tokenId = index++;
-        return _register(tokenId, owner, true);
-    }
 
 
-    function _register(uint256 tokenId, address owner, bool update) internal  returns (uint256) {
 
-        if(_exists(tokenId)) {
-            _burn(tokenId);
-        }
+
+    function _register(uint256 tokenId, address _owner, bool update) internal  returns (uint256) {
+
+        index += 1;
 
         registrationQueue[index][tokenId] = true;
 
-        super._safeMint(owner, tokenId);
+        super._safeMint(_owner, tokenId);
 
         registrationQueue[index][tokenId] = false;
 
 
-        return index;
+        return tokenId;
 
     }
 
-    function supportsInterface(bytes4 interfaceID)
-    public
-    view
-    override(ERC721)
-    returns (bool)
-    {
-        return
-        interfaceID == INTERFACE_META_ID ||
-        interfaceID == ERC721_ID ||
-        interfaceID == REPUTATION_ID ||
-        interfaceID == RECLAIM_ID;
-    }
+
 }

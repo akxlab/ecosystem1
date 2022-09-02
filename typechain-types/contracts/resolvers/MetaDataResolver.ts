@@ -53,6 +53,9 @@ export declare namespace MetaDataResolver {
 
 export interface MetaDataResolverInterface extends utils.Interface {
   functions: {
+    "METADATA_INTERFACE_ID()": FunctionFragment;
+    "METAVALUE_INTERFACE_ID()": FunctionFragment;
+    "SETMETA_INTERFACE_ID()": FunctionFragment;
     "metaValue(uint256,string)": FunctionFragment;
     "metadata(uint256)": FunctionFragment;
     "setMetaData(uint256,string,uint256,bytes,bool,bool)": FunctionFragment;
@@ -61,12 +64,27 @@ export interface MetaDataResolverInterface extends utils.Interface {
 
   getFunction(
     nameOrSignatureOrTopic:
+      | "METADATA_INTERFACE_ID"
+      | "METAVALUE_INTERFACE_ID"
+      | "SETMETA_INTERFACE_ID"
       | "metaValue"
       | "metadata"
       | "setMetaData"
       | "supportsInterface"
   ): FunctionFragment;
 
+  encodeFunctionData(
+    functionFragment: "METADATA_INTERFACE_ID",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "METAVALUE_INTERFACE_ID",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "SETMETA_INTERFACE_ID",
+    values?: undefined
+  ): string;
   encodeFunctionData(
     functionFragment: "metaValue",
     values: [PromiseOrValue<BigNumberish>, PromiseOrValue<string>]
@@ -91,6 +109,18 @@ export interface MetaDataResolverInterface extends utils.Interface {
     values: [PromiseOrValue<BytesLike>]
   ): string;
 
+  decodeFunctionResult(
+    functionFragment: "METADATA_INTERFACE_ID",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "METAVALUE_INTERFACE_ID",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "SETMETA_INTERFACE_ID",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "metaValue", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "metadata", data: BytesLike): Result;
   decodeFunctionResult(
@@ -148,6 +178,12 @@ export interface MetaDataResolver extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
+    METADATA_INTERFACE_ID(overrides?: CallOverrides): Promise<[string]>;
+
+    METAVALUE_INTERFACE_ID(overrides?: CallOverrides): Promise<[string]>;
+
+    SETMETA_INTERFACE_ID(overrides?: CallOverrides): Promise<[string]>;
+
     metaValue(
       tokenId: PromiseOrValue<BigNumberish>,
       keyStr: PromiseOrValue<string>,
@@ -174,10 +210,16 @@ export interface MetaDataResolver extends BaseContract {
     ): Promise<ContractTransaction>;
 
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<[boolean]>;
   };
+
+  METADATA_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+  METAVALUE_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+  SETMETA_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
 
   metaValue(
     tokenId: PromiseOrValue<BigNumberish>,
@@ -201,11 +243,17 @@ export interface MetaDataResolver extends BaseContract {
   ): Promise<ContractTransaction>;
 
   supportsInterface(
-    interfaceID: PromiseOrValue<BytesLike>,
+    interfaceId: PromiseOrValue<BytesLike>,
     overrides?: CallOverrides
   ): Promise<boolean>;
 
   callStatic: {
+    METADATA_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+    METAVALUE_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+    SETMETA_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
     metaValue(
       tokenId: PromiseOrValue<BigNumberish>,
       keyStr: PromiseOrValue<string>,
@@ -228,7 +276,7 @@ export interface MetaDataResolver extends BaseContract {
     ): Promise<void>;
 
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<boolean>;
   };
@@ -247,6 +295,12 @@ export interface MetaDataResolver extends BaseContract {
   };
 
   estimateGas: {
+    METADATA_INTERFACE_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
+    METAVALUE_INTERFACE_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
+    SETMETA_INTERFACE_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
     metaValue(
       tokenId: PromiseOrValue<BigNumberish>,
       keyStr: PromiseOrValue<string>,
@@ -269,12 +323,24 @@ export interface MetaDataResolver extends BaseContract {
     ): Promise<BigNumber>;
 
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
   };
 
   populateTransaction: {
+    METADATA_INTERFACE_ID(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    METAVALUE_INTERFACE_ID(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    SETMETA_INTERFACE_ID(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     metaValue(
       tokenId: PromiseOrValue<BigNumberish>,
       keyStr: PromiseOrValue<string>,
@@ -297,7 +363,7 @@ export interface MetaDataResolver extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
   };

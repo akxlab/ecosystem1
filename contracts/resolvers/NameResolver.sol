@@ -5,15 +5,33 @@ import "./BaseResolver.sol";
 
 abstract contract NameResolver is BaseResolver {
    
-   bytes4 constant private NAME_INTERFACE_ID = 0x00ad800c;
+   bytes4 constant public NAME_INTERFACE_ID = 0x00ad800c;
 
    mapping(uint256 => string) private _names; // external user identifier
+    mapping(address => string) private addressToNames;
+    mapping(string => address) private nameToAddress;
    
-    function name(uint256 tokenId) external view returns (string memory) {
+    function getName(uint256 tokenId) external view returns (string memory) {
         return _names[tokenId];
     }
 
-    function supportsInterface(bytes4 interfaceID) virtual override public pure returns(bool) {
-        return interfaceID == NAME_INTERFACE_ID || super.supportsInterface(interfaceID);
+    function getName(address _owner) external view returns (string memory) {
+        return addressToNames[_owner];
     }
+
+    function getName() external view returns (string memory) {
+        return addressToNames[msg.sender];
+    }
+
+    function nameOwner(string memory _name) external view returns (address) {
+        return nameToAddress[_name];
+    }
+
+
+    function setOptionalName(address owner, uint256 tokenId, string memory accountName) internal {
+        _names[tokenId] = accountName;
+        addressToNames[owner] = accountName;
+        nameToAddress[accountName] = owner;
+    }
+
 }

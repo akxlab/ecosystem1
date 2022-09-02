@@ -29,6 +29,9 @@ import type {
 
 export interface BaseUserRegistryInterface extends utils.Interface {
   functions: {
+    "ERC721_ID()": FunctionFragment;
+    "RECLAIM_ID()": FunctionFragment;
+    "REPUTATION_ID()": FunctionFragment;
     "approve(address,uint256)": FunctionFragment;
     "authorizeController(address)": FunctionFragment;
     "balanceOf(address)": FunctionFragment;
@@ -39,8 +42,6 @@ export interface BaseUserRegistryInterface extends utils.Interface {
     "name()": FunctionFragment;
     "owner()": FunctionFragment;
     "ownerOf(uint256)": FunctionFragment;
-    "register(address)": FunctionFragment;
-    "register(uint256,address)": FunctionFragment;
     "renounceOwnership()": FunctionFragment;
     "rootNodeAddress()": FunctionFragment;
     "safeTransferFrom(address,address,uint256)": FunctionFragment;
@@ -52,11 +53,13 @@ export interface BaseUserRegistryInterface extends utils.Interface {
     "tokenURI(uint256)": FunctionFragment;
     "transferFrom(address,address,uint256)": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
-    "uds()": FunctionFragment;
   };
 
   getFunction(
     nameOrSignatureOrTopic:
+      | "ERC721_ID"
+      | "RECLAIM_ID"
+      | "REPUTATION_ID"
       | "approve"
       | "authorizeController"
       | "balanceOf"
@@ -67,8 +70,6 @@ export interface BaseUserRegistryInterface extends utils.Interface {
       | "name"
       | "owner"
       | "ownerOf"
-      | "register(address)"
-      | "register(uint256,address)"
       | "renounceOwnership"
       | "rootNodeAddress"
       | "safeTransferFrom(address,address,uint256)"
@@ -80,9 +81,17 @@ export interface BaseUserRegistryInterface extends utils.Interface {
       | "tokenURI"
       | "transferFrom"
       | "transferOwnership"
-      | "uds"
   ): FunctionFragment;
 
+  encodeFunctionData(functionFragment: "ERC721_ID", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "RECLAIM_ID",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "REPUTATION_ID",
+    values?: undefined
+  ): string;
   encodeFunctionData(
     functionFragment: "approve",
     values: [PromiseOrValue<string>, PromiseOrValue<BigNumberish>]
@@ -116,14 +125,6 @@ export interface BaseUserRegistryInterface extends utils.Interface {
   encodeFunctionData(
     functionFragment: "ownerOf",
     values: [PromiseOrValue<BigNumberish>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "register(address)",
-    values: [PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "register(uint256,address)",
-    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
     functionFragment: "renounceOwnership",
@@ -179,8 +180,13 @@ export interface BaseUserRegistryInterface extends utils.Interface {
     functionFragment: "transferOwnership",
     values: [PromiseOrValue<string>]
   ): string;
-  encodeFunctionData(functionFragment: "uds", values?: undefined): string;
 
+  decodeFunctionResult(functionFragment: "ERC721_ID", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "RECLAIM_ID", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "REPUTATION_ID",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "approve", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "authorizeController",
@@ -206,14 +212,6 @@ export interface BaseUserRegistryInterface extends utils.Interface {
   decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "ownerOf", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "register(address)",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "register(uint256,address)",
-    data: BytesLike
-  ): Result;
   decodeFunctionResult(
     functionFragment: "renounceOwnership",
     data: BytesLike
@@ -252,7 +250,6 @@ export interface BaseUserRegistryInterface extends utils.Interface {
     functionFragment: "transferOwnership",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "uds", data: BytesLike): Result;
 
   events: {
     "Approval(address,address,uint256)": EventFragment;
@@ -342,6 +339,12 @@ export interface BaseUserRegistry extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
+    ERC721_ID(overrides?: CallOverrides): Promise<[string]>;
+
+    RECLAIM_ID(overrides?: CallOverrides): Promise<[string]>;
+
+    REPUTATION_ID(overrides?: CallOverrides): Promise<[string]>;
+
     approve(
       to: PromiseOrValue<string>,
       tokenId: PromiseOrValue<BigNumberish>,
@@ -388,17 +391,6 @@ export interface BaseUserRegistry extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[string]>;
 
-    "register(address)"(
-      owner: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
-    "register(uint256,address)"(
-      tokenId: PromiseOrValue<BigNumberish>,
-      owner: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
     renounceOwnership(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
@@ -432,7 +424,7 @@ export interface BaseUserRegistry extends BaseContract {
     ): Promise<ContractTransaction>;
 
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<[boolean]>;
 
@@ -454,9 +446,13 @@ export interface BaseUserRegistry extends BaseContract {
       newOwner: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
-
-    uds(overrides?: CallOverrides): Promise<[string]>;
   };
+
+  ERC721_ID(overrides?: CallOverrides): Promise<string>;
+
+  RECLAIM_ID(overrides?: CallOverrides): Promise<string>;
+
+  REPUTATION_ID(overrides?: CallOverrides): Promise<string>;
 
   approve(
     to: PromiseOrValue<string>,
@@ -504,17 +500,6 @@ export interface BaseUserRegistry extends BaseContract {
     overrides?: CallOverrides
   ): Promise<string>;
 
-  "register(address)"(
-    owner: PromiseOrValue<string>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
-  "register(uint256,address)"(
-    tokenId: PromiseOrValue<BigNumberish>,
-    owner: PromiseOrValue<string>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
   renounceOwnership(
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
@@ -548,7 +533,7 @@ export interface BaseUserRegistry extends BaseContract {
   ): Promise<ContractTransaction>;
 
   supportsInterface(
-    interfaceID: PromiseOrValue<BytesLike>,
+    interfaceId: PromiseOrValue<BytesLike>,
     overrides?: CallOverrides
   ): Promise<boolean>;
 
@@ -571,9 +556,13 @@ export interface BaseUserRegistry extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  uds(overrides?: CallOverrides): Promise<string>;
-
   callStatic: {
+    ERC721_ID(overrides?: CallOverrides): Promise<string>;
+
+    RECLAIM_ID(overrides?: CallOverrides): Promise<string>;
+
+    REPUTATION_ID(overrides?: CallOverrides): Promise<string>;
+
     approve(
       to: PromiseOrValue<string>,
       tokenId: PromiseOrValue<BigNumberish>,
@@ -620,17 +609,6 @@ export interface BaseUserRegistry extends BaseContract {
       overrides?: CallOverrides
     ): Promise<string>;
 
-    "register(address)"(
-      owner: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    "register(uint256,address)"(
-      tokenId: PromiseOrValue<BigNumberish>,
-      owner: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
     renounceOwnership(overrides?: CallOverrides): Promise<void>;
 
     rootNodeAddress(overrides?: CallOverrides): Promise<string>;
@@ -662,7 +640,7 @@ export interface BaseUserRegistry extends BaseContract {
     ): Promise<void>;
 
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<boolean>;
 
@@ -684,8 +662,6 @@ export interface BaseUserRegistry extends BaseContract {
       newOwner: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<void>;
-
-    uds(overrides?: CallOverrides): Promise<string>;
   };
 
   filters: {
@@ -733,6 +709,12 @@ export interface BaseUserRegistry extends BaseContract {
   };
 
   estimateGas: {
+    ERC721_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
+    RECLAIM_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
+    REPUTATION_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
     approve(
       to: PromiseOrValue<string>,
       tokenId: PromiseOrValue<BigNumberish>,
@@ -779,17 +761,6 @@ export interface BaseUserRegistry extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "register(address)"(
-      owner: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    "register(uint256,address)"(
-      tokenId: PromiseOrValue<BigNumberish>,
-      owner: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
     renounceOwnership(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
@@ -823,7 +794,7 @@ export interface BaseUserRegistry extends BaseContract {
     ): Promise<BigNumber>;
 
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -845,11 +816,15 @@ export interface BaseUserRegistry extends BaseContract {
       newOwner: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
-
-    uds(overrides?: CallOverrides): Promise<BigNumber>;
   };
 
   populateTransaction: {
+    ERC721_ID(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    RECLAIM_ID(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    REPUTATION_ID(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
     approve(
       to: PromiseOrValue<string>,
       tokenId: PromiseOrValue<BigNumberish>,
@@ -896,17 +871,6 @@ export interface BaseUserRegistry extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "register(address)"(
-      owner: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    "register(uint256,address)"(
-      tokenId: PromiseOrValue<BigNumberish>,
-      owner: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
     renounceOwnership(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
@@ -940,7 +904,7 @@ export interface BaseUserRegistry extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -962,7 +926,5 @@ export interface BaseUserRegistry extends BaseContract {
       newOwner: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
-
-    uds(overrides?: CallOverrides): Promise<PopulatedTransaction>;
   };
 }

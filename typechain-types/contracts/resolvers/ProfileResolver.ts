@@ -23,14 +23,22 @@ import type {
 
 export interface ProfileResolverInterface extends utils.Interface {
   functions: {
+    "PROFILE_INTERFACE_ID()": FunctionFragment;
     "profile(uint256)": FunctionFragment;
     "supportsInterface(bytes4)": FunctionFragment;
   };
 
   getFunction(
-    nameOrSignatureOrTopic: "profile" | "supportsInterface"
+    nameOrSignatureOrTopic:
+      | "PROFILE_INTERFACE_ID"
+      | "profile"
+      | "supportsInterface"
   ): FunctionFragment;
 
+  encodeFunctionData(
+    functionFragment: "PROFILE_INTERFACE_ID",
+    values?: undefined
+  ): string;
   encodeFunctionData(
     functionFragment: "profile",
     values: [PromiseOrValue<BigNumberish>]
@@ -40,6 +48,10 @@ export interface ProfileResolverInterface extends utils.Interface {
     values: [PromiseOrValue<BytesLike>]
   ): string;
 
+  decodeFunctionResult(
+    functionFragment: "PROFILE_INTERFACE_ID",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "profile", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "supportsInterface",
@@ -76,16 +88,20 @@ export interface ProfileResolver extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
+    PROFILE_INTERFACE_ID(overrides?: CallOverrides): Promise<[string]>;
+
     profile(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<[string]>;
 
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<[boolean]>;
   };
+
+  PROFILE_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
 
   profile(
     tokenId: PromiseOrValue<BigNumberish>,
@@ -93,18 +109,20 @@ export interface ProfileResolver extends BaseContract {
   ): Promise<string>;
 
   supportsInterface(
-    interfaceID: PromiseOrValue<BytesLike>,
+    interfaceId: PromiseOrValue<BytesLike>,
     overrides?: CallOverrides
   ): Promise<boolean>;
 
   callStatic: {
+    PROFILE_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
     profile(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<string>;
 
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<boolean>;
   };
@@ -112,25 +130,31 @@ export interface ProfileResolver extends BaseContract {
   filters: {};
 
   estimateGas: {
+    PROFILE_INTERFACE_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
     profile(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
   };
 
   populateTransaction: {
+    PROFILE_INTERFACE_ID(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     profile(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     supportsInterface(
-      interfaceID: PromiseOrValue<BytesLike>,
+      interfaceId: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
   };

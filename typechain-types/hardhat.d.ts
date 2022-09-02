@@ -37,6 +37,18 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Initializable__factory>;
     getContractFactory(
+      name: "Pausable",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Pausable__factory>;
+    getContractFactory(
+      name: "IERC20Permit",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC20Permit__factory>;
+    getContractFactory(
+      name: "IERC20",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC20__factory>;
+    getContractFactory(
       name: "ERC721",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.ERC721__factory>;
@@ -124,6 +136,22 @@ declare module "hardhat/types/runtime" {
       name: "Lock",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Lock__factory>;
+    getContractFactory(
+      name: "Account",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Account__factory>;
+    getContractFactory(
+      name: "AccountImplementation",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.AccountImplementation__factory>;
+    getContractFactory(
+      name: "Bank",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Bank__factory>;
+    getContractFactory(
+      name: "IBank",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IBank__factory>;
     getContractFactory(
       name: "BaseModule",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -244,6 +272,21 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.Initializable>;
     getContractAt(
+      name: "Pausable",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Pausable>;
+    getContractAt(
+      name: "IERC20Permit",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC20Permit>;
+    getContractAt(
+      name: "IERC20",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC20>;
+    getContractAt(
       name: "ERC721",
       address: string,
       signer?: ethers.Signer
@@ -353,6 +396,26 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.Lock>;
+    getContractAt(
+      name: "Account",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Account>;
+    getContractAt(
+      name: "AccountImplementation",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.AccountImplementation>;
+    getContractAt(
+      name: "Bank",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Bank>;
+    getContractAt(
+      name: "IBank",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IBank>;
     getContractAt(
       name: "BaseModule",
       address: string,

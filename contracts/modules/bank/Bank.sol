@@ -55,11 +55,11 @@ contract Bank is IBank, Context,  Pausable, AccessControlEnumerable {
     }
 
     function OpenBank() external {
-        require(hasRole(OPERATOR_ROLE, _msgSender()), "ERC1155 BANK: must have pauser role to unpause");
+        require(hasRole(OPERATOR_ROLE, _msgSender()), "ERC1155 BANK: must have operator  role to unpause");
         _unpause();
     }
     function PauseBank() external {
-        require(hasRole(OPERATOR_ROLE, _msgSender()), "ERC1155 BANK: must have pauser role to pause");
+        require(hasRole(OPERATOR_ROLE, _msgSender()), "ERC1155 BANK: must have operator  role to pause");
         _pause();
     }
     function registerFounder(address founder, uint256 allocation) external {}
@@ -69,7 +69,7 @@ contract Bank is IBank, Context,  Pausable, AccessControlEnumerable {
         return _opStrings[opType];
     }
     function sendToMultisignatureVault(address multi) external returns(bool) {
-        require(hasRole(OPERATOR_ROLE, _msgSender()), "ERC1155 BANK: must have pauser role to send to the vault wallet");
+        require(hasRole(OPERATOR_ROLE, _msgSender()), "ERC1155 BANK: must have operator role to send to the vault wallet");
         uint256 nativeCurrencyBalance = (address(this)).balance;
         if(nativeCurrencyBalance <= 0) {
             revert("NO_BALANCE");
@@ -79,13 +79,13 @@ contract Bank is IBank, Context,  Pausable, AccessControlEnumerable {
 
     }
     function setMultisignatureWallet(address multi) external returns(bool) {
-        require(hasRole(OPERATOR_ROLE, _msgSender()), "ERC1155 BANK: must have pauser role to set wallet");
+        require(hasRole(OPERATOR_ROLE, _msgSender()), "ERC1155 BANK: must have operator role to set wallet");
         __multi = multi;
         return true;
     }
 
     function setUserDataService(address _udsr) external returns(bool) {
-        require(hasRole(OPERATOR_ROLE, _msgSender()), "ERC1155 BANK: must have pauser role to set data service");
+        require(hasRole(OPERATOR_ROLE, _msgSender()), "ERC1155 BANK: must have operator role to set data service");
         __userDataService = _udsr;
         return true;
     }

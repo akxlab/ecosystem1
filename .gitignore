@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+api/config.ts
+api/index.ts
+api/register.ts
+hardhat.config.ts

@@ -5,6 +5,7 @@ export * as akxSol from "./AKX.sol";
 export * as controllers from "./controllers";
 export * as interfaces from "./interfaces";
 export * as modules from "./modules";
+export * as proxies from "./proxies";
 export * as registry from "./registry";
 export * as resolvers from "./resolvers";
 export * as tokens from "./tokens";

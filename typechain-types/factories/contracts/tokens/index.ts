@@ -2,3 +2,5 @@
 /* tslint:disable */
 /* eslint-disable */
 export * as eip1155U from "./EIP1155U";
+export * as erc2055 from "./ERC2055";
+export * as xWrapper from "./xWrapper";

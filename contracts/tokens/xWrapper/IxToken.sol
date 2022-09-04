@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.16;
 
-interface IxToken {
+interface IxToken  {
     function tokenType() external returns(string memory);
     function mintable() external returns(bool);
     function burnable() external returns(bool);

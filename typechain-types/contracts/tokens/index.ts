@@ -3,3 +3,7 @@
 /* eslint-disable */
 import type * as eip1155U from "./EIP1155U";
 export type { eip1155U };
+import type * as erc2055 from "./ERC2055";
+export type { erc2055 };
+import type * as xWrapper from "./xWrapper";
+export type { xWrapper };

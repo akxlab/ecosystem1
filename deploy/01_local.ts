@@ -8,6 +8,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
     // @ts-ignore
     const {deployments, getNamedAccounts, ethers} = hre;
+
     const {deploy} = deployments;
     const deployers = await ethers.getSigners();
     const deployer = deployers[0].address;
@@ -30,6 +31,8 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
         waitConfirmations:2
     });
 
+    hre.ethernal.push({name: "UserDataServiceResolver", address: services.address});
+
 
 
     const didRegistry = await deploy("DidRegistry",{contract:"contracts/modules/DidRegistry.sol:DidRegistry",
@@ -40,8 +43,17 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
             waitConfirmations:2
     });
 
+    hre.ethernal.push({name: "DidRegistry", address: didRegistry.address});
 
 
+    const xtoken = await deploy("xTokenERC20",{
+    from: deployer,
+        args: ["xTest", "xTest"],
+        log: true,
+        autoMine: true,
+        waitConfirmations:2
+});
+hre.ethernal.push({name: "xTokenERC20", address: xtoken.address});
 
 
    /* const baseRegistry = await deploy("BaseUserRegistry", {

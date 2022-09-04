@@ -33,6 +33,26 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Ownable__factory>;
     getContractFactory(
+      name: "IERC1822Proxiable",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC1822Proxiable__factory>;
+    getContractFactory(
+      name: "IBeacon",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IBeacon__factory>;
+    getContractFactory(
+      name: "ERC1967Proxy",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC1967Proxy__factory>;
+    getContractFactory(
+      name: "ERC1967Upgrade",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC1967Upgrade__factory>;
+    getContractFactory(
+      name: "Proxy",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Proxy__factory>;
+    getContractFactory(
       name: "Initializable",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Initializable__factory>;
@@ -41,9 +61,21 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Pausable__factory>;
     getContractFactory(
+      name: "IERC1155",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC1155__factory>;
+    getContractFactory(
+      name: "ERC20",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC20__factory>;
+    getContractFactory(
       name: "IERC20Permit",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC20Permit__factory>;
+    getContractFactory(
+      name: "IERC20Metadata",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC20Metadata__factory>;
     getContractFactory(
       name: "IERC20",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -121,6 +153,18 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IModuleRegistry__factory>;
     getContractFactory(
+      name: "IRouteBridge",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IRouteBridge__factory>;
+    getContractFactory(
+      name: "IBridgeTransaction",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IBridgeTransaction__factory>;
+    getContractFactory(
+      name: "IRootBridgeObserver",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IRootBridgeObserver__factory>;
+    getContractFactory(
       name: "IUser",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IUser__factory>;
@@ -153,6 +197,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.BaseModule__factory>;
     getContractFactory(
+      name: "Bridge",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Bridge__factory>;
+    getContractFactory(
       name: "DidRegistry",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.DidRegistry__factory>;
@@ -181,13 +229,9 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.UserDataServiceResolver__factory>;
     getContractFactory(
-      name: "User",
+      name: "AKXGateway",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.User__factory>;
-    getContractFactory(
-      name: "UserRegistry",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.UserRegistry__factory>;
+    ): Promise<Contracts.AKXGateway__factory>;
     getContractFactory(
       name: "BaseUserRegistry",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -236,6 +280,38 @@ declare module "hardhat/types/runtime" {
       name: "EIP1155UStorage",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.EIP1155UStorage__factory>;
+    getContractFactory(
+      name: "ERC2055",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC2055__factory>;
+    getContractFactory(
+      name: "ERC2055Storage",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC2055Storage__factory>;
+    getContractFactory(
+      name: "IERC2055",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC2055__factory>;
+    getContractFactory(
+      name: "IxToken",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IxToken__factory>;
+    getContractFactory(
+      name: "IxWrapper",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IxWrapper__factory>;
+    getContractFactory(
+      name: "XToken",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.XToken__factory>;
+    getContractFactory(
+      name: "XTokenERC20",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.XTokenERC20__factory>;
+    getContractFactory(
+      name: "XWrapper",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.XWrapper__factory>;
 
     getContractAt(
       name: "AccessControl",
@@ -263,6 +339,31 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.Ownable>;
     getContractAt(
+      name: "IERC1822Proxiable",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC1822Proxiable>;
+    getContractAt(
+      name: "IBeacon",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IBeacon>;
+    getContractAt(
+      name: "ERC1967Proxy",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC1967Proxy>;
+    getContractAt(
+      name: "ERC1967Upgrade",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC1967Upgrade>;
+    getContractAt(
+      name: "Proxy",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Proxy>;
+    getContractAt(
       name: "Initializable",
       address: string,
       signer?: ethers.Signer
@@ -273,10 +374,25 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.Pausable>;
     getContractAt(
+      name: "IERC1155",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC1155>;
+    getContractAt(
+      name: "ERC20",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC20>;
+    getContractAt(
       name: "IERC20Permit",
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.IERC20Permit>;
+    getContractAt(
+      name: "IERC20Metadata",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC20Metadata>;
     getContractAt(
       name: "IERC20",
       address: string,
@@ -373,6 +489,21 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.IModuleRegistry>;
     getContractAt(
+      name: "IRouteBridge",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IRouteBridge>;
+    getContractAt(
+      name: "IBridgeTransaction",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IBridgeTransaction>;
+    getContractAt(
+      name: "IRootBridgeObserver",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IRootBridgeObserver>;
+    getContractAt(
       name: "IUser",
       address: string,
       signer?: ethers.Signer
@@ -413,6 +544,11 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.BaseModule>;
     getContractAt(
+      name: "Bridge",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Bridge>;
+    getContractAt(
       name: "DidRegistry",
       address: string,
       signer?: ethers.Signer
@@ -448,15 +584,10 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.UserDataServiceResolver>;
     getContractAt(
-      name: "User",
+      name: "AKXGateway",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.User>;
-    getContractAt(
-      name: "UserRegistry",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.UserRegistry>;
+    ): Promise<Contracts.AKXGateway>;
     getContractAt(
       name: "BaseUserRegistry",
       address: string,
@@ -517,6 +648,46 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.EIP1155UStorage>;
+    getContractAt(
+      name: "ERC2055",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC2055>;
+    getContractAt(
+      name: "ERC2055Storage",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC2055Storage>;
+    getContractAt(
+      name: "IERC2055",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC2055>;
+    getContractAt(
+      name: "IxToken",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IxToken>;
+    getContractAt(
+      name: "IxWrapper",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IxWrapper>;
+    getContractAt(
+      name: "XToken",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.XToken>;
+    getContractAt(
+      name: "XTokenERC20",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.XTokenERC20>;
+    getContractAt(
+      name: "XWrapper",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.XWrapper>;
 
     // default types
     getContractFactory(

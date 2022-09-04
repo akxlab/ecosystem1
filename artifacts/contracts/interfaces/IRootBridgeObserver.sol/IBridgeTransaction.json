@@ -1,0 +1,99 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IBridgeTransaction",
+  "sourceName": "contracts/interfaces/IRootBridgeObserver.sol",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "msgHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "BridgeSignedMessage",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "chainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "target",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "message",
+          "type": "bytes"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "fees",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "SendBridgeCurrencyTransaction",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "message",
+          "type": "bytes"
+        }
+      ],
+      "name": "getMessageHash",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "_data",
+          "type": "bytes"
+        }
+      ],
+      "name": "signMessage",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

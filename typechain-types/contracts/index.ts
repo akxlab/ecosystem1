@@ -9,6 +9,8 @@ import type * as interfaces from "./interfaces";
 export type { interfaces };
 import type * as modules from "./modules";
 export type { modules };
+import type * as proxies from "./proxies";
+export type { proxies };
 import type * as registry from "./registry";
 export type { registry };
 import type * as resolvers from "./resolvers";

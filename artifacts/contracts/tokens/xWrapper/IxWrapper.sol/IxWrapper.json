@@ -1,0 +1,94 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IxWrapper",
+  "sourceName": "contracts/tokens/xWrapper/IxWrapper.sol",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_token",
+          "type": "address"
+        }
+      ],
+      "name": "NewTokenWrapped",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "wrap",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_implementation",
+          "type": "address"
+        }
+      ],
+      "name": "wrapERC1155",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_implementation",
+          "type": "address"
+        }
+      ],
+      "name": "wrapERC20",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_implementation",
+          "type": "address"
+        }
+      ],
+      "name": "wrapERC721",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

@@ -4,8 +4,8 @@
 export * as bank from "./bank";
 export * as pool from "./pool";
 export * as uds from "./uds";
-export * as users from "./users";
 export { BaseModule__factory } from "./BaseModule__factory";
+export { Bridge__factory } from "./Bridge__factory";
 export { DidRegistry__factory } from "./DidRegistry__factory";
 export { DummyModule__factory } from "./DummyModule__factory";
 export { ModuleRegistry__factory } from "./ModuleRegistry__factory";

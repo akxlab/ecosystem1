@@ -1,0 +1,10 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "EcosystemRouter",
+  "sourceName": "contracts/modules/EcosystemRouter.sol",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea264697066735822122094c4065935718d2159969f76c1c1069f5a989c6e8f45602ac31bcf20b726ce7364736f6c63430008100033",
+  "deployedBytecode": "0x6080604052600080fdfea264697066735822122094c4065935718d2159969f76c1c1069f5a989c6e8f45602ac31bcf20b726ce7364736f6c63430008100033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

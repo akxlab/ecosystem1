@@ -4,7 +4,6 @@
 import type {
   BaseContract,
   BigNumber,
-  BigNumberish,
   BytesLike,
   CallOverrides,
   ContractTransaction,
@@ -13,11 +12,7 @@ import type {
   Signer,
   utils,
 } from "ethers";
-import type {
-  FunctionFragment,
-  Result,
-  EventFragment,
-} from "@ethersproject/abi";
+import type { FunctionFragment, Result } from "@ethersproject/abi";
 import type { Listener, Provider } from "@ethersproject/providers";
 import type {
   TypedEventFilter,
@@ -29,94 +24,23 @@ import type {
 
 export interface IAKXInterface extends utils.Interface {
   functions: {
-    "Controller(bytes32)": FunctionFragment;
-    "LabzToken()": FunctionFragment;
-    "Pools()": FunctionFragment;
-    "PriceOracle()": FunctionFragment;
-    "getModule(bytes32)": FunctionFragment;
-    "getRegistry(uint8)": FunctionFragment;
-    "getResolver(uint8)": FunctionFragment;
-    "getUser(uint256)": FunctionFragment;
+    "EthDIDRegistry()": FunctionFragment;
   };
 
-  getFunction(
-    nameOrSignatureOrTopic:
-      | "Controller"
-      | "LabzToken"
-      | "Pools"
-      | "PriceOracle"
-      | "getModule"
-      | "getRegistry"
-      | "getResolver"
-      | "getUser"
-  ): FunctionFragment;
+  getFunction(nameOrSignatureOrTopic: "EthDIDRegistry"): FunctionFragment;
 
   encodeFunctionData(
-    functionFragment: "Controller",
-    values: [PromiseOrValue<BytesLike>]
-  ): string;
-  encodeFunctionData(functionFragment: "LabzToken", values?: undefined): string;
-  encodeFunctionData(functionFragment: "Pools", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "PriceOracle",
+    functionFragment: "EthDIDRegistry",
     values?: undefined
   ): string;
-  encodeFunctionData(
-    functionFragment: "getModule",
-    values: [PromiseOrValue<BytesLike>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getRegistry",
-    values: [PromiseOrValue<BigNumberish>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getResolver",
-    values: [PromiseOrValue<BigNumberish>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getUser",
-    values: [PromiseOrValue<BigNumberish>]
-  ): string;
 
-  decodeFunctionResult(functionFragment: "Controller", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "LabzToken", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "Pools", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "PriceOracle",
+    functionFragment: "EthDIDRegistry",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "getModule", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "getRegistry",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getResolver",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "getUser", data: BytesLike): Result;
 
-  events: {
-    "AKXEcosystemInitialized(address,address,address,address,address)": EventFragment;
-  };
-
-  getEvent(nameOrSignatureOrTopic: "AKXEcosystemInitialized"): EventFragment;
+  events: {};
 }
-
-export interface AKXEcosystemInitializedEventObject {
-  rootResolver: string;
-  initOwner: string;
-  dao: string;
-  labz: string;
-  dex: string;
-}
-export type AKXEcosystemInitializedEvent = TypedEvent<
-  [string, string, string, string, string],
-  AKXEcosystemInitializedEventObject
->;
-
-export type AKXEcosystemInitializedEventFilter =
-  TypedEventFilter<AKXEcosystemInitializedEvent>;
 
 export interface IAKX extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
@@ -145,205 +69,29 @@ export interface IAKX extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
-    Controller(
-      cName: PromiseOrValue<BytesLike>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
-    LabzToken(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
-    Pools(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
-    PriceOracle(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
-    getModule(
-      mName: PromiseOrValue<BytesLike>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
-    getRegistry(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
-    getResolver(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
-    getUser(
-      tokenId: PromiseOrValue<BigNumberish>,
+    EthDIDRegistry(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
   };
 
-  Controller(
-    cName: PromiseOrValue<BytesLike>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
-  LabzToken(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
-  Pools(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
-  PriceOracle(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
-  getModule(
-    mName: PromiseOrValue<BytesLike>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
-  getRegistry(
-    arg0: PromiseOrValue<BigNumberish>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
-  getResolver(
-    arg0: PromiseOrValue<BigNumberish>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
-  getUser(
-    tokenId: PromiseOrValue<BigNumberish>,
+  EthDIDRegistry(
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
   callStatic: {
-    Controller(
-      cName: PromiseOrValue<BytesLike>,
-      overrides?: CallOverrides
-    ): Promise<string>;
-
-    LabzToken(overrides?: CallOverrides): Promise<string>;
-
-    Pools(overrides?: CallOverrides): Promise<string[]>;
-
-    PriceOracle(overrides?: CallOverrides): Promise<string>;
-
-    getModule(
-      mName: PromiseOrValue<BytesLike>,
-      overrides?: CallOverrides
-    ): Promise<string>;
-
-    getRegistry(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<string>;
-
-    getResolver(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<string>;
-
-    getUser(
-      tokenId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<string>;
+    EthDIDRegistry(overrides?: CallOverrides): Promise<string>;
   };
 
-  filters: {
-    "AKXEcosystemInitialized(address,address,address,address,address)"(
-      rootResolver?: PromiseOrValue<string> | null,
-      initOwner?: PromiseOrValue<string> | null,
-      dao?: null,
-      labz?: null,
-      dex?: null
-    ): AKXEcosystemInitializedEventFilter;
-    AKXEcosystemInitialized(
-      rootResolver?: PromiseOrValue<string> | null,
-      initOwner?: PromiseOrValue<string> | null,
-      dao?: null,
-      labz?: null,
-      dex?: null
-    ): AKXEcosystemInitializedEventFilter;
-  };
+  filters: {};
 
   estimateGas: {
-    Controller(
-      cName: PromiseOrValue<BytesLike>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    LabzToken(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    Pools(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    PriceOracle(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    getModule(
-      mName: PromiseOrValue<BytesLike>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    getRegistry(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    getResolver(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    getUser(
-      tokenId: PromiseOrValue<BigNumberish>,
+    EthDIDRegistry(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
   };
 
   populateTransaction: {
-    Controller(
-      cName: PromiseOrValue<BytesLike>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    LabzToken(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    Pools(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    PriceOracle(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    getModule(
-      mName: PromiseOrValue<BytesLike>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    getRegistry(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    getResolver(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    getUser(
-      tokenId: PromiseOrValue<BigNumberish>,
+    EthDIDRegistry(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
   };

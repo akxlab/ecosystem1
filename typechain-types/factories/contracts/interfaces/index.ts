@@ -4,6 +4,8 @@
 export * as ieip1155USol from "./IEIP-1155U.sol";
 export * as ieip1155UReceiverSol from "./IEIP-1155UReceiver.sol";
 export * as ieip1155UResolverSol from "./IEIP-1155UResolver.sol";
+export * as iRootBridgeSol from "./IRootBridge.sol";
+export * as iRootBridgeObserverSol from "./IRootBridgeObserver.sol";
 export { IAKX__factory } from "./IAKX__factory";
 export { IController__factory } from "./IController__factory";
 export { IEIP1155UMetadataURI__factory } from "./IEIP1155UMetadataURI__factory";

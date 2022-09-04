@@ -19,7 +19,7 @@ contract LabzERC2055 is ERC2055, Pricing, ReentrancyGuard  {
     mapping(address => bool) internal _isUnlocked;
     mapping(address => uint256) public lockedBalance;
 
-    constructor(address userRegistry, uint256 initialPrice, address PricingStorage, address _gnosisMulti) ERC2055("LABZ (AKX3 ECOSYSTEM)", "LABZ") {
+    constructor(address userRegistry, address _gnosisMulti) ERC2055("LABZ (AKX3 ECOSYSTEM)", "LABZ") {
         setTotalSupply(0);
         setMaxSupply(300000000000 * 1e18);
         multiSignatureWallet = _gnosisMulti;

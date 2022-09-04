@@ -119,3 +119,4 @@ typechain-types/factories/contracts/tokens/ERC2055/mock/ERC2055Implementation__f
 typechain-types/factories/contracts/tokens/ERC2055/mock/index.ts
 typechain-types/hardhat.d.ts
 typechain-types/index.ts
+hardhat.config.ts

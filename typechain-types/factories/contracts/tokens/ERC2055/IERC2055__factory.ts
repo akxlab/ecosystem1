@@ -131,67 +131,31 @@ const _abi = [
     inputs: [
       {
         internalType: "uint256",
-        name: "until",
+        name: "amount",
         type: "uint256",
       },
     ],
-    name: "lockToken",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "onERC2055Receive",
-    outputs: [],
-    stateMutability: "nonpayable",
+    name: "feeEstimate",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
   {
     inputs: [
       {
         internalType: "uint256",
-        name: "amount",
+        name: "until",
         type: "uint256",
       },
-      {
-        internalType: "address",
-        name: "to",
-        type: "address",
-      },
     ],
-    name: "safeBurn",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "tokenAddress",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "to",
-        type: "address",
-      },
-    ],
-    name: "safeMint",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
+    name: "lockToken",
+    outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
@@ -222,25 +186,6 @@ const _abi = [
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "bytes4",
-        name: "interfaceID",
-        type: "bytes4",
-      },
-    ],
-    name: "supportedTokenInterfaces",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "view",
     type: "function",
   },
   {
@@ -313,25 +258,6 @@ const _abi = [
     inputs: [],
     name: "unlockToken",
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "tokenAddress1",
-        type: "address",
-      },
-    ],
-    name: "upgradeERC20ToERC2055",
-    outputs: [
-      {
-        internalType: "contract IERC2055",
-        name: "",
-        type: "address",
-      },
-    ],
     stateMutability: "nonpayable",
     type: "function",
   },

@@ -177,6 +177,18 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IUserRegistry__factory>;
     getContractFactory(
+      name: "LabzERC2055",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.LabzERC2055__factory>;
+    getContractFactory(
+      name: "LibMath",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.LibMath__factory>;
+    getContractFactory(
+      name: "Pricing",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Pricing__factory>;
+    getContractFactory(
       name: "Lock",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Lock__factory>;
@@ -522,6 +534,21 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.IUserRegistry>;
+    getContractAt(
+      name: "LabzERC2055",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.LabzERC2055>;
+    getContractAt(
+      name: "LibMath",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.LibMath>;
+    getContractAt(
+      name: "Pricing",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Pricing>;
     getContractAt(
       name: "Lock",
       address: string,

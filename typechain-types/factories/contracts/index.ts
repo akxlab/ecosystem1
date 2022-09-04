@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export * as akxSol from "./AKX.sol";
+export * as labzErc2055 from "./LabzERC2055";
 export * as controllers from "./controllers";
 export * as interfaces from "./interfaces";
 export * as modules from "./modules";

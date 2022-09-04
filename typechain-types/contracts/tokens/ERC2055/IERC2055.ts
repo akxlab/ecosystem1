@@ -32,17 +32,13 @@ export interface IERC2055Interface extends utils.Interface {
     "allowance(address,address)": FunctionFragment;
     "approve(address,uint256)": FunctionFragment;
     "balanceOf(address)": FunctionFragment;
+    "feeEstimate(uint256)": FunctionFragment;
     "lockToken(uint256)": FunctionFragment;
-    "onERC2055Receive()": FunctionFragment;
-    "safeBurn(uint256,address)": FunctionFragment;
-    "safeMint(address,address)": FunctionFragment;
     "safeTransferToken(address,address,uint256)": FunctionFragment;
-    "supportedTokenInterfaces(bytes4)": FunctionFragment;
     "totalSupply()": FunctionFragment;
     "transfer(address,uint256)": FunctionFragment;
     "transferFrom(address,address,uint256)": FunctionFragment;
     "unlockToken()": FunctionFragment;
-    "upgradeERC20ToERC2055(address)": FunctionFragment;
   };
 
   getFunction(
@@ -50,17 +46,13 @@ export interface IERC2055Interface extends utils.Interface {
       | "allowance"
       | "approve"
       | "balanceOf"
+      | "feeEstimate"
       | "lockToken"
-      | "onERC2055Receive"
-      | "safeBurn"
-      | "safeMint"
       | "safeTransferToken"
-      | "supportedTokenInterfaces"
       | "totalSupply"
       | "transfer"
       | "transferFrom"
       | "unlockToken"
-      | "upgradeERC20ToERC2055"
   ): FunctionFragment;
 
   encodeFunctionData(
@@ -76,20 +68,12 @@ export interface IERC2055Interface extends utils.Interface {
     values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
-    functionFragment: "lockToken",
+    functionFragment: "feeEstimate",
     values: [PromiseOrValue<BigNumberish>]
   ): string;
   encodeFunctionData(
-    functionFragment: "onERC2055Receive",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "safeBurn",
-    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "safeMint",
-    values: [PromiseOrValue<string>, PromiseOrValue<string>]
+    functionFragment: "lockToken",
+    values: [PromiseOrValue<BigNumberish>]
   ): string;
   encodeFunctionData(
     functionFragment: "safeTransferToken",
@@ -98,10 +82,6 @@ export interface IERC2055Interface extends utils.Interface {
       PromiseOrValue<string>,
       PromiseOrValue<BigNumberish>
     ]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "supportedTokenInterfaces",
-    values: [PromiseOrValue<BytesLike>]
   ): string;
   encodeFunctionData(
     functionFragment: "totalSupply",
@@ -123,27 +103,17 @@ export interface IERC2055Interface extends utils.Interface {
     functionFragment: "unlockToken",
     values?: undefined
   ): string;
-  encodeFunctionData(
-    functionFragment: "upgradeERC20ToERC2055",
-    values: [PromiseOrValue<string>]
-  ): string;
 
   decodeFunctionResult(functionFragment: "allowance", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "approve", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "feeEstimate",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "lockToken", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "onERC2055Receive",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "safeBurn", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "safeMint", data: BytesLike): Result;
-  decodeFunctionResult(
     functionFragment: "safeTransferToken",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "supportedTokenInterfaces",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -157,10 +127,6 @@ export interface IERC2055Interface extends utils.Interface {
   ): Result;
   decodeFunctionResult(
     functionFragment: "unlockToken",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "upgradeERC20ToERC2055",
     data: BytesLike
   ): Result;
 
@@ -241,24 +207,13 @@ export interface IERC2055 extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[BigNumber]>;
 
+    feeEstimate(
+      amount: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
     lockToken(
       until: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
-    onERC2055Receive(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
-    safeBurn(
-      amount: PromiseOrValue<BigNumberish>,
-      to: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
-    safeMint(
-      tokenAddress: PromiseOrValue<string>,
-      to: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -268,11 +223,6 @@ export interface IERC2055 extends BaseContract {
       amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
-
-    supportedTokenInterfaces(
-      interfaceID: PromiseOrValue<BytesLike>,
-      overrides?: CallOverrides
-    ): Promise<[boolean]>;
 
     totalSupply(overrides?: CallOverrides): Promise<[BigNumber]>;
 
@@ -290,11 +240,6 @@ export interface IERC2055 extends BaseContract {
     ): Promise<ContractTransaction>;
 
     unlockToken(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
-    upgradeERC20ToERC2055(
-      tokenAddress1: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
   };
@@ -316,24 +261,13 @@ export interface IERC2055 extends BaseContract {
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
+  feeEstimate(
+    amount: PromiseOrValue<BigNumberish>,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
   lockToken(
     until: PromiseOrValue<BigNumberish>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
-  onERC2055Receive(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
-  safeBurn(
-    amount: PromiseOrValue<BigNumberish>,
-    to: PromiseOrValue<string>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
-  safeMint(
-    tokenAddress: PromiseOrValue<string>,
-    to: PromiseOrValue<string>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -343,11 +277,6 @@ export interface IERC2055 extends BaseContract {
     amount: PromiseOrValue<BigNumberish>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
-
-  supportedTokenInterfaces(
-    interfaceID: PromiseOrValue<BytesLike>,
-    overrides?: CallOverrides
-  ): Promise<boolean>;
 
   totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -365,11 +294,6 @@ export interface IERC2055 extends BaseContract {
   ): Promise<ContractTransaction>;
 
   unlockToken(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
-  upgradeERC20ToERC2055(
-    tokenAddress1: PromiseOrValue<string>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -391,34 +315,20 @@ export interface IERC2055 extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    feeEstimate(
+      amount: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     lockToken(
       until: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    onERC2055Receive(overrides?: CallOverrides): Promise<void>;
-
-    safeBurn(
-      amount: PromiseOrValue<BigNumberish>,
-      to: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
-
-    safeMint(
-      tokenAddress: PromiseOrValue<string>,
-      to: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
-
     safeTransferToken(
       from: PromiseOrValue<string>,
       to: PromiseOrValue<string>,
       amount: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
-
-    supportedTokenInterfaces(
-      interfaceID: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<boolean>;
 
@@ -438,11 +348,6 @@ export interface IERC2055 extends BaseContract {
     ): Promise<boolean>;
 
     unlockToken(overrides?: CallOverrides): Promise<void>;
-
-    upgradeERC20ToERC2055(
-      tokenAddress1: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<string>;
   };
 
   filters: {
@@ -487,24 +392,13 @@ export interface IERC2055 extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    feeEstimate(
+      amount: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     lockToken(
       until: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    onERC2055Receive(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    safeBurn(
-      amount: PromiseOrValue<BigNumberish>,
-      to: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    safeMint(
-      tokenAddress: PromiseOrValue<string>,
-      to: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -513,11 +407,6 @@ export interface IERC2055 extends BaseContract {
       to: PromiseOrValue<string>,
       amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    supportedTokenInterfaces(
-      interfaceID: PromiseOrValue<BytesLike>,
-      overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
@@ -536,11 +425,6 @@ export interface IERC2055 extends BaseContract {
     ): Promise<BigNumber>;
 
     unlockToken(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    upgradeERC20ToERC2055(
-      tokenAddress1: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
   };
@@ -563,24 +447,13 @@ export interface IERC2055 extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    feeEstimate(
+      amount: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     lockToken(
       until: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    onERC2055Receive(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    safeBurn(
-      amount: PromiseOrValue<BigNumberish>,
-      to: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    safeMint(
-      tokenAddress: PromiseOrValue<string>,
-      to: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
@@ -589,11 +462,6 @@ export interface IERC2055 extends BaseContract {
       to: PromiseOrValue<string>,
       amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    supportedTokenInterfaces(
-      interfaceID: PromiseOrValue<BytesLike>,
-      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     totalSupply(overrides?: CallOverrides): Promise<PopulatedTransaction>;
@@ -612,11 +480,6 @@ export interface IERC2055 extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     unlockToken(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    upgradeERC20ToERC2055(
-      tokenAddress1: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
   };

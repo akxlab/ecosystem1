@@ -3,6 +3,8 @@
 /* eslint-disable */
 import type * as akxSol from "./AKX.sol";
 export type { akxSol };
+import type * as labzErc2055 from "./LabzERC2055";
+export type { labzErc2055 };
 import type * as controllers from "./controllers";
 export type { controllers };
 import type * as interfaces from "./interfaces";

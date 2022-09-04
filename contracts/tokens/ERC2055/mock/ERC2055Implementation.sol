@@ -16,6 +16,9 @@ contract ERC2055Implementation is ERC2055, ERC2055Storage {
 
     uint256 public numTokens;
 
+    uint256 public baseFee;
+
+
     Counters.Counter internal tqIndex; // token queue index
 
     event ERC2055Minted(address indexed underlying, string name, string symbol);
@@ -54,13 +57,12 @@ contract ERC2055Implementation is ERC2055, ERC2055Storage {
         delete tokenQueue[tid];
         _exists[erc2055Token] = true;
         numTokens += 1;
+        emit ERC2055Minted(erc2055Token, tokenName(tid), tokenSymbol(tid));
         return true;
 
     }
 
-    function mint(address erc2055Token) public onlyOwner {
-        addToken(erc2055Token);
-    }
+
 
     function _setToken(address _token) internal view returns(Token memory _tok) {
         ERC2055 _t = ERC2055(_token);
@@ -95,5 +97,9 @@ contract ERC2055Implementation is ERC2055, ERC2055Storage {
 
     function tokenSymbol(uint256 tokenId) public view returns (string memory) {
         return _underlyingSymbol(tokenId);
+    }
+
+    function getToken(uint256 tokenId) external view returns(address tokenAddress) {
+        tokenAddress = _tokenIdtoAddresses[tokenId];
     }
 }

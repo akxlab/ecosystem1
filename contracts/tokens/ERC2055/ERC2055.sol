@@ -15,7 +15,7 @@ contract ERC2055 is IERC2055 {
     uint256 public lockedUntil;
 
     mapping(address => uint256) private _balance;
-      mapping(address => mapping(address => uint256)) private _allowances;
+    mapping(address => mapping(address => uint256)) private _allowances;
 
     bytes4 private constant TOKEN_INTERFACE_ID =
         bytes4(keccak256(abi.encodePacked("supportedTokenInterfaces(bytes4)")));
@@ -25,6 +25,11 @@ contract ERC2055 is IERC2055 {
         symbol = _symbol;
         owner = msg.sender;
         decimals = 18;
+    }
+
+    function feeEstimate(uint256 amount) external view returns(uint256) {
+        //@todo implement feeEstimate
+        return 0;
     }
 
     modifier onlyOwner() {
@@ -51,6 +56,7 @@ contract ERC2055 is IERC2055 {
     function transfer(address to, uint256 amount)
         public
         override
+    virtual
         returns (bool)
     {
         this.safeTransferToken(address(this), to, amount);
@@ -160,7 +166,7 @@ contract ERC2055 is IERC2055 {
      
     }
 
-    function onERC2055Receive() external override {}
+
 
     function safeMint(uint256 amount, address to)
         public
@@ -188,24 +194,13 @@ contract ERC2055 is IERC2055 {
         return true;
     }
 
-    function upgradeERC20ToERC2055(address tokenAddress1)
-        external
-        override
-        returns (IERC2055)
-    {}
-
-    function safeBurn(uint256 amount, address to)
-        external
-        override
-        returns (bool)
-    {}
 
 
     function safeTransferToken(
         address token,
         address receiver,
         uint256 amount
-    ) external override returns (bool transferred) {
+    ) public virtual override returns (bool transferred) {
         // 0xa9059cbb - keccack("transfer(address,uint256)")
         bytes memory data = abi.encodeWithSelector(
             0xa9059cbb,
@@ -251,18 +246,5 @@ contract ERC2055 is IERC2055 {
         isLocked = false;
     }
 
-    function supportedTokenInterfaces(bytes4 interfaceID)
-        external
-        view
-        override
-        returns (bool)
-    {
-        return interfaceID == TOKEN_INTERFACE_ID;
-    }
 
-    function safeMint(address tokenAddress, address to)
-        external
-        override
-        returns (bool)
-    {}
 }

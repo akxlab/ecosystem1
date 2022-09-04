@@ -1,8 +1,8 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/Users/nicolascloutier/ecosystem1/contracts/AKX.sol": {
-      "lastModificationDate": 1662166598715,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/AKX.sol": {
+      "lastModificationDate": 1662168383739,
       "contentHash": "35c6082bea82a7b91e41abb6b0b968a2",
       "sourceName": "contracts/AKX.sol",
       "solcConfig": {
@@ -45,8 +45,8 @@
         "AKXEcosystem"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/interfaces/IAKX.sol": {
-      "lastModificationDate": 1662166583103,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/interfaces/IAKX.sol": {
+      "lastModificationDate": 1662168383741,
       "contentHash": "89c90b43510a15316e2722e4e1da702a",
       "sourceName": "contracts/interfaces/IAKX.sol",
       "solcConfig": {
@@ -89,8 +89,8 @@
         "IAKX"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/modules/DidRegistry.sol": {
-      "lastModificationDate": 1662163439227,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/modules/DidRegistry.sol": {
+      "lastModificationDate": 1662133402054,
       "contentHash": "52388469d4c615a96f41407f6b222343",
       "sourceName": "contracts/modules/DidRegistry.sol",
       "solcConfig": {
@@ -131,8 +131,8 @@
         "DidRegistry"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/config/Constants.sol": {
-      "lastModificationDate": 1661977478420,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/config/Constants.sol": {
+      "lastModificationDate": 1661977819734,
       "contentHash": "4de0ac5e05f6b41f1b6399537113e31c",
       "sourceName": "contracts/config/Constants.sol",
       "solcConfig": {
@@ -171,8 +171,8 @@
       ],
       "artifacts": []
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/controllers/BaseController.sol": {
-      "lastModificationDate": 1661977478429,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/controllers/BaseController.sol": {
+      "lastModificationDate": 1661977819734,
       "contentHash": "81d7e914918ba3048fdeea5d6cc9dbae",
       "sourceName": "contracts/controllers/BaseController.sol",
       "solcConfig": {
@@ -216,8 +216,8 @@
         "BaseController"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/interfaces/IController.sol": {
-      "lastModificationDate": 1661977478433,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/interfaces/IController.sol": {
+      "lastModificationDate": 1661977819735,
       "contentHash": "e1329eedc1c3a0823d4e89cc088dc8da",
       "sourceName": "contracts/interfaces/IController.sol",
       "solcConfig": {
@@ -260,8 +260,8 @@
         "IController"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/access/AccessControlEnumerable.sol": {
-      "lastModificationDate": 1661977483583,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/access/AccessControlEnumerable.sol": {
+      "lastModificationDate": 1661977873569,
       "contentHash": "b6d9b165dc57e9ad8153bdca05c783a4",
       "sourceName": "@openzeppelin/contracts/access/AccessControlEnumerable.sol",
       "solcConfig": {
@@ -306,8 +306,8 @@
         "AccessControlEnumerable"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/utils/introspection/IERC165.sol": {
-      "lastModificationDate": 1661977483598,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/utils/introspection/IERC165.sol": {
+      "lastModificationDate": 1661977873804,
       "contentHash": "03e6768535ac4da0e9756f1d8a4a018a",
       "sourceName": "@openzeppelin/contracts/utils/introspection/IERC165.sol",
       "solcConfig": {
@@ -348,8 +348,8 @@
         "IERC165"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/access/IAccessControlEnumerable.sol": {
-      "lastModificationDate": 1661977483582,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/access/IAccessControlEnumerable.sol": {
+      "lastModificationDate": 1661977873780,
       "contentHash": "4e71cc90682e109e999ce2bd329f6572",
       "sourceName": "@openzeppelin/contracts/access/IAccessControlEnumerable.sol",
       "solcConfig": {
@@ -392,8 +392,8 @@
         "IAccessControlEnumerable"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/access/AccessControl.sol": {
-      "lastModificationDate": 1661977483583,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/access/AccessControl.sol": {
+      "lastModificationDate": 1661977873567,
       "contentHash": "e6ef731d275b1e7b2995f00fa56d9dab",
       "sourceName": "@openzeppelin/contracts/access/AccessControl.sol",
       "solcConfig": {
@@ -439,8 +439,8 @@
         "AccessControl"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/utils/structs/EnumerableSet.sol": {
-      "lastModificationDate": 1661977483600,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/utils/structs/EnumerableSet.sol": {
+      "lastModificationDate": 1661977873634,
       "contentHash": "aec6e37069dfaa5e3d5fd66ef2274b0c",
       "sourceName": "@openzeppelin/contracts/utils/structs/EnumerableSet.sol",
       "solcConfig": {
@@ -481,8 +481,8 @@
         "EnumerableSet"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/access/IAccessControl.sol": {
-      "lastModificationDate": 1661977483583,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/access/IAccessControl.sol": {
+      "lastModificationDate": 1661977873779,
       "contentHash": "57c84298234411cea19c7c284d86be8b",
       "sourceName": "@openzeppelin/contracts/access/IAccessControl.sol",
       "solcConfig": {
@@ -523,8 +523,8 @@
         "IAccessControl"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/utils/Context.sol": {
-      "lastModificationDate": 1661977483601,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/utils/Context.sol": {
+      "lastModificationDate": 1661977873589,
       "contentHash": "5f2c5c4b6af2dd4551027144797bc8be",
       "sourceName": "@openzeppelin/contracts/utils/Context.sol",
       "solcConfig": {
@@ -565,8 +565,8 @@
         "Context"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/utils/Strings.sol": {
-      "lastModificationDate": 1661977483601,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/utils/Strings.sol": {
+      "lastModificationDate": 1661977873887,
       "contentHash": "cf46906c4035f51639a22265066a9e78",
       "sourceName": "@openzeppelin/contracts/utils/Strings.sol",
       "solcConfig": {
@@ -607,8 +607,8 @@
         "Strings"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/utils/introspection/ERC165.sol": {
-      "lastModificationDate": 1661977483598,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/utils/introspection/ERC165.sol": {
+      "lastModificationDate": 1661977873674,
       "contentHash": "0e7db055ce108f9da7bb6686a00287c0",
       "sourceName": "@openzeppelin/contracts/utils/introspection/ERC165.sol",
       "solcConfig": {
@@ -651,8 +651,8 @@
         "ERC165"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/modules/uds/UserDataServiceResolver.sol": {
-      "lastModificationDate": 1662163439228,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/modules/uds/UserDataServiceResolver.sol": {
+      "lastModificationDate": 1662140474550,
       "contentHash": "6516f298494ced567d3716af14e3b996",
       "sourceName": "contracts/modules/uds/UserDataServiceResolver.sol",
       "solcConfig": {
@@ -699,8 +699,8 @@
         "UserDataServiceResolver"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/resolvers/AllResolvers.sol": {
-      "lastModificationDate": 1662163439228,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/resolvers/AllResolvers.sol": {
+      "lastModificationDate": 1662135308027,
       "contentHash": "a7c1f0f48df90e3d1fe5efa713669120",
       "sourceName": "contracts/resolvers/AllResolvers.sol",
       "solcConfig": {
@@ -746,8 +746,8 @@
         "AllResolvers"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/modules/uds/UDS.sol": {
-      "lastModificationDate": 1662163439227,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/modules/uds/UDS.sol": {
+      "lastModificationDate": 1661979816215,
       "contentHash": "cc4a02c3ff50a5b510a4ef37b7b0a419",
       "sourceName": "contracts/modules/uds/UDS.sol",
       "solcConfig": {
@@ -788,8 +788,8 @@
         "UDS"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/registry/BaseUserRegistry.sol": {
-      "lastModificationDate": 1662163439228,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/registry/BaseUserRegistry.sol": {
+      "lastModificationDate": 1662140584333,
       "contentHash": "04a52e7201c6a4093c14697278d8837c",
       "sourceName": "contracts/registry/BaseUserRegistry.sol",
       "solcConfig": {
@@ -835,8 +835,8 @@
         "BaseUserRegistry"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/utils/Counters.sol": {
-      "lastModificationDate": 1661977483595,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/utils/Counters.sol": {
+      "lastModificationDate": 1661977873590,
       "contentHash": "74654e3ae5d7f39555055dfe244dab7a",
       "sourceName": "@openzeppelin/contracts/utils/Counters.sol",
       "solcConfig": {
@@ -877,8 +877,8 @@
         "Counters"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/resolvers/IdentResolver.sol": {
-      "lastModificationDate": 1662163439228,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/resolvers/IdentResolver.sol": {
+      "lastModificationDate": 1662139007969,
       "contentHash": "c1d81b90cfc6b515ecf50ae107a57a03",
       "sourceName": "contracts/resolvers/IdentResolver.sol",
       "solcConfig": {
@@ -921,8 +921,8 @@
         "IdentResolver"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/resolvers/NameResolver.sol": {
-      "lastModificationDate": 1662163439229,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/resolvers/NameResolver.sol": {
+      "lastModificationDate": 1662135093705,
       "contentHash": "e9443a5032feea4b8a540d01801d7913",
       "sourceName": "contracts/resolvers/NameResolver.sol",
       "solcConfig": {
@@ -965,8 +965,8 @@
         "NameResolver"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/resolvers/ProfileResolver.sol": {
-      "lastModificationDate": 1662163439229,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/resolvers/ProfileResolver.sol": {
+      "lastModificationDate": 1662135180186,
       "contentHash": "4311e91c1ade1a24dc611243cbd185be",
       "sourceName": "contracts/resolvers/ProfileResolver.sol",
       "solcConfig": {
@@ -1009,8 +1009,8 @@
         "ProfileResolver"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/resolvers/MetaDataResolver.sol": {
-      "lastModificationDate": 1662163439228,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/resolvers/MetaDataResolver.sol": {
+      "lastModificationDate": 1662135079327,
       "contentHash": "dbf26e26b80b118ab32576f0e7903f88",
       "sourceName": "contracts/resolvers/MetaDataResolver.sol",
       "solcConfig": {
@@ -1053,8 +1053,8 @@
         "MetaDataResolver"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/resolvers/BaseResolver.sol": {
-      "lastModificationDate": 1662163439228,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/resolvers/BaseResolver.sol": {
+      "lastModificationDate": 1662131790109,
       "contentHash": "6e4d2c3befaa107af26a85bbeb387418",
       "sourceName": "contracts/resolvers/BaseResolver.sol",
       "solcConfig": {
@@ -1098,8 +1098,8 @@
         "BaseResolver"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/utils/BytesUtils.sol": {
-      "lastModificationDate": 1661977478421,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/utils/BytesUtils.sol": {
+      "lastModificationDate": 1661977819740,
       "contentHash": "0f16f4edba773e912ba6fa86d8c5620d",
       "sourceName": "contracts/utils/BytesUtils.sol",
       "solcConfig": {
@@ -1140,8 +1140,8 @@
         "BytesUtils"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/interfaces/IEIP721U.sol": {
-      "lastModificationDate": 1662163439227,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/interfaces/IEIP721U.sol": {
+      "lastModificationDate": 1661978444161,
       "contentHash": "9487662d3bba8123478ec728ffdb69ba",
       "sourceName": "contracts/interfaces/IEIP721U.sol",
       "solcConfig": {
@@ -1184,8 +1184,8 @@
         "IEIP721U"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol": {
-      "lastModificationDate": 1661977483556,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol": {
+      "lastModificationDate": 1661977873731,
       "contentHash": "79ff1a7eb801a525aa315fb7a679eede",
       "sourceName": "@openzeppelin/contracts/token/ERC721/ERC721.sol",
       "solcConfig": {
@@ -1234,8 +1234,8 @@
         "ERC721"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/access/Ownable.sol": {
-      "lastModificationDate": 1661977483583,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/access/Ownable.sol": {
+      "lastModificationDate": 1661977873868,
       "contentHash": "e436cea06129be2c73cda4b1acc848b5",
       "sourceName": "@openzeppelin/contracts/access/Ownable.sol",
       "solcConfig": {
@@ -1278,8 +1278,8 @@
         "Ownable"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/token/ERC721/IERC721.sol": {
-      "lastModificationDate": 1661977483556,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/token/ERC721/IERC721.sol": {
+      "lastModificationDate": 1661977873818,
       "contentHash": "ec99d946db3685a3630554aa6055bd7f",
       "sourceName": "@openzeppelin/contracts/token/ERC721/IERC721.sol",
       "solcConfig": {
@@ -1322,8 +1322,8 @@
         "IERC721"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol": {
-      "lastModificationDate": 1661977483556,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol": {
+      "lastModificationDate": 1661977873822,
       "contentHash": "c22d4395e33763de693fd440c6fd10e1",
       "sourceName": "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol",
       "solcConfig": {
@@ -1364,8 +1364,8 @@
         "IERC721Receiver"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol": {
-      "lastModificationDate": 1661977483557,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol": {
+      "lastModificationDate": 1661977873821,
       "contentHash": "efbc0d15b80a74e34dbe8da0f3e879bb",
       "sourceName": "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol",
       "solcConfig": {
@@ -1408,8 +1408,8 @@
         "IERC721Metadata"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/utils/Address.sol": {
-      "lastModificationDate": 1661977483596,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/utils/Address.sol": {
+      "lastModificationDate": 1661977873571,
       "contentHash": "c476b3895a94798b88a4bb97399e6dfe",
       "sourceName": "@openzeppelin/contracts/utils/Address.sol",
       "solcConfig": {
@@ -1450,10 +1450,10 @@
         "Address"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/modules/bank/Account.sol": {
-      "lastModificationDate": 1662163439227,
-      "contentHash": "de33b0b5d162cc43cfe5293f350cba6f",
-      "sourceName": "contracts/modules/bank/Account.sol",
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/tokens/ERC2055/mock/ERC2055Implementation.sol": {
+      "lastModificationDate": 1662299483501,
+      "contentHash": "1fb51ba9c6212388a42ee676b501aec1",
+      "sourceName": "contracts/tokens/ERC2055/mock/ERC2055Implementation.sol",
       "solcConfig": {
         "version": "0.8.16",
         "settings": {
@@ -1485,24 +1485,154 @@
         }
       },
       "imports": [
-        "@openzeppelin/contracts/utils/Counters.sol",
-        "@openzeppelin/contracts/access/Ownable.sol",
-        "@openzeppelin/contracts/security/ReentrancyGuard.sol",
-        "../../utils/BytesUtils.sol",
-        "../../utils/IsSelf.sol",
-        "../../utils/InitModifiers.sol"
+        "../ERC2055Storage.sol",
+        "../ERC2055.sol",
+        "@openzeppelin/contracts/utils/Counters.sol"
       ],
       "versionPragmas": [
         "0.8.16"
       ],
       "artifacts": [
-        "Account"
+        "ERC2055Implementation"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/security/ReentrancyGuard.sol": {
-      "lastModificationDate": 1661977483584,
-      "contentHash": "92f9448b23a90ea3bb932ee55cc3ccce",
-      "sourceName": "@openzeppelin/contracts/security/ReentrancyGuard.sol",
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/tokens/ERC2055/ERC2055Storage.sol": {
+      "lastModificationDate": 1662299505256,
+      "contentHash": "45c6dc78ba0cf0cd50fc178c82968dbe",
+      "sourceName": "contracts/tokens/ERC2055/ERC2055Storage.sol",
+      "solcConfig": {
+        "version": "0.8.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./ERC2055.sol"
+      ],
+      "versionPragmas": [
+        "0.8.16"
+      ],
+      "artifacts": [
+        "ERC2055Storage"
+      ]
+    },
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/tokens/ERC2055/ERC2055.sol": {
+      "lastModificationDate": 1662324225588,
+      "contentHash": "520aebd6889607d3b1a4423824fc791d",
+      "sourceName": "contracts/tokens/ERC2055/ERC2055.sol",
+      "solcConfig": {
+        "version": "0.8.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./ERC2055Storage.sol",
+        "./IERC2055.sol"
+      ],
+      "versionPragmas": [
+        "0.8.16"
+      ],
+      "artifacts": [
+        "ERC2055"
+      ]
+    },
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/tokens/ERC2055/IERC2055.sol": {
+      "lastModificationDate": 1662299391415,
+      "contentHash": "b53071064f93d9b4cc2e92ef726c4f65",
+      "sourceName": "contracts/tokens/ERC2055/IERC2055.sol",
+      "solcConfig": {
+        "version": "0.8.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol"
+      ],
+      "versionPragmas": [
+        "0.8.16"
+      ],
+      "artifacts": [
+        "IERC2055"
+      ]
+    },
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+      "lastModificationDate": 1661977873809,
+      "contentHash": "ad7c2d0af148c8f9f097d65deeb4da6b",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
       "solcConfig": {
         "version": "0.8.16",
         "settings": {
@@ -1538,13 +1668,151 @@
         "^0.8.0"
       ],
       "artifacts": [
-        "ReentrancyGuard"
+        "IERC20"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/utils/IsSelf.sol": {
-      "lastModificationDate": 1661977478420,
-      "contentHash": "1aaff920931b4267fbc16d81b1b80487",
-      "sourceName": "contracts/utils/IsSelf.sol",
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
+      "lastModificationDate": 1661977873812,
+      "contentHash": "909ab67fc5c25033fe6cd364f8c056f9",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+      "solcConfig": {
+        "version": "0.8.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../IERC20.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC20Metadata"
+      ]
+    },
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol": {
+      "lastModificationDate": 1661977873693,
+      "contentHash": "af7bd64e1cfefbf6cb07f2adc1a25392",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+      "solcConfig": {
+        "version": "0.8.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./IERC20.sol",
+        "./extensions/IERC20Metadata.sol",
+        "../../utils/Context.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ERC20"
+      ]
+    },
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/tokens/xWrapper/xWrapper.sol": {
+      "lastModificationDate": 1662292038535,
+      "contentHash": "b7eac2aab4a9d434396e785fc6608e36",
+      "sourceName": "contracts/tokens/xWrapper/xWrapper.sol",
+      "solcConfig": {
+        "version": "0.8.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./IxWrapper.sol",
+        "./IxToken.sol",
+        "@openzeppelin/contracts/proxy/utils/Initializable.sol",
+        "@openzeppelin/contracts/utils/Context.sol",
+        "@openzeppelin/contracts/proxy/Clones.sol"
+      ],
+      "versionPragmas": [
+        "0.8.16"
+      ],
+      "artifacts": [
+        "xWrapper"
+      ]
+    },
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/tokens/xWrapper/IxWrapper.sol": {
+      "lastModificationDate": 1662292038534,
+      "contentHash": "f886559b526d1a67aa08592e6b464786",
+      "sourceName": "contracts/tokens/xWrapper/IxWrapper.sol",
       "solcConfig": {
         "version": "0.8.16",
         "settings": {
@@ -1580,13 +1848,13 @@
         "0.8.16"
       ],
       "artifacts": [
-        "IsSelf"
+        "IxWrapper"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/utils/InitModifiers.sol": {
-      "lastModificationDate": 1661977478421,
-      "contentHash": "e71e46bab65e2472c198dcfc4caafb2c",
-      "sourceName": "contracts/utils/InitModifiers.sol",
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/tokens/xWrapper/IxToken.sol": {
+      "lastModificationDate": 1662292038534,
+      "contentHash": "6450f7fbbcb56403ffb0acda5027e59a",
+      "sourceName": "contracts/tokens/xWrapper/IxToken.sol",
       "solcConfig": {
         "version": "0.8.16",
         "settings": {
@@ -1622,11 +1890,97 @@
         "0.8.16"
       ],
       "artifacts": [
-        "InitModifiers"
+        "IxToken"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/modules/bank/Bank.sol": {
-      "lastModificationDate": 1662163439227,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/proxy/utils/Initializable.sol": {
+      "lastModificationDate": 1661977873834,
+      "contentHash": "bcba485bbfd0aab6b8875b58224f6330",
+      "sourceName": "@openzeppelin/contracts/proxy/utils/Initializable.sol",
+      "solcConfig": {
+        "version": "0.8.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../../utils/Address.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.2"
+      ],
+      "artifacts": [
+        "Initializable"
+      ]
+    },
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/proxy/Clones.sol": {
+      "lastModificationDate": 1661977873586,
+      "contentHash": "8d03477cb67af28579646fdb2508ddb0",
+      "sourceName": "@openzeppelin/contracts/proxy/Clones.sol",
+      "solcConfig": {
+        "version": "0.8.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Clones"
+      ]
+    },
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/modules/bank/Bank.sol": {
+      "lastModificationDate": 1662159109922,
       "contentHash": "4fe7b48871e2c76c9000e237cf7ab130",
       "sourceName": "contracts/modules/bank/Bank.sol",
       "solcConfig": {
@@ -1677,8 +2031,8 @@
         "Bank"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/modules/bank/IBank.sol": {
-      "lastModificationDate": 1662163439227,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/modules/bank/IBank.sol": {
+      "lastModificationDate": 1662148570273,
       "contentHash": "f4cf2505c43740db8c29ebf5a789707b",
       "sourceName": "contracts/modules/bank/IBank.sol",
       "solcConfig": {
@@ -1719,50 +2073,8 @@
         "IBank"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
-      "lastModificationDate": 1661977483549,
-      "contentHash": "ad7c2d0af148c8f9f097d65deeb4da6b",
-      "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
-      "solcConfig": {
-        "version": "0.8.16",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata",
-                "devdoc",
-                "userdoc",
-                "storageLayout",
-                "evm.gasEstimates"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": true
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IERC20"
-      ]
-    },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol": {
-      "lastModificationDate": 1661977483550,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol": {
+      "lastModificationDate": 1661977873881,
       "contentHash": "3a843b05b85a270e9455e3d2e804e633",
       "sourceName": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
       "solcConfig": {
@@ -1807,8 +2119,8 @@
         "SafeERC20"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/security/Pausable.sol": {
-      "lastModificationDate": 1661977483584,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/security/Pausable.sol": {
+      "lastModificationDate": 1661977873869,
       "contentHash": "25c8108f36fdd472bc78d4c4af240c11",
       "sourceName": "@openzeppelin/contracts/security/Pausable.sol",
       "solcConfig": {
@@ -1851,10 +2163,10 @@
         "Pausable"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/proxy/Clones.sol": {
-      "lastModificationDate": 1661977483563,
-      "contentHash": "8d03477cb67af28579646fdb2508ddb0",
-      "sourceName": "@openzeppelin/contracts/proxy/Clones.sol",
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/modules/bank/Account.sol": {
+      "lastModificationDate": 1662155983751,
+      "contentHash": "de33b0b5d162cc43cfe5293f350cba6f",
+      "sourceName": "contracts/modules/bank/Account.sol",
       "solcConfig": {
         "version": "0.8.16",
         "settings": {
@@ -1885,16 +2197,23 @@
           }
         }
       },
-      "imports": [],
+      "imports": [
+        "@openzeppelin/contracts/utils/Counters.sol",
+        "@openzeppelin/contracts/access/Ownable.sol",
+        "@openzeppelin/contracts/security/ReentrancyGuard.sol",
+        "../../utils/BytesUtils.sol",
+        "../../utils/IsSelf.sol",
+        "../../utils/InitModifiers.sol"
+      ],
       "versionPragmas": [
-        "^0.8.0"
+        "0.8.16"
       ],
       "artifacts": [
-        "Clones"
+        "Account"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/token/ERC20/extensions/draft-IERC20Permit.sol": {
-      "lastModificationDate": 1661977483551,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/token/ERC20/extensions/draft-IERC20Permit.sol": {
+      "lastModificationDate": 1661977873619,
       "contentHash": "fb77f144244b9ab12533aa6ce85ef8c5",
       "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/draft-IERC20Permit.sol",
       "solcConfig": {
@@ -1935,10 +2254,10 @@
         "IERC20Permit"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/tokens/xWrapper/xWrapper.sol": {
-      "lastModificationDate": 1662173510153,
-      "contentHash": "b7eac2aab4a9d434396e785fc6608e36",
-      "sourceName": "contracts/tokens/xWrapper/xWrapper.sol",
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/security/ReentrancyGuard.sol": {
+      "lastModificationDate": 1661977873876,
+      "contentHash": "92f9448b23a90ea3bb932ee55cc3ccce",
+      "sourceName": "@openzeppelin/contracts/security/ReentrancyGuard.sol",
       "solcConfig": {
         "version": "0.8.16",
         "settings": {
@@ -1969,24 +2288,18 @@
           }
         }
       },
-      "imports": [
-        "./IxWrapper.sol",
-        "./IxToken.sol",
-        "@openzeppelin/contracts/proxy/utils/Initializable.sol",
-        "@openzeppelin/contracts/utils/Context.sol",
-        "@openzeppelin/contracts/proxy/Clones.sol"
-      ],
+      "imports": [],
       "versionPragmas": [
-        "0.8.16"
+        "^0.8.0"
       ],
       "artifacts": [
-        "xWrapper"
+        "ReentrancyGuard"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/tokens/xWrapper/IxWrapper.sol": {
-      "lastModificationDate": 1662173134817,
-      "contentHash": "f886559b526d1a67aa08592e6b464786",
-      "sourceName": "contracts/tokens/xWrapper/IxWrapper.sol",
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/utils/IsSelf.sol": {
+      "lastModificationDate": 1661977819741,
+      "contentHash": "1aaff920931b4267fbc16d81b1b80487",
+      "sourceName": "contracts/utils/IsSelf.sol",
       "solcConfig": {
         "version": "0.8.16",
         "settings": {
@@ -2022,13 +2335,13 @@
         "0.8.16"
       ],
       "artifacts": [
-        "IxWrapper"
+        "IsSelf"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/tokens/xWrapper/IxToken.sol": {
-      "lastModificationDate": 1662258332241,
-      "contentHash": "6450f7fbbcb56403ffb0acda5027e59a",
-      "sourceName": "contracts/tokens/xWrapper/IxToken.sol",
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/utils/InitModifiers.sol": {
+      "lastModificationDate": 1661977819741,
+      "contentHash": "e71e46bab65e2472c198dcfc4caafb2c",
+      "sourceName": "contracts/utils/InitModifiers.sol",
       "solcConfig": {
         "version": "0.8.16",
         "settings": {
@@ -2064,13 +2377,13 @@
         "0.8.16"
       ],
       "artifacts": [
-        "IxToken"
+        "InitModifiers"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/proxy/utils/Initializable.sol": {
-      "lastModificationDate": 1661977483563,
-      "contentHash": "bcba485bbfd0aab6b8875b58224f6330",
-      "sourceName": "@openzeppelin/contracts/proxy/utils/Initializable.sol",
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/tokens/EIP1155U/EIP1155UReceiver.sol": {
+      "lastModificationDate": 1661977819740,
+      "contentHash": "29984f2a3a835f75f33717d1b229a99c",
+      "sourceName": "contracts/tokens/EIP1155U/EIP1155UReceiver.sol",
       "solcConfig": {
         "version": "0.8.16",
         "settings": {
@@ -2102,19 +2415,20 @@
         }
       },
       "imports": [
-        "../../utils/Address.sol"
+        "../../interfaces/IEIP-1155UReceiver.sol",
+        "@openzeppelin/contracts/utils/introspection/ERC165.sol"
       ],
       "versionPragmas": [
-        "^0.8.2"
+        "0.8.16"
       ],
       "artifacts": [
-        "Initializable"
+        "EIP1155UReceiver"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol": {
-      "lastModificationDate": 1661977483550,
-      "contentHash": "af7bd64e1cfefbf6cb07f2adc1a25392",
-      "sourceName": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/interfaces/IEIP-1155UReceiver.sol": {
+      "lastModificationDate": 1661977819735,
+      "contentHash": "ebb7bbc5707aa208167d8701c3a79bf5",
+      "sourceName": "contracts/interfaces/IEIP-1155UReceiver.sol",
       "solcConfig": {
         "version": "0.8.16",
         "settings": {
@@ -2145,64 +2459,16 @@
           }
         }
       },
-      "imports": [
-        "./IERC20.sol",
-        "./extensions/IERC20Metadata.sol",
-        "../../utils/Context.sol"
-      ],
+      "imports": [],
       "versionPragmas": [
-        "^0.8.0"
+        "0.8.16"
       ],
       "artifacts": [
-        "ERC20"
+        "IEIP1155UReceiver"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
-      "lastModificationDate": 1661977483551,
-      "contentHash": "909ab67fc5c25033fe6cd364f8c056f9",
-      "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
-      "solcConfig": {
-        "version": "0.8.16",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata",
-                "devdoc",
-                "userdoc",
-                "storageLayout",
-                "evm.gasEstimates"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": true
-          }
-        }
-      },
-      "imports": [
-        "../IERC20.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IERC20Metadata"
-      ]
-    },
-    "/Users/nicolascloutier/ecosystem1/contracts/tokens/EIP1155U/EIP1155U.sol": {
-      "lastModificationDate": 1661977478429,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/tokens/EIP1155U/EIP1155U.sol": {
+      "lastModificationDate": 1661977819740,
       "contentHash": "ad960b1ea538725c17e2d1e35462d37a",
       "sourceName": "contracts/tokens/EIP1155U/EIP1155U.sol",
       "solcConfig": {
@@ -2251,8 +2517,8 @@
         "EIP1155U"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/interfaces/IEIP-1155U.sol": {
-      "lastModificationDate": 1661977478431,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/interfaces/IEIP-1155U.sol": {
+      "lastModificationDate": 1661977819735,
       "contentHash": "64119b337d2c7450b252239570c78a11",
       "sourceName": "contracts/interfaces/IEIP-1155U.sol",
       "solcConfig": {
@@ -2293,8 +2559,8 @@
         "IEIP1155U"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/interfaces/IEIP-1155UResolver.sol": {
-      "lastModificationDate": 1661977478433,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/interfaces/IEIP-1155UResolver.sol": {
+      "lastModificationDate": 1661977819735,
       "contentHash": "74dab8dcb9196b3160e02a28fb9c4123",
       "sourceName": "contracts/interfaces/IEIP-1155UResolver.sol",
       "solcConfig": {
@@ -2335,8 +2601,8 @@
         "IEIP1155UResolver"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/interfaces/IEIP1155UMetadataURI.sol": {
-      "lastModificationDate": 1661977478433,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/interfaces/IEIP1155UMetadataURI.sol": {
+      "lastModificationDate": 1661977819736,
       "contentHash": "0f823b92a19f3447a5dc481134161a59",
       "sourceName": "contracts/interfaces/IEIP1155UMetadataURI.sol",
       "solcConfig": {
@@ -2379,50 +2645,8 @@
         "IEIP1155UMetadataURI"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/interfaces/IEIP-1155UReceiver.sol": {
-      "lastModificationDate": 1661977478431,
-      "contentHash": "ebb7bbc5707aa208167d8701c3a79bf5",
-      "sourceName": "contracts/interfaces/IEIP-1155UReceiver.sol",
-      "solcConfig": {
-        "version": "0.8.16",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata",
-                "devdoc",
-                "userdoc",
-                "storageLayout",
-                "evm.gasEstimates"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": true
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.16"
-      ],
-      "artifacts": [
-        "IEIP1155UReceiver"
-      ]
-    },
-    "/Users/nicolascloutier/ecosystem1/contracts/tokens/EIP1155U/EIP1155UStorage.sol": {
-      "lastModificationDate": 1661977478430,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/tokens/EIP1155U/EIP1155UStorage.sol": {
+      "lastModificationDate": 1661977819740,
       "contentHash": "c2ec49f852cad0b35f93abad151e477e",
       "sourceName": "contracts/tokens/EIP1155U/EIP1155UStorage.sol",
       "solcConfig": {
@@ -2466,454 +2690,8 @@
         "EIP1155UStorage"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/tokens/EIP1155U/EIP1155UReceiver.sol": {
-      "lastModificationDate": 1661977478429,
-      "contentHash": "29984f2a3a835f75f33717d1b229a99c",
-      "sourceName": "contracts/tokens/EIP1155U/EIP1155UReceiver.sol",
-      "solcConfig": {
-        "version": "0.8.16",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata",
-                "devdoc",
-                "userdoc",
-                "storageLayout",
-                "evm.gasEstimates"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": true
-          }
-        }
-      },
-      "imports": [
-        "../../interfaces/IEIP-1155UReceiver.sol",
-        "@openzeppelin/contracts/utils/introspection/ERC165.sol"
-      ],
-      "versionPragmas": [
-        "0.8.16"
-      ],
-      "artifacts": [
-        "EIP1155UReceiver"
-      ]
-    },
-    "/Users/nicolascloutier/ecosystem1/contracts/tokens/EIP1155U/EIP1155UHolder.sol": {
-      "lastModificationDate": 1661977478430,
-      "contentHash": "2006c76ceb4ab5eae87d7e63b88a783e",
-      "sourceName": "contracts/tokens/EIP1155U/EIP1155UHolder.sol",
-      "solcConfig": {
-        "version": "0.8.16",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata",
-                "devdoc",
-                "userdoc",
-                "storageLayout",
-                "evm.gasEstimates"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": true
-          }
-        }
-      },
-      "imports": [
-        "./EIP1155UReceiver.sol"
-      ],
-      "versionPragmas": [
-        "0.8.16"
-      ],
-      "artifacts": [
-        "EIP1155UHolder"
-      ]
-    },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/token/ERC1155/IERC1155.sol": {
-      "lastModificationDate": 1661977483559,
-      "contentHash": "d5a8f6e07ca38ec384856cfe9f08a867",
-      "sourceName": "@openzeppelin/contracts/token/ERC1155/IERC1155.sol",
-      "solcConfig": {
-        "version": "0.8.16",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata",
-                "devdoc",
-                "userdoc",
-                "storageLayout",
-                "evm.gasEstimates"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": true
-          }
-        }
-      },
-      "imports": [
-        "../../utils/introspection/IERC165.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IERC1155"
-      ]
-    },
-    "/Users/nicolascloutier/ecosystem1/contracts/tokens/xWrapper/xTokenERC20.sol": {
-      "lastModificationDate": 1662174942037,
-      "contentHash": "dd11171b19caa55da71376dffcc0fd85",
-      "sourceName": "contracts/tokens/xWrapper/xTokenERC20.sol",
-      "solcConfig": {
-        "version": "0.8.16",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata",
-                "devdoc",
-                "userdoc",
-                "storageLayout",
-                "evm.gasEstimates"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": true
-          }
-        }
-      },
-      "imports": [
-        "./xToken.sol",
-        "@openzeppelin/contracts/token/ERC20/ERC20.sol",
-        "@openzeppelin/contracts/token/ERC721/IERC721.sol",
-        "@openzeppelin/contracts/token/ERC1155/IERC1155.sol"
-      ],
-      "versionPragmas": [
-        "0.8.16"
-      ],
-      "artifacts": [
-        "xTokenERC20"
-      ]
-    },
-    "/Users/nicolascloutier/ecosystem1/contracts/tokens/xWrapper/xToken.sol": {
-      "lastModificationDate": 1662174525188,
-      "contentHash": "3bbe9b9b043f2a3a036170c0ff8f144a",
-      "sourceName": "contracts/tokens/xWrapper/xToken.sol",
-      "solcConfig": {
-        "version": "0.8.16",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata",
-                "devdoc",
-                "userdoc",
-                "storageLayout",
-                "evm.gasEstimates"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": true
-          }
-        }
-      },
-      "imports": [
-        "./IxToken.sol"
-      ],
-      "versionPragmas": [
-        "0.8.16"
-      ],
-      "artifacts": [
-        "xToken"
-      ]
-    },
-    "/Users/nicolascloutier/ecosystem1/contracts/controllers/UserController.sol": {
-      "lastModificationDate": 1661977478428,
-      "contentHash": "ba0585d60a2be4edf78126deaed4ccb5",
-      "sourceName": "contracts/controllers/UserController.sol",
-      "solcConfig": {
-        "version": "0.8.16",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata",
-                "devdoc",
-                "userdoc",
-                "storageLayout",
-                "evm.gasEstimates"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": true
-          }
-        }
-      },
-      "imports": [
-        "./BaseController.sol",
-        "../interfaces/IEIP721U.sol"
-      ],
-      "versionPragmas": [
-        "0.8.16"
-      ],
-      "artifacts": [
-        "UserController"
-      ]
-    },
-    "/Users/nicolascloutier/ecosystem1/contracts/modules/Bridge.sol": {
-      "lastModificationDate": 1662168294019,
-      "contentHash": "5808a302a03d62cad69d56e8b2062fcb",
-      "sourceName": "contracts/modules/Bridge.sol",
-      "solcConfig": {
-        "version": "0.8.16",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata",
-                "devdoc",
-                "userdoc",
-                "storageLayout",
-                "evm.gasEstimates"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": true
-          }
-        }
-      },
-      "imports": [
-        "../interfaces/IRootBridge.sol",
-        "@openzeppelin/contracts/access/AccessControlEnumerable.sol",
-        "@openzeppelin/contracts/utils/Context.sol"
-      ],
-      "versionPragmas": [
-        "0.8.16"
-      ],
-      "artifacts": [
-        "Bridge"
-      ]
-    },
-    "/Users/nicolascloutier/ecosystem1/contracts/interfaces/IRootBridge.sol": {
-      "lastModificationDate": 1662167203167,
-      "contentHash": "72f4e20296907f4ebc061f0086ff7b54",
-      "sourceName": "contracts/interfaces/IRootBridge.sol",
-      "solcConfig": {
-        "version": "0.8.16",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata",
-                "devdoc",
-                "userdoc",
-                "storageLayout",
-                "evm.gasEstimates"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": true
-          }
-        }
-      },
-      "imports": [
-        "./IRootBridgeObserver.sol"
-      ],
-      "versionPragmas": [
-        "0.8.16"
-      ],
-      "artifacts": [
-        "IRouteBridge"
-      ]
-    },
-    "/Users/nicolascloutier/ecosystem1/contracts/interfaces/IRootBridgeObserver.sol": {
-      "lastModificationDate": 1662166358470,
-      "contentHash": "626e22e27c0976dd0d467f6bf3a68f4c",
-      "sourceName": "contracts/interfaces/IRootBridgeObserver.sol",
-      "solcConfig": {
-        "version": "0.8.16",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata",
-                "devdoc",
-                "userdoc",
-                "storageLayout",
-                "evm.gasEstimates"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": true
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.16"
-      ],
-      "artifacts": [
-        "IBridgeTransaction",
-        "IRootBridgeObserver"
-      ]
-    },
-    "/Users/nicolascloutier/ecosystem1/contracts/interfaces/IUser.sol": {
-      "lastModificationDate": 1661977478430,
-      "contentHash": "31c8e2c77acebad62bd6aeae738422ad",
-      "sourceName": "contracts/interfaces/IUser.sol",
-      "solcConfig": {
-        "version": "0.8.16",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata",
-                "devdoc",
-                "userdoc",
-                "storageLayout",
-                "evm.gasEstimates"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": true
-          }
-        }
-      },
-      "imports": [
-        "./IEIP-1155U.sol"
-      ],
-      "versionPragmas": [
-        "0.8.16"
-      ],
-      "artifacts": [
-        "IUser"
-      ]
-    },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol": {
-      "lastModificationDate": 1661977483564,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol": {
+      "lastModificationDate": 1661977873687,
       "contentHash": "6baa887a798e95b14f34e093f117e9b2",
       "sourceName": "@openzeppelin/contracts/proxy/ERC1967/ERC1967Upgrade.sol",
       "solcConfig": {
@@ -2959,8 +2737,8 @@
         "ERC1967Upgrade"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/proxy/beacon/IBeacon.sol": {
-      "lastModificationDate": 1661977483582,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/proxy/beacon/IBeacon.sol": {
+      "lastModificationDate": 1661977873790,
       "contentHash": "b6bd23bf19e90b771337037706470933",
       "sourceName": "@openzeppelin/contracts/proxy/beacon/IBeacon.sol",
       "solcConfig": {
@@ -3001,8 +2779,8 @@
         "IBeacon"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/interfaces/draft-IERC1822.sol": {
-      "lastModificationDate": 1661977483651,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/interfaces/draft-IERC1822.sol": {
+      "lastModificationDate": 1661977873618,
       "contentHash": "2858d98e74e67987ec81b39605230b74",
       "sourceName": "@openzeppelin/contracts/interfaces/draft-IERC1822.sol",
       "solcConfig": {
@@ -3043,8 +2821,8 @@
         "IERC1822Proxiable"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/utils/StorageSlot.sol": {
-      "lastModificationDate": 1661977483598,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/utils/StorageSlot.sol": {
+      "lastModificationDate": 1661977873887,
       "contentHash": "f993f8f50186952a59ee5e3a30b68222",
       "sourceName": "@openzeppelin/contracts/utils/StorageSlot.sol",
       "solcConfig": {
@@ -3085,8 +2863,8 @@
         "StorageSlot"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol": {
-      "lastModificationDate": 1661977483564,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol": {
+      "lastModificationDate": 1661977873686,
       "contentHash": "3fc3c7c0a2956f36e766691bb9473b06",
       "sourceName": "@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol",
       "solcConfig": {
@@ -3130,8 +2908,8 @@
         "ERC1967Proxy"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/@openzeppelin/contracts/proxy/Proxy.sol": {
-      "lastModificationDate": 1661977483564,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/proxy/Proxy.sol": {
+      "lastModificationDate": 1661977873874,
       "contentHash": "40b3d81a836d50ff47e03893dcaaf204",
       "sourceName": "@openzeppelin/contracts/proxy/Proxy.sol",
       "solcConfig": {
@@ -3172,8 +2950,8 @@
         "Proxy"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/proxies/AKXGateway.sol": {
-      "lastModificationDate": 1662163439228,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/proxies/AKXGateway.sol": {
+      "lastModificationDate": 1662160235957,
       "contentHash": "7dadb0b221651a5ee02a742d354bcf26",
       "sourceName": "contracts/proxies/AKXGateway.sol",
       "solcConfig": {
@@ -3216,8 +2994,8 @@
         "AKXGateway"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/modules/BaseModule.sol": {
-      "lastModificationDate": 1661977478424,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/modules/BaseModule.sol": {
+      "lastModificationDate": 1661977819737,
       "contentHash": "8de2acfc95ba85527f9e0e4dadd67a92",
       "sourceName": "contracts/modules/BaseModule.sol",
       "solcConfig": {
@@ -3261,8 +3039,8 @@
         "BaseModule"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/interfaces/IModule.sol": {
-      "lastModificationDate": 1661977478432,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/interfaces/IModule.sol": {
+      "lastModificationDate": 1661977819736,
       "contentHash": "a7a7c29e5dbd1549a8da14615b6dc9da",
       "sourceName": "contracts/interfaces/IModule.sol",
       "solcConfig": {
@@ -3303,8 +3081,8 @@
         "IModule"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/modules/pool/PoolModule.sol": {
-      "lastModificationDate": 1661977478428,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/modules/pool/PoolModule.sol": {
+      "lastModificationDate": 1661977819738,
       "contentHash": "757c3b7fc23a31d19b7c2301d168cf2e",
       "sourceName": "contracts/modules/pool/PoolModule.sol",
       "solcConfig": {
@@ -3349,8 +3127,8 @@
         "PoolModule"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/modules/ModuleRegistry.sol": {
-      "lastModificationDate": 1661977478425,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/modules/ModuleRegistry.sol": {
+      "lastModificationDate": 1661977819738,
       "contentHash": "a0bfc2a005a90bc458c6b4627b60da8a",
       "sourceName": "contracts/modules/ModuleRegistry.sol",
       "solcConfig": {
@@ -3394,8 +3172,8 @@
         "ModuleRegistry"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/interfaces/IModuleRegistry.sol": {
-      "lastModificationDate": 1661977478432,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/interfaces/IModuleRegistry.sol": {
+      "lastModificationDate": 1661977819737,
       "contentHash": "66ad3a5ca4e328fe5ef070ec8309308b",
       "sourceName": "contracts/interfaces/IModuleRegistry.sol",
       "solcConfig": {
@@ -3436,8 +3214,8 @@
         "IModuleRegistry"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/modules/DummyModule.sol": {
-      "lastModificationDate": 1661977478427,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/modules/DummyModule.sol": {
+      "lastModificationDate": 1661977819738,
       "contentHash": "0c8534d182513aeedddbf76ebe6e639b",
       "sourceName": "contracts/modules/DummyModule.sol",
       "solcConfig": {
@@ -3482,8 +3260,409 @@
         "DummyModule"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/interfaces/IEcosystemRouter.sol": {
-      "lastModificationDate": 1662167535677,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/tokens/xWrapper/xTokenERC20.sol": {
+      "lastModificationDate": 1662292038535,
+      "contentHash": "dd11171b19caa55da71376dffcc0fd85",
+      "sourceName": "contracts/tokens/xWrapper/xTokenERC20.sol",
+      "solcConfig": {
+        "version": "0.8.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./xToken.sol",
+        "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+        "@openzeppelin/contracts/token/ERC721/IERC721.sol",
+        "@openzeppelin/contracts/token/ERC1155/IERC1155.sol"
+      ],
+      "versionPragmas": [
+        "0.8.16"
+      ],
+      "artifacts": [
+        "xTokenERC20"
+      ]
+    },
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/tokens/xWrapper/xToken.sol": {
+      "lastModificationDate": 1662292038535,
+      "contentHash": "3bbe9b9b043f2a3a036170c0ff8f144a",
+      "sourceName": "contracts/tokens/xWrapper/xToken.sol",
+      "solcConfig": {
+        "version": "0.8.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./IxToken.sol"
+      ],
+      "versionPragmas": [
+        "0.8.16"
+      ],
+      "artifacts": [
+        "xToken"
+      ]
+    },
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/@openzeppelin/contracts/token/ERC1155/IERC1155.sol": {
+      "lastModificationDate": 1661977873797,
+      "contentHash": "d5a8f6e07ca38ec384856cfe9f08a867",
+      "sourceName": "@openzeppelin/contracts/token/ERC1155/IERC1155.sol",
+      "solcConfig": {
+        "version": "0.8.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../../utils/introspection/IERC165.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC1155"
+      ]
+    },
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/controllers/UserController.sol": {
+      "lastModificationDate": 1661977819734,
+      "contentHash": "ba0585d60a2be4edf78126deaed4ccb5",
+      "sourceName": "contracts/controllers/UserController.sol",
+      "solcConfig": {
+        "version": "0.8.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./BaseController.sol",
+        "../interfaces/IEIP721U.sol"
+      ],
+      "versionPragmas": [
+        "0.8.16"
+      ],
+      "artifacts": [
+        "UserController"
+      ]
+    },
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/modules/Bridge.sol": {
+      "lastModificationDate": 1662168383742,
+      "contentHash": "5808a302a03d62cad69d56e8b2062fcb",
+      "sourceName": "contracts/modules/Bridge.sol",
+      "solcConfig": {
+        "version": "0.8.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IRootBridge.sol",
+        "@openzeppelin/contracts/access/AccessControlEnumerable.sol",
+        "@openzeppelin/contracts/utils/Context.sol"
+      ],
+      "versionPragmas": [
+        "0.8.16"
+      ],
+      "artifacts": [
+        "Bridge"
+      ]
+    },
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/interfaces/IRootBridge.sol": {
+      "lastModificationDate": 1662168383741,
+      "contentHash": "72f4e20296907f4ebc061f0086ff7b54",
+      "sourceName": "contracts/interfaces/IRootBridge.sol",
+      "solcConfig": {
+        "version": "0.8.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./IRootBridgeObserver.sol"
+      ],
+      "versionPragmas": [
+        "0.8.16"
+      ],
+      "artifacts": [
+        "IRouteBridge"
+      ]
+    },
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/interfaces/IRootBridgeObserver.sol": {
+      "lastModificationDate": 1662168383741,
+      "contentHash": "626e22e27c0976dd0d467f6bf3a68f4c",
+      "sourceName": "contracts/interfaces/IRootBridgeObserver.sol",
+      "solcConfig": {
+        "version": "0.8.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.16"
+      ],
+      "artifacts": [
+        "IBridgeTransaction",
+        "IRootBridgeObserver"
+      ]
+    },
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/interfaces/IUser.sol": {
+      "lastModificationDate": 1661977819737,
+      "contentHash": "31c8e2c77acebad62bd6aeae738422ad",
+      "sourceName": "contracts/interfaces/IUser.sol",
+      "solcConfig": {
+        "version": "0.8.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./IEIP-1155U.sol"
+      ],
+      "versionPragmas": [
+        "0.8.16"
+      ],
+      "artifacts": [
+        "IUser"
+      ]
+    },
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/tokens/EIP1155U/EIP1155UHolder.sol": {
+      "lastModificationDate": 1661977819740,
+      "contentHash": "2006c76ceb4ab5eae87d7e63b88a783e",
+      "sourceName": "contracts/tokens/EIP1155U/EIP1155UHolder.sol",
+      "solcConfig": {
+        "version": "0.8.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./EIP1155UReceiver.sol"
+      ],
+      "versionPragmas": [
+        "0.8.16"
+      ],
+      "artifacts": [
+        "EIP1155UHolder"
+      ]
+    },
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/interfaces/IEcosystemRouter.sol": {
+      "lastModificationDate": 1662168383741,
       "contentHash": "c2cbf0d30a29b8b934d2aa0bd7317ec9",
       "sourceName": "contracts/interfaces/IEcosystemRouter.sol",
       "solcConfig": {
@@ -3524,8 +3703,8 @@
         "IEcosystemRouter"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/interfaces/IUserRecord.sol": {
-      "lastModificationDate": 1661977478431,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/interfaces/IUserRecord.sol": {
+      "lastModificationDate": 1661977819737,
       "contentHash": "3c9853e41059fe02d6773ee2575d58e0",
       "sourceName": "contracts/interfaces/IUserRecord.sol",
       "solcConfig": {
@@ -3566,8 +3745,8 @@
         "IUserRecord"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/interfaces/IUserRegistry.sol": {
-      "lastModificationDate": 1661977478432,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/interfaces/IUserRegistry.sol": {
+      "lastModificationDate": 1661977819737,
       "contentHash": "8ed8d9c9b5b80d0a5be70e2db5a64109",
       "sourceName": "contracts/interfaces/IUserRegistry.sol",
       "solcConfig": {
@@ -3608,8 +3787,8 @@
         "IUserRegistry"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/Lock.sol": {
-      "lastModificationDate": 1661977478419,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/Lock.sol": {
+      "lastModificationDate": 1661977819734,
       "contentHash": "6b2b4e5f78898e06c05af92d32436ca9",
       "sourceName": "contracts/Lock.sol",
       "solcConfig": {
@@ -3652,8 +3831,8 @@
         "Lock"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/node_modules/hardhat/console.sol": {
-      "lastModificationDate": 1661977483476,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/node_modules/hardhat/console.sol": {
+      "lastModificationDate": 1661977874025,
       "contentHash": "4ff3cd2f6272c9a6516e9ee4f2b967d3",
       "sourceName": "hardhat/console.sol",
       "solcConfig": {
@@ -3694,8 +3873,8 @@
         "console"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/modules/bank/IStaking.sol": {
-      "lastModificationDate": 1662163439227,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/modules/bank/IStaking.sol": {
+      "lastModificationDate": 1662147360918,
       "contentHash": "846acadf0c07e6b16219f7f20b93c685",
       "sourceName": "contracts/modules/bank/IStaking.sol",
       "solcConfig": {
@@ -3736,8 +3915,8 @@
         "IStaking"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/modules/EcosystemRouter.sol": {
-      "lastModificationDate": 1662163971779,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/modules/EcosystemRouter.sol": {
+      "lastModificationDate": 1662168383742,
       "contentHash": "ab4b11f8082a84df6cfa99feeac02c8c",
       "sourceName": "contracts/modules/EcosystemRouter.sol",
       "solcConfig": {
@@ -3780,8 +3959,8 @@
         "EcosystemRouter"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/modules/ModuleLoader.sol": {
-      "lastModificationDate": 1661977478425,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/modules/ModuleLoader.sol": {
+      "lastModificationDate": 1661977819738,
       "contentHash": "085284a30a02bfa1a6e3287fbe0d0c63",
       "sourceName": "contracts/modules/ModuleLoader.sol",
       "solcConfig": {
@@ -3822,8 +4001,8 @@
         "ModuleLoader"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/modules/pool/IPool.sol": {
-      "lastModificationDate": 1661977478428,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/modules/pool/IPool.sol": {
+      "lastModificationDate": 1661977819738,
       "contentHash": "312ea7ab216e26b1c76fb3eca760e6fe",
       "sourceName": "contracts/modules/pool/IPool.sol",
       "solcConfig": {
@@ -3864,8 +4043,8 @@
         "IPool"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/modules/pool/Pool.sol": {
-      "lastModificationDate": 1661977478428,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/modules/pool/Pool.sol": {
+      "lastModificationDate": 1661977819738,
       "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
       "sourceName": "contracts/modules/pool/Pool.sol",
       "solcConfig": {
@@ -3902,8 +4081,8 @@
       "versionPragmas": [],
       "artifacts": []
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/registry/HardwareRegistry.sol": {
-      "lastModificationDate": 1662163904551,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/registry/HardwareRegistry.sol": {
+      "lastModificationDate": 1662168383742,
       "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
       "sourceName": "contracts/registry/HardwareRegistry.sol",
       "solcConfig": {
@@ -3940,8 +4119,8 @@
       "versionPragmas": [],
       "artifacts": []
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/resolvers/DidRegistry.sol": {
-      "lastModificationDate": 1662163439228,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/resolvers/DidRegistry.sol": {
+      "lastModificationDate": 1662133306761,
       "contentHash": "1ebad2aa1edb88a2f7d2974aa4d8a819",
       "sourceName": "contracts/resolvers/DidRegistry.sol",
       "solcConfig": {
@@ -3982,8 +4161,8 @@
         "DidRegistry"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/utils/Hashing.sol": {
-      "lastModificationDate": 1661977478420,
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/utils/Hashing.sol": {
+      "lastModificationDate": 1661977819741,
       "contentHash": "a38b4aa38f55bafe9a43e3da73463638",
       "sourceName": "contracts/utils/Hashing.sol",
       "solcConfig": {
@@ -4024,10 +4203,10 @@
         "Hashing"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/tokens/ERC2055/IERC2055.sol": {
-      "lastModificationDate": 1662264800913,
-      "contentHash": "aa0b7135e4e3329057e63148a1cfb045",
-      "sourceName": "contracts/tokens/ERC2055/IERC2055.sol",
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/LabzERC2055/LabzERC2055.sol": {
+      "lastModificationDate": 1662324320936,
+      "contentHash": "6711dc80112660746dfa8000f59bf01b",
+      "sourceName": "contracts/LabzERC2055/LabzERC2055.sol",
       "solcConfig": {
         "version": "0.8.16",
         "settings": {
@@ -4059,19 +4238,22 @@
         }
       },
       "imports": [
-        "@openzeppelin/contracts/token/ERC20/IERC20.sol"
+        "../tokens/ERC2055/ERC2055.sol",
+        "@openzeppelin/contracts/security/ReentrancyGuard.sol",
+        "./Pricing.sol",
+        "./LibMath.sol"
       ],
       "versionPragmas": [
         "0.8.16"
       ],
       "artifacts": [
-        "IERC2055"
+        "LabzERC2055"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/tokens/ERC2055/ERC2055Storage.sol": {
-      "lastModificationDate": 1662297192133,
-      "contentHash": "ae6b9e00600c40a6dc5ee4b5062de210",
-      "sourceName": "contracts/tokens/ERC2055/ERC2055Storage.sol",
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/LabzERC2055/Pricing.sol": {
+      "lastModificationDate": 1662324278514,
+      "contentHash": "4aeff02cbfefb92ed82d4a376247a79d",
+      "sourceName": "contracts/LabzERC2055/Pricing.sol",
       "solcConfig": {
         "version": "0.8.16",
         "settings": {
@@ -4102,20 +4284,18 @@
           }
         }
       },
-      "imports": [
-        "./ERC2055.sol"
-      ],
+      "imports": [],
       "versionPragmas": [
         "0.8.16"
       ],
       "artifacts": [
-        "ERC2055Storage"
+        "Pricing"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/tokens/ERC2055/ERC2055.sol": {
-      "lastModificationDate": 1662296540636,
-      "contentHash": "3dbbf79495bc8c5cf970b4ce5e5adb0a",
-      "sourceName": "contracts/tokens/ERC2055/ERC2055.sol",
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/LabzERC2055/LibMath.sol": {
+      "lastModificationDate": 1662322617971,
+      "contentHash": "e98774c6bca0ff11a695f5816af5dfff",
+      "sourceName": "contracts/LabzERC2055/LibMath.sol",
       "solcConfig": {
         "version": "0.8.16",
         "settings": {
@@ -4146,21 +4326,18 @@
           }
         }
       },
-      "imports": [
-        "./ERC2055Storage.sol",
-        "./IERC2055.sol"
-      ],
+      "imports": [],
       "versionPragmas": [
         "0.8.16"
       ],
       "artifacts": [
-        "ERC2055"
+        "LibMath"
       ]
     },
-    "/Users/nicolascloutier/ecosystem1/contracts/tokens/ERC2055/mock/ERC2055Implementation.sol": {
-      "lastModificationDate": 1662297337222,
-      "contentHash": "457e584fa36ee41d7180ae9c95981679",
-      "sourceName": "contracts/tokens/ERC2055/mock/ERC2055Implementation.sol",
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/LabzERC2055/VipSale.sol": {
+      "lastModificationDate": 1662320601142,
+      "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+      "sourceName": "contracts/LabzERC2055/VipSale.sol",
       "solcConfig": {
         "version": "0.8.16",
         "settings": {
@@ -4191,17 +4368,9 @@
           }
         }
       },
-      "imports": [
-        "../ERC2055Storage.sol",
-        "../ERC2055.sol",
-        "@openzeppelin/contracts/utils/Counters.sol"
-      ],
-      "versionPragmas": [
-        "0.8.16"
-      ],
-      "artifacts": [
-        "ERC2055Implementation"
-      ]
+      "imports": [],
+      "versionPragmas": [],
+      "artifacts": []
     }
   }
 }

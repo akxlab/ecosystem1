@@ -5,7 +5,7 @@ import "./ERC2055.sol";
 
 
 abstract contract ERC2055Storage {
-    mapping(uint256 => address) private _tokenIdtoAddresses;
+    mapping(uint256 => address) internal _tokenIdtoAddresses;
     mapping(uint256 => address) public ownerOf;
     mapping(uint256 => string) public names;
     mapping(uint256 => string) public symbols;

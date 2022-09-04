@@ -31,7 +31,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
         waitConfirmations:2
     });
 
-    hre.ethernal.push({name: "UserDataServiceResolver", address: services.address});
+    //hre.ethernal.push({name: "UserDataServiceResolver", address: services.address});
 
 
 
@@ -43,17 +43,25 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
             waitConfirmations:2
     });
 
-    hre.ethernal.push({name: "DidRegistry", address: didRegistry.address});
+    //hre.ethernal.push({name: "DidRegistry", address: didRegistry.address});
 
 
-    const xtoken = await deploy("xTokenERC20",{
-    from: deployer,
-        args: ["xTest", "xTest"],
+    const ERC2055 = await deploy("ERC2055",{
+        from: deployer,
+        args: ["ERC2055 DEFAULT SINGLE (TEST)", "ERC2055"],
         log: true,
         autoMine: true,
         waitConfirmations:2
-});
-hre.ethernal.push({name: "xTokenERC20", address: xtoken.address});
+    });
+
+    const ERC2055Impl = await deploy("ERC2055Implementation",{
+        from: deployer,
+        args: ["ERC2055 DEFAULT MULTI (TEST)", "ERC2055MULTI"],
+        log: true,
+        autoMine: true,
+        waitConfirmations:2
+    });
+
 
 
    /* const baseRegistry = await deploy("BaseUserRegistry", {

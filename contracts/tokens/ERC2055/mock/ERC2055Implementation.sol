@@ -62,7 +62,7 @@ contract ERC2055Implementation is ERC2055, ERC2055Storage {
         addToken(erc2055Token);
     }
 
-    function _setToken(address _token) internal returns(Token memory _tok) {
+    function _setToken(address _token) internal view returns(Token memory _tok) {
         ERC2055 _t = ERC2055(_token);
         _tok = Token(_t.name(), _t.symbol(), _t.totalSupply(), _t.maxSupply(),_t.decimals());
     }
@@ -76,14 +76,14 @@ contract ERC2055Implementation is ERC2055, ERC2055Storage {
     }
 
     function _underlyingName(uint256 tokenId)
-        internal
+        internal view
         returns (string memory __underlyingName)
     {
         __underlyingName = names[tokenId];
     }
 
     function _underlyingSymbol(uint256 tokenId)
-        internal
+        internal view
         returns (string memory __underlyingSymbol)
     {
         __underlyingSymbol = symbols[tokenId];

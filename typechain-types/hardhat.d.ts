@@ -293,6 +293,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC2055__factory>;
     getContractFactory(
+      name: "ERC2055Implementation",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC2055Implementation__factory>;
+    getContractFactory(
       name: "IxToken",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IxToken__factory>;
@@ -663,6 +667,11 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.IERC2055>;
+    getContractAt(
+      name: "ERC2055Implementation",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC2055Implementation>;
     getContractAt(
       name: "IxToken",
       address: string,

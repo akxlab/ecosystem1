@@ -95,47 +95,71 @@ export declare namespace ERC2055Storage {
 
 export interface ERC2055StorageInterface extends utils.Interface {
   functions: {
+    "_decimals(uint256)": FunctionFragment;
     "_holdsTokenIds(address,uint256)": FunctionFragment;
+    "_tDecimal(uint256)": FunctionFragment;
+    "_tMaxSupply(uint256)": FunctionFragment;
+    "_tName(uint256)": FunctionFragment;
+    "_tSymbol(uint256)": FunctionFragment;
+    "_tTotalSupply(uint256)": FunctionFragment;
     "allowances(uint256,address)": FunctionFragment;
     "balancesOf(address)": FunctionFragment;
-    "decimal(uint256)": FunctionFragment;
-    "decimals(uint256)": FunctionFragment;
-    "maxSupply(uint256)": FunctionFragment;
     "metas(uint256)": FunctionFragment;
-    "name(uint256)": FunctionFragment;
     "names(uint256)": FunctionFragment;
     "ownerOf(uint256)": FunctionFragment;
     "supply(uint256)": FunctionFragment;
-    "symbol(uint256)": FunctionFragment;
     "symbols(uint256)": FunctionFragment;
     "token(uint256)": FunctionFragment;
     "tokenIds()": FunctionFragment;
-    "totalSupply(uint256)": FunctionFragment;
   };
 
   getFunction(
     nameOrSignatureOrTopic:
+      | "_decimals"
       | "_holdsTokenIds"
+      | "_tDecimal"
+      | "_tMaxSupply"
+      | "_tName"
+      | "_tSymbol"
+      | "_tTotalSupply"
       | "allowances"
       | "balancesOf"
-      | "decimal"
-      | "decimals"
-      | "maxSupply"
       | "metas"
-      | "name"
       | "names"
       | "ownerOf"
       | "supply"
-      | "symbol"
       | "symbols"
       | "token"
       | "tokenIds"
-      | "totalSupply"
   ): FunctionFragment;
 
   encodeFunctionData(
+    functionFragment: "_decimals",
+    values: [PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(
     functionFragment: "_holdsTokenIds",
     values: [PromiseOrValue<string>, PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "_tDecimal",
+    values: [PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "_tMaxSupply",
+    values: [PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "_tName",
+    values: [PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "_tSymbol",
+    values: [PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "_tTotalSupply",
+    values: [PromiseOrValue<BigNumberish>]
   ): string;
   encodeFunctionData(
     functionFragment: "allowances",
@@ -146,23 +170,7 @@ export interface ERC2055StorageInterface extends utils.Interface {
     values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
-    functionFragment: "decimal",
-    values: [PromiseOrValue<BigNumberish>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "decimals",
-    values: [PromiseOrValue<BigNumberish>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "maxSupply",
-    values: [PromiseOrValue<BigNumberish>]
-  ): string;
-  encodeFunctionData(
     functionFragment: "metas",
-    values: [PromiseOrValue<BigNumberish>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "name",
     values: [PromiseOrValue<BigNumberish>]
   ): string;
   encodeFunctionData(
@@ -178,10 +186,6 @@ export interface ERC2055StorageInterface extends utils.Interface {
     values: [PromiseOrValue<BigNumberish>]
   ): string;
   encodeFunctionData(
-    functionFragment: "symbol",
-    values: [PromiseOrValue<BigNumberish>]
-  ): string;
-  encodeFunctionData(
     functionFragment: "symbols",
     values: [PromiseOrValue<BigNumberish>]
   ): string;
@@ -190,33 +194,32 @@ export interface ERC2055StorageInterface extends utils.Interface {
     values: [PromiseOrValue<BigNumberish>]
   ): string;
   encodeFunctionData(functionFragment: "tokenIds", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "totalSupply",
-    values: [PromiseOrValue<BigNumberish>]
-  ): string;
 
+  decodeFunctionResult(functionFragment: "_decimals", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "_holdsTokenIds",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "_tDecimal", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "_tMaxSupply",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "_tName", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "_tSymbol", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "_tTotalSupply",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "allowances", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "balancesOf", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "decimal", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "decimals", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "maxSupply", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "metas", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "names", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "ownerOf", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "supply", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "symbol", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "symbols", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "token", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "tokenIds", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "totalSupply",
-    data: BytesLike
-  ): Result;
 
   events: {};
 }
@@ -248,9 +251,39 @@ export interface ERC2055Storage extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
+    _decimals(
+      arg0: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<[number]>;
+
     _holdsTokenIds(
       arg0: PromiseOrValue<string>,
       arg1: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
+    _tDecimal(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<[number]>;
+
+    _tMaxSupply(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
+    _tName(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<[string]>;
+
+    _tSymbol(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<[string]>;
+
+    _tTotalSupply(
+      tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<[BigNumber]>;
 
@@ -265,21 +298,6 @@ export interface ERC2055Storage extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[ERC2055Storage.BalancesStructOutput[]]>;
 
-    decimal(
-      tokenId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<[number]>;
-
-    decimals(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<[number]>;
-
-    maxSupply(
-      tokenId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
-
     metas(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -288,11 +306,6 @@ export interface ERC2055Storage extends BaseContract {
         opts: ERC2055Storage.OptionalTokenMetasStructOutput;
       }
     >;
-
-    name(
-      tokenId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<[string]>;
 
     names(
       arg0: PromiseOrValue<BigNumberish>,
@@ -309,11 +322,6 @@ export interface ERC2055Storage extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[BigNumber]>;
 
-    symbol(
-      tokenId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<[string]>;
-
     symbols(
       arg0: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -325,16 +333,41 @@ export interface ERC2055Storage extends BaseContract {
     ): Promise<[ERC2055Storage.TokenStructOutput]>;
 
     tokenIds(overrides?: CallOverrides): Promise<[BigNumber[]]>;
-
-    totalSupply(
-      tokenId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
   };
+
+  _decimals(
+    arg0: PromiseOrValue<BigNumberish>,
+    overrides?: CallOverrides
+  ): Promise<number>;
 
   _holdsTokenIds(
     arg0: PromiseOrValue<string>,
     arg1: PromiseOrValue<BigNumberish>,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  _tDecimal(
+    tokenId: PromiseOrValue<BigNumberish>,
+    overrides?: CallOverrides
+  ): Promise<number>;
+
+  _tMaxSupply(
+    tokenId: PromiseOrValue<BigNumberish>,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  _tName(
+    tokenId: PromiseOrValue<BigNumberish>,
+    overrides?: CallOverrides
+  ): Promise<string>;
+
+  _tSymbol(
+    tokenId: PromiseOrValue<BigNumberish>,
+    overrides?: CallOverrides
+  ): Promise<string>;
+
+  _tTotalSupply(
+    tokenId: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
@@ -349,30 +382,10 @@ export interface ERC2055Storage extends BaseContract {
     overrides?: CallOverrides
   ): Promise<ERC2055Storage.BalancesStructOutput[]>;
 
-  decimal(
-    tokenId: PromiseOrValue<BigNumberish>,
-    overrides?: CallOverrides
-  ): Promise<number>;
-
-  decimals(
-    arg0: PromiseOrValue<BigNumberish>,
-    overrides?: CallOverrides
-  ): Promise<number>;
-
-  maxSupply(
-    tokenId: PromiseOrValue<BigNumberish>,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
-
   metas(
     tokenId: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
   ): Promise<ERC2055Storage.OptionalTokenMetasStructOutput>;
-
-  name(
-    tokenId: PromiseOrValue<BigNumberish>,
-    overrides?: CallOverrides
-  ): Promise<string>;
 
   names(
     arg0: PromiseOrValue<BigNumberish>,
@@ -389,11 +402,6 @@ export interface ERC2055Storage extends BaseContract {
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
-  symbol(
-    tokenId: PromiseOrValue<BigNumberish>,
-    overrides?: CallOverrides
-  ): Promise<string>;
-
   symbols(
     arg0: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
@@ -406,15 +414,40 @@ export interface ERC2055Storage extends BaseContract {
 
   tokenIds(overrides?: CallOverrides): Promise<BigNumber[]>;
 
-  totalSupply(
-    tokenId: PromiseOrValue<BigNumberish>,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
-
   callStatic: {
+    _decimals(
+      arg0: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<number>;
+
     _holdsTokenIds(
       arg0: PromiseOrValue<string>,
       arg1: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    _tDecimal(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<number>;
+
+    _tMaxSupply(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    _tName(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<string>;
+
+    _tSymbol(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<string>;
+
+    _tTotalSupply(
+      tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -429,30 +462,10 @@ export interface ERC2055Storage extends BaseContract {
       overrides?: CallOverrides
     ): Promise<ERC2055Storage.BalancesStructOutput[]>;
 
-    decimal(
-      tokenId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<number>;
-
-    decimals(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<number>;
-
-    maxSupply(
-      tokenId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
     metas(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<ERC2055Storage.OptionalTokenMetasStructOutput>;
-
-    name(
-      tokenId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<string>;
 
     names(
       arg0: PromiseOrValue<BigNumberish>,
@@ -469,11 +482,6 @@ export interface ERC2055Storage extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    symbol(
-      tokenId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<string>;
-
     symbols(
       arg0: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -485,19 +493,44 @@ export interface ERC2055Storage extends BaseContract {
     ): Promise<ERC2055Storage.TokenStructOutput>;
 
     tokenIds(overrides?: CallOverrides): Promise<BigNumber[]>;
-
-    totalSupply(
-      tokenId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
   };
 
   filters: {};
 
   estimateGas: {
+    _decimals(
+      arg0: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     _holdsTokenIds(
       arg0: PromiseOrValue<string>,
       arg1: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    _tDecimal(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    _tMaxSupply(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    _tName(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    _tSymbol(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    _tTotalSupply(
+      tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -512,27 +545,7 @@ export interface ERC2055Storage extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    decimal(
-      tokenId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    decimals(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    maxSupply(
-      tokenId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
     metas(
-      tokenId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    name(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -549,11 +562,6 @@ export interface ERC2055Storage extends BaseContract {
 
     supply(
       arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    symbol(
-      tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -568,17 +576,42 @@ export interface ERC2055Storage extends BaseContract {
     ): Promise<BigNumber>;
 
     tokenIds(overrides?: CallOverrides): Promise<BigNumber>;
-
-    totalSupply(
-      tokenId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
   };
 
   populateTransaction: {
+    _decimals(
+      arg0: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     _holdsTokenIds(
       arg0: PromiseOrValue<string>,
       arg1: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    _tDecimal(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    _tMaxSupply(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    _tName(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    _tSymbol(
+      tokenId: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    _tTotalSupply(
+      tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -593,27 +626,7 @@ export interface ERC2055Storage extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    decimal(
-      tokenId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    decimals(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    maxSupply(
-      tokenId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
     metas(
-      tokenId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    name(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
@@ -633,11 +646,6 @@ export interface ERC2055Storage extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    symbol(
-      tokenId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
     symbols(
       arg0: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -649,10 +657,5 @@ export interface ERC2055Storage extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     tokenIds(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    totalSupply(
-      tokenId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
   };
 }

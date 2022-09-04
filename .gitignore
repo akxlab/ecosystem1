@@ -106,3 +106,16 @@ api/config.ts
 api/index.ts
 api/register.ts
 hardhat.config.ts
+hardhat.config.ts
+typechain-types/contracts/tokens/ERC2055/ERC2055.ts
+typechain-types/contracts/tokens/ERC2055/ERC2055Storage.ts
+typechain-types/contracts/tokens/ERC2055/index.ts
+typechain-types/contracts/tokens/ERC2055/mock/ERC2055Implementation.ts
+typechain-types/contracts/tokens/ERC2055/mock/index.ts
+typechain-types/factories/contracts/tokens/ERC2055/ERC2055__factory.ts
+typechain-types/factories/contracts/tokens/ERC2055/ERC2055Storage__factory.ts
+typechain-types/factories/contracts/tokens/ERC2055/index.ts
+typechain-types/factories/contracts/tokens/ERC2055/mock/ERC2055Implementation__factory.ts
+typechain-types/factories/contracts/tokens/ERC2055/mock/index.ts
+typechain-types/hardhat.d.ts
+typechain-types/index.ts

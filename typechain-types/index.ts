@@ -144,6 +144,8 @@ export type { ERC2055Storage } from "./contracts/tokens/ERC2055/ERC2055Storage";
 export { ERC2055Storage__factory } from "./factories/contracts/tokens/ERC2055/ERC2055Storage__factory";
 export type { IERC2055 } from "./contracts/tokens/ERC2055/IERC2055";
 export { IERC2055__factory } from "./factories/contracts/tokens/ERC2055/IERC2055__factory";
+export type { ERC2055Implementation } from "./contracts/tokens/ERC2055/mock/ERC2055Implementation";
+export { ERC2055Implementation__factory } from "./factories/contracts/tokens/ERC2055/mock/ERC2055Implementation__factory";
 export type { IxToken } from "./contracts/tokens/xWrapper/IxToken";
 export { IxToken__factory } from "./factories/contracts/tokens/xWrapper/IxToken__factory";
 export type { IxWrapper } from "./contracts/tokens/xWrapper/IxWrapper";

@@ -4069,8 +4069,8 @@
       ]
     },
     "/Users/nicolascloutier/ecosystem1/contracts/tokens/ERC2055/ERC2055Storage.sol": {
-      "lastModificationDate": 1662264175351,
-      "contentHash": "99419ff5d9680a4eecc10286829a98d1",
+      "lastModificationDate": 1662297192133,
+      "contentHash": "ae6b9e00600c40a6dc5ee4b5062de210",
       "sourceName": "contracts/tokens/ERC2055/ERC2055Storage.sol",
       "solcConfig": {
         "version": "0.8.16",
@@ -4103,7 +4103,7 @@
         }
       },
       "imports": [
-        "./IERC2055.sol"
+        "./ERC2055.sol"
       ],
       "versionPragmas": [
         "0.8.16"
@@ -4113,8 +4113,8 @@
       ]
     },
     "/Users/nicolascloutier/ecosystem1/contracts/tokens/ERC2055/ERC2055.sol": {
-      "lastModificationDate": 1662264833174,
-      "contentHash": "c47c3c49824b4212db5b81b75ef05e98",
+      "lastModificationDate": 1662296540636,
+      "contentHash": "3dbbf79495bc8c5cf970b4ce5e5adb0a",
       "sourceName": "contracts/tokens/ERC2055/ERC2055.sol",
       "solcConfig": {
         "version": "0.8.16",
@@ -4147,13 +4147,60 @@
         }
       },
       "imports": [
-        "./ERC2055Storage.sol"
+        "./ERC2055Storage.sol",
+        "./IERC2055.sol"
       ],
       "versionPragmas": [
         "0.8.16"
       ],
       "artifacts": [
         "ERC2055"
+      ]
+    },
+    "/Users/nicolascloutier/ecosystem1/contracts/tokens/ERC2055/mock/ERC2055Implementation.sol": {
+      "lastModificationDate": 1662297337222,
+      "contentHash": "457e584fa36ee41d7180ae9c95981679",
+      "sourceName": "contracts/tokens/ERC2055/mock/ERC2055Implementation.sol",
+      "solcConfig": {
+        "version": "0.8.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../ERC2055Storage.sol",
+        "../ERC2055.sol",
+        "@openzeppelin/contracts/utils/Counters.sol"
+      ],
+      "versionPragmas": [
+        "0.8.16"
+      ],
+      "artifacts": [
+        "ERC2055Implementation"
       ]
     }
   }

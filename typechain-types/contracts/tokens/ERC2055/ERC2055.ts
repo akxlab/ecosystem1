@@ -29,12 +29,17 @@ import type {
 
 export interface ERC2055Interface extends utils.Interface {
   functions: {
+    "_totalSupply()": FunctionFragment;
     "allowance(address,address)": FunctionFragment;
     "approve(address,uint256)": FunctionFragment;
     "balanceOf(address)": FunctionFragment;
+    "decimals()": FunctionFragment;
     "decreaseAllowance(address,uint256)": FunctionFragment;
     "increaseAllowance(address,uint256)": FunctionFragment;
+    "isLocked()": FunctionFragment;
     "lockToken(uint256)": FunctionFragment;
+    "lockedUntil()": FunctionFragment;
+    "maxSupply()": FunctionFragment;
     "name()": FunctionFragment;
     "onERC2055Receive()": FunctionFragment;
     "owner()": FunctionFragment;
@@ -55,12 +60,17 @@ export interface ERC2055Interface extends utils.Interface {
 
   getFunction(
     nameOrSignatureOrTopic:
+      | "_totalSupply"
       | "allowance"
       | "approve"
       | "balanceOf"
+      | "decimals"
       | "decreaseAllowance"
       | "increaseAllowance"
+      | "isLocked"
       | "lockToken"
+      | "lockedUntil"
+      | "maxSupply"
       | "name"
       | "onERC2055Receive"
       | "owner"
@@ -80,6 +90,10 @@ export interface ERC2055Interface extends utils.Interface {
   ): FunctionFragment;
 
   encodeFunctionData(
+    functionFragment: "_totalSupply",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
     functionFragment: "allowance",
     values: [PromiseOrValue<string>, PromiseOrValue<string>]
   ): string;
@@ -91,6 +105,7 @@ export interface ERC2055Interface extends utils.Interface {
     functionFragment: "balanceOf",
     values: [PromiseOrValue<string>]
   ): string;
+  encodeFunctionData(functionFragment: "decimals", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "decreaseAllowance",
     values: [PromiseOrValue<string>, PromiseOrValue<BigNumberish>]
@@ -99,10 +114,16 @@ export interface ERC2055Interface extends utils.Interface {
     functionFragment: "increaseAllowance",
     values: [PromiseOrValue<string>, PromiseOrValue<BigNumberish>]
   ): string;
+  encodeFunctionData(functionFragment: "isLocked", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "lockToken",
     values: [PromiseOrValue<BigNumberish>]
   ): string;
+  encodeFunctionData(
+    functionFragment: "lockedUntil",
+    values?: undefined
+  ): string;
+  encodeFunctionData(functionFragment: "maxSupply", values?: undefined): string;
   encodeFunctionData(functionFragment: "name", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "onERC2055Receive",
@@ -167,9 +188,14 @@ export interface ERC2055Interface extends utils.Interface {
     values: [PromiseOrValue<string>]
   ): string;
 
+  decodeFunctionResult(
+    functionFragment: "_totalSupply",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "allowance", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "approve", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "decimals", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "decreaseAllowance",
     data: BytesLike
@@ -178,7 +204,13 @@ export interface ERC2055Interface extends utils.Interface {
     functionFragment: "increaseAllowance",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "isLocked", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "lockToken", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "lockedUntil",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "maxSupply", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "onERC2055Receive",
@@ -289,6 +321,8 @@ export interface ERC2055 extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
+    _totalSupply(overrides?: CallOverrides): Promise<[BigNumber]>;
+
     allowance(
       _owner: PromiseOrValue<string>,
       spender: PromiseOrValue<string>,
@@ -306,6 +340,8 @@ export interface ERC2055 extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[BigNumber]>;
 
+    decimals(overrides?: CallOverrides): Promise<[number]>;
+
     decreaseAllowance(
       spender: PromiseOrValue<string>,
       subtractedValue: PromiseOrValue<BigNumberish>,
@@ -318,10 +354,16 @@ export interface ERC2055 extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
+    isLocked(overrides?: CallOverrides): Promise<[boolean]>;
+
     lockToken(
       until: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
+
+    lockedUntil(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    maxSupply(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     name(overrides?: CallOverrides): Promise<[string]>;
 
@@ -398,6 +440,8 @@ export interface ERC2055 extends BaseContract {
     ): Promise<ContractTransaction>;
   };
 
+  _totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
+
   allowance(
     _owner: PromiseOrValue<string>,
     spender: PromiseOrValue<string>,
@@ -415,6 +459,8 @@ export interface ERC2055 extends BaseContract {
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
+  decimals(overrides?: CallOverrides): Promise<number>;
+
   decreaseAllowance(
     spender: PromiseOrValue<string>,
     subtractedValue: PromiseOrValue<BigNumberish>,
@@ -427,10 +473,16 @@ export interface ERC2055 extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
+  isLocked(overrides?: CallOverrides): Promise<boolean>;
+
   lockToken(
     until: PromiseOrValue<BigNumberish>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
+
+  lockedUntil(overrides?: CallOverrides): Promise<BigNumber>;
+
+  maxSupply(overrides?: CallOverrides): Promise<BigNumber>;
 
   name(overrides?: CallOverrides): Promise<string>;
 
@@ -507,6 +559,8 @@ export interface ERC2055 extends BaseContract {
   ): Promise<ContractTransaction>;
 
   callStatic: {
+    _totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
+
     allowance(
       _owner: PromiseOrValue<string>,
       spender: PromiseOrValue<string>,
@@ -524,6 +578,8 @@ export interface ERC2055 extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    decimals(overrides?: CallOverrides): Promise<number>;
+
     decreaseAllowance(
       spender: PromiseOrValue<string>,
       subtractedValue: PromiseOrValue<BigNumberish>,
@@ -536,10 +592,16 @@ export interface ERC2055 extends BaseContract {
       overrides?: CallOverrides
     ): Promise<boolean>;
 
+    isLocked(overrides?: CallOverrides): Promise<boolean>;
+
     lockToken(
       until: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<void>;
+
+    lockedUntil(overrides?: CallOverrides): Promise<BigNumber>;
+
+    maxSupply(overrides?: CallOverrides): Promise<BigNumber>;
 
     name(overrides?: CallOverrides): Promise<string>;
 
@@ -637,6 +699,8 @@ export interface ERC2055 extends BaseContract {
   };
 
   estimateGas: {
+    _totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
+
     allowance(
       _owner: PromiseOrValue<string>,
       spender: PromiseOrValue<string>,
@@ -654,6 +718,8 @@ export interface ERC2055 extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    decimals(overrides?: CallOverrides): Promise<BigNumber>;
+
     decreaseAllowance(
       spender: PromiseOrValue<string>,
       subtractedValue: PromiseOrValue<BigNumberish>,
@@ -666,10 +732,16 @@ export interface ERC2055 extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
+    isLocked(overrides?: CallOverrides): Promise<BigNumber>;
+
     lockToken(
       until: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
+
+    lockedUntil(overrides?: CallOverrides): Promise<BigNumber>;
+
+    maxSupply(overrides?: CallOverrides): Promise<BigNumber>;
 
     name(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -747,6 +819,8 @@ export interface ERC2055 extends BaseContract {
   };
 
   populateTransaction: {
+    _totalSupply(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
     allowance(
       _owner: PromiseOrValue<string>,
       spender: PromiseOrValue<string>,
@@ -764,6 +838,8 @@ export interface ERC2055 extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    decimals(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
     decreaseAllowance(
       spender: PromiseOrValue<string>,
       subtractedValue: PromiseOrValue<BigNumberish>,
@@ -776,10 +852,16 @@ export interface ERC2055 extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
+    isLocked(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
     lockToken(
       until: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
+
+    lockedUntil(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    maxSupply(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     name(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 

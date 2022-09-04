@@ -10,7 +10,7 @@ abstract contract ERC2055Storage {
     mapping(uint256 => string) public names;
     mapping(uint256 => string) public symbols;
     mapping(uint256 => uint256) public supply;
-    mapping(uint256 => uint8) public decimals;
+    mapping(uint256 => uint8) public _decimals;
     mapping(uint256 => mapping(address => uint256)) internal _balances;
     mapping(address => mapping(uint256 => Balances[])) internal _tokenBalances;
     mapping(uint256 => mapping(address => uint256)) public allowances;

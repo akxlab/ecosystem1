@@ -54,19 +54,16 @@ contract ERC2055 is IERC2055 {
         return true;
     }
 
-    function allowance(address _owner, address spender)
-        public
-        view
-        override
-        returns (uint256)
-    {}
+
 
     function approve(address spender, uint256 amount)
         public
         override
         onlyOwner
         returns (bool)
-    {}
+    {
+        return _approve(spender, amount);
+    }
 
     function transferFrom(
         address from,

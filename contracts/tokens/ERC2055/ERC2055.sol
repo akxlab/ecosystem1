@@ -2,15 +2,17 @@
 pragma solidity 0.8.16;
 
 import "./ERC2055Storage.sol";
+import "./IERC2055.sol";
 
 contract ERC2055 is IERC2055 {
     string public name;
     string public symbol;
-    uint256 private _totalSupply;
-    uint256 private maxSupply;
+    uint8 public decimals;
+    uint256 public _totalSupply;
+    uint256 public maxSupply;
     address public owner;
-    bool private isLocked;
-    uint256 private lockedUntil;
+    bool public isLocked;
+    uint256 public lockedUntil;
 
     mapping(address => uint256) private _balance;
       mapping(address => mapping(address => uint256)) private _allowances;
@@ -22,6 +24,7 @@ contract ERC2055 is IERC2055 {
         name = _name;
         symbol = _symbol;
         owner = msg.sender;
+        decimals = 18;
     }
 
     modifier onlyOwner() {
@@ -62,7 +65,8 @@ contract ERC2055 is IERC2055 {
         onlyOwner
         returns (bool)
     {
-        return _approve(spender, amount);
+        _approve(address(this), spender, amount);
+        return true;
     }
 
     function transferFrom(
@@ -91,6 +95,11 @@ contract ERC2055 is IERC2055 {
         _approve(_owner, spender, allowance(_owner, spender) + addedValue);
         return true;
     }
+
+     function allowance(address _owner, address spender) public view virtual override returns (uint256) {
+        return _allowances[_owner][spender];
+    }
+
 
     /**
      * @dev Atomically decreases the allowance granted to `spender` by the caller.

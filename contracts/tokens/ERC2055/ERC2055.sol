@@ -53,15 +53,13 @@ contract ERC2055 is IERC2055 {
         return _balance[account];
     }
 
-    function transfer(address to, uint256 amount)
-        public
-        override
-    virtual
-        returns (bool)
-    {
-        this.safeTransferToken(address(this), to, amount);
+    function transfer(address to, uint256 amount) public virtual override returns (bool) {
+        address owner = msg.sender;
+        _transfer(owner, to, amount);
         return true;
     }
+
+
 
 
 
@@ -80,8 +78,8 @@ contract ERC2055 is IERC2055 {
         address to,
         uint256 amount
     ) public override returns (bool) {
-       _transfer(from, to, amount);
-       return true;
+       require(safeTransferToken(from, to, amount), "ERC2055: Error transfering token");
+        return true;
     }
 
       /**
@@ -174,26 +172,21 @@ contract ERC2055 is IERC2055 {
         onlyOwner
         returns (bool)
     {
-        if (amount > maxSupply) {
-            revert("amount is higher than the max supply (CAP)");
-        }
-        if (amount == 0) {
-            revert("amount cannot be zero");
-        }
-
-        if (_totalSupply == 0) {
-            _totalSupply = amount;
-        } else {
-            _totalSupply += amount;
-        }
-        if (_balance[to] == 0) {
-            _balance[to] = amount;
-        } else {
-            _balance[to] += amount;
-        }
+      _mint(to, amount);
         return true;
     }
 
+    function _mint(address account, uint256 amount) internal virtual {
+        require(account != address(0), "ERC20: mint to the zero address");
+
+        //_beforeTokenTransfer(address(0), account, amount);
+
+        _totalSupply += amount;
+        _balance[account] += amount;
+        emit Transfer(address(0), account, amount);
+
+       // _afterTokenTransfer(address(0), account, amount);
+    }
 
 
     function safeTransferToken(

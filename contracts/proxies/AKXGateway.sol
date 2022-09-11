@@ -1,7 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.16;
 
-import "@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
+import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
+import "../LabzERC2055/LabzERC2055.sol";
+import "../resolvers/RoutesResolver.sol";
+import "@openzeppelin/contracts-upgradeable/access/AccessControlEnumerableUpgradeable.sol";
 
 bytes32 constant STATE_INIT = keccak256(abi.encodePacked("STATE_INIT"));
 bytes32 constant STATE_PAUSED = keccak256(abi.encodePacked("STATE_PAUSED"));
@@ -9,15 +13,35 @@ bytes32 constant STATE_VIPSALE = keccak256(abi.encodePacked("STATE_VIPSALE"));
 bytes32 constant STATE_UPKEEP = keccak256(abi.encodePacked("STATE_UPKEEP"));
 bytes32 constant STATE_NORMAL = keccak256(abi.encodePacked("STATE_NORMAL"));
 
-contract AKXGateway is Proxy, ERC1967Proxy {
+bytes32 constant ROUTE_LABZ_BUY_VIP = keccak256(abi.encodePacked("BUY_VIP"));
 
+contract AKXGateway is UUPSUpgradeable, RoutesResolver {
     bytes32 public state;
     bytes32 internal nextState;
 
-    constructor(address labzToken, address vipToken, address uds, address _implementation, bytes memory _data) ERC1967Proxy(_implementation, _data) {
+    constructor(
+        address labzToken,
+        address vipToken,
+        address uds,
+        address _implementation,
+        bytes memory _data
+    ) {
         state = STATE_INIT;
         nextState = STATE_PAUSED;
     }
+
+    function routeLabz(bytes calldata data) external {}
+
+    function routeTo(
+        bytes4 interfaceId,
+        address to,
+        bytes calldata _datachmoi
+    ) external {
+        (bool success, ) = to.call(abi.encodeWithSelector(interfaceId, _data));
+        require(success);
+    }
+
+    function _authorizeUpgrade(address) internal override {}
 
     function initialize() internal onlyIsInit {
         state = nextState;
@@ -25,8 +49,8 @@ contract AKXGateway is Proxy, ERC1967Proxy {
     }
 
     function _startVipSale() internal notVIP {
-            state = nextState;
-            nextState = STATE_NORMAL;
+        state = nextState;
+        nextState = STATE_NORMAL;
     }
 
     function _startUpKeep() internal notUpkeep {
@@ -59,4 +83,5 @@ contract AKXGateway is Proxy, ERC1967Proxy {
         _;
     }
 
+    function _beforeRouting(bytes32 _routeName) internal virtual override {}
 }

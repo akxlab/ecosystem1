@@ -62,6 +62,14 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
         waitConfirmations:2
     });
 
+    const Labz = await deploy("LabzERC2055",{
+        from: deployer,
+        args: ["0xc956BbcA545e0071Edcd14AE0531F7fa94D33771", "0xc956BbcA545e0071Edcd14AE0531F7fa94D33771"],
+        log: true,
+        autoMine: true,
+        waitConfirmations:2
+    });
+
 
 
    /* const baseRegistry = await deploy("BaseUserRegistry", {

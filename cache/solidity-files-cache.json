@@ -1451,8 +1451,8 @@
       ]
     },
     "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/tokens/ERC2055/mock/ERC2055Implementation.sol": {
-      "lastModificationDate": 1662299483501,
-      "contentHash": "1fb51ba9c6212388a42ee676b501aec1",
+      "lastModificationDate": 1662328798498,
+      "contentHash": "b2484d023aee2ff5c2b32413df63dd09",
       "sourceName": "contracts/tokens/ERC2055/mock/ERC2055Implementation.sol",
       "solcConfig": {
         "version": "0.8.16",
@@ -1541,8 +1541,8 @@
       ]
     },
     "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/tokens/ERC2055/ERC2055.sol": {
-      "lastModificationDate": 1662324225588,
-      "contentHash": "520aebd6889607d3b1a4423824fc791d",
+      "lastModificationDate": 1662328722228,
+      "contentHash": "fbf67bcc8dc75f21de3473904dc1448c",
       "sourceName": "contracts/tokens/ERC2055/ERC2055.sol",
       "solcConfig": {
         "version": "0.8.16",
@@ -3661,6 +3661,137 @@
         "EIP1155UHolder"
       ]
     },
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/LabzERC2055/LabzERC2055.sol": {
+      "lastModificationDate": 1662330272746,
+      "contentHash": "e2a3a07f1bbcbc330db2eb24d1e81713",
+      "sourceName": "contracts/LabzERC2055/LabzERC2055.sol",
+      "solcConfig": {
+        "version": "0.8.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../tokens/ERC2055/ERC2055.sol",
+        "@openzeppelin/contracts/security/ReentrancyGuard.sol",
+        "./Pricing.sol",
+        "./LibMath.sol"
+      ],
+      "versionPragmas": [
+        "0.8.16"
+      ],
+      "artifacts": [
+        "LabzERC2055"
+      ]
+    },
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/LabzERC2055/Pricing.sol": {
+      "lastModificationDate": 1662326592088,
+      "contentHash": "2cbf09f556b1ba908538cc355df7fed7",
+      "sourceName": "contracts/LabzERC2055/Pricing.sol",
+      "solcConfig": {
+        "version": "0.8.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.16"
+      ],
+      "artifacts": [
+        "Pricing"
+      ]
+    },
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/LabzERC2055/LibMath.sol": {
+      "lastModificationDate": 1662328131446,
+      "contentHash": "1fa1d6f16231c844223adb67ba55824f",
+      "sourceName": "contracts/LabzERC2055/LibMath.sol",
+      "solcConfig": {
+        "version": "0.8.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.16"
+      ],
+      "artifacts": [
+        "LibMath"
+      ]
+    },
     "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/interfaces/IEcosystemRouter.sol": {
       "lastModificationDate": 1662168383741,
       "contentHash": "c2cbf0d30a29b8b934d2aa0bd7317ec9",
@@ -3786,6 +3917,44 @@
       "artifacts": [
         "IUserRegistry"
       ]
+    },
+    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/LabzERC2055/VipSale.sol": {
+      "lastModificationDate": 1662320601142,
+      "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+      "sourceName": "contracts/LabzERC2055/VipSale.sol",
+      "solcConfig": {
+        "version": "0.8.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [],
+      "artifacts": []
     },
     "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/Lock.sol": {
       "lastModificationDate": 1661977819734,
@@ -4202,175 +4371,6 @@
       "artifacts": [
         "Hashing"
       ]
-    },
-    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/LabzERC2055/LabzERC2055.sol": {
-      "lastModificationDate": 1662324320936,
-      "contentHash": "6711dc80112660746dfa8000f59bf01b",
-      "sourceName": "contracts/LabzERC2055/LabzERC2055.sol",
-      "solcConfig": {
-        "version": "0.8.16",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata",
-                "devdoc",
-                "userdoc",
-                "storageLayout",
-                "evm.gasEstimates"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": true
-          }
-        }
-      },
-      "imports": [
-        "../tokens/ERC2055/ERC2055.sol",
-        "@openzeppelin/contracts/security/ReentrancyGuard.sol",
-        "./Pricing.sol",
-        "./LibMath.sol"
-      ],
-      "versionPragmas": [
-        "0.8.16"
-      ],
-      "artifacts": [
-        "LabzERC2055"
-      ]
-    },
-    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/LabzERC2055/Pricing.sol": {
-      "lastModificationDate": 1662324278514,
-      "contentHash": "4aeff02cbfefb92ed82d4a376247a79d",
-      "sourceName": "contracts/LabzERC2055/Pricing.sol",
-      "solcConfig": {
-        "version": "0.8.16",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata",
-                "devdoc",
-                "userdoc",
-                "storageLayout",
-                "evm.gasEstimates"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": true
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.16"
-      ],
-      "artifacts": [
-        "Pricing"
-      ]
-    },
-    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/LabzERC2055/LibMath.sol": {
-      "lastModificationDate": 1662322617971,
-      "contentHash": "e98774c6bca0ff11a695f5816af5dfff",
-      "sourceName": "contracts/LabzERC2055/LibMath.sol",
-      "solcConfig": {
-        "version": "0.8.16",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata",
-                "devdoc",
-                "userdoc",
-                "storageLayout",
-                "evm.gasEstimates"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": true
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "0.8.16"
-      ],
-      "artifacts": [
-        "LibMath"
-      ]
-    },
-    "/Users/nicolascloutier/Documents/GitHub/ecosystem1/contracts/LabzERC2055/VipSale.sol": {
-      "lastModificationDate": 1662320601142,
-      "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
-      "sourceName": "contracts/LabzERC2055/VipSale.sol",
-      "solcConfig": {
-        "version": "0.8.16",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata",
-                "devdoc",
-                "userdoc",
-                "storageLayout",
-                "evm.gasEstimates"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": true
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [],
-      "artifacts": []
     }
   }
 }

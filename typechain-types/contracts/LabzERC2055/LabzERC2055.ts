@@ -36,7 +36,9 @@ export interface LabzERC2055Interface extends utils.Interface {
     "availableBalance(address)": FunctionFragment;
     "balanceOf(address)": FunctionFragment;
     "buy()": FunctionFragment;
-    "buyVip(address,uint256)": FunctionFragment;
+    "buyVip()": FunctionFragment;
+    "calculateFee(uint256)": FunctionFragment;
+    "calculateTokenQty(uint256)": FunctionFragment;
     "currentPrice()": FunctionFragment;
     "decimals()": FunctionFragment;
     "decreaseAllowance(address,uint256)": FunctionFragment;
@@ -61,6 +63,8 @@ export interface LabzERC2055Interface extends utils.Interface {
     "transfer(address,uint256)": FunctionFragment;
     "transferFrom(address,address,uint256)": FunctionFragment;
     "unlockToken()": FunctionFragment;
+    "vipSale()": FunctionFragment;
+    "vipSupply()": FunctionFragment;
   };
 
   getFunction(
@@ -72,6 +76,8 @@ export interface LabzERC2055Interface extends utils.Interface {
       | "balanceOf"
       | "buy"
       | "buyVip"
+      | "calculateFee"
+      | "calculateTokenQty"
       | "currentPrice"
       | "decimals"
       | "decreaseAllowance"
@@ -96,6 +102,8 @@ export interface LabzERC2055Interface extends utils.Interface {
       | "transfer"
       | "transferFrom"
       | "unlockToken"
+      | "vipSale"
+      | "vipSupply"
   ): FunctionFragment;
 
   encodeFunctionData(
@@ -119,9 +127,14 @@ export interface LabzERC2055Interface extends utils.Interface {
     values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(functionFragment: "buy", values?: undefined): string;
+  encodeFunctionData(functionFragment: "buyVip", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "buyVip",
-    values: [PromiseOrValue<string>, PromiseOrValue<BigNumberish>]
+    functionFragment: "calculateFee",
+    values: [PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "calculateTokenQty",
+    values: [PromiseOrValue<BigNumberish>]
   ): string;
   encodeFunctionData(
     functionFragment: "currentPrice",
@@ -209,6 +222,8 @@ export interface LabzERC2055Interface extends utils.Interface {
     functionFragment: "unlockToken",
     values?: undefined
   ): string;
+  encodeFunctionData(functionFragment: "vipSale", values?: undefined): string;
+  encodeFunctionData(functionFragment: "vipSupply", values?: undefined): string;
 
   decodeFunctionResult(
     functionFragment: "_totalSupply",
@@ -223,6 +238,14 @@ export interface LabzERC2055Interface extends utils.Interface {
   decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "buy", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "buyVip", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "calculateFee",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "calculateTokenQty",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "currentPrice",
     data: BytesLike
@@ -292,15 +315,21 @@ export interface LabzERC2055Interface extends utils.Interface {
     functionFragment: "unlockToken",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "vipSale", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "vipSupply", data: BytesLike): Result;
 
   events: {
     "Approval(address,address,uint256)": EventFragment;
+    "FeeTransactionEvent(address,uint256)": EventFragment;
+    "NewVIPBuyerEvent(address,uint256,uint256)": EventFragment;
     "PriceSet(uint256,uint256)": EventFragment;
     "PriceUpdated(uint256,uint256,uint256)": EventFragment;
     "Transfer(address,address,uint256)": EventFragment;
   };
 
   getEvent(nameOrSignatureOrTopic: "Approval"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "FeeTransactionEvent"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "NewVIPBuyerEvent"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "PriceSet"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "PriceUpdated"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Transfer"): EventFragment;
@@ -317,6 +346,31 @@ export type ApprovalEvent = TypedEvent<
 >;
 
 export type ApprovalEventFilter = TypedEventFilter<ApprovalEvent>;
+
+export interface FeeTransactionEventEventObject {
+  to: string;
+  labzQty: BigNumber;
+}
+export type FeeTransactionEventEvent = TypedEvent<
+  [string, BigNumber],
+  FeeTransactionEventEventObject
+>;
+
+export type FeeTransactionEventEventFilter =
+  TypedEventFilter<FeeTransactionEventEvent>;
+
+export interface NewVIPBuyerEventEventObject {
+  buyer: string;
+  matics: BigNumber;
+  labzQty: BigNumber;
+}
+export type NewVIPBuyerEventEvent = TypedEvent<
+  [string, BigNumber, BigNumber],
+  NewVIPBuyerEventEventObject
+>;
+
+export type NewVIPBuyerEventEventFilter =
+  TypedEventFilter<NewVIPBuyerEventEvent>;
 
 export interface PriceSetEventObject {
   priceForOne: BigNumber;
@@ -409,14 +463,20 @@ export interface LabzERC2055 extends BaseContract {
     ): Promise<ContractTransaction>;
 
     buyVip(
-      _sender: PromiseOrValue<string>,
-      _val: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    currentPrice(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
+    calculateFee(
+      qty: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
+    calculateTokenQty(
+      maticsAmount: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
+    currentPrice(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     decimals(overrides?: CallOverrides): Promise<[number]>;
 
@@ -509,6 +569,10 @@ export interface LabzERC2055 extends BaseContract {
     unlockToken(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
+
+    vipSale(overrides?: CallOverrides): Promise<[boolean]>;
+
+    vipSupply(overrides?: CallOverrides): Promise<[BigNumber]>;
   };
 
   _totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
@@ -540,14 +604,20 @@ export interface LabzERC2055 extends BaseContract {
   ): Promise<ContractTransaction>;
 
   buyVip(
-    _sender: PromiseOrValue<string>,
-    _val: PromiseOrValue<BigNumberish>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  currentPrice(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
+  calculateFee(
+    qty: PromiseOrValue<BigNumberish>,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  calculateTokenQty(
+    maticsAmount: PromiseOrValue<BigNumberish>,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  currentPrice(overrides?: CallOverrides): Promise<BigNumber>;
 
   decimals(overrides?: CallOverrides): Promise<number>;
 
@@ -641,6 +711,10 @@ export interface LabzERC2055 extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
+  vipSale(overrides?: CallOverrides): Promise<boolean>;
+
+  vipSupply(overrides?: CallOverrides): Promise<BigNumber>;
+
   callStatic: {
     _totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -668,11 +742,17 @@ export interface LabzERC2055 extends BaseContract {
 
     buy(overrides?: CallOverrides): Promise<void>;
 
-    buyVip(
-      _sender: PromiseOrValue<string>,
-      _val: PromiseOrValue<BigNumberish>,
+    buyVip(overrides?: CallOverrides): Promise<void>;
+
+    calculateFee(
+      qty: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
-    ): Promise<void>;
+    ): Promise<BigNumber>;
+
+    calculateTokenQty(
+      maticsAmount: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     currentPrice(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -765,6 +845,10 @@ export interface LabzERC2055 extends BaseContract {
     ): Promise<boolean>;
 
     unlockToken(overrides?: CallOverrides): Promise<void>;
+
+    vipSale(overrides?: CallOverrides): Promise<boolean>;
+
+    vipSupply(overrides?: CallOverrides): Promise<BigNumber>;
   };
 
   filters: {
@@ -778,6 +862,26 @@ export interface LabzERC2055 extends BaseContract {
       spender?: PromiseOrValue<string> | null,
       value?: null
     ): ApprovalEventFilter;
+
+    "FeeTransactionEvent(address,uint256)"(
+      to?: PromiseOrValue<string> | null,
+      labzQty?: null
+    ): FeeTransactionEventEventFilter;
+    FeeTransactionEvent(
+      to?: PromiseOrValue<string> | null,
+      labzQty?: null
+    ): FeeTransactionEventEventFilter;
+
+    "NewVIPBuyerEvent(address,uint256,uint256)"(
+      buyer?: PromiseOrValue<string> | null,
+      matics?: null,
+      labzQty?: null
+    ): NewVIPBuyerEventEventFilter;
+    NewVIPBuyerEvent(
+      buyer?: PromiseOrValue<string> | null,
+      matics?: null,
+      labzQty?: null
+    ): NewVIPBuyerEventEventFilter;
 
     "PriceSet(uint256,uint256)"(
       priceForOne?: null,
@@ -838,14 +942,20 @@ export interface LabzERC2055 extends BaseContract {
     ): Promise<BigNumber>;
 
     buyVip(
-      _sender: PromiseOrValue<string>,
-      _val: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
-    currentPrice(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    calculateFee(
+      qty: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
     ): Promise<BigNumber>;
+
+    calculateTokenQty(
+      maticsAmount: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    currentPrice(overrides?: CallOverrides): Promise<BigNumber>;
 
     decimals(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -938,6 +1048,10 @@ export interface LabzERC2055 extends BaseContract {
     unlockToken(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
+
+    vipSale(overrides?: CallOverrides): Promise<BigNumber>;
+
+    vipSupply(overrides?: CallOverrides): Promise<BigNumber>;
   };
 
   populateTransaction: {
@@ -970,14 +1084,20 @@ export interface LabzERC2055 extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     buyVip(
-      _sender: PromiseOrValue<string>,
-      _val: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
-    currentPrice(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    calculateFee(
+      qty: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
+
+    calculateTokenQty(
+      maticsAmount: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    currentPrice(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     decimals(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
@@ -1072,5 +1192,9 @@ export interface LabzERC2055 extends BaseContract {
     unlockToken(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
+
+    vipSale(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    vipSupply(overrides?: CallOverrides): Promise<PopulatedTransaction>;
   };
 }

@@ -30,10 +30,7 @@ contract ERC2055Implementation is ERC2055, ERC2055Storage {
     function addToken(address erc2055Token) public onlyOwner returns (bool) {
         require(_pending[erc2055Token] != true, "token is already pending queue");
         uint256 _tokenId = tqIndex.current();
-        require(
-            _mint(erc2055Token, _tokenId),
-            "ERC2055: ERROR MINTING NEW TOKEN"
-        );
+
         tqIndex.increment();
         return true;
     }
@@ -46,7 +43,7 @@ contract ERC2055Implementation is ERC2055, ERC2055Storage {
         return true;
     }
 
-    function _mint(address erc2055Token, uint256 tid) internal returns (bool) {
+    function _mint(address erc2055Token, uint256 tid) internal override  {
         require(_addToQueue(erc2055Token, tid), "ERC2055: CANNOT ADD TO QUEUE");
         Token memory _tok = _setToken(erc2055Token);
         _tokens[tid] = _tok;
@@ -58,7 +55,7 @@ contract ERC2055Implementation is ERC2055, ERC2055Storage {
         _exists[erc2055Token] = true;
         numTokens += 1;
         emit ERC2055Minted(erc2055Token, tokenName(tid), tokenSymbol(tid));
-        return true;
+
 
     }
 

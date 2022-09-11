@@ -7,14 +7,14 @@ uint constant MANTISSA = 1e6;
 
 abstract contract LibMath {
 
-    function calculateTokenQty(uint256 maticsAmount) public view returns(uint256) {
+    function calculateTokenQty(uint256 maticsAmount) public pure returns(uint256) {
         uint256 base = BASE_PRICE_MATIC;
         return maticsAmount * 1e18 / base;
     }
 
-    function calculateFee(uint256 qty) public view returns(uint256) {
+    function calculateFee(uint256 qty) public pure returns(uint256) {
         uint256 base = BASE_FEE_PERCENT;
-        uint256 baseQty = MANTISSA;
+        //uint256 baseQty = MANTISSA;
         return qty * base / 1e18;
     }
 

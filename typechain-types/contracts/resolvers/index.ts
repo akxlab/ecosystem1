@@ -8,3 +8,4 @@ export type { IdentResolver } from "./IdentResolver";
 export type { MetaDataResolver } from "./MetaDataResolver";
 export type { NameResolver } from "./NameResolver";
 export type { ProfileResolver } from "./ProfileResolver";
+export type { RoutesResolver } from "./RoutesResolver";

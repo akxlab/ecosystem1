@@ -8,11 +8,56 @@ import type { IAKX, IAKXInterface } from "../../../contracts/interfaces/IAKX";
 
 const _abi = [
   {
+    inputs: [
+      {
+        internalType: "address",
+        name: "token",
+        type: "address",
+      },
+    ],
+    name: "DexToken",
+    outputs: [
+      {
+        internalType: "contract IERC2055",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     inputs: [],
     name: "EthDIDRegistry",
     outputs: [
       {
         internalType: "contract DidRegistry",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "LabzToken",
+    outputs: [
+      {
+        internalType: "contract LabzERC2055",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "UserDataService",
+    outputs: [
+      {
+        internalType: "contract UserDataServiceResolver",
         name: "",
         type: "address",
       },

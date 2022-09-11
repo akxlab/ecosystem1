@@ -6,8 +6,6 @@ import type {
   BigNumber,
   BytesLike,
   CallOverrides,
-  ContractTransaction,
-  Overrides,
   PopulatedTransaction,
   Signer,
   utils,
@@ -34,11 +32,11 @@ export interface BaseModuleInterface extends utils.Interface {
     "_moduleName()": FunctionFragment;
     "_moduleVersion()": FunctionFragment;
     "compareVersions(string,string)": FunctionFragment;
-    "loadModule(bytes32,string)": FunctionFragment;
     "moduleAuthor()": FunctionFragment;
     "moduleContract()": FunctionFragment;
     "moduleHash()": FunctionFragment;
     "moduleName()": FunctionFragment;
+    "moduleName(address)": FunctionFragment;
     "moduleType()": FunctionFragment;
     "moduleVersion()": FunctionFragment;
   };
@@ -51,11 +49,11 @@ export interface BaseModuleInterface extends utils.Interface {
       | "_moduleName"
       | "_moduleVersion"
       | "compareVersions"
-      | "loadModule"
       | "moduleAuthor"
       | "moduleContract"
       | "moduleHash"
-      | "moduleName"
+      | "moduleName()"
+      | "moduleName(address)"
       | "moduleType"
       | "moduleVersion"
   ): FunctionFragment;
@@ -82,10 +80,6 @@ export interface BaseModuleInterface extends utils.Interface {
     values: [PromiseOrValue<string>, PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
-    functionFragment: "loadModule",
-    values: [PromiseOrValue<BytesLike>, PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
     functionFragment: "moduleAuthor",
     values?: undefined
   ): string;
@@ -98,8 +92,12 @@ export interface BaseModuleInterface extends utils.Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "moduleName",
+    functionFragment: "moduleName()",
     values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "moduleName(address)",
+    values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
     functionFragment: "moduleType",
@@ -131,7 +129,6 @@ export interface BaseModuleInterface extends utils.Interface {
     functionFragment: "compareVersions",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "loadModule", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "moduleAuthor",
     data: BytesLike
@@ -141,7 +138,14 @@ export interface BaseModuleInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "moduleHash", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "moduleName", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "moduleName()",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "moduleName(address)",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "moduleType", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "moduleVersion",
@@ -223,19 +227,18 @@ export interface BaseModule extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[boolean]>;
 
-    loadModule(
-      _name: PromiseOrValue<BytesLike>,
-      version: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
     moduleAuthor(overrides?: CallOverrides): Promise<[string]>;
 
     moduleContract(overrides?: CallOverrides): Promise<[string]>;
 
     moduleHash(overrides?: CallOverrides): Promise<[string]>;
 
-    moduleName(overrides?: CallOverrides): Promise<[string]>;
+    "moduleName()"(overrides?: CallOverrides): Promise<[string]>;
+
+    "moduleName(address)"(
+      modAddress: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
 
     moduleType(overrides?: CallOverrides): Promise<[string]>;
 
@@ -258,19 +261,18 @@ export interface BaseModule extends BaseContract {
     overrides?: CallOverrides
   ): Promise<boolean>;
 
-  loadModule(
-    _name: PromiseOrValue<BytesLike>,
-    version: PromiseOrValue<string>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
   moduleAuthor(overrides?: CallOverrides): Promise<string>;
 
   moduleContract(overrides?: CallOverrides): Promise<string>;
 
   moduleHash(overrides?: CallOverrides): Promise<string>;
 
-  moduleName(overrides?: CallOverrides): Promise<string>;
+  "moduleName()"(overrides?: CallOverrides): Promise<string>;
+
+  "moduleName(address)"(
+    modAddress: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
 
   moduleType(overrides?: CallOverrides): Promise<string>;
 
@@ -293,19 +295,18 @@ export interface BaseModule extends BaseContract {
       overrides?: CallOverrides
     ): Promise<boolean>;
 
-    loadModule(
-      _name: PromiseOrValue<BytesLike>,
-      version: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
     moduleAuthor(overrides?: CallOverrides): Promise<string>;
 
     moduleContract(overrides?: CallOverrides): Promise<string>;
 
     moduleHash(overrides?: CallOverrides): Promise<string>;
 
-    moduleName(overrides?: CallOverrides): Promise<string>;
+    "moduleName()"(overrides?: CallOverrides): Promise<string>;
+
+    "moduleName(address)"(
+      modAddress: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     moduleType(overrides?: CallOverrides): Promise<string>;
 
@@ -340,19 +341,18 @@ export interface BaseModule extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    loadModule(
-      _name: PromiseOrValue<BytesLike>,
-      version: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
     moduleAuthor(overrides?: CallOverrides): Promise<BigNumber>;
 
     moduleContract(overrides?: CallOverrides): Promise<BigNumber>;
 
     moduleHash(overrides?: CallOverrides): Promise<BigNumber>;
 
-    moduleName(overrides?: CallOverrides): Promise<BigNumber>;
+    "moduleName()"(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "moduleName(address)"(
+      modAddress: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     moduleType(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -376,19 +376,18 @@ export interface BaseModule extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    loadModule(
-      _name: PromiseOrValue<BytesLike>,
-      version: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
     moduleAuthor(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     moduleContract(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     moduleHash(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    moduleName(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    "moduleName()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    "moduleName(address)"(
+      modAddress: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
 
     moduleType(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 

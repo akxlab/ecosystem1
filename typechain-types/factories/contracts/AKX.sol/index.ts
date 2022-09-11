@@ -2,3 +2,4 @@
 /* tslint:disable */
 /* eslint-disable */
 export { AKXEcosystem__factory } from "./AKXEcosystem__factory";
+export { AKXStates__factory } from "./AKXStates__factory";

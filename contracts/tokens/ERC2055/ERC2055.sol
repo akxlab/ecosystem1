@@ -26,9 +26,9 @@ contract ERC2055 is IERC2055 {
         decimals = 18;
     }
 
-    function feeEstimate(uint256 amount) external view returns(uint256) {
+    function feeEstimate(uint256 amount) external pure returns(uint256) {
         //@todo implement feeEstimate
-        return 0;
+        return amount;
     }
 
     modifier onlyOwner() {
@@ -53,8 +53,8 @@ contract ERC2055 is IERC2055 {
     }
 
     function transfer(address to, uint256 amount) public virtual override returns (bool) {
-        address owner = msg.sender;
-        _transfer(owner, to, amount);
+        address _owner = msg.sender;
+        _transfer(_owner, to, amount);
         return true;
     }
 

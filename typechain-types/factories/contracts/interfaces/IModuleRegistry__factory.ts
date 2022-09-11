@@ -50,19 +50,6 @@ const _abi = [
         type: "address",
       },
     ],
-    name: "deregisterModule",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_module",
-        type: "address",
-      },
-    ],
     name: "isRegisteredModuleAddress",
     outputs: [
       {
@@ -91,43 +78,6 @@ const _abi = [
       },
     ],
     stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_module",
-        type: "address",
-      },
-    ],
-    name: "moduleName",
-    outputs: [
-      {
-        internalType: "bytes32",
-        name: "",
-        type: "bytes32",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_module",
-        type: "address",
-      },
-      {
-        internalType: "string",
-        name: "_sName",
-        type: "string",
-      },
-    ],
-    name: "registerModule",
-    outputs: [],
-    stateMutability: "nonpayable",
     type: "function",
   },
 ];

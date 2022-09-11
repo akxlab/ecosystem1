@@ -3,11 +3,12 @@
 /* eslint-disable */
 export * as akxSol from "./AKX.sol";
 export * as labzErc2055 from "./LabzERC2055";
-export * as controllers from "./controllers";
+export * as rolesSol from "./Roles.sol";
 export * as interfaces from "./interfaces";
 export * as modules from "./modules";
-export * as proxies from "./proxies";
 export * as registry from "./registry";
 export * as resolvers from "./resolvers";
 export * as tokens from "./tokens";
+export { AKXMetas__factory } from "./AKXMetas__factory";
+export { Auth__factory } from "./Auth__factory";
 export { Lock__factory } from "./Lock__factory";

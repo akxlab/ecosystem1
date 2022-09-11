@@ -21,7 +21,7 @@ abstract contract Pricing {
     event PriceSet(uint256 priceForOne, uint256 chainId);
     event PriceUpdated(uint256 lastPrice, uint256 priceForOne, uint256 chainId);
 
-    function pricingStorage() internal view returns(PricingStorage storage ps) {
+    function pricingStorage() internal pure returns(PricingStorage storage ps) {
         bytes32 position = PRICING_STORAGE_ID;
         assembly {
             ps.slot := position

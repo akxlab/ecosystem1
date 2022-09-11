@@ -2,22 +2,21 @@
 pragma solidity 0.8.17;
 
 
-import "../interfaces/IModuleRegistry.sol";
-import "../interfaces/IModule.sol";
+import "./ModuleStorage.sol";
+import "../utils/BytesUtils.sol";
 
-contract ModuleRegistry is IModuleRegistry {
-    mapping(bytes32 => address) private _moduleByName;
-    mapping(address => bytes32) private _moduleByAddress;
-    mapping(string => bytes32) private _moduleResolver;
-    mapping(bytes32 => string) private _rModuleResolver;
-    mapping(bytes32 => bool) private _isLoaded;
+abstract contract ModuleRegistry is ModuleStorage, BytesUtils {
+    mapping(bytes32 => uint256) private _moduleByName;
+    mapping(address => uint256) private _moduleByAddress;
+    mapping(uint256 => bytes32) private _moduleResolver;
+    mapping(bytes32 => uint256) private _rModuleResolver;
     mapping(address => bool) private _registeredAddress;
     mapping(bytes32 => bool) private _registeredName;
-    mapping(bytes32 => Module) private _modules;
 
-    function registerModule(address _module, string memory _sName) external {
+    constructor() {}
+
+    function _registerModule(address _module, string memory _sName) internal {
         bytes32 _name = keccak256(abi.encodePacked(_sName));
-        require(IModule(_module).moduleName() == _name, "names mismatch");
         require(
             this.isRegisteredModuleAddress(_module) != true,
             "address already registered"
@@ -26,18 +25,19 @@ contract ModuleRegistry is IModuleRegistry {
             this.isRegisteredModuleName(_name) != true,
             "name already registered"
         );
-        _moduleByName[_name] = _module;
-        _moduleResolver[_sName] = _name;
-        _rModuleResolver[_name] = _sName;
-        _isLoaded[_name] = false;
-        _moduleByAddress[_module] = _name;
+
+
+        uint256 _id = _setModule(_module, _name);
+        _moduleByName[_name] = _id;
+        _moduleResolver[_id] = _name;
+        _rModuleResolver[_name] = _id;
+        _moduleByAddress[_module] = _id;
         _registeredAddress[_module] = true;
         _registeredName[_name] = true;
-        _setModule(_module);
         emit ModuleRegistered(_module, _name);
     }
 
-    function _setModule(address _module) internal {
+    function _setModule(address _module, bytes32 _name) internal returns(uint256) {
         /*
     struct Module {
         bytes32 name;
@@ -47,40 +47,48 @@ contract ModuleRegistry is IModuleRegistry {
         bytes32 mHash;
     }
     */
+       
+
+
         string memory ver = IModule(_module).moduleVersion();
         bytes32 author = IModule(_module).moduleAuthor();
-        bytes32 mHash = IModule(_module).moduleHash();
-        Module memory mod = Module(
-            _moduleByAddress[_module],
-            ver,
-            author,
-            _module,
-            mHash
-        );
-        _modules[_moduleByAddress[_module]] = mod;
+
+        bytes32 mHash = keccak256(abi.encodePacked(_name, ver, author));
+
+        uint256 __id = _store(_module, _name, ver, author, mHash);
+        return __id;
     }
 
-    function deregisterModule(address _module) external {
-        bytes32 _name = IModule(_module).moduleName();
+    function deregisterModule(bytes32 _name) internal {
+        Module memory _module = getModule(_name);
         delete _moduleByName[_name];
-        delete _isLoaded[_name];
-        delete _moduleByAddress[_module];
-        delete _registeredAddress[_module];
+
+        delete _moduleByAddress[_module.contractAddr];
+        delete _registeredAddress[_module.contractAddr];
         delete _registeredName[_name];
-        delete _modules[_name];
-        delete _moduleResolver[_rModuleResolver[_name]];
-        delete _rModuleResolver[_name];
-        emit ModuleDeRegistered(_module);
+        delete _moduleByName[_name];
+
+        emit ModuleDeRegistered(_module.contractAddr);
+    }
+
+    function getModuleID(bytes32 _modName) internal view returns(uint256) {
+        return _moduleByName[_modName];
+    }
+
+    function getModuleID(address _modAddress) internal view returns(uint256) {
+        return _moduleByAddress[_modAddress];
     }
 
     function moduleName(address _module)
         external
         view
-        override
-        returns (bytes32)
+      override
+      
+        returns (uint256)
     {
         return _moduleByAddress[_module];
     }
+
 
     function isRegisteredModuleAddress(address _module)
         external
@@ -98,7 +106,8 @@ contract ModuleRegistry is IModuleRegistry {
         return _registeredName[_name] == true;
     }
 
-    function getModule(bytes32 _name) public view returns(Module memory) {
-        return _modules[_name];
+    function getModule(bytes32 _name) public returns(Module memory) {
+        uint256 _id = _moduleByName[_name];
+        return _retrieveModule(_id);
     }
 }

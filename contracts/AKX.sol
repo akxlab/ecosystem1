@@ -34,7 +34,7 @@ AccessControlEnumerable,
 Auth
 {
     constructor(address[6] memory _contracts) {
-        initialize(_contracts[1], _contracts[2], _contracts[3], _contracts[4], _contracts[5], _contracts[6]);
+        initialize(_contracts[0],_contracts[1], _contracts[2], _contracts[3], _contracts[4], _contracts[5]);
     }
 
 
@@ -79,15 +79,15 @@ Auth
         return DidRegistry(ethrDidRegistry);
     }
 
-    function LabzToken() external view returns (LabzERC2055) {
+    function LabzToken() public view returns (LabzERC2055) {
         return LabzERC2055(payable(labzToken));
     }
 
-    function UserDataService() external view returns (UserDataServiceResolver) {
+    function UserDataService() public view returns (UserDataServiceResolver) {
         return UserDataServiceResolver(userDataService);
     }
 
-    function DexToken(address token) external pure returns (IERC2055) {
+    function DexToken(address token) public pure returns (IERC2055) {
         return IERC2055(token);
     }
 

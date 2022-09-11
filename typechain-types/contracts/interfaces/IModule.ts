@@ -6,8 +6,6 @@ import type {
   BigNumber,
   BytesLike,
   CallOverrides,
-  ContractTransaction,
-  Overrides,
   PopulatedTransaction,
   Signer,
   utils,
@@ -28,36 +26,22 @@ import type {
 
 export interface IModuleInterface extends utils.Interface {
   functions: {
-    "compareVersions(string,string)": FunctionFragment;
-    "loadModule(bytes32,string)": FunctionFragment;
     "moduleAuthor()": FunctionFragment;
     "moduleContract()": FunctionFragment;
     "moduleHash()": FunctionFragment;
-    "moduleName()": FunctionFragment;
-    "moduleType()": FunctionFragment;
+    "moduleName(address)": FunctionFragment;
     "moduleVersion()": FunctionFragment;
   };
 
   getFunction(
     nameOrSignatureOrTopic:
-      | "compareVersions"
-      | "loadModule"
       | "moduleAuthor"
       | "moduleContract"
       | "moduleHash"
       | "moduleName"
-      | "moduleType"
       | "moduleVersion"
   ): FunctionFragment;
 
-  encodeFunctionData(
-    functionFragment: "compareVersions",
-    values: [PromiseOrValue<string>, PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "loadModule",
-    values: [PromiseOrValue<BytesLike>, PromiseOrValue<string>]
-  ): string;
   encodeFunctionData(
     functionFragment: "moduleAuthor",
     values?: undefined
@@ -72,22 +56,13 @@ export interface IModuleInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "moduleName",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "moduleType",
-    values?: undefined
+    values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
     functionFragment: "moduleVersion",
     values?: undefined
   ): string;
 
-  decodeFunctionResult(
-    functionFragment: "compareVersions",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "loadModule", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "moduleAuthor",
     data: BytesLike
@@ -98,7 +73,6 @@ export interface IModuleInterface extends utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "moduleHash", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "moduleName", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "moduleType", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "moduleVersion",
     data: BytesLike
@@ -154,101 +128,44 @@ export interface IModule extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
-    compareVersions(
-      v1: PromiseOrValue<string>,
-      v2: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
+    moduleAuthor(overrides?: CallOverrides): Promise<[string]>;
 
-    loadModule(
-      _name: PromiseOrValue<BytesLike>,
-      version: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
+    moduleContract(overrides?: CallOverrides): Promise<[string]>;
 
-    moduleAuthor(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
-    moduleContract(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
-    moduleHash(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
+    moduleHash(overrides?: CallOverrides): Promise<[string]>;
 
     moduleName(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
+      modAddress: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
 
-    moduleType(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
-    moduleVersion(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
+    moduleVersion(overrides?: CallOverrides): Promise<[string]>;
   };
 
-  compareVersions(
-    v1: PromiseOrValue<string>,
-    v2: PromiseOrValue<string>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
+  moduleAuthor(overrides?: CallOverrides): Promise<string>;
 
-  loadModule(
-    _name: PromiseOrValue<BytesLike>,
-    version: PromiseOrValue<string>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
+  moduleContract(overrides?: CallOverrides): Promise<string>;
 
-  moduleAuthor(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
-  moduleContract(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
-  moduleHash(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
+  moduleHash(overrides?: CallOverrides): Promise<string>;
 
   moduleName(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
+    modAddress: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
 
-  moduleType(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
-  moduleVersion(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
+  moduleVersion(overrides?: CallOverrides): Promise<string>;
 
   callStatic: {
-    compareVersions(
-      v1: PromiseOrValue<string>,
-      v2: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
-
-    loadModule(
-      _name: PromiseOrValue<BytesLike>,
-      version: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
     moduleAuthor(overrides?: CallOverrides): Promise<string>;
 
     moduleContract(overrides?: CallOverrides): Promise<string>;
 
     moduleHash(overrides?: CallOverrides): Promise<string>;
 
-    moduleName(overrides?: CallOverrides): Promise<string>;
-
-    moduleType(overrides?: CallOverrides): Promise<string>;
+    moduleName(
+      modAddress: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     moduleVersion(overrides?: CallOverrides): Promise<string>;
   };
@@ -262,78 +179,32 @@ export interface IModule extends BaseContract {
   };
 
   estimateGas: {
-    compareVersions(
-      v1: PromiseOrValue<string>,
-      v2: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
+    moduleAuthor(overrides?: CallOverrides): Promise<BigNumber>;
 
-    loadModule(
-      _name: PromiseOrValue<BytesLike>,
-      version: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
+    moduleContract(overrides?: CallOverrides): Promise<BigNumber>;
 
-    moduleAuthor(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    moduleContract(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    moduleHash(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
+    moduleHash(overrides?: CallOverrides): Promise<BigNumber>;
 
     moduleName(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      modAddress: PromiseOrValue<string>,
+      overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    moduleType(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    moduleVersion(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
+    moduleVersion(overrides?: CallOverrides): Promise<BigNumber>;
   };
 
   populateTransaction: {
-    compareVersions(
-      v1: PromiseOrValue<string>,
-      v2: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
+    moduleAuthor(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    loadModule(
-      _name: PromiseOrValue<BytesLike>,
-      version: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
+    moduleContract(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    moduleAuthor(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    moduleContract(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    moduleHash(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
+    moduleHash(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     moduleName(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      modAddress: PromiseOrValue<string>,
+      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    moduleType(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    moduleVersion(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
+    moduleVersion(overrides?: CallOverrides): Promise<PopulatedTransaction>;
   };
 }

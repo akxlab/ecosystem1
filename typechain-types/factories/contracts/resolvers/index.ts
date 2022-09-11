@@ -8,3 +8,4 @@ export { IdentResolver__factory } from "./IdentResolver__factory";
 export { MetaDataResolver__factory } from "./MetaDataResolver__factory";
 export { NameResolver__factory } from "./NameResolver__factory";
 export { ProfileResolver__factory } from "./ProfileResolver__factory";
+export { RoutesResolver__factory } from "./RoutesResolver__factory";

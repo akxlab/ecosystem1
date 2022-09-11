@@ -6,13 +6,10 @@ interface IModule {
     event ModuleAdded(bytes32 _name);
     event ModuleRemoved(bytes32 _name);
 
-    function moduleType() external returns(string memory);
-    function moduleName() external returns(bytes32);
-    function moduleVersion() external returns(string memory);
-    function moduleAuthor() external returns(bytes32);
-    function moduleHash() external returns(bytes32);
-    function moduleContract() external returns(address);
-    function compareVersions(string memory v1, string memory v2) external returns(bool);
-    function loadModule(bytes32 _name, string memory version) external;
+    function moduleName(address modAddress) external view returns(uint256);
+    function moduleVersion() external view returns(string memory);
+    function moduleAuthor() external view returns(bytes32);
+    function moduleHash() external view returns(bytes32);
+    function moduleContract() external view returns(address);
 
 }

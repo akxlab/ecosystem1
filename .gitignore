@@ -106,11 +106,11 @@ api/config.ts
 api/index.ts
 api/register.ts
 hardhat.config.ts
-typechain-types
-artifacts
-cache
-front
-backend
-deployments
-notusedyet
+typechain-types/
+artifacts/
+cache/
+front/
+backend/
+deployments/
+notusedyet/
 

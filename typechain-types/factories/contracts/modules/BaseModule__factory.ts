@@ -139,24 +139,6 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "bytes32",
-        name: "_name",
-        type: "bytes32",
-      },
-      {
-        internalType: "string",
-        name: "version",
-        type: "string",
-      },
-    ],
-    name: "loadModule",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [],
     name: "moduleAuthor",
     outputs: [
@@ -203,6 +185,25 @@ const _abi = [
         internalType: "bytes32",
         name: "",
         type: "bytes32",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "modAddress",
+        type: "address",
+      },
+    ],
+    name: "moduleName",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
       },
     ],
     stateMutability: "view",

@@ -31,6 +31,7 @@ abstract contract AKXMetas {
         assembly {
             akxmetas.slot := AKXMETAS_STORAGE_ID.slot
         }
+        return akxmetas;
     }
 
     function setName(string memory __name) internal {

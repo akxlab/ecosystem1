@@ -37,48 +37,6 @@ const _abi = [
     type: "event",
   },
   {
-    inputs: [
-      {
-        internalType: "string",
-        name: "v1",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "v2",
-        type: "string",
-      },
-    ],
-    name: "compareVersions",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "bytes32",
-        name: "_name",
-        type: "bytes32",
-      },
-      {
-        internalType: "string",
-        name: "version",
-        type: "string",
-      },
-    ],
-    name: "loadModule",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [],
     name: "moduleAuthor",
     outputs: [
@@ -88,7 +46,7 @@ const _abi = [
         type: "bytes32",
       },
     ],
-    stateMutability: "nonpayable",
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -101,7 +59,7 @@ const _abi = [
         type: "address",
       },
     ],
-    stateMutability: "nonpayable",
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -114,33 +72,26 @@ const _abi = [
         type: "bytes32",
       },
     ],
-    stateMutability: "nonpayable",
+    stateMutability: "view",
     type: "function",
   },
   {
-    inputs: [],
+    inputs: [
+      {
+        internalType: "address",
+        name: "modAddress",
+        type: "address",
+      },
+    ],
     name: "moduleName",
     outputs: [
       {
-        internalType: "bytes32",
+        internalType: "uint256",
         name: "",
-        type: "bytes32",
+        type: "uint256",
       },
     ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "moduleType",
-    outputs: [
-      {
-        internalType: "string",
-        name: "",
-        type: "string",
-      },
-    ],
-    stateMutability: "nonpayable",
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -153,7 +104,7 @@ const _abi = [
         type: "string",
       },
     ],
-    stateMutability: "nonpayable",
+    stateMutability: "view",
     type: "function",
   },
 ];

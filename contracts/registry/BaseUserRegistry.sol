@@ -78,7 +78,7 @@ abstract contract BaseUserRegistry is ERC721, Ownable {
 
 
 
-    function _register(uint256 tokenId, address _owner, bool update) internal  returns (uint256) {
+    function _register(uint256 tokenId, address _owner) internal  returns (uint256) {
 
         index += 1;
 

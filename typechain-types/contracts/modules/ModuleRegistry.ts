@@ -46,28 +46,28 @@ export declare namespace IModuleRegistry {
 
 export interface ModuleRegistryInterface extends utils.Interface {
   functions: {
-    "deregisterModule(address)": FunctionFragment;
     "getModule(bytes32)": FunctionFragment;
     "isRegisteredModuleAddress(address)": FunctionFragment;
     "isRegisteredModuleName(bytes32)": FunctionFragment;
+    "moduleAuthor()": FunctionFragment;
+    "moduleContract()": FunctionFragment;
+    "moduleHash()": FunctionFragment;
     "moduleName(address)": FunctionFragment;
-    "registerModule(address,string)": FunctionFragment;
+    "moduleVersion()": FunctionFragment;
   };
 
   getFunction(
     nameOrSignatureOrTopic:
-      | "deregisterModule"
       | "getModule"
       | "isRegisteredModuleAddress"
       | "isRegisteredModuleName"
+      | "moduleAuthor"
+      | "moduleContract"
+      | "moduleHash"
       | "moduleName"
-      | "registerModule"
+      | "moduleVersion"
   ): FunctionFragment;
 
-  encodeFunctionData(
-    functionFragment: "deregisterModule",
-    values: [PromiseOrValue<string>]
-  ): string;
   encodeFunctionData(
     functionFragment: "getModule",
     values: [PromiseOrValue<BytesLike>]
@@ -81,18 +81,26 @@ export interface ModuleRegistryInterface extends utils.Interface {
     values: [PromiseOrValue<BytesLike>]
   ): string;
   encodeFunctionData(
+    functionFragment: "moduleAuthor",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "moduleContract",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "moduleHash",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
     functionFragment: "moduleName",
     values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
-    functionFragment: "registerModule",
-    values: [PromiseOrValue<string>, PromiseOrValue<string>]
+    functionFragment: "moduleVersion",
+    values?: undefined
   ): string;
 
-  decodeFunctionResult(
-    functionFragment: "deregisterModule",
-    data: BytesLike
-  ): Result;
   decodeFunctionResult(functionFragment: "getModule", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "isRegisteredModuleAddress",
@@ -102,20 +110,40 @@ export interface ModuleRegistryInterface extends utils.Interface {
     functionFragment: "isRegisteredModuleName",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(
+    functionFragment: "moduleAuthor",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "moduleContract",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "moduleHash", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "moduleName", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "registerModule",
+    functionFragment: "moduleVersion",
     data: BytesLike
   ): Result;
 
   events: {
+    "ModuleAdded(bytes32)": EventFragment;
     "ModuleDeRegistered(address)": EventFragment;
     "ModuleRegistered(address,bytes32)": EventFragment;
+    "ModuleRemoved(bytes32)": EventFragment;
   };
 
+  getEvent(nameOrSignatureOrTopic: "ModuleAdded"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "ModuleDeRegistered"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "ModuleRegistered"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "ModuleRemoved"): EventFragment;
 }
+
+export interface ModuleAddedEventObject {
+  _name: string;
+}
+export type ModuleAddedEvent = TypedEvent<[string], ModuleAddedEventObject>;
+
+export type ModuleAddedEventFilter = TypedEventFilter<ModuleAddedEvent>;
 
 export interface ModuleDeRegisteredEventObject {
   _module: string;
@@ -139,6 +167,13 @@ export type ModuleRegisteredEvent = TypedEvent<
 
 export type ModuleRegisteredEventFilter =
   TypedEventFilter<ModuleRegisteredEvent>;
+
+export interface ModuleRemovedEventObject {
+  _name: string;
+}
+export type ModuleRemovedEvent = TypedEvent<[string], ModuleRemovedEventObject>;
+
+export type ModuleRemovedEventFilter = TypedEventFilter<ModuleRemovedEvent>;
 
 export interface ModuleRegistry extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
@@ -167,15 +202,10 @@ export interface ModuleRegistry extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
-    deregisterModule(
-      _module: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
     getModule(
       _name: PromiseOrValue<BytesLike>,
-      overrides?: CallOverrides
-    ): Promise<[IModuleRegistry.ModuleStructOutput]>;
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
 
     isRegisteredModuleAddress(
       _module: PromiseOrValue<string>,
@@ -187,27 +217,24 @@ export interface ModuleRegistry extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[boolean]>;
 
+    moduleAuthor(overrides?: CallOverrides): Promise<[string]>;
+
+    moduleContract(overrides?: CallOverrides): Promise<[string]>;
+
+    moduleHash(overrides?: CallOverrides): Promise<[string]>;
+
     moduleName(
       _module: PromiseOrValue<string>,
       overrides?: CallOverrides
-    ): Promise<[string]>;
+    ): Promise<[BigNumber]>;
 
-    registerModule(
-      _module: PromiseOrValue<string>,
-      _sName: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
+    moduleVersion(overrides?: CallOverrides): Promise<[string]>;
   };
-
-  deregisterModule(
-    _module: PromiseOrValue<string>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
 
   getModule(
     _name: PromiseOrValue<BytesLike>,
-    overrides?: CallOverrides
-  ): Promise<IModuleRegistry.ModuleStructOutput>;
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
 
   isRegisteredModuleAddress(
     _module: PromiseOrValue<string>,
@@ -219,23 +246,20 @@ export interface ModuleRegistry extends BaseContract {
     overrides?: CallOverrides
   ): Promise<boolean>;
 
+  moduleAuthor(overrides?: CallOverrides): Promise<string>;
+
+  moduleContract(overrides?: CallOverrides): Promise<string>;
+
+  moduleHash(overrides?: CallOverrides): Promise<string>;
+
   moduleName(
     _module: PromiseOrValue<string>,
     overrides?: CallOverrides
-  ): Promise<string>;
+  ): Promise<BigNumber>;
 
-  registerModule(
-    _module: PromiseOrValue<string>,
-    _sName: PromiseOrValue<string>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
+  moduleVersion(overrides?: CallOverrides): Promise<string>;
 
   callStatic: {
-    deregisterModule(
-      _module: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
     getModule(
       _name: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
@@ -251,19 +275,24 @@ export interface ModuleRegistry extends BaseContract {
       overrides?: CallOverrides
     ): Promise<boolean>;
 
+    moduleAuthor(overrides?: CallOverrides): Promise<string>;
+
+    moduleContract(overrides?: CallOverrides): Promise<string>;
+
+    moduleHash(overrides?: CallOverrides): Promise<string>;
+
     moduleName(
       _module: PromiseOrValue<string>,
       overrides?: CallOverrides
-    ): Promise<string>;
+    ): Promise<BigNumber>;
 
-    registerModule(
-      _module: PromiseOrValue<string>,
-      _sName: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    moduleVersion(overrides?: CallOverrides): Promise<string>;
   };
 
   filters: {
+    "ModuleAdded(bytes32)"(_name?: null): ModuleAddedEventFilter;
+    ModuleAdded(_name?: null): ModuleAddedEventFilter;
+
     "ModuleDeRegistered(address)"(
       _module?: null
     ): ModuleDeRegisteredEventFilter;
@@ -274,17 +303,15 @@ export interface ModuleRegistry extends BaseContract {
       _name?: null
     ): ModuleRegisteredEventFilter;
     ModuleRegistered(_module?: null, _name?: null): ModuleRegisteredEventFilter;
+
+    "ModuleRemoved(bytes32)"(_name?: null): ModuleRemovedEventFilter;
+    ModuleRemoved(_name?: null): ModuleRemovedEventFilter;
   };
 
   estimateGas: {
-    deregisterModule(
-      _module: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
     getModule(
       _name: PromiseOrValue<BytesLike>,
-      overrides?: CallOverrides
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
     isRegisteredModuleAddress(
@@ -297,27 +324,24 @@ export interface ModuleRegistry extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    moduleAuthor(overrides?: CallOverrides): Promise<BigNumber>;
+
+    moduleContract(overrides?: CallOverrides): Promise<BigNumber>;
+
+    moduleHash(overrides?: CallOverrides): Promise<BigNumber>;
+
     moduleName(
       _module: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    registerModule(
-      _module: PromiseOrValue<string>,
-      _sName: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
+    moduleVersion(overrides?: CallOverrides): Promise<BigNumber>;
   };
 
   populateTransaction: {
-    deregisterModule(
-      _module: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
     getModule(
       _name: PromiseOrValue<BytesLike>,
-      overrides?: CallOverrides
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
     isRegisteredModuleAddress(
@@ -330,15 +354,17 @@ export interface ModuleRegistry extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    moduleAuthor(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    moduleContract(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    moduleHash(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
     moduleName(
       _module: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    registerModule(
-      _module: PromiseOrValue<string>,
-      _sName: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
+    moduleVersion(overrides?: CallOverrides): Promise<PopulatedTransaction>;
   };
 }

@@ -77,8 +77,14 @@ export declare namespace MetaDataResolver {
 
 export interface UserDataServiceResolverInterface extends utils.Interface {
   functions: {
+    "AKX_HOLDER_ROLE()": FunctionFragment;
+    "AKX_OPERATOR_ROLE()": FunctionFragment;
+    "DAO_ROLE()": FunctionFragment;
+    "DEFAULT_ADMIN_ROLE()": FunctionFragment;
     "ERC721_ID()": FunctionFragment;
     "IDENT_INTERFACE_ID()": FunctionFragment;
+    "LABZ_HOLDER_ROLE()": FunctionFragment;
+    "LABZ_OPERATOR_ROLE()": FunctionFragment;
     "METADATA_INTERFACE_ID()": FunctionFragment;
     "METAVALUE_INTERFACE_ID()": FunctionFragment;
     "NAME_INTERFACE_ID()": FunctionFragment;
@@ -86,6 +92,9 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
     "RECLAIM_ID()": FunctionFragment;
     "REPUTATION_ID()": FunctionFragment;
     "SETMETA_INTERFACE_ID()": FunctionFragment;
+    "UDS_OPERATOR_ROLE()": FunctionFragment;
+    "UPGRADER_OPERATOR_ROLE()": FunctionFragment;
+    "alreadyRegistered(address)": FunctionFragment;
     "approve(address,uint256)": FunctionFragment;
     "authorisations(bytes32,address,address)": FunctionFragment;
     "authorizeController(address)": FunctionFragment;
@@ -99,6 +108,11 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
     "getName()": FunctionFragment;
     "getName(address)": FunctionFragment;
     "getName(uint256)": FunctionFragment;
+    "getRoleAdmin(bytes32)": FunctionFragment;
+    "getRoleMember(bytes32,uint256)": FunctionFragment;
+    "getRoleMemberCount(bytes32)": FunctionFragment;
+    "grantRole(bytes32,address)": FunctionFragment;
+    "hasRole(bytes32,address)": FunctionFragment;
     "ident(uint256)": FunctionFragment;
     "isApprovedForAll(address,address)": FunctionFragment;
     "metaValue(uint256,string)": FunctionFragment;
@@ -109,10 +123,13 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
     "ownerOf(uint256)": FunctionFragment;
     "profile(uint256)": FunctionFragment;
     "renounceOwnership()": FunctionFragment;
+    "renounceRole(bytes32,address)": FunctionFragment;
+    "revokeRole(bytes32,address)": FunctionFragment;
     "rootNodeAddress()": FunctionFragment;
     "safeTransferFrom(address,address,uint256)": FunctionFragment;
     "safeTransferFrom(address,address,uint256,bytes)": FunctionFragment;
     "setApprovalForAll(address,bool)": FunctionFragment;
+    "setAuthorisation(bytes32,address,bool)": FunctionFragment;
     "setIdent(uint256,bytes32)": FunctionFragment;
     "setMetaData(uint256,string,uint256,bytes,bool,bool)": FunctionFragment;
     "setResolver(address)": FunctionFragment;
@@ -125,8 +142,14 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
 
   getFunction(
     nameOrSignatureOrTopic:
+      | "AKX_HOLDER_ROLE"
+      | "AKX_OPERATOR_ROLE"
+      | "DAO_ROLE"
+      | "DEFAULT_ADMIN_ROLE"
       | "ERC721_ID"
       | "IDENT_INTERFACE_ID"
+      | "LABZ_HOLDER_ROLE"
+      | "LABZ_OPERATOR_ROLE"
       | "METADATA_INTERFACE_ID"
       | "METAVALUE_INTERFACE_ID"
       | "NAME_INTERFACE_ID"
@@ -134,6 +157,9 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
       | "RECLAIM_ID"
       | "REPUTATION_ID"
       | "SETMETA_INTERFACE_ID"
+      | "UDS_OPERATOR_ROLE"
+      | "UPGRADER_OPERATOR_ROLE"
+      | "alreadyRegistered"
       | "approve"
       | "authorisations"
       | "authorizeController"
@@ -147,6 +173,11 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
       | "getName()"
       | "getName(address)"
       | "getName(uint256)"
+      | "getRoleAdmin"
+      | "getRoleMember"
+      | "getRoleMemberCount"
+      | "grantRole"
+      | "hasRole"
       | "ident"
       | "isApprovedForAll"
       | "metaValue"
@@ -157,10 +188,13 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
       | "ownerOf"
       | "profile"
       | "renounceOwnership"
+      | "renounceRole"
+      | "revokeRole"
       | "rootNodeAddress"
       | "safeTransferFrom(address,address,uint256)"
       | "safeTransferFrom(address,address,uint256,bytes)"
       | "setApprovalForAll"
+      | "setAuthorisation"
       | "setIdent"
       | "setMetaData"
       | "setResolver"
@@ -171,9 +205,30 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
       | "transferOwnership"
   ): FunctionFragment;
 
+  encodeFunctionData(
+    functionFragment: "AKX_HOLDER_ROLE",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "AKX_OPERATOR_ROLE",
+    values?: undefined
+  ): string;
+  encodeFunctionData(functionFragment: "DAO_ROLE", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "DEFAULT_ADMIN_ROLE",
+    values?: undefined
+  ): string;
   encodeFunctionData(functionFragment: "ERC721_ID", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "IDENT_INTERFACE_ID",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "LABZ_HOLDER_ROLE",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "LABZ_OPERATOR_ROLE",
     values?: undefined
   ): string;
   encodeFunctionData(
@@ -203,6 +258,18 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
   encodeFunctionData(
     functionFragment: "SETMETA_INTERFACE_ID",
     values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "UDS_OPERATOR_ROLE",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "UPGRADER_OPERATOR_ROLE",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "alreadyRegistered",
+    values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
     functionFragment: "approve",
@@ -258,6 +325,26 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
     values: [PromiseOrValue<BigNumberish>]
   ): string;
   encodeFunctionData(
+    functionFragment: "getRoleAdmin",
+    values: [PromiseOrValue<BytesLike>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getRoleMember",
+    values: [PromiseOrValue<BytesLike>, PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getRoleMemberCount",
+    values: [PromiseOrValue<BytesLike>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "grantRole",
+    values: [PromiseOrValue<BytesLike>, PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "hasRole",
+    values: [PromiseOrValue<BytesLike>, PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
     functionFragment: "ident",
     values: [PromiseOrValue<BigNumberish>]
   ): string;
@@ -292,6 +379,14 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
+    functionFragment: "renounceRole",
+    values: [PromiseOrValue<BytesLike>, PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "revokeRole",
+    values: [PromiseOrValue<BytesLike>, PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
     functionFragment: "rootNodeAddress",
     values?: undefined
   ): string;
@@ -315,6 +410,14 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
   encodeFunctionData(
     functionFragment: "setApprovalForAll",
     values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setAuthorisation",
+    values: [
+      PromiseOrValue<BytesLike>,
+      PromiseOrValue<string>,
+      PromiseOrValue<boolean>
+    ]
   ): string;
   encodeFunctionData(
     functionFragment: "setIdent",
@@ -357,9 +460,30 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
     values: [PromiseOrValue<string>]
   ): string;
 
+  decodeFunctionResult(
+    functionFragment: "AKX_HOLDER_ROLE",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "AKX_OPERATOR_ROLE",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "DAO_ROLE", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "DEFAULT_ADMIN_ROLE",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "ERC721_ID", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "IDENT_INTERFACE_ID",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "LABZ_HOLDER_ROLE",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "LABZ_OPERATOR_ROLE",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -385,6 +509,18 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
   ): Result;
   decodeFunctionResult(
     functionFragment: "SETMETA_INTERFACE_ID",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "UDS_OPERATOR_ROLE",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "UPGRADER_OPERATOR_ROLE",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "alreadyRegistered",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "approve", data: BytesLike): Result;
@@ -430,6 +566,20 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
     functionFragment: "getName(uint256)",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(
+    functionFragment: "getRoleAdmin",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getRoleMember",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getRoleMemberCount",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "grantRole", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "hasRole", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "ident", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "isApprovedForAll",
@@ -447,6 +597,11 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
+    functionFragment: "renounceRole",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "revokeRole", data: BytesLike): Result;
+  decodeFunctionResult(
     functionFragment: "rootNodeAddress",
     data: BytesLike
   ): Result;
@@ -460,6 +615,10 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
   ): Result;
   decodeFunctionResult(
     functionFragment: "setApprovalForAll",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setAuthorisation",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "setIdent", data: BytesLike): Result;
@@ -487,6 +646,7 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
   ): Result;
 
   events: {
+    "AlreadyRegisteredEvent(bytes32,uint256,bytes32)": EventFragment;
     "Approval(address,address,uint256)": EventFragment;
     "ApprovalForAll(address,address,bool)": EventFragment;
     "AuthorisationChanged(bytes32,address,address,bool)": EventFragment;
@@ -494,9 +654,13 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
     "MetaDataAdded(uint256,bytes32,bytes32)": EventFragment;
     "NewAccountCreated(bytes32,address,uint256)": EventFragment;
     "OwnershipTransferred(address,address)": EventFragment;
+    "RoleAdminChanged(bytes32,bytes32,bytes32)": EventFragment;
+    "RoleGranted(bytes32,address,address)": EventFragment;
+    "RoleRevoked(bytes32,address,address)": EventFragment;
     "Transfer(address,address,uint256)": EventFragment;
   };
 
+  getEvent(nameOrSignatureOrTopic: "AlreadyRegisteredEvent"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Approval"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "ApprovalForAll"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "AuthorisationChanged"): EventFragment;
@@ -504,8 +668,24 @@ export interface UserDataServiceResolverInterface extends utils.Interface {
   getEvent(nameOrSignatureOrTopic: "MetaDataAdded"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "NewAccountCreated"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "RoleAdminChanged"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "RoleGranted"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "RoleRevoked"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Transfer"): EventFragment;
 }
+
+export interface AlreadyRegisteredEventEventObject {
+  identity: string;
+  tokenId: BigNumber;
+  metasId: string;
+}
+export type AlreadyRegisteredEventEvent = TypedEvent<
+  [string, BigNumber, string],
+  AlreadyRegisteredEventEventObject
+>;
+
+export type AlreadyRegisteredEventEventFilter =
+  TypedEventFilter<AlreadyRegisteredEventEvent>;
 
 export interface ApprovalEventObject {
   owner: string;
@@ -589,6 +769,43 @@ export type OwnershipTransferredEvent = TypedEvent<
 export type OwnershipTransferredEventFilter =
   TypedEventFilter<OwnershipTransferredEvent>;
 
+export interface RoleAdminChangedEventObject {
+  role: string;
+  previousAdminRole: string;
+  newAdminRole: string;
+}
+export type RoleAdminChangedEvent = TypedEvent<
+  [string, string, string],
+  RoleAdminChangedEventObject
+>;
+
+export type RoleAdminChangedEventFilter =
+  TypedEventFilter<RoleAdminChangedEvent>;
+
+export interface RoleGrantedEventObject {
+  role: string;
+  account: string;
+  sender: string;
+}
+export type RoleGrantedEvent = TypedEvent<
+  [string, string, string],
+  RoleGrantedEventObject
+>;
+
+export type RoleGrantedEventFilter = TypedEventFilter<RoleGrantedEvent>;
+
+export interface RoleRevokedEventObject {
+  role: string;
+  account: string;
+  sender: string;
+}
+export type RoleRevokedEvent = TypedEvent<
+  [string, string, string],
+  RoleRevokedEventObject
+>;
+
+export type RoleRevokedEventFilter = TypedEventFilter<RoleRevokedEvent>;
+
 export interface TransferEventObject {
   from: string;
   to: string;
@@ -628,9 +845,21 @@ export interface UserDataServiceResolver extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
+    AKX_HOLDER_ROLE(overrides?: CallOverrides): Promise<[string]>;
+
+    AKX_OPERATOR_ROLE(overrides?: CallOverrides): Promise<[string]>;
+
+    DAO_ROLE(overrides?: CallOverrides): Promise<[string]>;
+
+    DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<[string]>;
+
     ERC721_ID(overrides?: CallOverrides): Promise<[string]>;
 
     IDENT_INTERFACE_ID(overrides?: CallOverrides): Promise<[string]>;
+
+    LABZ_HOLDER_ROLE(overrides?: CallOverrides): Promise<[string]>;
+
+    LABZ_OPERATOR_ROLE(overrides?: CallOverrides): Promise<[string]>;
 
     METADATA_INTERFACE_ID(overrides?: CallOverrides): Promise<[string]>;
 
@@ -645,6 +874,15 @@ export interface UserDataServiceResolver extends BaseContract {
     REPUTATION_ID(overrides?: CallOverrides): Promise<[string]>;
 
     SETMETA_INTERFACE_ID(overrides?: CallOverrides): Promise<[string]>;
+
+    UDS_OPERATOR_ROLE(overrides?: CallOverrides): Promise<[string]>;
+
+    UPGRADER_OPERATOR_ROLE(overrides?: CallOverrides): Promise<[string]>;
+
+    alreadyRegistered(
+      _subject: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
 
     approve(
       to: PromiseOrValue<string>,
@@ -716,6 +954,34 @@ export interface UserDataServiceResolver extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[string]>;
 
+    getRoleAdmin(
+      role: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<[string]>;
+
+    getRoleMember(
+      role: PromiseOrValue<BytesLike>,
+      index: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<[string]>;
+
+    getRoleMemberCount(
+      role: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
+    grantRole(
+      role: PromiseOrValue<BytesLike>,
+      account: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    hasRole(
+      role: PromiseOrValue<BytesLike>,
+      account: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
+
     ident(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -765,6 +1031,18 @@ export interface UserDataServiceResolver extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
+    renounceRole(
+      role: PromiseOrValue<BytesLike>,
+      account: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    revokeRole(
+      role: PromiseOrValue<BytesLike>,
+      account: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
     rootNodeAddress(overrides?: CallOverrides): Promise<[string]>;
 
     "safeTransferFrom(address,address,uint256)"(
@@ -785,6 +1063,13 @@ export interface UserDataServiceResolver extends BaseContract {
     setApprovalForAll(
       operator: PromiseOrValue<string>,
       approved: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setAuthorisation(
+      profileId: PromiseOrValue<BytesLike>,
+      target: PromiseOrValue<string>,
+      _isAuthorised: PromiseOrValue<boolean>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -834,9 +1119,21 @@ export interface UserDataServiceResolver extends BaseContract {
     ): Promise<ContractTransaction>;
   };
 
+  AKX_HOLDER_ROLE(overrides?: CallOverrides): Promise<string>;
+
+  AKX_OPERATOR_ROLE(overrides?: CallOverrides): Promise<string>;
+
+  DAO_ROLE(overrides?: CallOverrides): Promise<string>;
+
+  DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<string>;
+
   ERC721_ID(overrides?: CallOverrides): Promise<string>;
 
   IDENT_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+  LABZ_HOLDER_ROLE(overrides?: CallOverrides): Promise<string>;
+
+  LABZ_OPERATOR_ROLE(overrides?: CallOverrides): Promise<string>;
 
   METADATA_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
 
@@ -851,6 +1148,15 @@ export interface UserDataServiceResolver extends BaseContract {
   REPUTATION_ID(overrides?: CallOverrides): Promise<string>;
 
   SETMETA_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+  UDS_OPERATOR_ROLE(overrides?: CallOverrides): Promise<string>;
+
+  UPGRADER_OPERATOR_ROLE(overrides?: CallOverrides): Promise<string>;
+
+  alreadyRegistered(
+    _subject: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<boolean>;
 
   approve(
     to: PromiseOrValue<string>,
@@ -918,6 +1224,34 @@ export interface UserDataServiceResolver extends BaseContract {
     overrides?: CallOverrides
   ): Promise<string>;
 
+  getRoleAdmin(
+    role: PromiseOrValue<BytesLike>,
+    overrides?: CallOverrides
+  ): Promise<string>;
+
+  getRoleMember(
+    role: PromiseOrValue<BytesLike>,
+    index: PromiseOrValue<BigNumberish>,
+    overrides?: CallOverrides
+  ): Promise<string>;
+
+  getRoleMemberCount(
+    role: PromiseOrValue<BytesLike>,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  grantRole(
+    role: PromiseOrValue<BytesLike>,
+    account: PromiseOrValue<string>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  hasRole(
+    role: PromiseOrValue<BytesLike>,
+    account: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<boolean>;
+
   ident(
     tokenId: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
@@ -963,6 +1297,18 @@ export interface UserDataServiceResolver extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
+  renounceRole(
+    role: PromiseOrValue<BytesLike>,
+    account: PromiseOrValue<string>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  revokeRole(
+    role: PromiseOrValue<BytesLike>,
+    account: PromiseOrValue<string>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
   rootNodeAddress(overrides?: CallOverrides): Promise<string>;
 
   "safeTransferFrom(address,address,uint256)"(
@@ -983,6 +1329,13 @@ export interface UserDataServiceResolver extends BaseContract {
   setApprovalForAll(
     operator: PromiseOrValue<string>,
     approved: PromiseOrValue<boolean>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setAuthorisation(
+    profileId: PromiseOrValue<BytesLike>,
+    target: PromiseOrValue<string>,
+    _isAuthorised: PromiseOrValue<boolean>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -1032,9 +1385,21 @@ export interface UserDataServiceResolver extends BaseContract {
   ): Promise<ContractTransaction>;
 
   callStatic: {
+    AKX_HOLDER_ROLE(overrides?: CallOverrides): Promise<string>;
+
+    AKX_OPERATOR_ROLE(overrides?: CallOverrides): Promise<string>;
+
+    DAO_ROLE(overrides?: CallOverrides): Promise<string>;
+
+    DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<string>;
+
     ERC721_ID(overrides?: CallOverrides): Promise<string>;
 
     IDENT_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+    LABZ_HOLDER_ROLE(overrides?: CallOverrides): Promise<string>;
+
+    LABZ_OPERATOR_ROLE(overrides?: CallOverrides): Promise<string>;
 
     METADATA_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
 
@@ -1049,6 +1414,15 @@ export interface UserDataServiceResolver extends BaseContract {
     REPUTATION_ID(overrides?: CallOverrides): Promise<string>;
 
     SETMETA_INTERFACE_ID(overrides?: CallOverrides): Promise<string>;
+
+    UDS_OPERATOR_ROLE(overrides?: CallOverrides): Promise<string>;
+
+    UPGRADER_OPERATOR_ROLE(overrides?: CallOverrides): Promise<string>;
+
+    alreadyRegistered(
+      _subject: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<boolean>;
 
     approve(
       to: PromiseOrValue<string>,
@@ -1087,7 +1461,7 @@ export interface UserDataServiceResolver extends BaseContract {
       _accountWalletAddress: PromiseOrValue<string>,
       accountName: PromiseOrValue<string>,
       overrides?: CallOverrides
-    ): Promise<void>;
+    ): Promise<BigNumber>;
 
     deAuthorizeController(
       controller: PromiseOrValue<string>,
@@ -1115,6 +1489,34 @@ export interface UserDataServiceResolver extends BaseContract {
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<string>;
+
+    getRoleAdmin(
+      role: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<string>;
+
+    getRoleMember(
+      role: PromiseOrValue<BytesLike>,
+      index: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<string>;
+
+    getRoleMemberCount(
+      role: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    grantRole(
+      role: PromiseOrValue<BytesLike>,
+      account: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    hasRole(
+      role: PromiseOrValue<BytesLike>,
+      account: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<boolean>;
 
     ident(
       tokenId: PromiseOrValue<BigNumberish>,
@@ -1159,6 +1561,18 @@ export interface UserDataServiceResolver extends BaseContract {
 
     renounceOwnership(overrides?: CallOverrides): Promise<void>;
 
+    renounceRole(
+      role: PromiseOrValue<BytesLike>,
+      account: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    revokeRole(
+      role: PromiseOrValue<BytesLike>,
+      account: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
     rootNodeAddress(overrides?: CallOverrides): Promise<string>;
 
     "safeTransferFrom(address,address,uint256)"(
@@ -1179,6 +1593,13 @@ export interface UserDataServiceResolver extends BaseContract {
     setApprovalForAll(
       operator: PromiseOrValue<string>,
       approved: PromiseOrValue<boolean>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setAuthorisation(
+      profileId: PromiseOrValue<BytesLike>,
+      target: PromiseOrValue<string>,
+      _isAuthorised: PromiseOrValue<boolean>,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -1229,6 +1650,17 @@ export interface UserDataServiceResolver extends BaseContract {
   };
 
   filters: {
+    "AlreadyRegisteredEvent(bytes32,uint256,bytes32)"(
+      identity?: null,
+      tokenId?: null,
+      metasId?: null
+    ): AlreadyRegisteredEventEventFilter;
+    AlreadyRegisteredEvent(
+      identity?: null,
+      tokenId?: null,
+      metasId?: null
+    ): AlreadyRegisteredEventEventFilter;
+
     "Approval(address,address,uint256)"(
       owner?: PromiseOrValue<string> | null,
       approved?: PromiseOrValue<string> | null,
@@ -1298,6 +1730,39 @@ export interface UserDataServiceResolver extends BaseContract {
       newOwner?: PromiseOrValue<string> | null
     ): OwnershipTransferredEventFilter;
 
+    "RoleAdminChanged(bytes32,bytes32,bytes32)"(
+      role?: PromiseOrValue<BytesLike> | null,
+      previousAdminRole?: PromiseOrValue<BytesLike> | null,
+      newAdminRole?: PromiseOrValue<BytesLike> | null
+    ): RoleAdminChangedEventFilter;
+    RoleAdminChanged(
+      role?: PromiseOrValue<BytesLike> | null,
+      previousAdminRole?: PromiseOrValue<BytesLike> | null,
+      newAdminRole?: PromiseOrValue<BytesLike> | null
+    ): RoleAdminChangedEventFilter;
+
+    "RoleGranted(bytes32,address,address)"(
+      role?: PromiseOrValue<BytesLike> | null,
+      account?: PromiseOrValue<string> | null,
+      sender?: PromiseOrValue<string> | null
+    ): RoleGrantedEventFilter;
+    RoleGranted(
+      role?: PromiseOrValue<BytesLike> | null,
+      account?: PromiseOrValue<string> | null,
+      sender?: PromiseOrValue<string> | null
+    ): RoleGrantedEventFilter;
+
+    "RoleRevoked(bytes32,address,address)"(
+      role?: PromiseOrValue<BytesLike> | null,
+      account?: PromiseOrValue<string> | null,
+      sender?: PromiseOrValue<string> | null
+    ): RoleRevokedEventFilter;
+    RoleRevoked(
+      role?: PromiseOrValue<BytesLike> | null,
+      account?: PromiseOrValue<string> | null,
+      sender?: PromiseOrValue<string> | null
+    ): RoleRevokedEventFilter;
+
     "Transfer(address,address,uint256)"(
       from?: PromiseOrValue<string> | null,
       to?: PromiseOrValue<string> | null,
@@ -1311,9 +1776,21 @@ export interface UserDataServiceResolver extends BaseContract {
   };
 
   estimateGas: {
+    AKX_HOLDER_ROLE(overrides?: CallOverrides): Promise<BigNumber>;
+
+    AKX_OPERATOR_ROLE(overrides?: CallOverrides): Promise<BigNumber>;
+
+    DAO_ROLE(overrides?: CallOverrides): Promise<BigNumber>;
+
+    DEFAULT_ADMIN_ROLE(overrides?: CallOverrides): Promise<BigNumber>;
+
     ERC721_ID(overrides?: CallOverrides): Promise<BigNumber>;
 
     IDENT_INTERFACE_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
+    LABZ_HOLDER_ROLE(overrides?: CallOverrides): Promise<BigNumber>;
+
+    LABZ_OPERATOR_ROLE(overrides?: CallOverrides): Promise<BigNumber>;
 
     METADATA_INTERFACE_ID(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -1328,6 +1805,15 @@ export interface UserDataServiceResolver extends BaseContract {
     REPUTATION_ID(overrides?: CallOverrides): Promise<BigNumber>;
 
     SETMETA_INTERFACE_ID(overrides?: CallOverrides): Promise<BigNumber>;
+
+    UDS_OPERATOR_ROLE(overrides?: CallOverrides): Promise<BigNumber>;
+
+    UPGRADER_OPERATOR_ROLE(overrides?: CallOverrides): Promise<BigNumber>;
+
+    alreadyRegistered(
+      _subject: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     approve(
       to: PromiseOrValue<string>,
@@ -1395,6 +1881,34 @@ export interface UserDataServiceResolver extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    getRoleAdmin(
+      role: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    getRoleMember(
+      role: PromiseOrValue<BytesLike>,
+      index: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    getRoleMemberCount(
+      role: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    grantRole(
+      role: PromiseOrValue<BytesLike>,
+      account: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    hasRole(
+      role: PromiseOrValue<BytesLike>,
+      account: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     ident(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -1440,6 +1954,18 @@ export interface UserDataServiceResolver extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
+    renounceRole(
+      role: PromiseOrValue<BytesLike>,
+      account: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    revokeRole(
+      role: PromiseOrValue<BytesLike>,
+      account: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
     rootNodeAddress(overrides?: CallOverrides): Promise<BigNumber>;
 
     "safeTransferFrom(address,address,uint256)"(
@@ -1460,6 +1986,13 @@ export interface UserDataServiceResolver extends BaseContract {
     setApprovalForAll(
       operator: PromiseOrValue<string>,
       approved: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setAuthorisation(
+      profileId: PromiseOrValue<BytesLike>,
+      target: PromiseOrValue<string>,
+      _isAuthorised: PromiseOrValue<boolean>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -1510,9 +2043,25 @@ export interface UserDataServiceResolver extends BaseContract {
   };
 
   populateTransaction: {
+    AKX_HOLDER_ROLE(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    AKX_OPERATOR_ROLE(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    DAO_ROLE(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    DEFAULT_ADMIN_ROLE(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     ERC721_ID(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     IDENT_INTERFACE_ID(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    LABZ_HOLDER_ROLE(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    LABZ_OPERATOR_ROLE(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -1535,6 +2084,17 @@ export interface UserDataServiceResolver extends BaseContract {
     REPUTATION_ID(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     SETMETA_INTERFACE_ID(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    UDS_OPERATOR_ROLE(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    UPGRADER_OPERATOR_ROLE(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    alreadyRegistered(
+      _subject: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -1604,6 +2164,34 @@ export interface UserDataServiceResolver extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    getRoleAdmin(
+      role: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    getRoleMember(
+      role: PromiseOrValue<BytesLike>,
+      index: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    getRoleMemberCount(
+      role: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    grantRole(
+      role: PromiseOrValue<BytesLike>,
+      account: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    hasRole(
+      role: PromiseOrValue<BytesLike>,
+      account: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     ident(
       tokenId: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -1649,6 +2237,18 @@ export interface UserDataServiceResolver extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
+    renounceRole(
+      role: PromiseOrValue<BytesLike>,
+      account: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    revokeRole(
+      role: PromiseOrValue<BytesLike>,
+      account: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
     rootNodeAddress(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     "safeTransferFrom(address,address,uint256)"(
@@ -1669,6 +2269,13 @@ export interface UserDataServiceResolver extends BaseContract {
     setApprovalForAll(
       operator: PromiseOrValue<string>,
       approved: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setAuthorisation(
+      profileId: PromiseOrValue<BytesLike>,
+      target: PromiseOrValue<string>,
+      _isAuthorised: PromiseOrValue<boolean>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 

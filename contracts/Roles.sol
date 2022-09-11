@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.16;
+pragma solidity 0.8.17;
 
 abstract contract AKXRoles {
     bytes32 public constant LABZ_OPERATOR_ROLE =

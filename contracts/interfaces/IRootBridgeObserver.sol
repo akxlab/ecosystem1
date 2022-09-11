@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.16;
+pragma solidity 0.8.17;
 
 bytes32 constant BRIDGE_TX_TYPE_ID = bytes4(keccak256(abi.encodePacked('TxTypeID()')));
 bytes32 constant BRIDGE_MSG_TYPE_ID = bytes4(keccak256(abi.encodePacked('BridgeMsg(bytes message)')));

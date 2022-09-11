@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.16;
+pragma solidity 0.8.17;
 
 /**
  * @notice draft proposal IEIP-1155UResolver as a required interface to resolve EIP1155 bytes32 ids to uint256

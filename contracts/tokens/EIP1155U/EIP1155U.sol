@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.16;
+pragma solidity 0.8.17;
 
 import "../../interfaces/IEIP-1155U.sol";
 import "../../interfaces/IEIP-1155UResolver.sol";

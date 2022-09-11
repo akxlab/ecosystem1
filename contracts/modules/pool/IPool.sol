@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.16;
+pragma solidity 0.8.17;
 
 interface IPool {
     event PoolCreated(address _owner, address indexed token1, address indexed token2);

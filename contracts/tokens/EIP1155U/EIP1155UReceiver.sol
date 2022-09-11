@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.16;
+pragma solidity 0.8.17;
 
 import "../../interfaces/IEIP-1155UReceiver.sol";
 import "@openzeppelin/contracts/utils/introspection/ERC165.sol";

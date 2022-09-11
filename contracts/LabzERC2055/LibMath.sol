@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.16;
+pragma solidity 0.8.17;
 
 uint constant BASE_PRICE_MATIC = 0.15 ether;
 uint constant BASE_FEE_PERCENT = 0.1 ether;

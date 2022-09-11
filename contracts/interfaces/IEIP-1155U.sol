@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.16;
+pragma solidity 0.8.17;
 
     /**
      * @title ETHEREUM IMPROVEMENTS PROPOSAL draftEIP-1155U Derivated from IERC1155

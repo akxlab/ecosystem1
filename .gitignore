@@ -40,13 +40,13 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
-typechain-types/
-artifacts/
-cache/
-front/
-backend/
-deployments/
-notusedyet/
+/typechain-types/
+
+/cache/
+/front/
+/backend/
+/deployments/
+
 
 
 # TypeScript v1 declaration files
@@ -115,3 +115,5 @@ api/index.ts
 api/register.ts
 hardhat.config.ts
 
+/notusedyet/
+/artifacts/

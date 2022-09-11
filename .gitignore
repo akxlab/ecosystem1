@@ -40,12 +40,12 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
-/typechain-types/
+/typechain-types/*/**
 
-/cache/
-/front/
-/backend/
-/deployments/
+/cache/*/**
+/front/*/**
+/backend/*/**
+/deployments/*/**
 
 
 

@@ -84,11 +84,11 @@ contract UserDataServiceResolver is AllResolvers, AccessControlEnumerable, BaseU
 
     }
 
-    function createNewAccount(address _accountWalletAddress)  external onlyRole(AKX_OPERATOR_ROLE) {
+    /*function createNewAccount(address _accountWalletAddress)  public onlyRole(AKX_OPERATOR_ROLE) {
         emit Log("create new account requested");
         require(_createNewAccount(_accountWalletAddress), "error registering new account");
 _tokenIndex.increment();
-    }
+    }*/
 
     function _createNewAccount(address accountOwner) internal returns (bool) {
 

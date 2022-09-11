@@ -41,7 +41,7 @@ contract LabzERC2055 is
     );
     event FeeTransactionEvent(address indexed to, uint256 labzQty);
 
-    constructor(address userRegistry, address _gnosisMulti)
+    constructor(address _gnosisMulti)
         ERC2055("LABZ", "LABZ")
     {
         setMaxSupply(300000000000 * 1e18);
@@ -53,14 +53,6 @@ contract LabzERC2055 is
         canBuy = false;
         vipSale = true;
 
-        /**
-         * @dev registering routes with the gateway so we can use them safely with calldata
-         */
-
-        registerRoute(address(this), "BUY_VIP", BUY_VIP_ID, 2, false);
-        registerRoute(address(this), "BUY", NORMAL_BUY_ID, 2, false);
-        registerRoute(address(this), "CURRENT_PRICE", CURRENT_PRICE_ID, 0, false);
-        registerRoute(address(this), "AVAILABLE_BALANCE", AVAIL_BALANCE_ID, 1, false);
     }
 
     function getChainID() internal view returns (uint256) {
@@ -75,7 +67,7 @@ contract LabzERC2055 is
         return getPrice(80001);
     }
 
-    function buy() external payable nonReentrant {
+    function buy() external payable override nonReentrant returns(bool success) {
         require(canBuy == true, "LABZ: cannot buy yet");
         uint256 _val = msg.value;
         address _sender = msg.sender;
@@ -87,8 +79,9 @@ contract LabzERC2055 is
         uint256 fee = calculateFee(qty * 1e18) * 1e18;
         uint256 toSender = (qty * 1e18) - fee;
         uint256 toMulti = fee;
-        safeMint(toSender, _sender);
-        safeMint(toMulti, multiSignatureWallet);
+        safeMint(_sender, toSender);
+        safeMint(multiSignatureWallet, toMulti);
+        success = true;
     }
 
     function transfer(address to, uint256 amount)
@@ -124,8 +117,8 @@ contract LabzERC2055 is
         @notice 10% of the transaction is sent to the gnosis multisignature wallet for the reserve as stated in the Whitepaper
         */
         uint256 toMulti = fee;
-        safeMint(toSender, _sender);
-        safeMint(toMulti, multiSignatureWallet);
+        safeMint(_sender, toSender);
+        safeMint(multiSignatureWallet, toMulti);
         emit FeeTransactionEvent(multiSignatureWallet, toMulti);
         lockedBalance[_sender] = toSender;
         _lastBuyTime[_sender] = block.timestamp;
@@ -152,6 +145,7 @@ contract LabzERC2055 is
             lockedBalance[_sender] = 0;
             _isUnlocked[_sender] = true;
             return true;
+            
         } else if (!isHavingAvailableBalance(_sender)) {
             return false;
         } else if (amount > availableBalance(_sender)) {

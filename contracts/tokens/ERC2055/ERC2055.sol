@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
-import "./ERC2055Storage.sol";
 import "./IERC2055.sol";
 
 contract ERC2055 is IERC2055 {

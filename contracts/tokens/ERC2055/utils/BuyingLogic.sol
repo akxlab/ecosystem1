@@ -122,7 +122,7 @@ abstract contract BuyingLogic is Pricing, LibMath {
 
     //function setMetaData(uint256 tokenId, string memory keyStr, uint _dtype, bytes memory value, bool editable, bool encrypted) external
     function _addMetasToNFT(uint256 _tid, string memory key, bytes memory value) internal {
-       // _uds.setMetaData(_tid, key,  0, value, false, false);
+        _uds.setMetaData(_tid, key,  0, value, false, false);
     }
 
     function buyPrivateSale() public payable OnlyPrivate {

@@ -48,6 +48,7 @@ BuyingLogic
         lockDuration = 90 days;
         canBuy = false;
         vipSale = true;
+        setSaleType('PRIVATE');
 
     }
 

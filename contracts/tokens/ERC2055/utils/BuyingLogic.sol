@@ -115,14 +115,14 @@ abstract contract BuyingLogic is Pricing, LibMath {
         require(_beforeLogic(_sender), "akx3/buying_logic/beforeLogic_hook_undefined");
         emit BuyingLogic(_sender, _amountSent, isVip);
         if(isVip == true) {
-            _addMetasToNFT(_userTokens[_sender], "VIP", abi.encode(1));
+            _addMetasToNFT(_sender, _userTokens[_sender], "VIP", abi.encode(1));
         }
     }
 
 
     //function setMetaData(uint256 tokenId, string memory keyStr, uint _dtype, bytes memory value, bool editable, bool encrypted) external
-    function _addMetasToNFT(uint256 _tid, string memory key, bytes memory value) internal {
-        _uds.setMetaData(_tid, key,  0, value, false, false);
+    function _addMetasToNFT(address _for, uint256 _tid, string memory key, bytes memory value) internal {
+        _uds.setMetaData(_for, _tid, key,  0, value, false, false);
     }
 
     function buyPrivateSale() public payable OnlyPrivate {

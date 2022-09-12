@@ -3,7 +3,7 @@ pragma solidity ^0.8.17;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-import {IERC2055} from "../ERC2055.sol";
+import  "../ERC2055.sol";
 import "../../../utils/LibMath.sol";
 import "../../../utils/Pricing.sol";
 import "../../../modules/uds/UserDataServiceResolver.sol";

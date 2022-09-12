@@ -9,6 +9,9 @@ abstract contract ERC2055Transaction is ISignatureValidatorConstants, LibMath {
     using SafeMath for uint256;
 
     enum Operation {Call, DelegateCall}
+    event ExecutionFailure(bytes32 txHash, uint256 payment);
+    event ExecutionSuccess(bytes32 txHash, uint256 payment);
+    event ApproveHash(bytes32 indexed approvedHash, address indexed owner);
 
     struct Nonce {
         uint256 _value;
@@ -160,7 +163,25 @@ uint256 _nonce
         }
          // We require some gas to emit the events (at least 2500) after the execution and some to perform code until the execution (500)
         // We also include the 1/64 in the check that is not send along with a call to counteract potential shortings because of EIP-150
-        require(gasleft() >= max((_data.safeTxGas * 64) / 63,(_data.safeTxGas + 2500) + 500), "gas error");
+        require(gasleft() >= max((_data.safeTxGas * 64 / 63),(_data.safeTxGas + 2500)) + 500, "gas error");
+        // Use scope here to limit variable lifetime and prevent `stack too deep` errors
+        {
+            uint256 gasUsed = gasleft();
+            // If the gasPrice is 0 we assume that nearly all available gas can be used (it is always more than safeTxGas)
+            // We only substract 2500 (compared to the 3000 before) to ensure that the amount passed is still higher than safeTxGas
+            success = execute(_data.to, _data.value, _data.data, _data.operation, _data.gasPrice == 0 ? (gasleft() - 2500) : _data.safeTxGas);
+            gasUsed = gasUsed.sub(gasleft());
+            // If no safeTxGas and no gasPrice was set (e.g. both are 0), then the internal tx is required to be successful
+            // This makes it possible to use `estimateGas` without issues, as it searches for the minimum gas where the tx doesn't revert
+            require(success || _data.safeTxGas != 0 || _data.gasPrice != 0, "gas error");
+            // We transfer the calculated tx costs to the tx.origin to avoid sending it to intermediate contracts that have made calls
+            uint256 payment = 0;
+            if (_data.gasPrice > 0) {
+                payment = handlePayment(gasUsed, _data.baseGas, _data.gasPrice, _data.gasToken, payable(_data.refundReceiver));
+            }
+            if (success) emit ExecutionSuccess(txHash, payment);
+            else emit ExecutionFailure(txHash, payment);
+        }
     }
 
     function requiredTxGas(
@@ -223,7 +244,55 @@ uint256 _nonce
         }
     }
 
+    function approveHash(bytes32 hashToApprove) external {
+        require(msg.sender != address(0), "no zero address");
+        approvedHashes[msg.sender][hashToApprove] = 1;
+        emit ApproveHash(hashToApprove, msg.sender);
+    }
 
 
+    function handlePayment(
+        uint256 gasUsed,
+        uint256 baseGas,
+        uint256 gasPrice,
+        address gasToken,
+        address payable refundReceiver
+    ) private returns (uint256 payment) {
+        // solhint-disable-next-line avoid-tx-origin
+        address payable receiver = refundReceiver == address(0) ? payable(tx.origin) : refundReceiver;
+        if (gasToken == address(0)) {
+            // For ETH we will only adjust the gas price to not be higher than the actual used gas price
+            payment = gasUsed.add(baseGas).mul(gasPrice < tx.gasprice ? gasPrice : tx.gasprice);
+            require(receiver.send(payment), "error handling transaction payment");
+        } else {
+            payment = gasUsed.add(baseGas).mul(gasPrice);
+            require(transferToken(gasToken, receiver, payment), "error handling transaction payment");
+        }
+    }
+
+    function transferToken(
+        address token,
+        address receiver,
+        uint256 amount
+    ) internal returns (bool transferred) {
+        // 0xa9059cbb - keccack("transfer(address,uint256)")
+        bytes memory data = abi.encodeWithSelector(0xa9059cbb, receiver, amount);
+        // solhint-disable-next-line no-inline-assembly
+        assembly {
+        // We write the return value to scratch space.
+        // See https://docs.soliditylang.org/en/v0.7.6/internals/layout_in_memory.html#layout-in-memory
+            let success := call(sub(gas(), 10000), token, 0, add(data, 0x20), mload(data), 0, 0x20)
+            switch returndatasize()
+            case 0 {
+                transferred := success
+            }
+            case 0x20 {
+                transferred := iszero(or(iszero(success), iszero(mload(0))))
+            }
+            default {
+                transferred := 0
+            }
+        }
+    }
 
 }

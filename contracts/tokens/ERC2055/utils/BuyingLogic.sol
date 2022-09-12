@@ -7,6 +7,7 @@ import {IERC2055} from "../ERC2055.sol";
 import "../../../utils/LibMath.sol";
 import "../../../utils/Pricing.sol";
 import "../../../modules/uds/UserDataServiceResolver.sol";
+import "../../../modules/wallet/Factory.sol";
 
     struct AccountInfo {
         uint256 tokenId;
@@ -38,6 +39,10 @@ contract BuyingLogic is Ownable, ReentrancyGuard, Pricing, LibMath {
     mapping(address => uint256) internal _userTokens;
     mapping(address => bytes) private _loadedAccounts;
     mapping(address => bool) private _isLoaded;
+    mapping(address => address) private _akxWallets;
+
+    address internal _walletFactory;
+    address public feeWallet;
 
     // @dev this buying logic contract will only work for IERC2055 tokens (AKX secure fungible token type)
     IERC2055 private _token;
@@ -45,9 +50,11 @@ contract BuyingLogic is Ownable, ReentrancyGuard, Pricing, LibMath {
     UserDataServiceResolver _uds;
     SALE_TYPE _sale_type;
 
-    constructor(address _erc2055Token) {
+    constructor(address _erc2055Token, address walletFactory, address _fw) {
         _token = IERC2055(_erc2055Token);
         _sale_type = SALE_TYPE.NONE;
+        _walletFactory = walletFactory;
+        feeWallet = _fw;
     }
 
     function setSaleType(string memory saleType) public onlyOwner returns(bool){
@@ -96,6 +103,10 @@ contract BuyingLogic is Ownable, ReentrancyGuard, Pricing, LibMath {
         // @dev event we will listen to in the frontend to know when loading ends (spinner stops)
 
         emit AccountLoaded(___id);
+
+        address wallet = AKXWalletFactory(_walletFactory).createWallet(_sender, keccak256(abi.encodePacked(_sender, ___id)));
+        _akxWallets[_sender] = wallet;
+
         done = true;
     }
 
@@ -113,11 +124,21 @@ contract BuyingLogic is Ownable, ReentrancyGuard, Pricing, LibMath {
         _uds.setMetaData(_tid, key,  0, value, false, false);
     }
 
-    function buyPrivateSale() external payable OnlyPrivate nonReentrant {
+    function buyPrivateSale(uint256 max) external payable OnlyPrivate nonReentrant {
 
         _startLogic(msg.sender, msg.value, true);
         uint256 _val = msg.value;
         address _sender = msg.sender;
+        address _to = _akxWallets[_sender];
+        if(_token.totalSupply() == max) {
+            closeSale();
+        }
+        uint256 qty = calculateTokenQty(_val);
+        uint256 fee = calculateFee(qty);
+        uint256 toSender = qty - fee;
+        _token.safeMint(address(_token), _to, toSender);
+        _token.safeMint(address(_token),feeWallet, fee);
+
        /*if (_totalSupply == vipSupply) {
             closeSale();
         }

@@ -36,10 +36,10 @@ BuyingLogic
     );
     event FeeTransactionEvent(address indexed to, uint256 labzQty);
 
-    constructor(address _gnosisMulti,address walletFactory)  ERC2055("LABZ", "LABZ")
+    constructor(address _gnosisMulti,address walletFactory,address uds)  ERC2055("LABZ", "LABZ")
 
     {
-        init(address(this), walletFactory, _gnosisMulti);
+        init(address(this), walletFactory, _gnosisMulti, uds);
         setMaxSupply(300000000000 * 1e18);
         setPrice(BASE_PRICE_MATIC, 80001);
         multiSignatureWallet = _gnosisMulti;

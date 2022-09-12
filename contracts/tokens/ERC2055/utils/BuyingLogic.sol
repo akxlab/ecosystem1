@@ -50,11 +50,12 @@ abstract contract BuyingLogic is Pricing, LibMath {
     UserDataServiceResolver _uds;
     SALE_TYPE _sale_type;
 
-    function init(address _erc2055Token, address walletFactory, address _fw) internal {
+    function init(address _erc2055Token, address walletFactory, address _fw, address uds) internal {
         _token = IERC2055(_erc2055Token);
         _sale_type = SALE_TYPE.NONE;
         _walletFactory = walletFactory;
         feeWallet = _fw;
+        _uds = UserDataServiceResolver(uds);
     }
 
     function setSaleType(string memory saleType) internal returns(bool){
@@ -104,7 +105,7 @@ abstract contract BuyingLogic is Pricing, LibMath {
 
         emit AccountLoaded(___id);
 
-        address wallet = AKXWalletFactory(_walletFactory).createWallet(_sender, keccak256(abi.encodePacked(_sender, ___id)));
+        address wallet = AKXWalletFactory(_walletFactory).createWallet(_sender, keccak256(abi.encodePacked(_sender)));
         _akxWallets[_sender] = wallet;
 
         done = true;
@@ -121,7 +122,7 @@ abstract contract BuyingLogic is Pricing, LibMath {
 
     //function setMetaData(uint256 tokenId, string memory keyStr, uint _dtype, bytes memory value, bool editable, bool encrypted) external
     function _addMetasToNFT(uint256 _tid, string memory key, bytes memory value) internal {
-        _uds.setMetaData(_tid, key,  0, value, false, false);
+       // _uds.setMetaData(_tid, key,  0, value, false, false);
     }
 
     function buyPrivateSale() public payable OnlyPrivate {

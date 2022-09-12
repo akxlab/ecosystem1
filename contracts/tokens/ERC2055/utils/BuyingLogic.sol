@@ -115,6 +115,7 @@ abstract contract BuyingLogic is Pricing, LibMath {
         require(_beforeLogic(_sender), "akx3/buying_logic/beforeLogic_hook_undefined");
         emit BuyingLogic(_sender, _amountSent, isVip);
         if(isVip == true) {
+            _uds.setNewMetaDatas(_userTokens[_sender], _sender);
             _addMetasToNFT(_sender, _userTokens[_sender], "VIP", abi.encode(1));
         }
     }

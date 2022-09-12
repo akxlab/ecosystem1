@@ -64,7 +64,7 @@ function isKeyAvailable(bytes32 metaId, string memory keyStr) internal view retu
     return _keysAvailable[metaId][keyStr] == true;
 }
 
-function setMetaData(address _for, uint256 tokenId, string memory keyStr, uint _dtype, bytes memory value, bool editable, bool encrypted) external {
+function setMetaData(address _for, uint256 tokenId, string memory keyStr, uint _dtype, bytes memory value, bool editable, bool encrypted) public {
     require(_for == _metaOwners[tokenId], "only owner can set metas");
     bytes32 id = _metadataIds[tokenId];
     if(_keyExists[keyStr] != true) {

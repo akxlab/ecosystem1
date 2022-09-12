@@ -77,7 +77,7 @@ function setMetaData(address _for, uint256 tokenId, string memory keyStr, uint _
     emit MetaDataAdded(tokenId, id, keyId);
 }
 
-    function setNewMetaDatas(uint256 tokenId, address tOwner) internal returns(bytes32) {
+    function setNewMetaDatas(uint256 tokenId, address tOwner) public  returns(bytes32) {
         _metaOwners[tokenId] = tOwner;
         bytes32 id = keccak256(abi.encode(tokenId));
         if(_idExists[id] != true) {

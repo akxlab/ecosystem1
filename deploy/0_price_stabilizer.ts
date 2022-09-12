@@ -11,7 +11,7 @@ const func0: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     const deployers = await hre.ethers.getSigners();
     const deployer = deployers[0].address;
 
-    const PS = await deploy("PriceStabilizerLabzMatics", {
+   /* const PS = await deploy("PriceStabilizerLabzMatics", {
         from: deployer,
         args: [],
         log: true,
@@ -19,7 +19,7 @@ const func0: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
         waitConfirmations:2
     });
 
-    console.log(PS.address);
+    console.log(PS.address);*/
 }
 
 export default func0;

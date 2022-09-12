@@ -6,7 +6,15 @@ dotenv.config()
 
 // @ts-ignore
 const config: HardhatUserConfig = {
-  solidity: "0.8.17",
+  solidity: {
+    version:"0.8.17",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 800
+      }
+    }
+  },
   networks: {
     hardhat: {
       forking: {
@@ -19,15 +27,8 @@ const config: HardhatUserConfig = {
       chainId: 80001,
       // @ts-ignore
       name: "mumbai",
-      accounts: [`${process.env.PRIVATE_KEY}`],
+      accounts: [`${process.env.PRIVATE_KEY_LOCAL}`],
       allowUnlimitedContractSize: true,
-
-    },
-    goerli: {
-      url: `${process.env.GOERLI_URL}`,
-      accounts: [`${process.env.PRIVATE_KEY}`],
-      gas: 2100000,
-      gasPrice: 8000000000,
 
     }
   }

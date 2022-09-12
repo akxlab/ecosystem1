@@ -13,10 +13,6 @@ import * as Contracts from ".";
 declare module "hardhat/types/runtime" {
   interface HardhatEthersHelpers extends HardhatEthersHelpersBase {
     getContractFactory(
-      name: "AggregatorV3Interface",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.AggregatorV3Interface__factory>;
-    getContractFactory(
       name: "AccessControl",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.AccessControl__factory>;
@@ -40,10 +36,6 @@ declare module "hardhat/types/runtime" {
       name: "Initializable",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Initializable__factory>;
-    getContractFactory(
-      name: "IERC20",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IERC20__factory>;
     getContractFactory(
       name: "ERC721",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -121,14 +113,6 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.LibMath__factory>;
     getContractFactory(
-      name: "PriceStabilizer",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.PriceStabilizer__factory>;
-    getContractFactory(
-      name: "PriceStabilizerLabzMatics",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.PriceStabilizerLabzMatics__factory>;
-    getContractFactory(
       name: "Pricing",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Pricing__factory>;
@@ -177,10 +161,6 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.BaseResolver__factory>;
     getContractFactory(
-      name: "DidRegistry",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.DidRegistry__factory>;
-    getContractFactory(
       name: "IdentResolver",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IdentResolver__factory>;
@@ -222,11 +202,6 @@ declare module "hardhat/types/runtime" {
     ): Promise<Contracts.IERC2055__factory>;
 
     getContractAt(
-      name: "AggregatorV3Interface",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.AggregatorV3Interface>;
-    getContractAt(
       name: "AccessControl",
       address: string,
       signer?: ethers.Signer
@@ -256,11 +231,6 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.Initializable>;
-    getContractAt(
-      name: "IERC20",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.IERC20>;
     getContractAt(
       name: "ERC721",
       address: string,
@@ -357,16 +327,6 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.LibMath>;
     getContractAt(
-      name: "PriceStabilizer",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.PriceStabilizer>;
-    getContractAt(
-      name: "PriceStabilizerLabzMatics",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.PriceStabilizerLabzMatics>;
-    getContractAt(
       name: "Pricing",
       address: string,
       signer?: ethers.Signer
@@ -426,11 +386,6 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.BaseResolver>;
-    getContractAt(
-      name: "DidRegistry",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.DidRegistry>;
     getContractAt(
       name: "IdentResolver",
       address: string,

@@ -19,7 +19,4 @@ abstract contract OrderLogic {
         bytes32 _orderHash;
     }
 
-    struct AKXTransaction {
-
-    }
 }

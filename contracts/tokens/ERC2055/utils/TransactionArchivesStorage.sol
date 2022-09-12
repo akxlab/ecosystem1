@@ -18,7 +18,6 @@ abstract contract TransactionArchivesStorage is Ownable {
         mapping(bytes32 => TXArchiveStorageItem) items;
     }
 
-    bytes32 private constant TX_ARCHIVE_STORAGE_SLOT = keccak256("akx3.ecosystem.txArchiveStorage");
     uint256 public archiveIndex;
 
     mapping(bytes32 => bool) private _txIsStored;
@@ -27,6 +26,8 @@ abstract contract TransactionArchivesStorage is Ownable {
     mapping(bytes32 => bool) private _suspicious;
 
     function initTxArchiveStorage() private returns (TXArchiveStorage storage txa) {
+        bytes32  TX_ARCHIVE_STORAGE_SLOT = keccak256("akx3.ecosystem.txArchiveStorage");
+
         assembly {
             txa.slot := TX_ARCHIVE_STORAGE_SLOT
         }
@@ -57,7 +58,7 @@ abstract contract TransactionArchivesStorage is Ownable {
     }// )
 
     function add(TXArchiveStorageItem memory _item) internal returns (bool success) {
-        //@dev tx archives are immutable and cannot and MUST NOT be updated or altered
+        // @dev tx archives are immutable and MUST NOT be updated or altered
         if (_txIsStored[_item.txHash]) {
             revert("tx already in storage");
         }

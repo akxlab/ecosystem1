@@ -36,7 +36,7 @@ contract BuyingLogic is Ownable, ReentrancyGuard, Pricing, LibMath {
 
     mapping(address => bool) internal _hasAccount;
     mapping(address => uint256) internal _userTokens;
-    mapping(address => AccountInfo) private _loadedAccounts;
+    mapping(address => bytes) private _loadedAccounts;
     mapping(address => bool) private _isLoaded;
 
     // @dev this buying logic contract will only work for IERC2055 tokens (AKX secure fungible token type)
@@ -62,27 +62,23 @@ contract BuyingLogic is Ownable, ReentrancyGuard, Pricing, LibMath {
 
     }
 
-    /**
-    * @dev _beforeLogic internal function that loads the account of the sender if any if there is none, it creates one and loads it
-    * @notice hook called before starting the actual buying logic
-    * @params address _sender
-    * @returns bool done will return true if loaded with success, false otherwise
-    */
+
 
     function _beforeLogic(address _sender) internal returns(bool done) {
 
         // @dev if the sender is not having an account yet (USER ERC721) create one
+        uint256 ___id;
 
         if(_hasAccount[_sender] == false) {
-            uint256 ___id = _uds.createNewAccount(_sender, "");
+             ___id = _uds.createNewAccount(_sender, "");
             _hasAccount[_sender] = true;
             _userTokens[_sender] = ___id;
-            emit NewAccountCreated(_sender, ___id);
+           // emit NewAccountCreated(_sender, ___id);
         } else {
 
         // @dev else load the token id associated with the sender address
 
-            uint256 ___id =  _userTokens[_sender];
+             ___id =  _userTokens[_sender];
         }
 
 
@@ -93,7 +89,7 @@ contract BuyingLogic is Ownable, ReentrancyGuard, Pricing, LibMath {
         // @dev event we will listen to in the frontend to know when loading starts (spinner starts)
 
         emit LoadingAccount(___id);
-        _loadedAccounts[_sender] = _uds.getAccountInfo(_sender);
+        _loadedAccounts[_sender] = abi.encode(_uds.getAccountInfo(_sender));
             _isLoaded[_sender] = true;
         }
 
@@ -117,12 +113,12 @@ contract BuyingLogic is Ownable, ReentrancyGuard, Pricing, LibMath {
         _uds.setMetaData(_tid, key,  0, value, false, false);
     }
 
-    function buyPrivateSale() external payable onlyPrivate nonReentrant {
+    function buyPrivateSale() external payable OnlyPrivate nonReentrant {
 
-        _startLogic(msg.sender, msg.value);
+        _startLogic(msg.sender, msg.value, true);
         uint256 _val = msg.value;
         address _sender = msg.sender;
-        if (_totalSupply == vipSupply) {
+       /*if (_totalSupply == vipSupply) {
             closeSale();
         }
         uint256 qty = calculateTokenQty(_val);
@@ -131,19 +127,19 @@ contract BuyingLogic is Ownable, ReentrancyGuard, Pricing, LibMath {
         /*
         @notice 10% of the transaction is sent to the gnosis multisignature wallet for the reserve as stated in the Whitepaper
         */
-        uint256 toMulti = fee;
+        /*uint256 toMulti = fee;
         safeMint(_sender, toSender);
         safeMint(multiSignatureWallet, toMulti);
         emit FeeTransactionEvent(multiSignatureWallet, toMulti);
         lockedBalance[_sender] = toSender;
         _lastBuyTime[_sender] = block.timestamp;
-        emit NewVIPBuyerEvent(_sender, _val, qty);
+        emit NewVIPBuyerEvent(_sender, _val, qty);*/
     }
 
     function closeSale() internal {
-        vipSale = false; // we close the sale
-        canBuy = true; // people can now buy publicly
-        canSell = true; // people can sell when their funds are unlocked
+       //      vipSale = false; // we close the sale
+      //  canBuy = true; // people can now buy publicly
+      //  canSell = true; // people can sell when their funds are unlocked
     }
 
     modifier OnlyPrivate() {

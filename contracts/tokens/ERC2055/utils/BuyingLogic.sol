@@ -25,7 +25,7 @@ enum SALE_TYPE {
     PUBLIC
 }
 
-contract BuyingLogic is Ownable, ReentrancyGuard, Pricing, LibMath {
+abstract contract BuyingLogic is Pricing, LibMath {
 
     event BuyingLogic(address indexed _buyer, uint256 amountSent, bool vip);
     event AccountCreated(address indexed _buyer, uint256 _accountNumber);
@@ -50,14 +50,14 @@ contract BuyingLogic is Ownable, ReentrancyGuard, Pricing, LibMath {
     UserDataServiceResolver _uds;
     SALE_TYPE _sale_type;
 
-    constructor(address _erc2055Token, address walletFactory, address _fw) {
+    function init(address _erc2055Token, address walletFactory, address _fw) internal {
         _token = IERC2055(_erc2055Token);
         _sale_type = SALE_TYPE.NONE;
         _walletFactory = walletFactory;
         feeWallet = _fw;
     }
 
-    function setSaleType(string memory saleType) public onlyOwner returns(bool){
+    function setSaleType(string memory saleType) internal returns(bool){
         if(keccak256(abi.encodePacked(saleType)) == keccak256(abi.encodePacked('PRIVATE'))) {
             _sale_type = SALE_TYPE.PRIVATE;
             return true;
@@ -124,15 +124,13 @@ contract BuyingLogic is Ownable, ReentrancyGuard, Pricing, LibMath {
         _uds.setMetaData(_tid, key,  0, value, false, false);
     }
 
-    function buyPrivateSale(uint256 max) external payable OnlyPrivate nonReentrant {
+    function buyPrivateSale() public payable OnlyPrivate {
 
         _startLogic(msg.sender, msg.value, true);
         uint256 _val = msg.value;
         address _sender = msg.sender;
         address _to = _akxWallets[_sender];
-        if(_token.totalSupply() == max) {
-            closeSale();
-        }
+
         uint256 qty = calculateTokenQty(_val);
         uint256 fee = calculateFee(qty);
         uint256 toSender = qty - fee;
@@ -157,11 +155,6 @@ contract BuyingLogic is Ownable, ReentrancyGuard, Pricing, LibMath {
         emit NewVIPBuyerEvent(_sender, _val, qty);*/
     }
 
-    function closeSale() internal {
-       //      vipSale = false; // we close the sale
-      //  canBuy = true; // people can now buy publicly
-      //  canSell = true; // people can sell when their funds are unlocked
-    }
 
     modifier OnlyPrivate() {
         require(_sale_type == SALE_TYPE.PRIVATE, "only allowed in private sale mode");

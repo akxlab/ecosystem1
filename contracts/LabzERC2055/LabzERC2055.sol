@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
 import "../utils/Pricing.sol";
 import "../utils/LibMath.sol";
+import "../tokens/ERC2055/utils/BuyingLogic.sol";
 
 bytes4 constant BUY_VIP_ID = 0x077e403e;
 bytes4 constant CURRENT_PRICE_ID = 0x9d1b464a;
@@ -14,10 +15,8 @@ bytes4 constant AVAIL_BALANCE_ID = 0xa0821be3;
 
 contract LabzERC2055 is
     ERC2055,
-    Pricing,
-    LibMath,
     ReentrancyGuard,
-    ERC165
+BuyingLogic
 {
     address public multiSignatureWallet;
     bool internal canSell;
@@ -37,9 +36,10 @@ contract LabzERC2055 is
     );
     event FeeTransactionEvent(address indexed to, uint256 labzQty);
 
-    constructor(address _gnosisMulti)
-        ERC2055("LABZ", "LABZ")
+    constructor(address _gnosisMulti,address walletFactory)  ERC2055("LABZ", "LABZ")
+
     {
+        init(address(this), walletFactory, _gnosisMulti);
         setMaxSupply(300000000000 * 1e18);
         setPrice(BASE_PRICE_MATIC, 80001);
         multiSignatureWallet = _gnosisMulti;
@@ -153,6 +153,9 @@ contract LabzERC2055 is
         }
     }
 
+
+
+
     function availableBalance(address _sender) public view returns (uint256) {
         uint256 _locked = lockedBalance[_sender];
         uint256 bal = balanceOf(_sender);
@@ -173,7 +176,7 @@ contract LabzERC2055 is
         public
         view
         virtual
-        override
+
         returns (bool)
     {
         return (interfaceId == BUY_VIP_ID ||

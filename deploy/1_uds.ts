@@ -18,7 +18,8 @@ const rootNode = utils.keccak256(`${deployer}`);
         args: [],
         log: true,
         autoMine: true,
-        waitConfirmations:2
+        waitConfirmations:2,
+        gasLimit: 8225383
     });
 
     const UserDataResolver = await deploy("UserDataServiceResolver", {
@@ -26,7 +27,8 @@ const rootNode = utils.keccak256(`${deployer}`);
         args: [rootNode, UDS.address],
         log: true,
         autoMine: true,
-        waitConfirmations:2
+        waitConfirmations:2,
+        gasLimit: 8225383
     });
 
     const did = await deploy("DidRegistry", {
@@ -34,15 +36,37 @@ const rootNode = utils.keccak256(`${deployer}`);
         args: [],
         log: true,
         autoMine: true,
-        waitConfirmations:2
+        waitConfirmations:2,
+        gasLimit: 8225383
+    });
+
+
+
+    const akxWalletMaster = await deploy("AKXWallet", {
+        from: deployer,
+        args: [],
+        log: true,
+        autoMine: true,
+        waitConfirmations:2,
+        gasLimit: 8225383
+    });
+
+    const akxWalletFactory = await deploy("AKXWalletFactory", {
+        from: deployer,
+        args: [akxWalletMaster.address],
+        log: true,
+        autoMine: true,
+        waitConfirmations:2,
+        gasLimit: 8225383
     });
 
     const labz = await deploy("LabzERC2055", {
         from: deployer,
-        args: [deployer],
+        args: [deployer, akxWalletFactory.address],
         log: true,
         autoMine: true,
-        waitConfirmations:2
+        waitConfirmations:2,
+        gasLimit: 8225383
     });
 
     //    function initialize(address ethrdid, address labztoken, address uds, address dex, address gov, address akxtoken) public onlyNotInitialized {
@@ -54,6 +78,15 @@ const rootNode = utils.keccak256(`${deployer}`);
         autoMine: true,
         waitConfirmations:2,
         gasLimit: 8225383 
+    });
+
+    const proxyFactory = await deploy("AKXProxyFactory", {
+        from: deployer,
+        args: [],
+        log: true,
+        autoMine: true,
+        waitConfirmations:2,
+        gasLimit: 8225383
     });
 
 }

@@ -3,12 +3,9 @@ pragma solidity 0.8.17;
 
 import "../tokens/ERC2055/ERC2055.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-import "./Pricing.sol";
-import "./LibMath.sol";
-
-import "../resolvers/RoutesResolver.sol";
-
 import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
+import "../utils/Pricing.sol";
+import "../utils/LibMath.sol";
 
 bytes4 constant BUY_VIP_ID = 0x077e403e;
 bytes4 constant CURRENT_PRICE_ID = 0x9d1b464a;
@@ -20,8 +17,7 @@ contract LabzERC2055 is
     Pricing,
     LibMath,
     ReentrancyGuard,
-    ERC165,
-    RoutesResolver
+    ERC165
 {
     address public multiSignatureWallet;
     bool internal canSell;
@@ -187,5 +183,4 @@ contract LabzERC2055 is
             interfaceId == type(IERC165).interfaceId);
     }
 
-    function _beforeRouting(bytes32 _routeName) internal virtual override {}
 }

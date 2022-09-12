@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.17;
 
-import "../modules/uds/UserDataServiceResolver.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-import "./Pricing.sol";
-import "./LibMath.sol";
-import {IERC2055} from "./LabzERC2055.sol";
+import {IERC2055} from "../ERC2055.sol";
+import "../../../utils/LibMath.sol";
+import "../../../utils/Pricing.sol";
+import "../../../modules/uds/UserDataServiceResolver.sol";
 
     struct AccountInfo {
         uint256 tokenId;
@@ -15,12 +16,21 @@ import {IERC2055} from "./LabzERC2055.sol";
         uint256 timestamp;
     }
 
-contract BuyingLogic is ReentrancyGuard, Pricing, LibMath {
+
+
+enum SALE_TYPE {
+    NONE,
+    PRIVATE,
+    PUBLIC
+}
+
+contract BuyingLogic is Ownable, ReentrancyGuard, Pricing, LibMath {
 
     event BuyingLogic(address indexed _buyer, uint256 amountSent, bool vip);
     event AccountCreated(address indexed _buyer, uint256 _accountNumber);
     event LoadingAccount(uint256 _accountNumber);
     event AccountLoaded(uint256 _accountNumber);
+    event SaleTypeUpdated(SALE_TYPE origin, SALE_TYPE sale_type);
 
 
 
@@ -33,9 +43,23 @@ contract BuyingLogic is ReentrancyGuard, Pricing, LibMath {
     IERC2055 private _token;
 
     UserDataServiceResolver _uds;
+    SALE_TYPE _sale_type;
 
     constructor(address _erc2055Token) {
         _token = IERC2055(_erc2055Token);
+        _sale_type = SALE_TYPE.NONE;
+    }
+
+    function setSaleType(string memory saleType) public onlyOwner returns(bool){
+        if(keccak256(abi.encodePacked(saleType)) == keccak256(abi.encodePacked('PRIVATE'))) {
+            _sale_type = SALE_TYPE.PRIVATE;
+            return true;
+        } else  if(keccak256(abi.encodePacked(saleType)) == keccak256(abi.encodePacked('PUBLIC'))) {
+            _sale_type = SALE_TYPE.PUBLIC;
+            return true;
+        }
+        revert("invalid sale type");
+
     }
 
     /**
@@ -93,10 +117,9 @@ contract BuyingLogic is ReentrancyGuard, Pricing, LibMath {
         _uds.setMetaData(_tid, key,  0, value, false, false);
     }
 
-    function buyVip() external payable nonReentrant {
-        if (vipSale != true) {
-            revert("LABZ: vip sale is over");
-        }
+    function buyPrivateSale() external payable onlyPrivate nonReentrant {
+
+        _startLogic(msg.sender, msg.value);
         uint256 _val = msg.value;
         address _sender = msg.sender;
         if (_totalSupply == vipSupply) {
@@ -123,4 +146,13 @@ contract BuyingLogic is ReentrancyGuard, Pricing, LibMath {
         canSell = true; // people can sell when their funds are unlocked
     }
 
+    modifier OnlyPrivate() {
+        require(_sale_type == SALE_TYPE.PRIVATE, "only allowed in private sale mode");
+        _;
+    }
+
+    modifier OnlyPublic() {
+        require(_sale_type == SALE_TYPE.PUBLIC, "only allowed in public sale mode");
+        _;
+    }
 }

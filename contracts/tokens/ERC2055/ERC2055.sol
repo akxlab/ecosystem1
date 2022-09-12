@@ -22,6 +22,7 @@ contract ERC2055 is IERC2055, EIP712 {
     address public owner;
     bool public isLocked;
     uint256 public lockedUntil;
+    address public minter;
 
     mapping(address => uint256) private _balance;
     mapping(address => mapping(address => uint256)) private _allowances;
@@ -377,12 +378,17 @@ contract ERC2055 is IERC2055, EIP712 {
 
     function lockToken(uint256 until, uint256 amount) external override {}
 
+    function setMinter(address _minter) onlyOwner public {
+        minter = _minter;
+    }
+
     function safeMint(address to, uint256 amount)
         public
         
-        onlyOwner
+
         returns (bool minted)
     {
+        require(msg.sender == minter, "not a minter");
         _mint(to, amount);
         minted = true;
     }

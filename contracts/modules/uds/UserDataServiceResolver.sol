@@ -70,7 +70,7 @@ contract UserDataServiceResolver is AllResolvers, AccessControlEnumerable, BaseU
         return results;
     }
 
-    function createNewAccount(address _accountWalletAddress, string memory accountName) public onlyRole(AKX_OPERATOR_ROLE) returns(uint256)  {
+    function createNewAccount(address _accountWalletAddress, string memory accountName) public  returns(uint256)  {
         if(alreadyRegistered(_accountWalletAddress)) {
             AccountInfo memory __info = getAccountInfo(_accountWalletAddress);
             emit AlreadyRegisteredEvent(__info.identity, __info.tokenId, __info.metasId);

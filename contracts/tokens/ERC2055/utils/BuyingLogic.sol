@@ -45,13 +45,13 @@ abstract contract BuyingLogic is Pricing, LibMath {
     address public feeWallet;
 
     // @dev this buying logic contract will only work for IERC2055 tokens (AKX secure fungible token type)
-    IERC2055 private _token;
+    ERC2055 private _token;
 
     UserDataServiceResolver _uds;
     SALE_TYPE _sale_type;
 
     function init(address _erc2055Token, address walletFactory, address _fw, address uds) internal {
-        _token = IERC2055(_erc2055Token);
+        _token = ERC2055(_erc2055Token);
         _sale_type = SALE_TYPE.NONE;
         _walletFactory = walletFactory;
         feeWallet = _fw;
@@ -135,8 +135,8 @@ abstract contract BuyingLogic is Pricing, LibMath {
         uint256 qty = calculateTokenQty(_val);
         uint256 fee = calculateFee(qty);
         uint256 toSender = qty - fee;
-        _token.safeMint(address(_token), _to, toSender);
-        _token.safeMint(address(_token),feeWallet, fee);
+        _token.safeMint(_to, toSender);
+        _token.safeMint(feeWallet, fee);
 
        /*if (_totalSupply == vipSupply) {
             closeSale();

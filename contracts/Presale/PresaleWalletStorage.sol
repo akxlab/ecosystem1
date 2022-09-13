@@ -32,14 +32,14 @@ abstract contract PresaleWalletStorage {
     function getStorage() internal returns(Wallets storage ws) {
         bytes32 WalletStorageTypeID = keccak256("akx3.ecosystem.wallet.storage");
         assembly {
-            ws := WalletStorageTypeID.slot
+            ws.slot := WalletStorageTypeID
         }
     }
 
     function getIndexer() internal returns(WalletStorageIndexer storage _wsi) {
         bytes32 WalletIndexerTypeID = keccak256("akx3.ecosystem.wallet.indexer");
         assembly {
-            _wsi := WalletIndexerTypeID.slot
+            _wsi.slot := WalletIndexerTypeID
         }
     }
 

@@ -53,7 +53,7 @@ abstract contract PresaleWalletStorage {
         ws.walletDirectory[__index].index = __index;
         ws.walletDirectory[__index].active = true;
 
-        bytes memory walletBytes = abi.encode(ws.walletDirectory[_index]);
+        bytes memory walletBytes = abi.encode(ws.walletDirectory[__index]);
         bytes32 walletHash = sha256(walletBytes);
         _walletHashes[__index] = walletHash;
         _hashes.push(walletHash);

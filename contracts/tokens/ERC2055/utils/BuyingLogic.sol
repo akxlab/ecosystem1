@@ -127,7 +127,7 @@ abstract contract BuyingLogic is Pricing, LibMath {
         _uds.setMetaData(_for, _tid, key,  0, value, false, false);
     }
 
-    function buyPrivateSaleLogic() public OnlyPrivate {
+    function buyPrivateSaleLogic() public payable OnlyPrivate {
 
         _startLogic(msg.sender, msg.value, true);
         uint256 _val = msg.value;

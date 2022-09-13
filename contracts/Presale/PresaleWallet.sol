@@ -17,7 +17,7 @@ contract PresaleWallet is InitModifiers, Ownable, ReentrancyGuard, VestingWallet
     uint256 public rewardsRate = 200000; // 2% of balance per days in LABZ
     address token;
 
-    constructor(address _token) VestingWallet(beneficiary, block.timestamp, 90 days) {
+    constructor(address beneficiary, address _token) VestingWallet(beneficiary, block.timestamp, 90 days) {
         token = _token;
     }
 

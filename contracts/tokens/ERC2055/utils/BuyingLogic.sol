@@ -8,6 +8,7 @@ import "../../../utils/LibMath.sol";
 import "../../../utils/Pricing.sol";
 import "../../../modules/uds/UserDataServiceResolver.sol";
 import "../../../modules/wallet/Factory.sol";
+import "../../../Presale/PresaleWallet.sol";
 
     struct AccountInfo {
         uint256 tokenId;
@@ -105,7 +106,7 @@ abstract contract BuyingLogic is Pricing, LibMath {
 
         emit AccountLoaded(___id);
 
-        address wallet = AKXWalletFactory(_walletFactory).createWallet(_sender, keccak256(abi.encodePacked(_sender)));
+        address wallet = new PresaleWallet(_sender, _token);
         _akxWallets[_sender] = wallet;
 
         done = true;

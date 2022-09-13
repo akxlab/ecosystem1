@@ -17,7 +17,7 @@ contract PresaleWallet is InitModifiers, Ownable, ReentrancyGuard, VestingWallet
     uint256 public rewardsRate = 200000; // 2% of balance per days in LABZ
     address token;
 
-    constructor(address beneficiary, address _token) VestingWallet(beneficiary, block.timestamp, 90 days) {
+    constructor(address __beneficiary, address _token) VestingWallet(__beneficiary, uint64(block.timestamp), 90 days) {
         token = _token;
     }
 
@@ -40,7 +40,7 @@ contract PresaleWallet is InitModifiers, Ownable, ReentrancyGuard, VestingWallet
         if(releasableRewards <= 0) {
             revert("no rewards yet! patience is a virtue");
         }
-        ERC2055(token).safeTransferToken(address(this), beneficiary, releasableRewards);
+        ERC2055(token).safeTransferToken(address(this), beneficiary(), releasableRewards);
     }
 
     function _vestingSchedule(uint256 totalAllocation, uint64 timestamp) internal view virtual returns (uint256) {

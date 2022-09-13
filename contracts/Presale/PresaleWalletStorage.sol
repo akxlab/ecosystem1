@@ -47,11 +47,11 @@ abstract contract PresaleWalletStorage {
         Wallets storage ws = getStorage();
         uint256 __index = _index.current();
         _index.increment(); // prevent race condition
-        ws.walletDirectory[_index].ident = ident;
-        ws.walletDirectory[_index].owner = _owner;
-        ws.walletDirectory[_index].wallet = _wallet;
-        ws.walletDirectory[_index].index = __index;
-        ws.walletDirectory[_index].active = true;
+        ws.walletDirectory[__index].ident = ident;
+        ws.walletDirectory[__index].owner = _owner;
+        ws.walletDirectory[__index].wallet = _wallet;
+        ws.walletDirectory[__index].index = __index;
+        ws.walletDirectory[__index].active = true;
 
         bytes memory walletBytes = abi.encode(ws.walletDirectory[_index]);
         bytes32 walletHash = sha256(walletBytes);

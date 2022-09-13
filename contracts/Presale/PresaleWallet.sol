@@ -43,7 +43,7 @@ contract PresaleWallet is InitModifiers, Ownable, ReentrancyGuard, VestingWallet
         ERC2055(token).safeTransferToken(address(this), beneficiary(), releasableRewards);
     }
 
-    function _vestingSchedule(uint256 totalAllocation, uint64 timestamp) internal view virtual returns (uint256) {
+    function _vestingSchedule(uint256 totalAllocation, uint64 timestamp) internal view virtual override returns (uint256) {
         if (timestamp < start()) {
             return 0;
         } else if (timestamp > start() + duration()) {

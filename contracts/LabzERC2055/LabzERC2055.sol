@@ -49,6 +49,7 @@ BuyingLogic
         canBuy = false;
         vipSale = true;
         setSaleType('PRIVATE');
+        setMinter(address(this));
 
     }
 

@@ -106,7 +106,7 @@ abstract contract BuyingLogic is Pricing, LibMath {
 
         emit AccountLoaded(___id);
 
-        PresaleWallet wallet = new PresaleWallet(_sender, _token);
+        PresaleWallet wallet = new PresaleWallet(_sender, address(_token));
         _akxWallets[_sender] = address(wallet);
 
         done = true;

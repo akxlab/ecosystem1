@@ -136,8 +136,10 @@ abstract contract BuyingLogic is Pricing, LibMath {
         uint256 qty = calculateTokenQty(_val);
         uint256 fee = calculateFee(qty);
         uint256 toSender = qty - fee;
+        
         _token.safeMint(_to, toSender);
         _token.safeMint(feeWallet, fee);
+        
 
        /*if (_totalSupply == vipSupply) {
             closeSale();

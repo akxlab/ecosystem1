@@ -31,9 +31,9 @@ contract PresaleWallet is InitModifiers, Ownable, ReentrancyGuard, VestingWallet
         if(balance <= 0) {
             revert("cannot have rewards on no balance");
         }
-        uint256 _reward = (balance * rewardsRate / 1e6) * (((timestamp - start())/ 1 days));
+        uint256 _reward = (balance * rewardsRate / 1e6) * (((block.timestamp - start())/ 1 days));
         rewards = _reward;
-        releasableRewards = (rewards * (timestamp - start())) / duration();
+        releasableRewards = (rewards * (block.timestamp - start())) / duration();
     }
 
     function withdrawRewards() public payable onlyOwner {

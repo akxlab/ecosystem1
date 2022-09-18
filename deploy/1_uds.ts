@@ -11,6 +11,10 @@ const func0: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     const deployers = await hre.ethers.getSigners();
     const deployer = deployers[0].address;
 
+    console.log("Deploying contracts with the account:", deployer);
+
+    console.log("Account balance:", (await deployers[0].getBalance()).toString());
+
 const rootNode = utils.keccak256(`${deployer}`);
 
     const UDS = await deploy("UDS", {
@@ -19,7 +23,7 @@ const rootNode = utils.keccak256(`${deployer}`);
         log: true,
         autoMine: true,
         waitConfirmations:2,
-        gasLimit: 8225383
+        gasLimit: 20287350, gasPrice: "252873500"
     });
 
     const UserDataResolver = await deploy("UserDataServiceResolver", {
@@ -28,7 +32,7 @@ const rootNode = utils.keccak256(`${deployer}`);
         log: true,
         autoMine: true,
         waitConfirmations:2,
-        gasLimit: 8225383
+        gasLimit: 20287350, gasPrice: "252873500"
     });
 
     const did = await deploy("DidRegistry", {
@@ -37,36 +41,19 @@ const rootNode = utils.keccak256(`${deployer}`);
         log: true,
         autoMine: true,
         waitConfirmations:2,
-        gasLimit: 8225383
+        gasLimit: 20287350, gasPrice: "252873500"
     });
 
 
 
-    const akxWalletMaster = await deploy("AkxWallet", {
-        from: deployer,
-        args: [],
-        log: true,
-        autoMine: true,
-        waitConfirmations:2,
-        gasLimit: 8225383
-    });
-
-    const akxWalletFactory = await deploy("AKXWalletFactory", {
-        from: deployer,
-        args: [akxWalletMaster.address],
-        log: true,
-        autoMine: true,
-        waitConfirmations:2,
-        gasLimit: 8225383
-    });
-
+    
     const labz = await deploy("LabzERC2055", {
         from: deployer,
-        args: [deployer, akxWalletFactory.address, UserDataResolver.address],
+        args: ['0x8236088bf233De07EF9CF411794dEc3f72BdB8aa', UserDataResolver.address],
         log: true,
         autoMine: true,
         waitConfirmations:2,
-        gasLimit: 8225383
+        gasLimit: 20287350, gasPrice: "252873500"
     });
 
     //    function initialize(address ethrdid, address labztoken, address uds, address dex, address gov, address akxtoken) public onlyNotInitialized {
@@ -80,14 +67,14 @@ const rootNode = utils.keccak256(`${deployer}`);
         gasLimit: 8225383 
     });*/
 
-    const proxyFactory = await deploy("AKXProxyFactory", {
+   /* const proxyFactory = await deploy("AKXProxyFactory", {
         from: deployer,
         args: [],
         log: true,
         autoMine: true,
         waitConfirmations:2,
         gasLimit: 8225383
-    });
+    });*/
 
 }
 

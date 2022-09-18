@@ -8,7 +8,6 @@ import "../../../utils/LibMath.sol";
 import "../../../utils/Pricing.sol";
 import "../../../modules/uds/UserDataServiceResolver.sol";
 import "../../../modules/wallet/Factory.sol";
-import "../../../Presale/PresaleWallet.sol";
 
     struct AccountInfo {
         uint256 tokenId;
@@ -28,7 +27,7 @@ enum SALE_TYPE {
 
 abstract contract BuyingLogic is Pricing, LibMath {
 
-    event BuyingLogic(address indexed _buyer, uint256 amountSent, bool vip);
+    event BuyingLogicEvent(address indexed _buyer, uint256 amountSent, bool vip);
     event AccountCreated(address indexed _buyer, uint256 _accountNumber);
     event LoadingAccount(uint256 _accountNumber);
     event AccountLoaded(uint256 _accountNumber);
@@ -51,10 +50,9 @@ abstract contract BuyingLogic is Pricing, LibMath {
     UserDataServiceResolver _uds;
     SALE_TYPE _sale_type;
 
-    function init(address _erc2055Token, address walletFactory, address _fw, address uds) internal {
+    function init(address _erc2055Token,  address _fw, address uds) internal {
         _token = ERC2055(_erc2055Token);
         _sale_type = SALE_TYPE.NONE;
-        _walletFactory = walletFactory;
         feeWallet = _fw;
         _uds = UserDataServiceResolver(uds);
     }
@@ -106,15 +104,12 @@ abstract contract BuyingLogic is Pricing, LibMath {
 
         emit AccountLoaded(___id);
 
-        PresaleWallet wallet = new PresaleWallet(_sender, address(_token));
-        _akxWallets[_sender] = address(wallet);
-
         done = true;
     }
 
     function _startLogic(address _sender, uint256 _amountSent, bool isVip) internal {
         require(_beforeLogic(_sender), "akx3/buying_logic/beforeLogic_hook_undefined");
-        emit BuyingLogic(_sender, _amountSent, isVip);
+        emit BuyingLogicEvent(_sender, _amountSent, isVip);
         if(isVip == true) {
             _uds.setNewMetaDatas(_userTokens[_sender], _sender);
             _addMetasToNFT(_sender, _userTokens[_sender], "VIP", abi.encode(1));
@@ -127,12 +122,12 @@ abstract contract BuyingLogic is Pricing, LibMath {
         _uds.setMetaData(_for, _tid, key,  0, value, false, false);
     }
 
-    function buyPrivateSaleLogic() public payable OnlyPrivate {
+    function buyLogic() public payable OnlyPrivate {
 
         _startLogic(msg.sender, msg.value, true);
         uint256 _val = msg.value;
         address _sender = msg.sender;
-        address _to = _akxWallets[_sender];
+        address _to = _sender;
 
         uint256 qty = calculateTokenQty(_val);
         uint256 fee = calculateFee(qty);

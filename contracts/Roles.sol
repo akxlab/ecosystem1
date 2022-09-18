@@ -11,4 +11,6 @@ abstract contract AKXRoles {
     bytes32 public constant LABZ_HOLDER_ROLE = keccak256("LABZ_HOLDER_ROLE");
     bytes32 public constant AKX_HOLDER_ROLE = keccak256("AKX_HOLDER_ROLE");
     bytes32 public constant DAO_ROLE = keccak256("DAO_ROLE");
+     bytes32 public constant SYSADMIN_ROLE = keccak256("SYSADMIN_ROLE");
+      bytes32 public constant ADMIN_HELPER_ROLE = keccak256("ADMIN_HELPER_ROLE");
 }

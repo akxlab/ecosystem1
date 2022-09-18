@@ -2,11 +2,15 @@
 pragma solidity 0.8.17;
 
 import "../tokens/ERC2055/ERC2055.sol";
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
+import "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
+
+import "@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol";
 import "../utils/Pricing.sol";
 import "../utils/LibMath.sol";
 import "../tokens/ERC2055/utils/BuyingLogic.sol";
+
+
+import "../utils/DAOUtils.sol";
 
 bytes4 constant BUY_VIP_ID = 0x077e403e;
 bytes4 constant CURRENT_PRICE_ID = 0x9d1b464a;
@@ -14,9 +18,10 @@ bytes4 constant NORMAL_BUY_ID = 0xa6f2ae3a;
 bytes4 constant AVAIL_BALANCE_ID = 0xa0821be3;
 
 contract LabzERC2055 is
+  Initializable,
     ERC2055,
-    ReentrancyGuard,
-BuyingLogic
+    ReentrancyGuardUpgradeable,
+    BuyingLogic
 {
     address public multiSignatureWallet;
     bool internal canSell;
@@ -36,21 +41,22 @@ BuyingLogic
     );
     event FeeTransactionEvent(address indexed to, uint256 labzQty);
 
-    constructor(address _gnosisMulti,address walletFactory,address uds)  ERC2055("LABZ", "LABZ")
+    constructor() {
+        _disableInitializers();
+    }
 
-    {
-        init(address(this), walletFactory, _gnosisMulti, uds);
-        setMaxSupply(300000000000 * 1e18);
+    function initialize(address _gnosisMulti, address uds) public initializer {
+        init(address(this), _gnosisMulti, uds);
+        setMaxSupply(3000000000 * 1e18); // max supply NOT PREMINTED
         setPrice(BASE_PRICE_MATIC, 80001);
         multiSignatureWallet = _gnosisMulti;
 
-        vipSupply = 6000000000 * 1e18;
+        vipSupply = 6000000 * 1e18;
         lockDuration = 90 days;
         canBuy = false;
         vipSale = true;
-        setSaleType('PRIVATE');
+        setSaleType("PRIVATE");
         setMinter(address(this));
-
     }
 
     function getChainID() internal view returns (uint256) {
@@ -65,7 +71,13 @@ BuyingLogic
         return getPrice(80001);
     }
 
-    function buy() external payable override nonReentrant returns(bool success) {
+    function buy()
+        external
+        payable
+        override
+        nonReentrant
+        returns (bool success)
+    {
         require(canBuy == true, "LABZ: cannot buy yet");
         uint256 _val = msg.value;
         address _sender = msg.sender;
@@ -143,7 +155,6 @@ BuyingLogic
             lockedBalance[_sender] = 0;
             _isUnlocked[_sender] = true;
             return true;
-            
         } else if (!isHavingAvailableBalance(_sender)) {
             return false;
         } else if (amount > availableBalance(_sender)) {
@@ -154,9 +165,6 @@ BuyingLogic
             return canSell;
         }
     }
-
-
-
 
     function availableBalance(address _sender) public view returns (uint256) {
         uint256 _locked = lockedBalance[_sender];
@@ -178,7 +186,6 @@ BuyingLogic
         public
         view
         virtual
-
         returns (bool)
     {
         return (interfaceId == BUY_VIP_ID ||
@@ -188,4 +195,5 @@ BuyingLogic
             interfaceId == type(IERC165).interfaceId);
     }
 
+   
 }

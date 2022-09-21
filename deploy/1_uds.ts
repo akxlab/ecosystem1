@@ -1,6 +1,6 @@
 import {HardhatRuntimeEnvironment} from 'hardhat/types';
 import {DeployFunction} from 'hardhat-deploy/types';
-import {ethers} from 'hardhat';
+import {ethers, upgrades} from 'hardhat';
 
 const {utils} = require("ethers");
 
@@ -49,12 +49,28 @@ const rootNode = utils.keccak256(`${deployer}`);
     
     const labz = await deploy("LabzERC2055", {
         from: deployer,
-        args: ['0x8236088bf233De07EF9CF411794dEc3f72BdB8aa', UserDataResolver.address],
+        args: [],
         log: true,
         autoMine: true,
         waitConfirmations:2,
         gasLimit: 20287350, gasPrice: "252873500"
     });
+
+   
+
+    const instance = await ethers.getContractAt("LabzERC2055", labz.address, deployers[0]);
+
+  
+    
+
+    const Wrapper = await ethers.getContractFactory("LABZ");
+    const args = [labz.address];
+    const wrapper = await upgrades.deployProxy(Wrapper, args, {kind: "uups", initializer:"initialize", unsafeAllow:["constructor", "delegatecall"]});
+    await wrapper.deployed();
+
+
+    instance.initialize('0x8236088bf233De07EF9CF411794dEc3f72BdB8aa', UserDataResolver.address);
+
 
     //    function initialize(address ethrdid, address labztoken, address uds, address dex, address gov, address akxtoken) public onlyNotInitialized {
 

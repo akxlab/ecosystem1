@@ -41,7 +41,7 @@ contract LabzERC2055 is
     );
     event FeeTransactionEvent(address indexed to, uint256 labzQty);
 
-    constructor() {
+    constructor() ERC2055("AKX3 LABZ TOKEN", "LABZ") {
         _disableInitializers();
     }
 

@@ -1,5 +1,6 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
+import "@openzeppelin/hardhat-upgrades";
 import "hardhat-deploy"
 import dotenv from "dotenv"
 import { ethers } from "ethers";
@@ -40,9 +41,12 @@ const config: HardhatUserConfig = {
       // @ts-ignore
       accounts:  [`${process.env.PRIVATE_KEY}`],
       allowUnlimitedContractSize: true,
-      gasPrice: ethers.utils.parseEther("0.00037").toNumber(),
-      minGasPrice: ethers.utils.parseEther("0.00037").toNumber(),
-      gas: 5000000000000
+      gasLimit: 20287350, gasPrice: 252873500
+    }
+  },
+  etherscan: {
+    apiKey: {
+      "goerli": process.env.ETHERSCAN_API_KEY || "",
     }
   }
 };

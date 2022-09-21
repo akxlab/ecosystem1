@@ -4,6 +4,7 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/AccessControlEnumerableUpgradeable.sol";
 import "../tokens/ERC2055/ERC2055Wrapper.sol";
 import "../Roles.sol";
+import "../branding/AKXERC721.sol";
 
 contract LABZ is
     Initializable,
@@ -12,21 +13,26 @@ contract LABZ is
     ERC2055Wrapper,
     AKXRoles
 {
+
+
+
     constructor() {
         _disableInitializers();
     }
 
-    function initialize(address implementation, address _dao)
+    function initialize(address implementation)
         public
         initializer
     {
         __AccessControlEnumerable_init();
         __ERC2055Wrapper_init(implementation);
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
-        _setupRole(DAO_ROLE, _dao);
-        _grantRole(DAO_ROLE, _dao);
+        _setupRole(DAO_ROLE, msg.sender);
+       
         _grantRole(DAO_ROLE, msg.sender); // in case of a verrry big problem and an emergency upgrade is needed.
     }
+
+   
 
     function _authorizeUpgrade(address newImplementation)
         internal
@@ -58,7 +64,7 @@ contract LABZ is
     function balanceOf(address account)
         external
         view
-        override
+        override(IERC2055)
         returns (uint256)
     {}
 
@@ -71,13 +77,13 @@ contract LABZ is
 
     function approve(address spender, uint256 amount)
         external
-        override
+        override( IERC2055)
         returns (bool)
     {}
 
-    function name() external override returns (string memory) {}
+    function name() external override(IERC2055) returns (string memory) {}
 
-    function symbol() external override returns (string memory) {}
+    function symbol() external override(IERC2055) returns (string memory) {}
 
     function decimals() external override returns (uint8) {}
 

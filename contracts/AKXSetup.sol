@@ -2,16 +2,15 @@
 pragma solidity ^0.8.17;
 
 abstract contract AKXSetup {
-    address internal ethrDidRegistry;
+
     address internal labzToken;
     address internal userDataService;
     address internal dexService;
     address internal daoGovernor;
     address internal akxToken; // vote enabled token
-
-    function _setEthrDid(address _did) internal virtual {
-        ethrDidRegistry = _did;
-    }
+    address internal refContract;
+    address internal psl;
+    address internal rootController;
 
     function _setLabzToken(address _tok) internal virtual {
         labzToken = _tok;
@@ -31,5 +30,17 @@ abstract contract AKXSetup {
 
     function _setAkxToken(address _akx) internal virtual {
         akxToken = _akx;
+    }
+
+    function _setReferralContract(address _ref) internal virtual {
+        refContract = _ref;
+    }
+
+    function _setPrivateSaleLogic(address _psl) internal virtual {
+        psl = _psl;
+    }
+
+    function _setRootController(address _ctrl) internal virtual {
+        rootController = _ctrl;
     }
 }

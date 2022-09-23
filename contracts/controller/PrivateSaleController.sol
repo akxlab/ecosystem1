@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
-import "@openzeppelin/contracts-upgradeable/proxy/beacon/IBeaconUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
-contract PrivateSaleController is Initializable, IBeaconUpgradeable  {
+contract PrivateSaleController is Initializable   {
 
     
     address public logicImplementation;
@@ -25,7 +25,7 @@ contract PrivateSaleController is Initializable, IBeaconUpgradeable  {
      *
      * {BeaconProxy} will check that this address is a contract.
      */
-    function implementation() external view override returns (address) {
+    function implementation() external view returns (address) {
         return logicImplementation;
     }
 

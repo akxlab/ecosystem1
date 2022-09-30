@@ -20,6 +20,8 @@ contract Referrals is Rewards, Ownable {
 
     uint256 private _nonces;
 
+    event NewReferrer(address indexed referrer, string code);
+
 
     constructor(address _token, address _rLogic) Rewards(_token) {
         setLogic(_rLogic);
@@ -106,6 +108,7 @@ contract Referrals is Rewards, Ownable {
         _nonces++;
 
         codeStr = Base64.encode(code);
+        emit NewReferrer(_referrer, codeStr);
 
     }
 

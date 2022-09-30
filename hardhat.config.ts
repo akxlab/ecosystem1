@@ -25,12 +25,13 @@ const config: HardhatUserConfig = {
     },
 
     mumbai: {
-      url: `${process.env.MUMBAI_URL}`,
+      url: `${process.env.CHAINSTACK_MUMBAI_URL}`,
       chainId: 80001,
       // @ts-ignore
       name: "mumbai",
       accounts: [`${process.env.PRIVATE_KEY_LOCAL}`],
       allowUnlimitedContractSize: true,
+      gasPrice: 3528735000
 
     },
     goerli: {
@@ -45,9 +46,9 @@ const config: HardhatUserConfig = {
     }
   },
   etherscan: {
-    apiKey: {
-      "goerli": process.env.ETHERSCAN_API_KEY || "",
-    }
+    apiKey: 
+     process.env.POLYGON_KEY || "" 
+   
   }
 };
 

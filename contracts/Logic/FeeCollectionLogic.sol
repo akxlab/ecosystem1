@@ -62,7 +62,7 @@ contract FeeCollectionLogic is Ownable {
         _feeTypes[DEX_FEE] = 0; // not active yet
     }
 
-    function GetFee(bytes32 feeType, uint256 amount) public onlyOwner returns(uint256) {
+    function GetFee(bytes32 feeType, uint256 amount) public view onlyOwner returns(uint256) {
         
         uint128 feePercent = _feeTypes[feeType];
         uint128 amt = uint128(amount);
@@ -80,7 +80,7 @@ contract FeeCollectionLogic is Ownable {
         emit FeeCollected(_sender, feeEscrow, amount, _fee);
     }
 
-    function _calculateFee(uint128 _amt, uint128 _percent) internal returns(uint) {
+    function _calculateFee(uint128 _amt, uint128 _percent) internal pure returns(uint) {
         return _amt * _percent / Mantissa;
     }
 

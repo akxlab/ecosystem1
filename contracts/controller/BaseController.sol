@@ -3,6 +3,9 @@ pragma solidity 0.8.17;
 import "@openzeppelin/contracts/utils/StorageSlot.sol";
 abstract contract BaseController {
 
+
+    address private _allowedController;
+
     struct Request {
         address sender;
         address to;
@@ -31,7 +34,7 @@ abstract contract BaseController {
 
     function _beforeRequest() internal virtual;
 
-    function _executeRequest(Request memory req) internal virtual;
+     function execute(address _contract, string memory func, Request memory req) public payable virtual;
 
     function setRequest(bytes memory data) internal virtual returns(Request memory req) {
         req = abi.decode(data, (Request));
@@ -39,7 +42,15 @@ abstract contract BaseController {
 
     constructor(address _impl) {
         setImplementation(_impl);
+        _allowedController = address(this);
     }
+
+    modifier onlyAllowedController() {
+        require(msg.sender == _allowedController, "not allowed");
+        _;
+    }
+
+
 
 
 }

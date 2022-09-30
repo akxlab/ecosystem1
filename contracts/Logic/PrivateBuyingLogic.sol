@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
-import "../tokens/LabzERC20.sol";
-import "../utils/Pricing.sol";
-import "../utils/LibMath.sol";
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-import "../tokens/AKXAccounts.sol";
+import {LabzERC20} from "../tokens/LabzERC20.sol";
+import {Pricing} from "../utils/Pricing.sol";
+import {LibMath} from "../utils/LibMath.sol";
+import {ReentrancyGuard} from "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+
 
 
 enum SALE_TYPE {
@@ -21,13 +21,10 @@ abstract contract PrivateBuyingLogic is Pricing, LibMath, ReentrancyGuard {
     event  NewVIPBuyerEvent(address indexed from, uint256 amount, uint256 labz);
 
 
-    function _beforeLogic(address _sender) internal returns(bool done) {
-
-        done = true;
-    }
+   
 
     function _startLogic(address _sender, uint256 _amountSent, bool isVip) internal {
-        require(_beforeLogic(_sender), "akx3/buying_logic/beforeLogic_hook_undefined");
+
         emit BuyEvent(_sender, _amountSent, isVip);
     }
 
@@ -39,16 +36,16 @@ abstract contract PrivateBuyingLogic is Pricing, LibMath, ReentrancyGuard {
         uint256 fee;
     }
 
-    function executeBuyLogic(address _sender, uint256 value) internal returns(BuyDetails memory) {
+    function executeBuyLogic(address sender_, uint256 value) internal returns(BuyDetails memory) {
 
-        _startLogic(_sender, value, true);
+        _startLogic(sender_, value, true);
         uint256 _val = msg.value;
         address _sender = msg.sender;
-        address _to = _sender;
+      
 
         uint256 qty = calculateTokenQty(_val);
         uint256 fee = calculateFee(qty);
-        uint256 toSender = qty;
+       
         
         
         return BuyDetails(_sender, value, qty, fee);

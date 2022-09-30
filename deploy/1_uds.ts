@@ -9,7 +9,7 @@ const func0: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     const {deployments, getNamedAccounts} = hre;
     const {deploy} = deployments;
     const deployers = await hre.ethers.getSigners();
-    const deployer = deployers[0].address;
+    const deployer = '0xc956BbcA545e0071Edcd14AE0531F7fa94D33771';
 
     console.log("Deploying contracts with the account:", deployer);
 
@@ -17,16 +17,9 @@ const func0: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
 const rootNode = utils.keccak256(`${deployer}`);
 
-    const UDS = await deploy("UDS", {
-        from: deployer,
-        args: [],
-        log: true,
-        autoMine: true,
-        waitConfirmations:2,
-        gasLimit: 20287350, gasPrice: "252873500"
-    });
+  
 
-    const UserDataResolver = await deploy("UserDataServiceResolver", {
+   /*const UserDataResolver = await deploy("UserDataServiceResolver", {
         from: deployer,
         args: [rootNode, UDS.address],
         log: true,
@@ -42,34 +35,71 @@ const rootNode = utils.keccak256(`${deployer}`);
         autoMine: true,
         waitConfirmations:2,
         gasLimit: 20287350, gasPrice: "252873500"
+    });*/
+
+    const PSL = await deploy("PrivateSaleLogic", {
+        from: deployer,
+        args: [deployer],
+        log: true,
+        autoMine: true,
+        waitConfirmations:2,
+        //gasLimit: 20287350, gasPrice: "252873500"
+    });
+
+    const IDRegistry = await deploy("IdentityRegistry", {
+        from: deployer,
+        args: [],
+        log: true,
+        autoMine: true,
+        waitConfirmations:2,
+        //gasLimit: 20287350, gasPrice: "252873500"
     });
 
 
-
     
-    const labz = await deploy("LabzERC2055", {
+  /*  const labz = await deploy("LabzERC20", {
         from: deployer,
         args: [],
         log: true,
         autoMine: true,
         waitConfirmations:2,
         gasLimit: 20287350, gasPrice: "252873500"
+    });*/
+
+   /* const rlogic = await deploy("ReferralLogic", {
+        from: deployer,
+        args: [],
+        log: true,
+        autoMine: true,
+        waitConfirmations:2,
+        //gasLimit: 20287350, gasPrice: "252873500"
     });
 
-   
+    const refContract = await deploy("Referrals", {
+        from: deployer,
+        args: [labz.address, rlogic.address],
+        log: true,
+        autoMine: true,
+        waitConfirmations:2,
+       //gasLimit: 20287350, gasPrice: "252873500"
+    });
 
-    const instance = await ethers.getContractAt("LabzERC2055", labz.address, deployers[0]);
+    const sys = await ethers.getContractFactory("AKXSystem");
+    const args = ["1", "AKXSystem", deployer];
+    const System = await upgrades.deployProxy(sys,args,  {kind: "uups", initializer:"initialize", unsafeAllow:["constructor", "delegatecall"]});
+*/
+
 
   
     
 
-    const Wrapper = await ethers.getContractFactory("LABZ");
+   /* const Wrapper = await ethers.getContractFactory("LABZ");
     const args = [labz.address];
     const wrapper = await upgrades.deployProxy(Wrapper, args, {kind: "uups", initializer:"initialize", unsafeAllow:["constructor", "delegatecall"]});
     await wrapper.deployed();
 
 
-    instance.initialize('0x8236088bf233De07EF9CF411794dEc3f72BdB8aa', UserDataResolver.address);
+    instance.initialize('0x8236088bf233De07EF9CF411794dEc3f72BdB8aa', UserDataResolver.address);*/
 
 
     //    function initialize(address ethrdid, address labztoken, address uds, address dex, address gov, address akxtoken) public onlyNotInitialized {

@@ -4,7 +4,7 @@ pragma solidity ^0.8.17;
 abstract contract AKXSetup {
 
     address internal labzToken;
-    address internal userDataService;
+    address internal identityRegistry;
     address internal dexService;
     address internal daoGovernor;
     address internal akxToken; // vote enabled token
@@ -16,8 +16,8 @@ abstract contract AKXSetup {
         labzToken = _tok;
     }
 
-    function _setUDS(address _uds) internal virtual {
-        userDataService = _uds;
+    function _setIdentRegistry(address _idr) internal virtual {
+        identityRegistry = _idr;
     }
 
     function _setDEX(address _dex) internal virtual {

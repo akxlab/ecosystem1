@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
-import "./PrivateBuyingLogic.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/Address.sol";
-import "@openzeppelin/contracts/utils/escrow/RefundEscrow.sol";
-import "./LockLogic.sol";
+import {PrivateBuyingLogic} from "./PrivateBuyingLogic.sol";
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
+import {Address} from "@openzeppelin/contracts/utils/Address.sol";
+import {RefundEscrow} from "@openzeppelin/contracts/utils/escrow/RefundEscrow.sol";
+import {LabzERC20} from "../tokens/LabzERC20.sol";
+import {LockLogic} from "./LockLogic.sol";
 
 contract PrivateSaleLogic is PrivateBuyingLogic, Ownable {
 
@@ -33,6 +34,10 @@ contract PrivateSaleLogic is PrivateBuyingLogic, Ownable {
         escrowBeneficiary = payable(multiWallet);
         _saleRefundEscrow = new RefundEscrow(escrowBeneficiary);
         _saleToken = deployLabzToken();
+        maxTokensForPrivateSale = 65000000 ether;
+        maxTokensPerAccount = 1000000 ether;
+        maxSaleDuration = 180 days; // max 6 months 
+        restart();
     }
 
     function deployLabzToken() internal returns(address payable) {
@@ -41,7 +46,7 @@ contract PrivateSaleLogic is PrivateBuyingLogic, Ownable {
     }
 
     function buy() public payable nonReentrant {
-       if(privateSaleIsStarted != true || startTime < block.timestamp || breakIsOn == true) {
+       if(privateSaleIsStarted != true) {
         revert("cannot buy yet");
        }
        if(totalMinted == maxTokensForPrivateSale) {
@@ -83,6 +88,7 @@ contract PrivateSaleLogic is PrivateBuyingLogic, Ownable {
     function restart() public onlyOwner {
              privateSaleIsStarted = true;
       //  _saleRefundEscrow.close();
+      startTime = block.timestamp;
         isClosed = false;
         breakIsOn = false;
     }

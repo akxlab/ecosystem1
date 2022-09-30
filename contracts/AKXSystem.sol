@@ -99,16 +99,16 @@ contract AKXSystem is Initializable, UUPSUpgradeable, AKXSetup, AKXRoles, Access
     }
 
     function systemSetup(address labzToken_,
-        address userDataService_,
-        address dexService_,
-        address daoGovernor_,
-        address akxToken_, // vote enabled token
+        address idRegistry_,
         address refContract_,
         address psl_,
-        address rootController_) public onlyRole(UPGRADER_ROLE) {
+        address rootController_,
+         address dexService_,
+        address daoGovernor_,
+        address akxToken_ ) public onlyRole(UPGRADER_ROLE) {
         require(_setup != true, "cannot setup");
         _setLabzToken(labzToken_);
-        _setUDS(userDataService_);
+        _setIdentRegistry(idRegistry_);
         _setRootController(rootController_);
         _setAkxToken(akxToken_);
         _setDEX(dexService_);
@@ -121,8 +121,8 @@ contract AKXSystem is Initializable, UUPSUpgradeable, AKXSetup, AKXRoles, Access
         return labzToken;
     }
 
-    function Uds() public returns(address) {
-        return userDataService;
+    function Idr() public returns(address) {
+        return identityRegistry;
     }
 
     function Akx() public returns(address) {

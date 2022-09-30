@@ -26,9 +26,9 @@ contract ReferralLogic is ILogic, Ownable {
     mapping(address => uint256) private _percent;
     mapping(address => uint256) private _multiplier;
 
-    constructor(address referralController) {
+    constructor() {
         _index = 0;
-        transferOwnership(referralController);
+      
     }
 
     function setLogicData(bytes memory _data) public override onlyOwner {

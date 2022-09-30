@@ -10,7 +10,7 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 
-contract AKX3 is ERC20, ERC20Burnable, ERC20Permit, ERC20Votes, ERC20Snapshot, Ownable, ReentrancyGuard {
+contract AKX3 is ERC20, ERC20Burnable, ERC20Permit,  Ownable, ReentrancyGuard {
 
     constructor() ERC20("AKX3 ECOSYSTEM", "AKX3") ERC20Permit("AKX3 Token") {
 
@@ -59,5 +59,13 @@ contract AKX3 is ERC20, ERC20Burnable, ERC20Permit, ERC20Votes, ERC20Snapshot, O
 
     function prices() public view virtual returns(uint256, uint256) {
         return (priceETH(), priceMATICS());
+    }
+
+    function _afterTokenTransfer() internal virtual  {
+
+    }
+
+    function _beforeTokenTransfer() internal virtual   {
+        
     }
 }

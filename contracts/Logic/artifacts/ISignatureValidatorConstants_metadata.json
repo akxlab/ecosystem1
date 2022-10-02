@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Logic/SignMessage.sol": "ISignatureValidatorConstants"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Logic/SignMessage.sol": {
+			"keccak256": "0xabcc9b593a52469dc3ddf0bfd6badf7662c97b82800a1ec595e6dc2ded4c5745",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://261ad7c44914a97a0a740432e5829d80ebfe604ea3f546be278698a63dc16a14",
+				"dweb:/ipfs/QmUkjdrPFJexruVJ6wziYdTjgCeeYWZ6Js5fiD9X6da4mw"
+			]
+		}
+	},
+	"version": 1
+}

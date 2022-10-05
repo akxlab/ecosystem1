@@ -1,18 +1,24 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
-  const unlockTime = currentTimestampInSeconds + ONE_YEAR_IN_SECS;
+  
+  const token = await ethers.getContractAt("AKX3", "0x1d959ed34e64f157ea9d662fd8d195c8b57aef00");
 
-  const lockedAmount = ethers.utils.parseEther("1");
+ 
+  const akx = await ethers.getContractAt("AKXTokenLogic", "0x92b21674ae818a7169bb65c8aaac5c14a276250f");
+  //const tx1 = await token.transferOwnership("0x92b21674ae818a7169bb65c8aaac5c14a276250f");
+  //await tx1.wait();
+  await (await akx.setFeeWallet("0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266")).wait();
+  await (await akx.setTreasury("0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266")).wait();
 
-  const Lock = await ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
+  const tx = await akx.buyPresale({from:'0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266', value:ethers.utils.parseEther("2000")});
+  await tx.wait();
 
-  await lock.deployed();
+  const bal = await token.balanceOf("0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266");
+  const b = ethers.utils.formatEther(bal).toString()
+  console.log(b + "AKX");
+  console.log(bal)
 
-  console.log(`Lock with 1 ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

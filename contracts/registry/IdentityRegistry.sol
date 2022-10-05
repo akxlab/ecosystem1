@@ -72,6 +72,8 @@ contract IdentityRegistry is ISignatureValidator, Ownable {
         return EIP1271_MAGIC_VALUE;
     }
 
+    
+
   
     function supportsInterface(bytes4 interfaceID)
         external

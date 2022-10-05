@@ -9,63 +9,48 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-
-contract AKX3 is ERC20, ERC20Burnable, ERC20Permit,  Ownable, ReentrancyGuard {
-
-    constructor() ERC20("AKX3 ECOSYSTEM", "AKX3") ERC20Permit("AKX3 Token") {
-
-    }
-
-    function swap(address swapToken, uint256 amount) public payable nonReentrant {
-
-    }
+import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
 
-    function buy() external payable nonReentrant {
+contract AKX3 is ERC20, ERC20Burnable, ERC20Permit, Ownable, ReentrancyGuard {
 
-    }
-
-    function sell() external payable nonReentrant {
-
-    }
-
-    function maxSupply() public view virtual returns(uint256) {
-        return 100000000 ether; // 100 million max available
-    }
-
-    function akxForLabz() public view virtual returns(uint256) {
-        return 0.1 ether; // 1 AKX for 10 labz
-    }
-
-    function labzForAKX() public view virtual returns(uint256) {
-        return 10 ether; // 10 labz for 1 AKX
-    }
-
-    function akxForETH() public view virtual returns(uint256) {
-        return 0;
-    }
-
-    function akxForMatics() public view virtual returns(uint256) {
-        return 0;
-    }
-
-    function priceETH() public view virtual returns(uint256) {
-        return 0;
-    }
-
-    function priceMATICS() public view virtual returns(uint256) {
-        return 0;
-    }
-
-    function prices() public view virtual returns(uint256, uint256) {
-        return (priceETH(), priceMATICS());
-    }
-
-    function _afterTokenTransfer() internal virtual  {
-
-    }
-
-    function _beforeTokenTransfer() internal virtual   {
+bool canTransfer;
+    constructor() ERC20("AKX3 ECOSYSTEM", "AKX") ERC20Permit("AKX3 ECOSYSTEM") {
+        canTransfer = false;
         
     }
+
+    function mint(address _sender, uint256 amount) public onlyOwner {
+        super._mint(_sender, amount);
+    }
+
+    function burn(uint256 amount) public override onlyOwner {
+       super._burn(address(this), amount);
+    }
+
+
+
+ function _afterTokenTransfer(address from, address to, uint256 amount)
+        internal
+        override(ERC20)
+    {
+        super._afterTokenTransfer(from, to, amount);
+    }
+
+ function enableTransfer() public onlyOwner {
+        canTransfer = true;
+    }
+
+    modifier isTransferable() {
+        require(canTransfer != false, "cannot trade or transfer");
+        _;
+    }
+
+    function transfer(address _to, uint _value) public isTransferable virtual override returns (bool success) {
+        if (_value > 0 && _value <= balanceOf(msg.sender)) {
+          return transfer(_to, _value);
+        }
+       revert("cannot transfer");
+    }
+
 }

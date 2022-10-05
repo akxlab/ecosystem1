@@ -27,11 +27,29 @@ contract Identity is Ownable, IdentitySigner, EIP712 {
     mapping(bytes32 => string) private _kvStore;
     mapping(string => bytes32) private _strToKey;
     mapping(bytes32 => bool) private _keyExists;
+    string private avatar;
+    string private customName;
 
    
 
     constructor(string memory name, string memory version) EIP712(name, version) SignMessageLogic(_domainSeparatorV4()) {
 
+    }
+
+    function getCustomName() public view returns(string memory) {
+        return customName;
+    }
+
+    function setCustomName(string memory _customName) public onlyOwner  {
+        customName = _customName;
+    }
+
+    function getAvatar() public view returns(string memory) {
+        return avatar;
+    }
+
+    function setAvatar(string memory avatarUri) public onlyOwner {
+        avatar = avatarUri;
     }
 
     function getData(bytes32 key) public override view returns(string memory value) {

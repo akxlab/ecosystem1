@@ -297,9 +297,17 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Lock__factory>;
     getContractFactory(
+      name: "AKXTokenLogic",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.AKXTokenLogic__factory>;
+    getContractFactory(
       name: "FeeCollectionLogic",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.FeeCollectionLogic__factory>;
+    getContractFactory(
+      name: "LiquidityLogic",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.LiquidityLogic__factory>;
     getContractFactory(
       name: "LockLogic",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -372,6 +380,14 @@ declare module "hardhat/types/runtime" {
       name: "NonCustodialWallet",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.NonCustodialWallet__factory>;
+    getContractFactory(
+      name: "IPriceOracle",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IPriceOracle__factory>;
+    getContractFactory(
+      name: "PriceOracle",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.PriceOracle__factory>;
     getContractFactory(
       name: "AKXProxy",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -448,6 +464,10 @@ declare module "hardhat/types/runtime" {
       name: "AKXAccounts",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.AKXAccounts__factory>;
+    getContractFactory(
+      name: "ChildAKX",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ChildAKX__factory>;
     getContractFactory(
       name: "ERC2055",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -877,10 +897,20 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.Lock>;
     getContractAt(
+      name: "AKXTokenLogic",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.AKXTokenLogic>;
+    getContractAt(
       name: "FeeCollectionLogic",
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.FeeCollectionLogic>;
+    getContractAt(
+      name: "LiquidityLogic",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.LiquidityLogic>;
     getContractAt(
       name: "LockLogic",
       address: string,
@@ -971,6 +1001,16 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.NonCustodialWallet>;
+    getContractAt(
+      name: "IPriceOracle",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IPriceOracle>;
+    getContractAt(
+      name: "PriceOracle",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.PriceOracle>;
     getContractAt(
       name: "AKXProxy",
       address: string,
@@ -1066,6 +1106,11 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.AKXAccounts>;
+    getContractAt(
+      name: "ChildAKX",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ChildAKX>;
     getContractAt(
       name: "ERC2055",
       address: string,

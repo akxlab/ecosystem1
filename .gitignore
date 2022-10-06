@@ -118,3 +118,6 @@ hardhat.config.ts
 /notusedyet/
 /artifacts/
 /akx3-dapp/
+.DS_Store
+cache/solidity-files-cache.json
+cache/validations.json

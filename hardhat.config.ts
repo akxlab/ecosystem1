@@ -13,7 +13,7 @@ const config: HardhatUserConfig = {
     settings: {
       optimizer: {
         enabled: true,
-        runs: 800
+        runs: 200
       }
     }
   },
@@ -34,6 +34,17 @@ const config: HardhatUserConfig = {
       gasPrice: 3528735000
 
     },
+   polygon: {
+      url: `${process.env.POLYGON_URL}`,
+      chainId: 137,
+      // @ts-ignore
+      name: "polygon",
+      accounts: [`${process.env.POLYGON_PK}`],
+      from: process.env.DEPLOYER,
+      allowUnlimitedContractSize: true,
+      gasPrice: "auto"
+
+    },
     goerli: {
       url: `${process.env.GOERLI_URL}`,
       chainId: 5,
@@ -49,7 +60,17 @@ const config: HardhatUserConfig = {
     apiKey: 
      process.env.POLYGON_KEY || "" 
    
-  }
+  },
+  gasReporter: {
+		currency: 'USD',
+		enabled: process.env.REPORT_GAS ? true : false,
+		coinmarketcap: process.env.CMCPRO_API,
+		maxMethodDiff: 10
+	},
+  tenderly: {
+		project: 'akx3',
+		username: process.env.TENDERLY_API as string
+	}
 };
 
 export default config;

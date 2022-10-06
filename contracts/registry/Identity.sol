@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "../Roles.sol";
 
-import "@openzeppelin/contracts/utils/cryptography/draft-EIP712.sol";
+import "@openzeppelin/contracts-upgradeable/utils/cryptography/draft-EIP712Upgradeable.sol";
 import {SignMessageLogic} from "../Logic/SignMessage.sol";
 interface IIdentity {
 
@@ -13,11 +13,11 @@ interface IIdentity {
 
 }
 
-abstract contract IdentitySigner is IIdentity, SignMessageLogic {
+abstract contract IdentitySigner is IIdentity,  SignMessageLogic {
 
 }
 
-contract Identity is Ownable, IdentitySigner, EIP712 {
+contract Identity is Initializable, IdentitySigner, EIP712Upgradeable, AKXRoles {
 
     // keccak256("Identity(address)")
     bytes32 private constant IDENTITY_TYPE_HASH = 0x5539daaa46b59a520a05bd9b6beef0b7e376dd7dedd3073653e7a68f34a22737;
@@ -30,10 +30,19 @@ contract Identity is Ownable, IdentitySigner, EIP712 {
     string private avatar;
     string private customName;
 
+    /// @custom:oz-upgrades-unsafe-allow constructor
+    constructor() {
+        _disableInitializers();
+    }
    
 
-    constructor(string memory name, string memory version) EIP712(name, version) SignMessageLogic(_domainSeparatorV4()) {
+    function initialize(string memory name, string memory version)  public initializer {
+        __Identity_init(name, version);
+        __SigMessageLogic_init(_domainSeparatorV4());
+    }
 
+    function __Identity_init(string memory name, string memory version) onlyInitializing {
+        __EIP712_init(name, version);
     }
 
     function getCustomName() public view returns(string memory) {

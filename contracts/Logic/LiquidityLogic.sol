@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/utils/math/SafeCast.sol";
 
 
-abstract contract LiquidityLogic is Ownable {
+abstract contract LiquidityLogic  {
 
     using SafeMath for uint256;
     using SafeCast for uint;
@@ -20,8 +20,9 @@ abstract contract LiquidityLogic is Ownable {
     uint256 public divider;
 
     bool internal priceInit;
-    
-    constructor(string memory _symbol, address _ticker, address _oracle, uint256 _basePrice) {
+
+   
+    function __LiquidityLogic_init(string memory _symbol, address _ticker, address _oracle, uint256 _basePrice) internall {
         priceOracle = _oracle;
         symbol = _symbol;
         ticker = _ticker;
@@ -31,11 +32,7 @@ abstract contract LiquidityLogic is Ownable {
         divider = 1e6;
     }
 
-    function initializeBasePrice() internal {
-        require(priceInit != true, "already setup");
-       
-        priceInit = true;
-    }
+    
 
     function price() external view returns(uint256 lastPrice) {
        (lastPrice, , ) = PriceOracle(priceOracle).lastUpdate(symbol);
@@ -48,7 +45,7 @@ abstract contract LiquidityLogic is Ownable {
     function calcInfl() internal {
         uint256 circulating = ERC20(ticker).totalSupply() == 0 ? 0 :  ERC20(ticker).totalSupply();
         uint256 val = circulating.mul(basePrice).mul(inflBase().mul(circulating));
-        PriceOracle(priceOracle).updatePrice(symbol, val.mul(circulating).div(1e7));
+        PriceOracle(priceOracle).updatePrice(symbol, basePrice + val.mul(circulating).div(1e7));
     }
 
     function priceETH() public view returns(uint256 lastPrice) {
@@ -56,7 +53,8 @@ abstract contract LiquidityLogic is Ownable {
     }
 
 
-    function addPriceETH(uint256 price_) internal {
+    function addPriceETH(uint256 price_) internal  {
+       
         PriceOracle(priceOracle).addNewTicker("AKXETH");
         PriceOracle(priceOracle).updatePrice("AKXETH",price_);
     }

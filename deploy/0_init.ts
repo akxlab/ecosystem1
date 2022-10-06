@@ -9,7 +9,7 @@ const func0: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     const {deployments, getNamedAccounts} = hre;
     const {deploy} = deployments;
     const deployers = await hre.ethers.getSigners();
-    const deployer = deployers[0].address;
+    const deployer = process.env.DEPLOYER || "";
 
     console.log("Deploying contracts with the account:", deployer);
 
@@ -57,7 +57,7 @@ const func0: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
 
 
-    const AKX = await deploy("AKXTokenLogic", {
+   /* const AKX = await deploy("AKXTokenLogic", {
         from: deployer,
         args: [symbol, feeLogic.address, token.address, oracle.address, basePrice],
         log: true,
@@ -74,12 +74,23 @@ const func0: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
         //gasLimit: 20287350, gasPrice: "252873500"
     });
 
-    const AKXI = await ethers.getContractAt("AKXTokenLogic", AKX.address);
+    const ProxyFactory = await deploy("AKXProxyFactory", {
+        from: deployer,
+        args: [],
+        log: true,
+        autoMine: true,
+        waitConfirmations:2,
+        //gasLimit: 20287350, gasPrice: "252873500"
+    });
    
+    const IProxy = await ethers.getContractAt("AKXProxyFactory", ProxyFactory.address);
+    const proxy = await (await IProxy.createProxy(AKX.address, "")).wait();
+
+    console.log(proxy.contractAddress);*/
 
 
  
 
 }
-
+func0.tags = ['setup'];
 export default func0;

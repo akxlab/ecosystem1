@@ -57,10 +57,10 @@ contract PriceOracle is IPriceOracle, PriceStorage, Ownable {
         external
         returns (bool success)
     {
-        uint256 aIndex = addAddress(address(0x0));
+        uint256 aIndex = addAddress(address(uint160(bytes20(abi.encodePacked(ticker)))));
         string memory __name = ticker;
         _basePrice[__name] = aIndex;
-        _currencyAddresses[__name] = address(0x0);
+        _currencyAddresses[__name] = address(uint160(bytes20(abi.encodePacked(ticker))));
         success = true;
     }
 

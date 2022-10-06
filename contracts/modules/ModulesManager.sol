@@ -5,7 +5,7 @@ import "./ModuleRegistry.sol";
 import "@openzeppelin/contracts/access/AccessControlEnumerable.sol";
 import "../Roles.sol";
 
-abstract contract ModulesManager is ModuleRegistry, AKXRoles, AccessControlEnumerable {
+abstract contract ModulesManager is ModuleRegistry, AKXRoles {
 
     mapping (uint256 => bool) private _enabledModules;
     mapping (uint256 => bool) private _installedModules;

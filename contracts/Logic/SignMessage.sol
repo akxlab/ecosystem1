@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
+
+
 contract ISignatureValidatorConstants {
     // bytes4(keccak256("isValidSignature(bytes,bytes)")
     bytes4 internal constant EIP1271_MAGIC_VALUE = 0x20c13b0b;
@@ -31,7 +33,8 @@ abstract contract SignMessageLogic is ISignatureValidatorConstants {
 
     mapping(bytes32 => uint256)public signedMessages;
 
-    constructor(bytes32 domainSeparator_) {
+   
+    function __SigMessageLogic_init(bytes32 domainSeparator_) internal {
         domainSeparator = domainSeparator_;
     }
 

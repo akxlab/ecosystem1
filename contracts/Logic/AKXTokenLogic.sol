@@ -2,15 +2,15 @@
 pragma solidity 0.8.17;
 
 import {LiquidityLogic, PriceOracle} from "./LiquidityLogic.sol";
-import {ReentrancyGuard} from "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import {ReentrancyGuard} from "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import {FeeCollectionLogic} from "./FeeCollectionLogic.sol";
-import {AKX3, Ownable, ERC20} from "../tokens/AKX.sol";
+import {AKX3, AKXRoles, ERC20} from "../tokens/AKX.sol";
 
 
 
 
-contract AKXTokenLogic is LiquidityLogic,  ReentrancyGuard {
+contract AKXTokenLogic is Initializabler, LiquidityLogic,  AKXRoles, ReentrancyGuardUpgradeable {
 
     using SafeERC20 for ERC20;
 
@@ -80,15 +80,35 @@ contract AKXTokenLogic is LiquidityLogic,  ReentrancyGuard {
        
     }
 
-    function setFeeWallet(address _fw) public onlyOwner {
+    function initialize(string memory _symbol, address _feeCollLogic, address _ticker, address _oracle, uint256 _basePrice) public initializer {
+        __AKXTokenLogic_init(_symbol, _feeCollLogic, _ticker, _oracle, _basePrice);
+    }
+
+    function __AKXTokenLogic_init(string memory _symbol, address _feeCollLogic, address _ticker, address _oracle, uint256 _basePrice) public onlyInitializing {
+         _underlyingToken = AKX3(_ticker);
+        fees = FeeCollectionLogic(_feeCollLogic);
+        maxSupply = 3000000000 ether;
+        presaleSupply = 6500000 ether; // presale ends when all presale supply is sold
+        presaleMaxDuration = 180 days; // max duration to sell all presale supply is 6 months
+        canTransfer = false;
+        numHolders = 0;
+        circulating = 0;
+        marketCap = 0;
+        softCap = 0;
+        currentPrice = _basePrice;
+        isPresale = true;
+        presaleStartedOn = block.timestamp;
+    }
+
+    function setFeeWallet(address _fw) public onlyRole(AKX_OPERATOR_ROLE) {
         feeWallet = _fw;
     }
 
-    function setTreasury(address _tw) public onlyOwner {
+    function setTreasury(address _tw) public onlyRole(AKX_OPERATOR_ROLE) {
         treasury = _tw;
     }
 
-    function endPresale() public returns(bool) {
+    function endPresale() public onlyRole(AKX_OPERATOR_ROLE) returns(bool) {
         require(isPresale == true, "presale is not started");
         if(block.timestamp < presaleStartedOn + presaleMaxDuration) {
             if(maxSupply > _underlyingToken.totalSupply()) {
@@ -112,7 +132,7 @@ contract AKXTokenLogic is LiquidityLogic,  ReentrancyGuard {
         emit PresaleCompleted(presaleEndedOn);
     }
 
-    function enableTransfer() public onlyOwner {
+    function enableTransfer() public onlyRole(AKX_OPERATOR_ROLE) {
         canTransfer = true;
         _underlyingToken.enableTransfer();
     }
@@ -130,12 +150,12 @@ contract AKXTokenLogic is LiquidityLogic,  ReentrancyGuard {
         _pendingBalance[msg.sender] = akxToMint;
     }
 
-    function transferToPolygon(uint256 akxAmount, address sender) external onlyOwner {
+    function transferToPolygon(uint256 akxAmount, address sender) external onlyRole(AKX_OPERATOR_ROLE) {
         require(block.chainid == 0x13881 || block.chainid == 0x89, "not on polygon network!");
         safeMint(sender, akxAmount);
     }
 
-    function burnOnEthereum(address _sender, uint256 akxAmount) external onlyOwner {
+    function burnOnEthereum(address _sender, uint256 akxAmount) external onlyRole(AKX_OPERATOR_ROLE) {
         require(block.chainid == 0x01 || block.chainid == 0x05, "not on mainnet or goerli!");
         _pendingBalance[_sender] = 0;
         emit TransferCompleted(_sender, akxAmount);
@@ -169,7 +189,7 @@ contract AKXTokenLogic is LiquidityLogic,  ReentrancyGuard {
         maticsInTreasury += amount;
     }
 
-    function setEthPrice(uint256 _price) external onlyOwner {
+    function setEthPrice(uint256 _price) external onlyRole(AKX_OPERATOR_ROLE) {
         addPriceETH(_price);
     }
 
@@ -200,14 +220,14 @@ contract AKXTokenLogic is LiquidityLogic,  ReentrancyGuard {
         }
     }
 
-    function allocateToFounder(address founder, uint256 amount) public onlyOwner {
+    function allocateToFounder(address founder, uint256 amount) public onlyRole(AKX_OPERATOR_ROLE) {
        
         founderAllocation[founder] = amount;
     
 
     }
 
-    function addFounder(address founder, uint256 percent) public onlyOwner {
+    function addFounder(address founder, uint256 percent) public onlyRole(AKX_OPERATOR_ROLE)  {
         isFounder[founder] = true;
      founderPercent[founder] = percent;
         founders.push(founder);

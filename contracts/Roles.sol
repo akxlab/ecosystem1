@@ -1,10 +1,17 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
+import "@openzeppelin/contracts/access/AccessControlEnumerable.sol";
 
+abstract contract AKXRoles is AccessControlEnumerable {
 
-abstract contract AKXRoles {
-    bytes32 public constant LABZ_OPERATOR_ROLE = keccak256("LABZ_OPERATOR_ROLE");
+    constructor() {
+        _setupRole(DEFAULT_ADMIN_ROLE, _msgSender());
+        _grantRole(SYSADMIN_ROLE, _msgSender());
+        _grantRole(AKX_OPERATOR_ROLE, _msgSender());
+    }
+
+   
     bytes32 public constant AKX_OPERATOR_ROLE = keccak256("AKX_OPERATOR_ROLE");
     bytes32 public constant UDS_OPERATOR_ROLE = keccak256("UDS_OPERATOR_ROLE");
     bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");

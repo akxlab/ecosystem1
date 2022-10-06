@@ -8,7 +8,7 @@ import "../Roles.sol";
 
 using AddressUpgradeable for address;
 
-abstract contract AdminUtils is AccessControlEnumerableUpgradeable, IsSelf, InitModifiers, AKXRoles {
+abstract contract AdminUtils is  IsSelf, InitModifiers, AKXRoles {
 
     mapping(address => bool) private _allowedAdmins;
     mapping(address => bool) private _blacklisted;
@@ -32,7 +32,7 @@ abstract contract AdminUtils is AccessControlEnumerableUpgradeable, IsSelf, Init
 
     function __AdminUtils_init(address _sysAdmin) public onlyNotInitialized {
 
-        __AccessControlEnumerable_init();
+       
         _setupRole(SYSADMIN_ROLE, msg.sender);
         _setupRole(ADMIN_HELPER_ROLE, msg.sender);
         _grantRole(SYSADMIN_ROLE, _sysAdmin);

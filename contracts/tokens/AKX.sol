@@ -7,12 +7,13 @@ import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Snapshot.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/access/AccessControlEnumerable.sol";
 
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+import "../Roles.sol";
 
 
-contract AKX3 is ERC20, ERC20Burnable, ERC20Permit, Ownable, ReentrancyGuard {
+contract AKX3 is ERC20, ERC20Burnable, ERC20Permit, ERC20Votes, ERC20Snapshot, AccessControlEnumerable, ReentrancyGuard, AKXRoles {
 
 bool canTransfer;
     constructor() ERC20("AKX3 ECOSYSTEM", "AKX") ERC20Permit("AKX3 ECOSYSTEM") {
@@ -20,24 +21,26 @@ bool canTransfer;
         
     }
 
-    function mint(address _sender, uint256 amount) public onlyOwner {
-        super._mint(_sender, amount);
+    function mint(address _sender, uint256 amount) public onlyRole(AKX_OPERATOR_ROLE) {
+    _mint(_sender, amount);
     }
 
-    function burn(uint256 amount) public override onlyOwner {
-       super._burn(address(this), amount);
-    }
-
-
-
+    
  function _afterTokenTransfer(address from, address to, uint256 amount)
         internal
-        override(ERC20)
+        override(ERC20, ERC20Votes)
     {
         super._afterTokenTransfer(from, to, amount);
     }
 
- function enableTransfer() public onlyOwner {
+     function _beforeTokenTransfer(address from, address to, uint256 amount)
+        internal
+        override(ERC20, ERC20Snapshot)
+    {
+        super._afterTokenTransfer(from, to, amount);
+    }
+
+ function enableTransfer() public onlyRole(AKX_OPERATOR_ROLE) {
         canTransfer = true;
     }
 
@@ -51,6 +54,20 @@ bool canTransfer;
           return transfer(_to, _value);
         }
        revert("cannot transfer");
+    }
+
+     function _mint(address to, uint256 amount)
+        internal
+        override(ERC20, ERC20Votes)
+    {
+        super._mint(to, amount);
+    }
+
+    function _burn(address account, uint256 amount)
+        internal
+        override(ERC20, ERC20Votes)
+    {
+        super._burn(account, amount);
     }
 
 }

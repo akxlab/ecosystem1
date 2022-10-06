@@ -20,4 +20,9 @@ abstract contract AKXRoles is AccessControlEnumerable {
     bytes32 public constant DAO_ROLE = keccak256("DAO_ROLE");
      bytes32 public constant SYSADMIN_ROLE = keccak256("SYSADMIN_ROLE");
       bytes32 public constant ADMIN_HELPER_ROLE = keccak256("ADMIN_HELPER_ROLE");
+
+      modifier onlyOwner() {
+        require(hasRole(AKX_OPERATOR_ROLE, msg.sender), "not allowed");
+        _;
+      }
 }

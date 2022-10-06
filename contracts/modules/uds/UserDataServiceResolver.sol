@@ -9,7 +9,8 @@ import "@openzeppelin/contracts/access/AccessControlEnumerable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "../../Roles.sol";
 
-contract UserDataServiceResolver is AllResolvers, AccessControlEnumerable, BaseUserRegistry, ReentrancyGuard, AKXRoles {
+contract UserDataServiceResolver is AllResolvers,BaseUserRegistry, ReentrancyGuard, AKXRoles {
+
 
     /**
  * A mapping of authorisations. An address that is authorised for a profile name

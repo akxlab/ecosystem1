@@ -9,7 +9,8 @@ const func0: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     const {deployments, getNamedAccounts} = hre;
     const {deploy} = deployments;
     const deployers = await hre.ethers.getSigners();
-    const deployer = process.env.DEPLOYER || "";
+    //const deployer = process.env.DEPLOYER || "";
+    const deployer = deployers[0].address;
 
     console.log("Deploying contracts with the account:", deployer);
 
@@ -36,6 +37,16 @@ const func0: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     });
 
     const oracle =  await deploy("PriceOracle", {
+        from: deployer,
+        args: [],
+        log: true,
+        autoMine: true,
+        waitConfirmations:2,
+    });
+
+    
+
+    const f = await deploy("AKXMath", {
         from: deployer,
         args: [],
         log: true,

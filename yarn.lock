@@ -2439,7 +2439,7 @@
   "resolved" "https://registry.npmjs.org/bigint-mod-arith/-/bigint-mod-arith-3.1.1.tgz"
   "version" "3.1.1"
 
-"bignumber.js@^9.0.0", "bignumber.js@^9.0.1":
+"bignumber.js@^9.0.0", "bignumber.js@^9.0.1", "bignumber.js@^9.1.0":
   "integrity" "sha512-4LwHK4nfDOraBCtst+wOWIHbu1vhvAPJK8g8nROd4iuc3PSEjWif/qwbkh8jwCJz6yDBvtU4KPynETgrfh7y3A=="
   "resolved" "https://registry.npmjs.org/bignumber.js/-/bignumber.js-9.1.0.tgz"
   "version" "9.1.0"

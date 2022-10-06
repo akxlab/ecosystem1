@@ -41,7 +41,7 @@ contract Identity is Initializable, IdentitySigner, EIP712Upgradeable, AKXRoles 
         __SigMessageLogic_init(_domainSeparatorV4());
     }
 
-    function __Identity_init(string memory name, string memory version) onlyInitializing {
+    function __Identity_init(string memory name, string memory version) public onlyInitializing {
         __EIP712_init(name, version);
     }
 

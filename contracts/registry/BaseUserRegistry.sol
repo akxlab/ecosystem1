@@ -4,9 +4,9 @@ pragma solidity 0.8.17;
 import "../interfaces/IEIP721U.sol";
 import "../modules/uds/UDS.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
 
-abstract contract BaseUserRegistry is ERC721, Ownable {
+
+abstract contract BaseUserRegistry is ERC721 {
 
     mapping(address => bool) public controllers;
 
@@ -62,15 +62,15 @@ abstract contract BaseUserRegistry is ERC721, Ownable {
         _;
     }
 
-    function authorizeController(address controller) external  onlyOwner {
+    function authorizeController(address controller) external  {
         controllers[controller] = true;
     }
 
-    function deAuthorizeController(address controller) external  onlyOwner {
+    function deAuthorizeController(address controller) external  {
         controllers[controller] = false;
     }
 
-    function setResolver(address resolver) external  onlyOwner {
+    function setResolver(address resolver) external {
         uds.setResolver(rootNodeAddress, resolver);
     }
 

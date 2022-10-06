@@ -22,7 +22,7 @@ abstract contract LiquidityLogic  {
     bool internal priceInit;
 
    
-    function __LiquidityLogic_init(string memory _symbol, address _ticker, address _oracle, uint256 _basePrice) internall {
+    function __LiquidityLogic_init(string memory _symbol, address _ticker, address _oracle, uint256 _basePrice) internal {
         priceOracle = _oracle;
         symbol = _symbol;
         ticker = _ticker;

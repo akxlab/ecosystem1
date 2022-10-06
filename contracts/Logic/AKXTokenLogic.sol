@@ -2,7 +2,7 @@
 pragma solidity 0.8.17;
 
 import {LiquidityLogic, PriceOracle} from "./LiquidityLogic.sol";
-import {ReentrancyGuard} from "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
+import {ReentrancyGuardUpgradeable, Initializable} from "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import {FeeCollectionLogic} from "./FeeCollectionLogic.sol";
 import {AKX3, AKXRoles, ERC20} from "../tokens/AKX.sol";
@@ -10,7 +10,7 @@ import {AKX3, AKXRoles, ERC20} from "../tokens/AKX.sol";
 
 
 
-contract AKXTokenLogic is Initializabler, LiquidityLogic,  AKXRoles, ReentrancyGuardUpgradeable {
+contract AKXTokenLogic is Initializable, LiquidityLogic,  AKXRoles, ReentrancyGuardUpgradeable {
 
     using SafeERC20 for ERC20;
 
@@ -62,29 +62,18 @@ contract AKXTokenLogic is Initializabler, LiquidityLogic,  AKXRoles, ReentrancyG
     mapping(address => uint256) public feeCollected;
     uint256 public pendingTransferToTreasury;
 
-
-    constructor(string memory _symbol, address _feeCollLogic, address _ticker, address _oracle, uint256 _basePrice) LiquidityLogic(_symbol, _ticker, _oracle, _basePrice) {
-        _underlyingToken = AKX3(_ticker);
-        fees = FeeCollectionLogic(_feeCollLogic);
-        maxSupply = 3000000000 ether;
-        presaleSupply = 6500000 ether; // presale ends when all presale supply is sold
-        presaleMaxDuration = 180 days; // max duration to sell all presale supply is 6 months
-        canTransfer = false;
-        numHolders = 0;
-        circulating = 0;
-        marketCap = 0;
-        softCap = 0;
-        currentPrice = _basePrice;
-        isPresale = true;
-        presaleStartedOn = block.timestamp;
-       
+   /// @custom:oz-upgrades-unsafe-allow constructor
+    constructor() {
+        _disableInitializers();
     }
+  
 
     function initialize(string memory _symbol, address _feeCollLogic, address _ticker, address _oracle, uint256 _basePrice) public initializer {
         __AKXTokenLogic_init(_symbol, _feeCollLogic, _ticker, _oracle, _basePrice);
     }
 
     function __AKXTokenLogic_init(string memory _symbol, address _feeCollLogic, address _ticker, address _oracle, uint256 _basePrice) public onlyInitializing {
+        __LiquidityLogic_init(_symbol, _ticker, _oracle, _basePrice);
          _underlyingToken = AKX3(_ticker);
         fees = FeeCollectionLogic(_feeCollLogic);
         maxSupply = 3000000000 ether;
@@ -140,7 +129,7 @@ contract AKXTokenLogic is Initializabler, LiquidityLogic,  AKXRoles, ReentrancyG
   
 
 
- function buyWithEther() external payable nonReentrant {
+ function buyWithEther() external payable  {
         require(block.chainid == 0x01 || block.chainid == 0x05, "not on mainnet or goerli!");
         require(msg.sender != address(0x0), "no zero address");
         require(msg.value > 0, "you need to send some ethers!");
@@ -176,7 +165,7 @@ contract AKXTokenLogic is Initializabler, LiquidityLogic,  AKXRoles, ReentrancyG
     }
 
 
-    function deposit() external payable nonReentrant {
+    function deposit() external payable {
         require(msg.sender != address(0x0), "no zero address");
         emit Deposit(msg.sender, msg.value);
     }

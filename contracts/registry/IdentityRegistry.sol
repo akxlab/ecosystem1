@@ -3,9 +3,9 @@ pragma solidity 0.8.17;
 
 import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 import {ISignatureValidator} from "../Logic/SignMessage.sol";
-import "./Identity.sol";
+import {AKXRoles, Identity} from "./Identity.sol";
 
-contract IdentityRegistry is ISignatureValidator, Ownable {
+contract IdentityRegistry is ISignatureValidator, AKXRoles {
     bytes4 internal constant MAGICVALUE = 0x1626ba7e;
     bytes4 internal constant FAILURE = 0xffffffff;
 
@@ -30,8 +30,8 @@ contract IdentityRegistry is ISignatureValidator, Ownable {
         if(_exists[_from]) {
             return _identities[_from];
         }
-        Identity ident = new Identity(name, "1");
-        ident.transferOwnership(_from);
+        Identity ident = new Identity();
+       // ident.transferOwnership(_from);
         registerIdentity(address(ident));
         return address(ident);
     }
@@ -39,12 +39,12 @@ contract IdentityRegistry is ISignatureValidator, Ownable {
     function registerIdentity(address identity) internal {
 
         Identity _ident = Identity(identity);
-        _ident.signMessage(abi.encodePacked("identity registered for", _ident.owner()));
-        _owners[identity] = _ident.owner();
-        bytes32 hash = _ident.getMessageHash(abi.encodePacked("identity registered for", _ident.owner()));
+      //  _ident.signMessage(abi.encodePacked("identity registered for", _ident.owner()));
+      //  _owners[identity] = _ident.owner();
+     //   bytes32 hash = _ident.getMessageHash(abi.encodePacked("identity registered for", _ident.owner()));
         _identities[_owners[identity]] = identity;
-        _exists[_ident.owner()] = true;
-        emit IdentityRegistered(_ident.owner(), identity, hash);
+    //    _exists[_ident.owner()] = true;
+       // emit IdentityRegistered(_ident.owner(), identity, hash);
     }
 
     function registerOwnedAsset(address asset_, address identity_) public onlyOwner {
@@ -75,11 +75,11 @@ contract IdentityRegistry is ISignatureValidator, Ownable {
     
 
   
-    function supportsInterface(bytes4 interfaceID)
+    /*function supportsInterface(bytes4 interfaceID)
         external
         pure
         returns (bool)
     {
         return interfaceID == MAGICVALUE;
-    }
+    }*/
 }

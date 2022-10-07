@@ -1,13 +1,12 @@
-# Sample Hardhat Project
+# AKX3 ECOSYSTEM CONTRACTS
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+## POLYGON NETWORK (LIVE)
 
-Try running some of the following tasks:
+akx3 token official: 0x9973b3EA32B43BE1354FeE720e7D8d995F05eE7B
 
-```shell
-npx hardhat help
-npx hardhat test
-GAS_REPORT=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
-```
+controller contract proxy: 0xAE3917776e609f361a9616DFD96952E43FF23B5
+
+
+## ETHEREUM MAINNET
+
+... coming soon

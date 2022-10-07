@@ -42,7 +42,7 @@ const config: HardhatUserConfig = {
       accounts: [`${process.env.POLYGON_PK}`],
       from: process.env.DEPLOYER,
       allowUnlimitedContractSize: true,
-      gasPrice: "auto"
+      gasLimit: "auto", gasPrice: 55000000000
 
     },
     goerli: {

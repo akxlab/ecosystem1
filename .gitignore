@@ -121,3 +121,4 @@ hardhat.config.ts
 .DS_Store
 cache/solidity-files-cache.json
 cache/validations.json
+scripts/formula.ts

@@ -16,7 +16,6 @@ abstract contract LiquidityLogic  {
     string public symbol;
     address public ticker;
     uint256 public basePrice;
-    uint256 public mantissa;
     uint256 public divider;
 
     bool internal priceInit;
@@ -28,7 +27,7 @@ abstract contract LiquidityLogic  {
         ticker = _ticker;
         priceInit = false;
         basePrice = _basePrice;
-        mantissa = 1e6;
+       
         divider = 1e6;
     }
 

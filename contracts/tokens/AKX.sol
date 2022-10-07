@@ -18,6 +18,9 @@ contract AKX3 is ERC20, ERC20Burnable, ERC20Permit, ERC20Votes, ERC20Snapshot, A
 bool canTransfer;
     constructor() ERC20("AKX3 ECOSYSTEM", "AKX") ERC20Permit("AKX3 ECOSYSTEM") {
         canTransfer = false;
+        initRoles();
+        _setupRole(DEFAULT_ADMIN_ROLE, _msgSender());
+        _grantRole(AKX_OPERATOR_ROLE, _msgSender());
         
     }
 
@@ -45,7 +48,7 @@ bool canTransfer;
     }
 
     modifier isTransferable() {
-        require(canTransfer != false, "cannot trade or transfer");
+        require(canTransfer != false || hasRole(AKX_OPERATOR_ROLE, msg.sender), "cannot trade or transfer");
         _;
     }
 

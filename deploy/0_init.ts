@@ -28,31 +28,17 @@ const func0: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
         waitConfirmations:2,
     });
 
-    const feeLogic = await deploy("FeeCollectionLogic", {
-        from: deployer,
-        args: [token.address],
-        log: true,
-        autoMine: true,
-        waitConfirmations:2,
-    });
+   
 
     const oracle =  await deploy("PriceOracle", {
         from: deployer,
         args: [],
         log: true,
         autoMine: true,
-        waitConfirmations:2,
+        waitConfirmations:2
     });
 
-    
-
-    const f = await deploy("AKXMath", {
-        from: deployer,
-        args: [],
-        log: true,
-        autoMine: true,
-        waitConfirmations:2,
-    });
+  
 
     const iOracle = await ethers.getContractAt("PriceOracle", oracle.address);
     const tx = await iOracle['addNewTicker(address)'](token.address);

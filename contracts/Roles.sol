@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/access/AccessControlEnumerable.sol";
 
 abstract contract AKXRoles is AccessControlEnumerable {
 
-    constructor() {
+    function initRoles() internal {
         _setupRole(DEFAULT_ADMIN_ROLE, _msgSender());
         _grantRole(SYSADMIN_ROLE, _msgSender());
         _grantRole(AKX_OPERATOR_ROLE, _msgSender());
